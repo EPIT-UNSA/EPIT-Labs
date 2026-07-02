@@ -1,0 +1,8 @@
+{
+  "name": "EPIT Labs",
+  "description": "Sitio interactivo tipo Wiki y Documentación para los laboratorios de la Escuela Profesional de Ingeniería en Telecomunicaciones (EPIT) de la UNSA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

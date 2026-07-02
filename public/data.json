@@ -1,0 +1,1064 @@
+{
+  "NOMBRE DE LA UNIVERSIDAD": "UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA",
+  "ABREVIATURA UNIVERSIDAD": "UNSA",
+  "FACULTAD": "FACULTAD DE INGENIERIA DE PRODUCCION Y SERVICIOS",
+  "ESCUELA": "ESCUELA PROFESIONAL DE INGENIERÍA EN TELECOMUNICACIONES",
+  "PROGRAMA DE ESTUDIOS": "INGENIERÍA EN TELECOMUNICACIONES",
+  "ABREVIATURA PROGRAMA DE ESTUDIOS": "EPIT",
+  "CODIGO PROGRAMA": "P13",
+  "DIRECTOR DEL PROGRAMA DE ESTUDIOS": [
+    {
+      "visible": true,
+      "NOMBRE": "Dr. Juan Borja Murillo",
+      "NUMERO DE CONTACTO": "+51 959 123 456",
+      "Periodo": "2024-2026",
+      "Fotografias": [
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300"
+      ]
+    }
+  ],
+  "DEPARTAMENTO ACADÉMICO": {
+    "visible": true,
+    "NOMBRE": "Departamento Académico de Ingeniería Electrónica",
+    "Director": [
+      {
+        "visible": true,
+        "Nombre": "Dr. Jorge Eusebio Rendulich Talavera",
+        "NUMERO DE CONTACTO": "+51 958 987 654",
+        "Periodo": "2024-2026",
+        "Fotografias": [
+          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300"
+        ]
+      }
+    ]
+  },
+  "CODIGO LOCAL": "SL01",
+  "Fotografias": [
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200"
+  ],
+  "documentos": [
+    {
+      "titulo": "Web Institucional EPIT",
+      "url": "https://epit.unsa.edu.pe/"
+    },
+    {
+      "titulo": "Planos de Evacuación Pabellón Telecom",
+      "url": "https://drive.google.com/drive/folders/ejemplo_plano"
+    },
+    {
+      "titulo": "Reglamento de Seguridad y Salud en el Trabajo",
+      "url": "https://drive.google.com/drive/folders/ejemplo_sst"
+    }
+  ],
+  "labs": [
+    {
+      "visible": true,
+      "infoAmbiente": {
+        "NUMERO DE LABORATORIO O TALLER": "LA101",
+        "CÓDIGO DE LABORATORIO O TALLER": "SL01LA101",
+        "NOMBRE DEL LABORATORIO O TALLER": "LABORATORIO DE ANTENAS Y MEDIOS DE TRANSMISIÓN",
+        "TIPO DE LABORATORIO O TALLER": "Enseñanza",
+        "CODIGO PATRIMONIO AMBIENTE": "26.5-101",
+        "REFERENCIA DE UBICACIÓN": "Pabellón de Ingeniería en Telecomunicaciones, 1er piso, Aula 101",
+        "PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": [
+          "P13"
+        ],
+        "CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": "1",
+        "SERVICIO DE INTERNET (SI/NO)": "Sí",
+        "ÁREA (m2)": "72,50 m2",
+        "AFORO": "25",
+        "COMENTARIOS": "Laboratorio especializado en el análisis de sistemas de RF, guías de onda, antenas, propagación y enlaces ópticos.",
+        "Fotografias": [
+          "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800"
+        ],
+        "RESPONSABLE DEL LABORATORIO O TALLER": {
+          "visible": true,
+          "NOMBRE": "Ing. Ronald Coaguila",
+          "NUMERO DE CONTACTO": "+51 940 333 444"
+        },
+        "PERSONAL TÉCNICO": [
+          {
+            "visible": true,
+            "NOMBRE": "Tec. Juan Quispe",
+            "NUMERO DE CONTACTO": "+51 940 111 222"
+          }
+        ],
+        "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
+          "visible": true,
+          "NOMBRE": "Dr. Juan Borja Murillo",
+          "NUMERO DE CONTACTO": "+51 959 123 456"
+        }
+      },
+      "equipos": [
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "6",
+          "NOMBRE DEL EQUIPO": "Kit de Entrenamiento de Antenas ED-3000",
+          "COMENTARIOS": "Utilizado para modelar y medir patrones de radiación de diferentes tipos de antenas en la banda de UHF.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "SISTEMA DE ENTRENAMIENTO DE ANTENAS",
+            "Tipo de equipo:": "Equipo de Laboratorio didáctico",
+            "Fabricante": "ED-CO LTD",
+            "Marca": "ED-CO",
+            "Modelo": "ED-3000"
+          },
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Frecuencia de Operación",
+              "Descripcion": "UHF (900 MHz - 2.4 GHz)"
+            },
+            {
+              "Caracteristica": "Tipos de antenas incluidas",
+              "Descripcion": "Yagi-Uda, Dipolo, Monopolo, Bocina, Parabólica, Espiral y Microstrip."
+            },
+            {
+              "Caracteristica": "Controlador de rotación",
+              "Descripcion": "Motor paso a paso automático de 360 grados para diagramas de radiación en 2D y 3D."
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "El sistema ED-3000 emite señales de radiofrecuencia a través de una antena transmisora y captura la potencia recibida en la antena bajo prueba posicionada en una plataforma rotatoria motorizada para determinar la directividad y los lóbulos de radiación.",
+            "Instalaciones Requeridas": "Mesa de trabajo de material no conductor (madera o plástico) para evitar reflexiones espurias, conexión eléctrica monofásica de 220VAC estabilizada, y espacio despejado de al menos 2 metros alrededor del kit.",
+            "Partes": "# Partes Principales:\n\n1. **Generador de RF Integrado:** Genera señales estables en frecuencias seleccionadas.\n2. **Unidad Posicionadora Motorizada:** Plataforma rotatoria controlada electrónicamente para cambiar la orientación angular.\n3. **Módulo de Recepción y Medida:** Registra la potencia y demodula las señales.\n4. **Conjunto de Antenas de Prueba:** Diversos tipos de antenas intercambiables.",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Inspección de conectores y cables coaxiales",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Verificar que los conectores SMA y N-type no presenten óxido, polvo o pines doblados.",
+                        "Revisar que no existan dobleces excesivos o estrangulamientos en los cables coaxiales RG-58."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Docente / Alumno bajo supervisión"
+                  }
+                ],
+                "semanal": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Limpieza general y ajuste de piezas móviles",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Remover polvo de los módulos electrónicos usando aire comprimido y un paño suave libre de pelusas.",
+                        "Verificar la sujeción de la plataforma rotatoria."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "-"
+                    },
+                    "responsable": "Personal Técnico del Laboratorio"
+                  }
+                ],
+                "quincenal": [],
+                "mensual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Prueba de continuidad y calibración básica",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Ejecutar la rutina interna de auto-test y calibración del nivel de cero (0 dBm) con un atenuador certificado."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "150.00"
+                    },
+                    "responsable": "Técnico del Laboratorio"
+                  }
+                ],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Calibración externa metrológica",
+                      "Prioridad": 3,
+                      "contenido": [
+                        "Enviar los instrumentos de medición a un laboratorio homologado de calibración para certificar la precisión del nivel de potencia de RF."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "1200.00"
+                    },
+                    "responsable": "Proveedor Externo Autorizado"
+                  }
+                ]
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "UNSA-EPIT-ANT-001",
+                "FECHA DE ADQUISICIÓN": "2019-10-15",
+                "MODO DE ADQUISICIÓN": "LICITACIÓN PÚBLICA LP-002-2019",
+                "Ubicación": "Estante A1 - Laboratorio de Antenas"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Cambio de cable coaxial y calibración",
+                  "Fecha": "2024-03-20",
+                  "Responsable": "Tec. Juan Quispe",
+                  "Observaciones": "Se detectó atenuación anómala debida a un cable coaxial fisurado. Se reemplazó por un cable coaxial nuevo RG-142 de bajas pérdidas.",
+                  "Fotografias": [
+                    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300"
+                  ]
+                }
+              ],
+              "nota": "Se requiere mantener los atenuadores de protección puestos en las entradas de RF cuando el equipo no esté en uso.",
+              "ultimaActualizacion": {
+                "year": 2026,
+                "month": 4,
+                "day": 12
+              },
+              "HechoPor": "Tec. Juan Quispe",
+              "RevisadoPor": "Ing. Ronald Coaguila"
+            }
+          ]
+        }
+      ],
+      "software": [
+        {
+          "visible": true,
+          "Nº DE LICENCIAS": "25",
+          "VERSIÓN": "2024 R1",
+          "NOMBRE DEL SOFTWARE": "Ansys HFSS (High Frequency Structure Simulator)",
+          "TIPO DE LICENCIA": "Licencia académica de campus",
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=400"
+          ],
+          "COMENTARIOS": "Software líder para la simulación electromagnética en 3D de antenas, acopladores, filtros y conectores."
+        }
+      ]
+    },
+    {
+      "visible": true,
+      "infoAmbiente": {
+        "NUMERO DE LABORATORIO O TALLER": "LA102",
+        "CÓDIGO DE LABORATORIO O TALLER": "SL01LA102",
+        "NOMBRE DEL LABORATORIO O TALLER": "LABORATORIO DE TELEMÁTICA Y REDES",
+        "TIPO DE LABORATORIO O TALLER": "Enseñanza",
+        "CODIGO PATRIMONIO AMBIENTE": "26.5-102",
+        "REFERENCIA DE UBICACIÓN": "Pabellón de Ingeniería en Telecomunicaciones, 1er piso, Aula 102",
+        "PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": [
+          "P13"
+        ],
+        "CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": "1",
+        "SERVICIO DE INTERNET (SI/NO)": "Sí",
+        "ÁREA (m2)": "85,00 m2",
+        "AFORO": "30",
+        "COMENTARIOS": "Laboratorio orientado al diseño de redes, ruteo, conmutación, seguridad de redes, VoIP y tecnologías IoT inalámbricas.",
+        "Fotografias": [
+          "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800"
+        ],
+        "RESPONSABLE DEL LABORATORIO O TALLER": {
+          "visible": true,
+          "NOMBRE": "Ing. Carlos Zenteno",
+          "NUMERO DE CONTACTO": "+51 954 222 111"
+        },
+        "PERSONAL TÉCNICO": [
+          {
+            "visible": true,
+            "NOMBRE": "Ing. Marcos Vera",
+            "NUMERO DE CONTACTO": "+51 951 888 222"
+          }
+        ],
+        "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
+          "visible": true,
+          "NOMBRE": "Ing. Ronald Coaguila",
+          "NUMERO DE CONTACTO": "+51 940 333 444"
+        }
+      },
+      "equipos": [
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "15",
+          "NOMBRE DEL EQUIPO": "Switch Cisco Catalyst 2960-X",
+          "COMENTARIOS": "Equipos de conmutación de capa 2 y 3 básica, configurables mediante interfaz de línea de comando (CLI) iOS.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "EQUIPO DE RED - INTERRUPTOR DE CONMUTACIÓN DE DATOS (SWITCH)",
+            "Tipo de equipo:": "Equipo de conectividad de datos",
+            "Fabricante": "Cisco Systems Inc.",
+            "Marca": "Cisco",
+            "Modelo": "WS-C2960X-24TS-L"
+          },
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1544256718-3bcf237f3974?auto=format&fit=crop&q=80&w=800"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Puertos RJ-45",
+              "Descripcion": "24 puertos 10/100/1000 Mbps Ethernet"
+            },
+            {
+              "Caracteristica": "Puertos Uplink",
+              "Descripcion": "4 puertos SFP de 1 Gbps"
+            },
+            {
+              "Caracteristica": "Capacidad de Conmutación",
+              "Descripcion": "216 Gbps de ancho de banda para reenvío"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Conmuta paquetes de capa 2 y realiza filtrado/enrutamiento MAC entre equipos de una misma red LAN.",
+            "Instalaciones Requeridas": "Montaje en rack estándar de 19 pulgadas, conexión de cable Ethernet UTP Cat 6, alimentación de 220VAC y flujo de aire constante.",
+            "Partes": "# Partes:\n\n1. **Puertos Gigabit Ethernet:** Puertos del 1 al 24.\n2. **LEDs de Estado:** Indicadores de System, RPS, Stat, Duplex, Speed.\n3. **Puerto de Consola RJ45/USB Mini-B:** Para configuración CLI.",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Revisión de conexiones y LEDs",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Verificar que el LED 'SYS' se encuentre en verde continuo.",
+                        "Revisar que no existan puertos encendidos en ámbar, lo que indicaría fallas."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Estudiante / Técnico"
+                  }
+                ],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Limpieza de rejillas de ventilación y backup de config",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Retirar el polvo acumulado en los extractores laterales.",
+                        "Efectuar copia de seguridad de la 'startup-config' en el servidor TFTP del laboratorio."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "50.00"
+                    },
+                    "responsable": "Ing. Marcos Vera"
+                  }
+                ],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Actualización de IOS y parches de seguridad",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Revisar alertas de seguridad de Cisco y actualizar el firmware IOS a la versión recomendada estable si es necesario."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Ing. Marcos Vera"
+                  }
+                ],
+                "anual": []
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "UNSA-EPIT-SWI-012",
+                "FECHA DE ADQUISICIÓN": "2020-03-10",
+                "MODO DE ADQUISICIÓN": "COMPRA INSTITUCIONAL",
+                "Ubicación": "Rack Principal - Lab Telemática"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Reinicio de fábrica y carga de configuración base",
+                  "Fecha": "2024-05-12",
+                  "Responsable": "Ing. Marcos Vera",
+                  "Observaciones": "El switch quedó inaccesible por pérdida de contraseña de consola. Se realizó procedimiento de recuperación de contraseña cargando el archivo de backup.",
+                  "Fotografias": [
+                    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300"
+                  ]
+                }
+              ],
+              "nota": "Mantener siempre restringido el acceso físico al rack mediante llave.",
+              "ultimaActualizacion": {
+                "year": 2026,
+                "month": 5,
+                "day": 20
+              },
+              "HechoPor": "Ing. Marcos Vera",
+              "RevisadoPor": "Ing. Carlos Zenteno"
+            }
+          ]
+        }
+      ],
+      "software": [
+        {
+          "visible": true,
+          "Nº DE LICENCIAS": "Aulas Libres",
+          "VERSIÓN": "8.2.1",
+          "NOMBRE DEL SOFTWARE": "Cisco Packet Tracer",
+          "TIPO DE LICENCIA": "Educativa gratuita (Cisco Academy)",
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=400"
+          ],
+          "COMENTARIOS": "Herramienta de simulación interactiva para el aprendizaje de redes y diseño de topologías complejas."
+        }
+      ]
+    },
+    {
+      "visible": true,
+      "infoAmbiente": {
+        "NUMERO DE LABORATORIO O TALLER": "LA103",
+        "CÓDIGO DE LABORATORIO O TALLER": "SL01LA103",
+        "NOMBRE DEL LABORATORIO O TALLER": "LABORATORIO DE RADIOCOMUNICACIONES Y SISTEMAS DE RF",
+        "TIPO DE LABORATORIO O TALLER": "Enseñanza",
+        "CODIGO PATRIMONIO AMBIENTE": "26.5-103",
+        "REFERENCIA DE UBICACIÓN": "Pabellón de Ingeniería en Telecomunicaciones, 2do piso, Aula 103",
+        "PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": [
+          "P13"
+        ],
+        "CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": "1",
+        "SERVICIO DE INTERNET (SI/NO)": "Sí",
+        "ÁREA (m2)": "78,20 m2",
+        "AFORO": "25",
+        "COMENTARIOS": "Equipado con instrumental avanzado para análisis espectral, modulación digital, microondas y telefonía móvil celular.",
+        "Fotografias": [
+          "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
+        ],
+        "RESPONSABLE DEL LABORATORIO O TALLER": {
+          "visible": true,
+          "NOMBRE": "Dr. Juan Borja Murillo",
+          "NUMERO DE CONTACTO": "+51 959 123 456"
+        },
+        "PERSONAL TÉCNICO": [
+          {
+            "visible": true,
+            "NOMBRE": "Tec. Juan Quispe",
+            "NUMERO DE CONTACTO": "+51 940 111 222"
+          }
+        ],
+        "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
+          "visible": true,
+          "NOMBRE": "Dr. Juan Borja Murillo",
+          "NUMERO DE CONTACTO": "+51 959 123 456"
+        }
+      },
+      "equipos": [
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "4",
+          "NOMBRE DEL EQUIPO": "Analizador de Espectro Rohde & Schwarz FPC1000",
+          "COMENTARIOS": "Utilizado para la medición de señales débiles, análisis de armónicos, ruido de fase e interferencias espectrales.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "ANALIZADOR DE ESPECTRO DE RADIOFRECUENCIA",
+            "Tipo de equipo:": "Instrumental de medición electrónica avanzada",
+            "Fabricante": "Rohde & Schwarz GmbH & Co. KG",
+            "Marca": "Rohde & Schwarz",
+            "Modelo": "FPC1000"
+          },
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&q=80&w=800"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Rango de Frecuencia",
+              "Descripcion": "5 MHz a 1 GHz (ampliable mediante software a 3 GHz)"
+            },
+            {
+              "Caracteristica": "Pantalla",
+              "Descripcion": "LCD de alta resolución WXGA (1366x768 píxeles) de 10.1''"
+            },
+            {
+              "Caracteristica": "Ruido de Fase",
+              "Descripcion": "< -92 dBc/Hz a 100 kHz de offset"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "El analizador muestra de manera gráfica las componentes espectrales de una señal de entrada en el dominio de la frecuencia mediante un proceso de barrido heterodino.",
+            "Instalaciones Requeridas": "Mesa de laboratorio electrostática con conexión a tierra física real, temperatura ambiente controlada (20-25 ºC) y humedad relativa < 65%.",
+            "Partes": "# Partes del Instrumento:\n\n1. **Entrada RF (N-Connector):** Conector principal de entrada. Impedancia 50 Ohms. Máxima potencia admisible +30 dBm.\n2. **Teclado Alfanumérico y Perilla Rotativa:** Para ingresar frecuencias, spans y amplitudes.\n3. **Puerto de Referencia 10MHz:** En el panel posterior para sincronización.\n4. **Puertos de Interfaz USB/LAN:** Para el control remoto vía software R&S Instrument View.",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Comprobación de nivel DC y Potencia máxima de entrada",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "CRÍTICO: Validar que la señal a inyectar no supere el límite de potencia máxima de entrada de +30 dBm (1 V) ni posea componente de corriente continua (DC). Use un bloqueador de DC si hay incertidumbre.",
+                        "Encender el equipo y esperar 15 minutos para que alcance estabilidad térmica antes de iniciar mediciones de precisión."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Usuario docente o estudiante"
+                  }
+                ],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Ejecución de auto-calibración interna (Self-Alignment)",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Desconectar todas las entradas de RF.",
+                        "Ejecutar la función interna 'Align Now' para autocalibrar los mezcladores de RF y atenuadores según la temperatura actual."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Tec. Juan Quispe"
+                  }
+                ],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Calibración externa y certificación de fábrica",
+                      "Prioridad": 3,
+                      "contenido": [
+                        "Enviar el analizador para su calibración oficial que certifique el nivel de ruido de fondo y la exactitud en amplitud y frecuencia."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "1500.00"
+                    },
+                    "responsable": "Servicio de Soporte de Rohde & Schwarz"
+                  }
+                ]
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "UNSA-EPIT-SPEC-003",
+                "FECHA DE ADQUISICIÓN": "2021-06-20",
+                "MODO DE ADQUISICIÓN": "DONACIÓN POR CONVENIO MARCO",
+                "Ubicación": "Estante Principal B1 - Lab Radiocomunicaciones"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Limpieza y prueba de calibración básica",
+                  "Fecha": "2024-01-10",
+                  "Responsable": "Tec. Juan Quispe",
+                  "Observaciones": "Se realizó autocalibración interna resultando exitosa sin errores.",
+                  "Fotografias": []
+                }
+              ],
+              "nota": "No obstruir los ventiladores del panel posterior para evitar sobrecalentamiento interno de las etapas mezcladoras.",
+              "ultimaActualizacion": {
+                "year": 2026,
+                "month": 1,
+                "day": 10
+              },
+              "HechoPor": "Tec. Juan Quispe",
+              "RevisadoPor": "Dr. Juan Borja Murillo"
+            }
+          ]
+        }
+      ],
+      "software": [
+        {
+          "visible": true,
+          "Nº DE LICENCIAS": "15",
+          "VERSIÓN": "R2023b",
+          "NOMBRE DEL SOFTWARE": "MATLAB & Simulink",
+          "TIPO DE LICENCIA": "Licencia institucional educativa de campus",
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400"
+          ],
+          "COMENTARIOS": "Utilizado para simulación matemática de sistemas de comunicaciones, modulaciones QAM/OFDM, y diseño de filtros digitales."
+        }
+      ]
+    },
+    {
+      "visible": true,
+      "infoAmbiente": {
+        "NUMERO DE LABORATORIO O TALLER": "LA104",
+        "CÓDIGO DE LABORATORIO O TALLER": "SL01LA104",
+        "NOMBRE DEL LABORATORIO O TALLER": "LABORATORIO DE PROCESAMIENTO DE SEÑALES Y MICROELECTRÓNICA",
+        "TIPO DE LABORATORIO O TALLER": "Enseñanza",
+        "CODIGO PATRIMONIO AMBIENTE": "26.5-104",
+        "REFERENCIA DE UBICACIÓN": "Pabellón de Ingeniería en Telecomunicaciones, 2do piso, Aula 104",
+        "PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": [
+          "P13"
+        ],
+        "CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": "1",
+        "SERVICIO DE INTERNET (SI/NO)": "Sí",
+        "ÁREA (m2)": "70,00 m2",
+        "AFORO": "20",
+        "COMENTARIOS": "Dedicado a experimentos de electrónica digital, programación de FPGAs, microcontroladores, DSPs y desarrollo de hardware embebido.",
+        "Fotografias": [
+          "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800"
+        ],
+        "RESPONSABLE DEL LABORATORIO O TALLER": {
+          "visible": true,
+          "NOMBRE": "Ing. Percy Huertas",
+          "NUMERO DE CONTACTO": "+51 955 456 789"
+        },
+        "PERSONAL TÉCNICO": [
+          {
+            "visible": true,
+            "NOMBRE": "Tec. Juan Quispe",
+            "NUMERO DE CONTACTO": "+51 940 111 222"
+          }
+        ],
+        "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
+          "visible": true,
+          "NOMBRE": "Ing. Carlos Zenteno",
+          "NUMERO DE CONTACTO": "+51 954 222 111"
+        }
+      },
+      "equipos": [
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "20",
+          "NOMBRE DEL EQUIPO": "Tarjeta de Desarrollo FPGA Cyclone IV",
+          "COMENTARIOS": "Tarjetas didácticas para la simulación y síntesis de sistemas digitales empleando lenguajes de descripción de hardware como VHDL/Verilog.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "TARJETA ELECTRÓNICA DE DESARROLLO DIGITAL",
+            "Tipo de equipo:": "Kit de desarrollo de sistemas embebidos",
+            "Fabricante": "Terasic Technologies Inc.",
+            "Marca": "Terasic",
+            "Modelo": "DE0-Nano Cyclone IV"
+          },
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Dispositivo FPGA",
+              "Descripcion": "Altera Cyclone IV EP4CE22F17C6N con 22,320 elementos lógicos"
+            },
+            {
+              "Caracteristica": "Memorias",
+              "Descripcion": "32 MB SDRAM, 2 Kb EEPROM de configuración"
+            },
+            {
+              "Caracteristica": "Interfaces integradas",
+              "Descripcion": "Acelerómetro digital ADI ADXL345, ADC de 12 bits y 8 canales, convertidor USB-Blaster."
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Permite configurar circuitos lógicos digitales en hardware mediante la carga de un netlist sintetizado desde el computador a través de USB.",
+            "Instalaciones Requeridas": "Conexión a un puerto USB de 5V/500mA en un computador, mesa con alfombra disipadora estática (ESD) y pulsera antiestática para su manipulación.",
+            "Partes": "# Partes del Kit:\n\n1. **Chip FPGA Cyclone IV:** Cerebro configurable.\n2. **LEDs y Dip-switches:** 8 LEDs de usuario y 4 interruptores.\n3. **Headers de Expansión (GPIO):** Pines IDC para conexionado externo de sensores.\n4. **Puerto USB Mini-B:** Para programar y alimentar la placa.",
+            "mantenimiento": {
+              "visible": true,
+              "preventive": {
+                "enCadaUso": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Verificación estática y conexión segura",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Obligatorio: Asegurar que el usuario use pulsera antiestática antes de retirar la tarjeta de su bolsa protectora conductiva.",
+                        "Conectar el cable USB firmemente sin forzar el puerto mini-B de la tarjeta."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Estudiante de laboratorio"
+                  }
+                ],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Limpieza química con alcohol isopropílico",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "En caso de suciedad o grasa en los contactos GPIO, limpiar suavemente con un cepillo de cerdas suaves embebido en alcohol isopropílico y dejar secar completamente antes de alimentar."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "10.00"
+                    },
+                    "responsable": "Tec. Juan Quispe"
+                  }
+                ],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              },
+              "corrective": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "UNSA-EPIT-FPGA-022",
+                "FECHA DE ADQUISICIÓN": "2018-04-18",
+                "MODO DE ADQUISICIÓN": "COMPRA DIRECTA",
+                "Ubicación": "Estante C2 - Lab Microelectrónica"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Reparación de puerto USB desprendido",
+                  "Fecha": "2023-10-05",
+                  "Responsable": "Tec. Juan Quispe",
+                  "Observaciones": "Se desoldó el puerto mini-USB por manipulación brusca de los cables. Se resoldó el puerto bajo microscopio estereoscópico y se reforzó mecánicamente con resina epoxi.",
+                  "Fotografias": []
+                }
+              ],
+              "nota": "Manipular la tarjeta tomándola siempre por los cantos de la placa de circuito impreso.",
+              "ultimaActualizacion": {
+                "year": 2026,
+                "month": 3,
+                "day": 5
+              },
+              "HechoPor": "Tec. Juan Quispe",
+              "RevisadoPor": "Ing. Percy Huertas"
+            }
+          ]
+        }
+      ],
+      "software": [
+        {
+          "visible": true,
+          "Nº DE LICENCIAS": "20",
+          "VERSIÓN": "20.1 Standard",
+          "NOMBRE DEL SOFTWARE": "Intel Quartus Prime",
+          "TIPO DE LICENCIA": "Edición Lite Académica",
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1580894732444-8fecef2271ff?auto=format&fit=crop&q=80&w=400"
+          ],
+          "COMENTARIOS": "Herramienta de síntesis y simulación de hardware para programar dispositivos lógicos complejos de marca Intel/Altera."
+        }
+      ]
+    },
+    {
+      "visible": true,
+      "infoAmbiente": {
+        "NUMERO DE LABORATORIO O TALLER": "TC105",
+        "CÓDIGO DE LABORATORIO O TALLER": "SL01TC105",
+        "NOMBRE DEL LABORATORIO O TALLER": "TALLER DE CÓMPUTO Y SIMULACIÓN EN TELECOMUNICACIONES",
+        "TIPO DE LABORATORIO O TALLER": "Taller de Cómputo",
+        "CODIGO PATRIMONIO AMBIENTE": "26.5-105",
+        "REFERENCIA DE UBICACIÓN": "Pabellón de Ingeniería en Telecomunicaciones, 3er piso, Aula 301",
+        "PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": [
+          "P13"
+        ],
+        "CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER": "1",
+        "SERVICIO DE INTERNET (SI/NO)": "Sí",
+        "ÁREA (m2)": "90,00 m2",
+        "AFORO": "35",
+        "COMENTARIOS": "Entorno equipado con PCs de alto rendimiento para el desarrollo de software de simulación, diseño CAD de antenas, gestión de proyectos y programación avanzada.",
+        "Fotografias": [
+          "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=800"
+        ],
+        "RESPONSABLE DEL LABORATORIO O TALLER": {
+          "visible": true,
+          "NOMBRE": "Ing. Carlos Zenteno",
+          "NUMERO DE CONTACTO": "+51 954 222 111"
+        },
+        "PERSONAL TÉCNICO": [
+          {
+            "visible": true,
+            "NOMBRE": "Ing. Marcos Vera",
+            "NUMERO DE CONTACTO": "+51 951 888 222"
+          }
+        ],
+        "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
+          "visible": true,
+          "NOMBRE": "Dr. Juan Borja Murillo",
+          "NUMERO DE CONTACTO": "+51 959 123 456"
+        }
+      },
+      "equipos": [
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "35",
+          "NOMBRE DEL EQUIPO": "Computadora de Escritorio Intel Core i7",
+          "COMENTARIOS": "Estaciones de simulación para procesamiento matemático intensivo y diseño electromagnético en 3D.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "COMPUTADORA PERSONAL (DESKTOP CPU)",
+            "Tipo de equipo:": "Equipo de procesamiento informático",
+            "Fabricante": "HP Inc.",
+            "Marca": "HP",
+            "Modelo": "EliteDesk 800 G6"
+          },
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=800"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Procesador",
+              "Descripcion": "Intel Core i7-10700 (8 núcleos, 16 hilos, hasta 4.8 GHz)"
+            },
+            {
+              "Caracteristica": "Memoria RAM",
+              "Descripcion": "32 GB DDR4 a 2933 MHz dual channel"
+            },
+            {
+              "Caracteristica": "Tarjeta Gráfica Dedicada",
+              "Descripcion": "NVIDIA GeForce GTX 1650 de 4GB GDDR5 para simulaciones en GPU (HFSS)"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Ejecuta los programas de diseño y simulación que complementan el modelado teórico de las telecomunicaciones.",
+            "Instalaciones Requeridas": "Escritorios ergonómicos, tomacorriente con neutro y tierra física (UPS de 1000VA asignado a cada fila), cable estructurado RJ-45 de categoría 6A.",
+            "Partes": "# Partes de la Computadora:\n\n1. **CPU HP EliteDesk:** Unidad central.\n2. **Monitor IPS de 24'' Full HD:** HP EliteDisplay.\n3. **Periféricos:** Teclado y Mouse HP USB.\n4. **UPS APC 1kVA:** Protección contra interrupciones de suministro eléctrico.",
+            "mantenimiento": {
+              "visible": true,
+              "preventive": {
+                "enCadaUso": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Encendido y reporte de incidentes",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Verificar que el software arranque de manera correcta.",
+                        "Reportar ruidos inusuales en los ventiladores internos de la máquina."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Estudiante de turno"
+                  }
+                ],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Limpieza de software y temporales",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Eliminar archivos temporales de usuario en discos duros, correr optimizador del sistema y desfragmentación SSD semanal automática programada."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0.00"
+                    },
+                    "responsable": "Ing. Marcos Vera"
+                  }
+                ],
+                "bimestral": [],
+                "trimestral": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Limpieza física de polvo interno",
+                      "Prioridad": 2,
+                      "contenido": [
+                        "Abrir los chasis metálicos y realizar soplado de polvo de disipadores con soplador eléctrico de baja presión para evitar estática.",
+                        "Limpieza de filtros de aire externos."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "100.00"
+                    },
+                    "responsable": "Ing. Marcos Vera"
+                  }
+                ],
+                "semestral": [],
+                "anual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Renovación de pasta térmica",
+                      "Prioridad": 3,
+                      "contenido": [
+                        "Retirar el disipador del CPU, limpiar residuos de pasta térmica vieja y aplicar pasta térmica nueva Arctic MX-4 para evitar estrangulamiento térmico por calor (Thermal Throttling)."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "350.00"
+                    },
+                    "responsable": "Ing. Marcos Vera"
+                  }
+                ]
+              },
+              "corrective": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "UNSA-EPIT-PC-035",
+                "FECHA DE ADQUISICIÓN": "2021-02-15",
+                "MODO DE ADQUISICIÓN": "LICITACIÓN DE INFRAESTRUCTURA UNSA",
+                "Ubicación": "Taller de Cómputo - PC #35"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Cambio de módulo de memoria RAM defectuoso",
+                  "Fecha": "2024-04-03",
+                  "Responsable": "Ing. Marcos Vera",
+                  "Observaciones": "Se reportaban continuos Pantallazos Azules (BSOD) de memoria. Se diagnosticó con MemTest86 un módulo de RAM fallido. Se reemplazó el módulo de 16GB defectuoso bajo garantía.",
+                  "Fotografias": []
+                }
+              ],
+              "nota": "Todos los computadores están protegidos mediante el sistema de restauración de disco Deep Freeze para evitar virus.",
+              "ultimaActualizacion": {
+                "year": 2026,
+                "month": 4,
+                "day": 5
+              },
+              "HechoPor": "Ing. Marcos Vera",
+              "RevisadoPor": "Ing. Carlos Zenteno"
+            }
+          ]
+        }
+      ],
+      "software": [
+        {
+          "visible": true,
+          "Nº DE LICENCIAS": "35",
+          "VERSIÓN": "8.0",
+          "NOMBRE DEL SOFTWARE": "OptiSystem (Optiwave)",
+          "TIPO DE LICENCIA": "Licencia flotante académica",
+          "Fotografias": [
+            "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=400"
+          ],
+          "COMENTARIOS": "Programa especializado en el modelado de enlaces de fibra óptica, sistemas de WDM, amplificadores EDFA y moduladores electro-ópticos."
+        }
+      ]
+    }
+  ],
+  "contacto": {
+    "visible": true,
+    "enlaces": [
+      {
+        "titulo": "Web Institucional UNSA",
+        "url": "https://www.unsa.edu.pe/"
+      },
+      {
+        "titulo": "Facebook EPIT UNSA",
+        "url": "https://www.facebook.com/unsaoficial"
+      },
+      {
+        "titulo": "LinkedIn Oficial UNSA",
+        "url": "https://www.linkedin.com/school/unsaoficial/"
+      },
+      {
+        "titulo": "YouTube Canal UNSA",
+        "url": "https://www.youtube.com/@unsaoficial"
+      },
+      {
+        "titulo": "Correo Institucional EPIT",
+        "url": "mailto:epit@unsa.edu.pe"
+      }
+    ]
+  }
+}
