@@ -22,7 +22,8 @@ import {
   FileCode,
   Sliders,
   ExternalLink,
-  FileText
+  FileText,
+  Camera
 } from "lucide-react";
 import { Lab, Equipo, Software, PersonalTecnico, Responsable } from "../types";
 
@@ -34,6 +35,7 @@ interface LabDetailViewProps {
   onUpdate: (path: (string | number)[], value: any) => void;
   onNavigate: (path: string) => void;
   onOpenEquipment: (equipmentIndex: number) => void;
+  onZoomImage: (url: string) => void;
 }
 
 export default function LabDetailView({ 
@@ -43,7 +45,8 @@ export default function LabDetailView({
   isEditMode, 
   onUpdate, 
   onNavigate,
-  onOpenEquipment 
+  onOpenEquipment,
+  onZoomImage
 }: LabDetailViewProps) {
   const info = (lab.infoAmbiente || {}) as any;
 
@@ -194,8 +197,9 @@ export default function LabDetailView({
           <img 
             src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800"} 
             alt={info["NOMBRE DEL LABORATORIO O TALLER"]} 
-            className="w-full h-full object-cover filter blur-sm"
+            className="w-full h-full object-cover filter blur-sm cursor-zoom-in"
             referrerPolicy="no-referrer"
+            onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800")}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/40"></div>
@@ -336,6 +340,93 @@ export default function LabDetailView({
                   {info.COMENTARIOS || "Sin descripción asignada."}
                 </p>
               )}
+            </div>
+
+            {/* Galería de Fotos del Ambiente */}
+            <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-4">
+              <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                  <Camera className="w-4 h-4 text-rose-800" />
+                  Galería del Ambiente
+                </h3>
+                {isEditMode && (
+                  <button
+                    onClick={() => {
+                      const updated = [...(info.Fotografias || []), "https://"];
+                      onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
+                    }}
+                    className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    Agregar
+                  </button>
+                )}
+              </div>
+
+              {/* Edit URL mode */}
+              {isEditMode && (info.Fotografias || []).length > 0 && (
+                <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Fotos (URLs):</span>
+                  {(info.Fotografias || []).map((url: string, imgIdx: number) => (
+                    <div key={imgIdx} className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none"
+                        value={url || ""}
+                        onChange={(e) => {
+                          const updated = [...(info.Fotografias || [])];
+                          updated[imgIdx] = e.target.value;
+                          onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
+                        }}
+                        placeholder="https://ejemplo.com/foto.jpg"
+                      />
+                      <button
+                        onClick={() => {
+                          const updated = (info.Fotografias || []).filter((_: any, i: number) => i !== imgIdx);
+                          onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
+                        }}
+                        className="p-1 text-slate-400 hover:text-red-600 transition"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Photos Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {(info.Fotografias || []).map((url: string, imgIdx: number) => {
+                  if (!url || url === "https://") return null;
+                  return (
+                    <div 
+                      key={imgIdx} 
+                      className="relative group rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm aspect-video flex items-center justify-center p-1 cursor-zoom-in"
+                      onClick={() => onZoomImage(url)}
+                    >
+                      <img
+                        src={url}
+                        alt={`Ambiente - Foto ${imgIdx + 1}`}
+                        className="object-cover w-full h-full rounded-lg group-hover:scale-105 transition duration-300"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2 rounded-xl">
+                        <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                          Ampliar Foto {imgIdx + 1}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {(!info.Fotografias || info.Fotografias.filter((url: string) => url && url !== "https://").length === 0) && (
+                  <div className="col-span-full text-center py-6 text-slate-400 text-xs">
+                    No hay fotografías registradas de este ambiente.
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Program details */}

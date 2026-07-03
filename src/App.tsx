@@ -23,6 +23,7 @@ import HomeView from "./components/HomeView";
 import Sidebar from "./components/Sidebar";
 import LabDetailView from "./components/LabDetailView";
 import EquipmentDetailModal from "./components/EquipmentDetailModal";
+import ImageZoomModal from "./components/ImageZoomModal";
 
 export default function App() {
   // Global database states
@@ -40,6 +41,7 @@ export default function App() {
   const [globalSearch, setGlobalSearch] = useState("");
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [activeEquipment, setActiveEquipment] = useState<{ labIndex: number; equipmentIndex: number } | null>(null);
+  const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
 
   // Search results dropdown ref for outside clicks
   const searchRef = useRef<HTMLDivElement>(null);
@@ -464,6 +466,7 @@ export default function App() {
                   isEditMode={isEditMode}
                   onUpdate={handleUpdate}
                   onNavigate={handleNavigate}
+                  onZoomImage={setZoomedImageUrl}
                 />
               )}
 
@@ -475,6 +478,7 @@ export default function App() {
                   isEditMode={isEditMode}
                   onUpdate={handleUpdate}
                   onNavigate={handleNavigate}
+                  onZoomImage={setZoomedImageUrl}
                   onOpenEquipment={(eqIdx) => {
                     setActiveEquipment({
                       labIndex: matchedRoute.labIndex!,
@@ -522,6 +526,7 @@ export default function App() {
           onUpdateEquipment={(updatedEq) => {
             handleUpdate(["labs", activeEquipment.labIndex, "equipos", activeEquipment.equipmentIndex], updatedEq);
           }}
+          onZoomImage={setZoomedImageUrl}
         />
       )}
 
@@ -576,6 +581,12 @@ export default function App() {
             </button>
           </div>
         </div>
+      )}
+      {zoomedImageUrl && (
+        <ImageZoomModal
+          imageUrl={zoomedImageUrl}
+          onClose={() => setZoomedImageUrl(null)}
+        />
       )}
     </div>
   );

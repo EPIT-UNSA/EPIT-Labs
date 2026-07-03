@@ -29,13 +29,15 @@ interface EquipmentDetailModalProps {
   isEditMode: boolean;
   onClose: () => void;
   onUpdateEquipment: (updatedEquipment: Equipo) => void;
+  onZoomImage: (url: string) => void;
 }
 
 export default function EquipmentDetailModal({ 
   equipment, 
   isEditMode, 
   onClose, 
-  onUpdateEquipment 
+  onUpdateEquipment,
+  onZoomImage
 }: EquipmentDetailModalProps) {
   const [activeTab, setActiveTab] = React.useState<"ficha" | "preventivo" | "correctivo" | "hojavida">("ficha");
   const [selectedUnitIdx, setSelectedUnitIdx] = React.useState(0);
@@ -684,7 +686,11 @@ export default function EquipmentDetailModal({
                   {(equipment.Fotografias || []).map((url, imgIdx) => {
                     if (!url || url === "https://") return null;
                     return (
-                      <div key={imgIdx} className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2">
+                      <div 
+                        key={imgIdx} 
+                        className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2 cursor-zoom-in"
+                        onClick={() => onZoomImage(url)}
+                      >
                         <img
                           src={url}
                           alt={`${equipment["NOMBRE DEL EQUIPO"]} - Foto ${imgIdx + 1}`}
@@ -695,7 +701,7 @@ export default function EquipmentDetailModal({
                         />
                         <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2">
                           <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
-                            Foto {imgIdx + 1}
+                            Ampliar Foto {imgIdx + 1}
                           </span>
                         </div>
                       </div>

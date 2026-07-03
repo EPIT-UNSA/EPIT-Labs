@@ -25,9 +25,10 @@ interface HomeViewProps {
   isEditMode: boolean;
   onUpdate: (path: (string | number)[], value: any) => void;
   onNavigate: (path: string) => void;
+  onZoomImage: (url: string) => void;
 }
 
-export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: HomeViewProps) {
+export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoomImage }: HomeViewProps) {
   // Count active stats
   const stats = React.useMemo(() => {
     const visibleLabs = (data.labs || []).filter(l => isEditMode || l.visible !== false);
@@ -200,8 +201,9 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                     <img 
                       src={director.Fotografias?.[0] || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120"} 
                       alt={director.NOMBRE}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover cursor-zoom-in hover:opacity-90 transition"
                       referrerPolicy="no-referrer"
+                      onClick={() => onZoomImage(director.Fotografias?.[0] || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120")}
                     />
                   </div>
                   <div className="flex-1 space-y-1">
@@ -291,8 +293,9 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                       <img 
                         src={dirDept.Fotografias?.[0] || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120"} 
                         alt={dirDept.Nombre}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover cursor-zoom-in hover:opacity-90 transition"
                         referrerPolicy="no-referrer"
+                        onClick={() => onZoomImage(dirDept.Fotografias?.[0] || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120")}
                       />
                     </div>
                     <div className="flex-1 space-y-1">
@@ -446,8 +449,9 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                   <img 
                     src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600"} 
                     alt={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105 cursor-zoom-in hover:opacity-90"
                     referrerPolicy="no-referrer"
+                    onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600")}
                   />
                   
                   {/* Category Badge */}
