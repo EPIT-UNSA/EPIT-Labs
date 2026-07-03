@@ -16,7 +16,10 @@ import {
   EyeOff, 
   Cpu, 
   Laptop, 
-  BookOpen 
+  BookOpen,
+  Camera,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { EpitData, Lab, Documento, Director } from "../types";
 
@@ -29,6 +32,35 @@ interface HomeViewProps {
 }
 
 export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoomImage }: HomeViewProps) {
+  // Photo gallery pagination state
+  const [photoPage, setPhotoPage] = React.useState(0);
+  const [visitedPages, setVisitedPages] = React.useState<Set<number>>(new Set([0]));
+
+  const handlePageChange = (newPage: number) => {
+    setPhotoPage(newPage);
+    setVisitedPages(prev => {
+      const next = new Set(prev);
+      next.add(newPage);
+      return next;
+    });
+  };
+
+  const handleAddSchoolPhoto = () => {
+    const newPhotos = [...(data.Fotografias || []), "https://"];
+    onUpdate(["Fotografias"], newPhotos);
+  };
+
+  const handleUpdateSchoolPhoto = (index: number, value: string) => {
+    const newPhotos = [...(data.Fotografias || [])];
+    newPhotos[index] = value;
+    onUpdate(["Fotografias"], newPhotos);
+  };
+
+  const handleDeleteSchoolPhoto = (index: number) => {
+    const newPhotos = (data.Fotografias || []).filter((_, i) => i !== index);
+    onUpdate(["Fotografias"], newPhotos);
+  };
+
   // Count active stats
   const stats = React.useMemo(() => {
     const visibleLabs = (data.labs || []).filter(l => isEditMode || l.visible !== false);
@@ -578,6 +610,130 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Galería de la Escuela/Universidad */}
+      {(isEditMode || (data.Fotografias && data.Fotografias.filter(url => url && url !== "https://").length > 0)) && (
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
+          <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+            <h2 className="text-lg font-display font-semibold text-slate-800 flex items-center gap-2">
+              <Camera className="w-5 h-5 text-rose-800" />
+              Galería de la Escuela Profesional
+            </h2>
+            {isEditMode && (
+              <button
+                onClick={handleAddSchoolPhoto}
+                className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Agregar Foto
+              </button>
+            )}
+          </div>
+
+          {/* Edit URLs input list (Visible only in Edit Mode) */}
+          {isEditMode && (data.Fotografias || []).length > 0 && (
+            <div className="space-y-2 bg-slate-50 p-4 rounded-lg border border-slate-200 max-h-60 overflow-y-auto">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Fotos de la Escuela (URLs):</span>
+              {(data.Fotografias || []).map((url, imgIdx) => (
+                <div key={imgIdx} className="flex gap-2 items-center">
+                  <input
+                    type="text"
+                    className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-800"
+                    value={url || ""}
+                    onChange={(e) => handleUpdateSchoolPhoto(imgIdx, e.target.value)}
+                    placeholder="https://ejemplo.com/escuela-foto.jpg"
+                  />
+                  <button
+                    onClick={() => handleDeleteSchoolPhoto(imgIdx)}
+                    className="p-1 text-slate-400 hover:text-red-600 transition cursor-pointer"
+                    title="Eliminar Foto"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Photos Grid with Pagination */}
+          {(() => {
+            const validPhotos = (data.Fotografias || []).filter(url => url && url !== "https://");
+            const totalPages = Math.ceil(validPhotos.length / 5);
+
+            return (
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                  {validPhotos.map((url, photoIdx) => {
+                    const pageIdx = Math.floor(photoIdx / 5);
+                    const isVisited = visitedPages.has(pageIdx);
+                    const isActive = pageIdx === photoPage;
+
+                    if (!isVisited) return null;
+
+                    return (
+                      <div
+                        key={photoIdx}
+                        style={{ display: isActive ? "flex" : "none" }}
+                        className="relative group rounded-xl overflow-hidden border border-slate-200 bg-slate-50 shadow-sm aspect-video items-center justify-center p-1 cursor-zoom-in hover:shadow-md transition duration-300"
+                        onClick={() => onZoomImage(validPhotos, photoIdx)}
+                      >
+                        <img
+                          src={url}
+                          alt={`Escuela - Foto ${photoIdx + 1}`}
+                          className="object-cover w-full h-full rounded-lg group-hover:scale-105 transition duration-300"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=400";
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2 rounded-xl">
+                          <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                            Ampliar Foto {photoIdx + 1}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {validPhotos.length === 0 && (
+                    <div className="col-span-full text-center py-8 text-slate-400 text-xs">
+                      No hay fotografías registradas de la escuela/universidad.
+                    </div>
+                  )}
+                </div>
+
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-2">
+                    <span className="text-xs text-slate-500 font-medium">
+                      Mostrando {photoPage * 5 + 1} - {Math.min((photoPage + 1) * 5, validPhotos.length)} de {validPhotos.length} fotos
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handlePageChange(photoPage - 1)}
+                        disabled={photoPage === 0}
+                        className="px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 disabled:opacity-40 disabled:hover:bg-slate-50 rounded-lg text-xs font-semibold border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                        Anterior
+                      </button>
+                      <span className="text-xs font-mono font-bold text-slate-600 px-2">
+                        {photoPage + 1} / {totalPages}
+                      </span>
+                      <button
+                        onClick={() => handlePageChange(photoPage + 1)}
+                        disabled={photoPage === totalPages - 1}
+                        className="px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 disabled:opacity-40 disabled:hover:bg-slate-50 rounded-lg text-xs font-semibold border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                      >
+                        Siguiente
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
         </div>
       )}
     </div>
