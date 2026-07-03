@@ -25,7 +25,7 @@ interface HomeViewProps {
   isEditMode: boolean;
   onUpdate: (path: (string | number)[], value: any) => void;
   onNavigate: (path: string) => void;
-  onZoomImage: (url: string) => void;
+  onZoomImage: (images: string | string[], index?: number) => void;
 }
 
 export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoomImage }: HomeViewProps) {

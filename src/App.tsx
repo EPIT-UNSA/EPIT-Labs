@@ -41,7 +41,15 @@ export default function App() {
   const [globalSearch, setGlobalSearch] = useState("");
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [activeEquipment, setActiveEquipment] = useState<{ labIndex: number; equipmentIndex: number } | null>(null);
-  const [zoomedImageUrl, setZoomedImageUrl] = useState<string | null>(null);
+  const [zoomGallery, setZoomGallery] = useState<{ images: string[]; initialIndex: number } | null>(null);
+
+  const handleZoomImage = (images: string | string[], index: number = 0) => {
+    const imagesArray = Array.isArray(images)
+      ? images.filter(url => url && url !== "https://")
+      : [images];
+    const safeIndex = index >= 0 && index < imagesArray.length ? index : 0;
+    setZoomGallery({ images: imagesArray, initialIndex: safeIndex });
+  };
 
   // Search results dropdown ref for outside clicks
   const searchRef = useRef<HTMLDivElement>(null);
@@ -466,7 +474,7 @@ export default function App() {
                   isEditMode={isEditMode}
                   onUpdate={handleUpdate}
                   onNavigate={handleNavigate}
-                  onZoomImage={setZoomedImageUrl}
+                  onZoomImage={handleZoomImage}
                 />
               )}
 
@@ -478,7 +486,7 @@ export default function App() {
                   isEditMode={isEditMode}
                   onUpdate={handleUpdate}
                   onNavigate={handleNavigate}
-                  onZoomImage={setZoomedImageUrl}
+                  onZoomImage={handleZoomImage}
                   onOpenEquipment={(eqIdx) => {
                     setActiveEquipment({
                       labIndex: matchedRoute.labIndex!,
@@ -526,7 +534,7 @@ export default function App() {
           onUpdateEquipment={(updatedEq) => {
             handleUpdate(["labs", activeEquipment.labIndex, "equipos", activeEquipment.equipmentIndex], updatedEq);
           }}
-          onZoomImage={setZoomedImageUrl}
+          onZoomImage={handleZoomImage}
         />
       )}
 
@@ -582,10 +590,11 @@ export default function App() {
           </div>
         </div>
       )}
-      {zoomedImageUrl && (
+      {zoomGallery && (
         <ImageZoomModal
-          imageUrl={zoomedImageUrl}
-          onClose={() => setZoomedImageUrl(null)}
+          images={zoomGallery.images}
+          initialIndex={zoomGallery.initialIndex}
+          onClose={() => setZoomGallery(null)}
         />
       )}
     </div>

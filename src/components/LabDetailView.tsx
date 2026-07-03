@@ -23,7 +23,9 @@ import {
   Sliders,
   ExternalLink,
   FileText,
-  Camera
+  Camera,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Lab, Equipo, Software, PersonalTecnico, Responsable } from "../types";
 
@@ -35,7 +37,7 @@ interface LabDetailViewProps {
   onUpdate: (path: (string | number)[], value: any) => void;
   onNavigate: (path: string) => void;
   onOpenEquipment: (equipmentIndex: number) => void;
-  onZoomImage: (url: string) => void;
+  onZoomImage: (images: string | string[], index?: number) => void;
 }
 
 export default function LabDetailView({
@@ -57,6 +59,24 @@ export default function LabDetailView({
 
   // Software Search local state
   const [softSearch, setSoftSearch] = React.useState("");
+
+  // Photo gallery pagination state
+  const [photoPage, setPhotoPage] = React.useState(0);
+  const [visitedPages, setVisitedPages] = React.useState<Set<number>>(new Set([0]));
+
+  React.useEffect(() => {
+    setPhotoPage(0);
+    setVisitedPages(new Set([0]));
+  }, [labIndex]);
+
+  const handlePageChange = (newPage: number) => {
+    setPhotoPage(newPage);
+    setVisitedPages(prev => {
+      const next = new Set(prev);
+      next.add(newPage);
+      return next;
+    });
+  };
 
   // Tabs for lab section
   const tabs = React.useMemo(() => {
@@ -355,38 +375,82 @@ export default function LabDetailView({
                   )}
 
                   {/* Photos Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {(info.Fotografias || []).map((url: string, imgIdx: number) => {
-                      if (!url || url === "https://") return null;
-                      return (
-                        <div
-                          key={imgIdx}
-                          className="relative group rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm aspect-video flex items-center justify-center p-1 cursor-zoom-in"
-                          onClick={() => onZoomImage(url)}
-                        >
-                          <img
-                            src={url}
-                            alt={`Ambiente - Foto ${imgIdx + 1}`}
-                            className="object-cover w-full h-full rounded-lg group-hover:scale-105 transition duration-300"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2 rounded-xl">
-                            <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
-                              Ampliar Foto {imgIdx + 1}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })}
+                  {(() => {
+                    const validPhotos = (info.Fotografias || []).filter((url: string) => url && url !== "https://");
+                    const totalPages = Math.ceil(validPhotos.length / 5);
 
-                    {(!info.Fotografias || info.Fotografias.filter((url: string) => url && url !== "https://").length === 0) && (
-                      <div className="col-span-full text-center py-6 text-slate-400 text-xs">
-                        No hay fotografías registradas de este ambiente.
-                      </div>
-                    )}
-                  </div>
+                    return (
+                      <>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                          {validPhotos.map((url: string, photoIdx: number) => {
+                            const pageIdx = Math.floor(photoIdx / 5);
+                            const isVisited = visitedPages.has(pageIdx);
+                            const isActive = pageIdx === photoPage;
+
+                            if (!isVisited) return null;
+
+                            return (
+                              <div
+                                key={photoIdx}
+                                style={{ display: isActive ? "flex" : "none" }}
+                                className="relative group rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm aspect-video items-center justify-center p-1 cursor-zoom-in"
+                                onClick={() => onZoomImage(validPhotos, photoIdx)}
+                              >
+                                <img
+                                  src={url}
+                                  alt={`Ambiente - Foto ${photoIdx + 1}`}
+                                  className="object-cover w-full h-full rounded-lg group-hover:scale-105 transition duration-300"
+                                  onError={(e) => {
+                                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
+                                  }}
+                                />
+                                <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2 rounded-xl">
+                                  <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                                    Ampliar Foto {photoIdx + 1}
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })}
+
+                          {validPhotos.length === 0 && (
+                            <div className="col-span-full text-center py-6 text-slate-400 text-xs">
+                              No hay fotografías registradas de este ambiente.
+                            </div>
+                          )}
+                        </div>
+
+                        {totalPages > 1 && (
+                          <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-2">
+                            <span className="text-xs text-slate-500 font-medium">
+                              Mostrando {photoPage * 5 + 1} - {Math.min((photoPage + 1) * 5, validPhotos.length)} de {validPhotos.length} fotos
+                            </span>
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={() => handlePageChange(photoPage - 1)}
+                                disabled={photoPage === 0}
+                                className="px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 disabled:opacity-40 disabled:hover:bg-slate-50 rounded-lg text-xs font-semibold border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                              >
+                                <ChevronLeft className="w-3.5 h-3.5" />
+                                Anterior
+                              </button>
+                              <span className="text-xs font-mono font-bold text-slate-600 px-2">
+                                {photoPage + 1} / {totalPages}
+                              </span>
+                              <button
+                                onClick={() => handlePageChange(photoPage + 1)}
+                                disabled={photoPage === totalPages - 1}
+                                className="px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 disabled:opacity-40 disabled:hover:bg-slate-50 rounded-lg text-xs font-semibold border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                              >
+                                Siguiente
+                                <ChevronRight className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
               )}
 
