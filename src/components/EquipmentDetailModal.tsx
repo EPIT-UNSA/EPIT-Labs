@@ -19,7 +19,8 @@ import {
   AlertCircle,
   FileText,
   Clock,
-  ExternalLink
+  ExternalLink,
+  Camera
 } from "lucide-react";
 import { Equipo, MantenimientoItem, HojaDeVidaMantenimiento, Caracteristica } from "../types";
 
@@ -622,6 +623,88 @@ export default function EquipmentDetailModal({
                   {(!equipment.documentos || equipment.documentos.length === 0) && (
                     <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
                       No hay documentos de referencia registrados para este equipo.
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Fotografías del Equipo */}
+              <div className="space-y-4 pt-4 border-t border-slate-100">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                    <Camera className="w-4 h-4 text-rose-800" />
+                    Fotografías del Equipo
+                  </h3>
+                  {isEditMode && (
+                    <button
+                      onClick={() => updateEquip(draft => {
+                        draft.Fotografias = [...(draft.Fotografias || []), "https://"];
+                      })}
+                      className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      Agregar Imagen
+                    </button>
+                  )}
+                </div>
+
+                {/* Edit mode url editor */}
+                {isEditMode && (equipment.Fotografias || []).length > 0 && (
+                  <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Imágenes (URLs):</span>
+                    {(equipment.Fotografias || []).map((url, imgIdx) => (
+                      <div key={imgIdx} className="flex gap-2 items-center">
+                        <input
+                          type="text"
+                          className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-900"
+                          value={url || ""}
+                          onChange={(e) => updateEquip(draft => {
+                            if (!draft.Fotografias) draft.Fotografias = [];
+                            draft.Fotografias[imgIdx] = e.target.value;
+                          })}
+                          placeholder="https://ejemplo.com/imagen.jpg"
+                        />
+                        <button
+                          onClick={() => updateEquip(draft => {
+                            if (draft.Fotografias) {
+                              draft.Fotografias = draft.Fotografias.filter((_, i) => i !== imgIdx);
+                            }
+                          })}
+                          className="p-1 text-slate-400 hover:text-red-600 transition"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Gallery view */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {(equipment.Fotografias || []).map((url, imgIdx) => {
+                    if (!url || url === "https://") return null;
+                    return (
+                      <div key={imgIdx} className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2">
+                        <img
+                          src={url}
+                          alt={`${equipment["NOMBRE DEL EQUIPO"]} - Foto ${imgIdx + 1}`}
+                          className="object-contain w-full h-full max-h-[140px] group-hover:scale-105 transition duration-300"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
+                          }}
+                        />
+                        <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2">
+                          <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                            Foto {imgIdx + 1}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {(!equipment.Fotografias || equipment.Fotografias.filter(url => url && url !== "https://").length === 0) && (
+                    <div className="col-span-full text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-400 text-sm">
+                      No hay imágenes registradas para este equipo.
                     </div>
                   )}
                 </div>
