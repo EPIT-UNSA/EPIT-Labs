@@ -44,7 +44,7 @@ export default function LabDetailView({
   onNavigate,
   onOpenEquipment 
 }: LabDetailViewProps) {
-  const info = lab.infoAmbiente;
+  const info = (lab.infoAmbiente || {}) as any;
 
   // Equipment Search & Filters local states
   const [equipSearch, setEquipSearch] = React.useState("");
@@ -57,8 +57,8 @@ export default function LabDetailView({
   // Tabs for lab section
   const tabs = [
     { id: "info", label: "ℹ️ Ambiente" },
-    { id: "equipos", label: `🛠️ Equipos e Instrumentos (${lab.equipos?.filter(e => isEditMode || e.visible).length || 0})` },
-    { id: "software", label: `💻 Software y Licencias (${lab.software?.filter(s => isEditMode || s.visible).length || 0})` }
+    { id: "equipos", label: `🛠️ Equipos e Instrumentos (${lab.equipos?.filter(e => isEditMode || e.visible !== false).length || 0})` },
+    { id: "software", label: `💻 Software y Licencias (${lab.software?.filter(s => isEditMode || s.visible !== false).length || 0})` }
   ];
 
   // Helper to get unique equipment brands
@@ -82,7 +82,7 @@ export default function LabDetailView({
   // Filtered Equipment List
   const filteredEquipos = React.useMemo(() => {
     return (lab.equipos || []).map((eq, idx) => ({ eq, idx })).filter(({ eq }) => {
-      const isVisible = isEditMode || eq.visible;
+      const isVisible = isEditMode || eq.visible !== false;
       const matchesSearch = eq["NOMBRE DEL EQUIPO"]?.toLowerCase().includes(equipSearch.toLowerCase()) || 
         eq.infoEquipo?.Modelo?.toLowerCase().includes(equipSearch.toLowerCase()) || 
         eq.infoEquipo?.["Codigo Inventario Equipo"]?.toLowerCase().includes(equipSearch.toLowerCase());
@@ -97,7 +97,7 @@ export default function LabDetailView({
   // Filtered Software List
   const filteredSoftware = React.useMemo(() => {
     return (lab.software || []).map((sw, idx) => ({ sw, idx })).filter(({ sw }) => {
-      const isVisible = isEditMode || sw.visible;
+      const isVisible = isEditMode || sw.visible !== false;
       const matchesSearch = sw["NOMBRE DEL SOFTWARE"]?.toLowerCase().includes(softSearch.toLowerCase()) || 
         sw["TIPO DE LICENCIA"]?.toLowerCase().includes(softSearch.toLowerCase());
       
@@ -215,18 +215,18 @@ export default function LabDetailView({
             <textarea
               className="w-full bg-white/10 border border-white/20 rounded px-3 py-1.5 text-xl md:text-2xl font-display font-bold text-white focus:outline-none focus:border-white/50"
               rows={2}
-              value={info["NOMBRE DEL LABORATORIO O TALLER"]}
+              value={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
               onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "NOMBRE DEL LABORATORIO O TALLER"], e.target.value)}
             />
           ) : (
             <h1 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white leading-tight">
-              {info["NOMBRE DEL LABORATORIO O TALLER"]}
+              {info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
             </h1>
           )}
 
           <p className="text-slate-300 text-xs md:text-sm max-w-2xl font-sans flex items-center gap-1.5">
             <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
-            {info["REFERENCIA DE UBICACIÓN"]}
+            {info["REFERENCIA DE UBICACIÓN"] || ""}
           </p>
         </div>
       </div>
@@ -236,7 +236,7 @@ export default function LabDetailView({
         {tabs.map(tab => (
           <button
             key={tab.id}
-            onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"]}/${tab.id}`)}
+            onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}/${tab.id}`)}
             className={`py-3 px-5 text-sm font-semibold border-b-2 transition duration-200 whitespace-nowrap cursor-pointer ${
               subSection === tab.id 
                 ? "border-red-700 text-red-700 font-bold" 
@@ -263,7 +263,7 @@ export default function LabDetailView({
                   <input
                     type="text"
                     className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
-                    value={info["CODIGO PATRIMONIO AMBIENTE"]}
+                    value={info["CODIGO PATRIMONIO AMBIENTE"] || ""}
                     onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "CODIGO PATRIMONIO AMBIENTE"], e.target.value)}
                   />
                 ) : (
@@ -276,7 +276,7 @@ export default function LabDetailView({
                   <input
                     type="text"
                     className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
-                    value={info.AFORO}
+                    value={info.AFORO || ""}
                     onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "AFORO"], e.target.value)}
                   />
                 ) : (
@@ -289,7 +289,7 @@ export default function LabDetailView({
                   <input
                     type="text"
                     className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
-                    value={info["ÁREA (m2)"]}
+                    value={info["ÁREA (m2)"] || ""}
                     onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "ÁREA (m2)"], e.target.value)}
                   />
                 ) : (
@@ -301,7 +301,7 @@ export default function LabDetailView({
                 {isEditMode ? (
                   <select
                     className="w-full bg-white border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
-                    value={info["SERVICIO DE INTERNET (SI/NO)"]}
+                    value={info["SERVICIO DE INTERNET (SI/NO)"] || "Sí"}
                     onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "SERVICIO DE INTERNET (SI/NO)"], e.target.value)}
                   >
                     <option value="Sí">Sí</option>
@@ -327,7 +327,7 @@ export default function LabDetailView({
                 <textarea
                   rows={4}
                   className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-rose-900"
-                  value={info.COMENTARIOS}
+                  value={info.COMENTARIOS || ""}
                   onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "COMENTARIOS"], e.target.value)}
                 />
               ) : (
@@ -357,10 +357,10 @@ export default function LabDetailView({
           <div className="lg:col-span-4 space-y-6">
             
             {/* Encargado Docente */}
-            {info["RESPONSABLE DEL LABORATORIO O TALLER"] && (
+            {info["RESPONSABLE DEL LABORATORIO O TALLER"] && (isEditMode || info["RESPONSABLE DEL LABORATORIO O TALLER"].visible !== false) && (
               <div 
                 className={`bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4 relative ${
-                  !info["RESPONSABLE DEL LABORATORIO O TALLER"].visible ? "opacity-60 border-dashed" : ""
+                  info["RESPONSABLE DEL LABORATORIO O TALLER"].visible === false ? "opacity-60 border-dashed" : ""
                 }`}
               >
                 <div className="flex justify-between items-center border-b border-slate-100 pb-2">
@@ -369,10 +369,10 @@ export default function LabDetailView({
                   </span>
                   {isEditMode && (
                     <button
-                      onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "visible"], !info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible)}
+                      onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "visible"], info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible !== false ? false : true)}
                       className="p-1 rounded text-xs border bg-slate-50 text-slate-500 hover:bg-slate-100"
                     >
-                      {info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                      {info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                     </button>
                   )}
                 </div>
@@ -387,13 +387,13 @@ export default function LabDetailView({
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold"
-                          value={info["RESPONSABLE DEL LABORATORIO O TALLER"].NOMBRE}
+                          value={info["RESPONSABLE DEL LABORATORIO O TALLER"].NOMBRE || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "NOMBRE"], e.target.value)}
                         />
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-[10px]"
-                          value={info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"]}
+                          value={info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "NUMERO DE CONTACTO"], e.target.value)}
                         />
                       </div>
@@ -435,14 +435,14 @@ export default function LabDetailView({
 
               <div className="space-y-3">
                 {info["PERSONAL TÉCNICO"]?.map((tech, techIdx) => {
-                  const showTech = isEditMode || tech.visible;
+                  const showTech = isEditMode || tech.visible !== false;
                   if (!showTech) return null;
 
                   return (
                     <div 
                       key={techIdx} 
                       className={`flex gap-3 items-center justify-between p-2.5 rounded-lg bg-slate-50/70 border border-slate-100 relative ${
-                        !tech.visible ? "opacity-60 border-dashed" : ""
+                        tech.visible === false ? "opacity-60 border-dashed" : ""
                       }`}
                     >
                       <div className="flex gap-2.5 items-center min-w-0 flex-1">
@@ -455,13 +455,13 @@ export default function LabDetailView({
                               <input
                                 type="text"
                                 className="w-full bg-white border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold"
-                                value={tech.NOMBRE}
+                                value={tech.NOMBRE || ""}
                                 onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO", techIdx, "NOMBRE"], e.target.value)}
                               />
                               <input
                                 type="text"
                                 className="w-full bg-white border border-slate-200 rounded px-1.5 py-0.5 text-[9px]"
-                                value={tech["NUMERO DE CONTACTO"]}
+                                value={tech["NUMERO DE CONTACTO"] || ""}
                                 onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO", techIdx, "NUMERO DE CONTACTO"], e.target.value)}
                               />
                             </div>
@@ -503,10 +503,10 @@ export default function LabDetailView({
             </div>
 
             {/* Verificador de CBC III */}
-            {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"] && (
+            {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"] && (isEditMode || info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].visible !== false) && (
               <div 
                 className={`bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4 relative ${
-                  !info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].visible ? "opacity-60 border-dashed" : ""
+                  info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].visible === false ? "opacity-60 border-dashed" : ""
                 }`}
               >
                 <div className="flex justify-between items-center border-b border-slate-100 pb-2">
@@ -515,10 +515,10 @@ export default function LabDetailView({
                   </span>
                   {isEditMode && (
                     <button
-                      onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "visible"], !info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible)}
+                      onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "visible"], info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible !== false ? false : true)}
                       className="p-1 rounded text-xs border bg-slate-50 text-slate-500"
                     >
-                      {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                      {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                     </button>
                   )}
                 </div>
@@ -533,13 +533,13 @@ export default function LabDetailView({
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold"
-                          value={info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].NOMBRE}
+                          value={info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].NOMBRE || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "NOMBRE"], e.target.value)}
                         />
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-[10px]"
-                          value={info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"]}
+                          value={info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "NUMERO DE CONTACTO"], e.target.value)}
                         />
                       </div>
@@ -628,10 +628,10 @@ export default function LabDetailView({
               <div 
                 key={idx} 
                 className={`bg-white rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden hover:shadow-md transition relative ${
-                  !eq.visible ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
+                  eq.visible === false ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
                 }`}
               >
-                {!eq.visible && (
+                {eq.visible === false && (
                   <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shadow">
                     OCULTO
                   </div>
@@ -657,7 +657,7 @@ export default function LabDetailView({
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
-                          value={eq["NOMBRE DEL EQUIPO"]}
+                          value={eq["NOMBRE DEL EQUIPO"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "equipos", idx, "NOMBRE DEL EQUIPO"], e.target.value)}
                         />
                       ) : (
@@ -753,10 +753,10 @@ export default function LabDetailView({
               <div 
                 key={idx} 
                 className={`bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition relative ${
-                  !sw.visible ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
+                  sw.visible === false ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
                 }`}
               >
-                {!sw.visible && (
+                {sw.visible === false && (
                   <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shadow">
                     OCULTO
                   </div>
@@ -776,21 +776,21 @@ export default function LabDetailView({
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold"
-                          value={sw["NOMBRE DEL SOFTWARE"]}
+                          value={sw["NOMBRE DEL SOFTWARE"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "NOMBRE DEL SOFTWARE"], e.target.value)}
                         />
                         <div className="grid grid-cols-2 gap-1.5">
                           <input
                             type="text"
                             className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
-                            value={sw.VERSIÓN}
+                            value={sw.VERSIÓN || ""}
                             onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "VERSIÓN"], e.target.value)}
                             placeholder="Versión"
                           />
                           <input
                             type="text"
                             className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
-                            value={sw["Nº DE LICENCIAS"]}
+                            value={sw["Nº DE LICENCIAS"] || ""}
                             onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "Nº DE LICENCIAS"], e.target.value)}
                             placeholder="Nº Licencias"
                           />
@@ -798,14 +798,14 @@ export default function LabDetailView({
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
-                          value={sw["TIPO DE LICENCIA"]}
+                          value={sw["TIPO DE LICENCIA"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "TIPO DE LICENCIA"], e.target.value)}
                           placeholder="Tipo Licencia"
                         />
                         <textarea
                           rows={2}
                           className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
-                          value={sw.COMENTARIOS}
+                          value={sw.COMENTARIOS || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "COMENTARIOS"], e.target.value)}
                           placeholder="Comentarios"
                         />

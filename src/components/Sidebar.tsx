@@ -56,12 +56,12 @@ export default function Sidebar({
 
   // Filter laboratories based on search and visibility
   const filteredLabs = React.useMemo(() => {
-    return data.labs.filter(lab => {
-      const isVisible = isEditMode || lab.visible;
-      const matchesSearch = lab.infoAmbiente["NOMBRE DEL LABORATORIO O TALLER"]
+    return (data.labs || []).filter(lab => {
+      const isVisible = isEditMode || lab.visible !== false;
+      const matchesSearch = lab.infoAmbiente?.["NOMBRE DEL LABORATORIO O TALLER"]
         ?.toLowerCase()
         .includes(sidebarSearch.toLowerCase()) || 
-        lab.infoAmbiente["CÓDIGO DE LABORATORIO O TALLER"]
+        lab.infoAmbiente?.["CÓDIGO DE LABORATORIO O TALLER"]
         ?.toLowerCase()
         .includes(sidebarSearch.toLowerCase());
       
@@ -137,19 +137,19 @@ export default function Sidebar({
           
           <div className="space-y-1">
             {filteredLabs.map((lab, idx) => {
-              const code = lab.infoAmbiente["CÓDIGO DE LABORATORIO O TALLER"];
-              const name = lab.infoAmbiente["NOMBRE DEL LABORATORIO O TALLER"];
+              const code = lab.infoAmbiente?.["CÓDIGO DE LABORATORIO O TALLER"] || "";
+              const name = lab.infoAmbiente?.["NOMBRE DEL LABORATORIO O TALLER"] || "";
               const shortName = name?.replace("LABORATORIO DE ", "")?.replace("TALLER DE ", "");
               
               const isExpanded = !!expandedNodes[code];
               const isLabActive = currentPath.startsWith(`/lab/${code}`);
               
-              const programAbbrev = lab.infoAmbiente["PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER"]?.[0]?.split(" ")?.pop() || "P13";
+              const programAbbrev = lab.infoAmbiente?.["PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER"]?.[0]?.split(" ")?.pop() || "P13";
 
               return (
                 <div 
                   key={code} 
-                  className={`flex flex-col ${!lab.visible ? "opacity-50" : ""}`}
+                  className={`flex flex-col ${lab.visible === false ? "opacity-50" : ""}`}
                 >
                   {/* Parent Tree Node */}
                   <div
@@ -177,7 +177,7 @@ export default function Sidebar({
                       <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded uppercase font-bold tracking-tight">
                         {programAbbrev}
                       </span>
-                      {!lab.visible && (
+                      {lab.visible === false && (
                         <span title="Oculto para el público" className="text-[9px] bg-slate-200 text-slate-600 px-1 rounded uppercase">
                           Oculto
                         </span>
@@ -239,7 +239,7 @@ export default function Sidebar({
 
         {/* Footer info inside sidebar */}
         <div className="pt-4 border-t border-slate-100 space-y-2">
-          {data.contacto?.visible && (
+          {data.contacto?.visible !== false && data.contacto?.enlaces && (
             <p className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Enlaces Institucionales</p>
           )}
           
@@ -247,13 +247,13 @@ export default function Sidebar({
             {data.contacto?.enlaces?.slice(0, 3).map((link, idx) => (
               <a
                 key={idx}
-                href={link.url}
+                href={link.url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-xs text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition"
               >
                 <BookOpen className="w-3.5 h-3.5 flex-shrink-0 text-slate-400" />
-                <span className="truncate font-medium">{link.titulo}</span>
+                <span className="truncate font-medium">{link.titulo || ""}</span>
               </a>
             ))}
           </div>

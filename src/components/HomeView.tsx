@@ -30,15 +30,15 @@ interface HomeViewProps {
 export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: HomeViewProps) {
   // Count active stats
   const stats = React.useMemo(() => {
-    const visibleLabs = data.labs.filter(l => isEditMode || l.visible);
+    const visibleLabs = (data.labs || []).filter(l => isEditMode || l.visible !== false);
     let totalEquipos = 0;
     let totalSoftware = 0;
 
     visibleLabs.forEach(lab => {
-      const eqList = lab.equipos.filter(e => isEditMode || e.visible);
+      const eqList = (lab.equipos || []).filter(e => isEditMode || e.visible !== false);
       totalEquipos += eqList.reduce((acc, eq) => acc + (parseInt(eq["Nº DE EQUIPOS"]) || 1), 0);
       
-      const swList = lab.software.filter(s => isEditMode || s.visible);
+      const swList = (lab.software || []).filter(s => isEditMode || s.visible !== false);
       totalSoftware += swList.reduce((acc, sw) => acc + (parseInt(sw["Nº DE LICENCIAS"]) || 1), 0);
     });
 
@@ -157,17 +157,17 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
           
           {/* Director de la Escuela */}
           {data["DIRECTOR DEL PROGRAMA DE ESTUDIOS"]?.map((director, idx) => {
-            const showDirector = isEditMode || director.visible;
+            const showDirector = isEditMode || director.visible !== false;
             if (!showDirector) return null;
 
             return (
               <div 
                 key={idx} 
                 className={`p-4 rounded-lg bg-slate-50/70 border border-slate-200 space-y-3 relative ${
-                  !director.visible ? "opacity-60 border-dashed border-red-200" : ""
+                  director.visible === false ? "opacity-60 border-dashed border-red-200" : ""
                 }`}
               >
-                {!director.visible && (
+                {director.visible === false && (
                   <span className="absolute top-2 right-2 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
                     OCULTO
                   </span>
@@ -184,13 +184,13 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                     <button
                       onClick={() => handleDirectorChange(idx, "visible", !director.visible)}
                       className={`p-1.5 rounded border text-xs transition ${
-                        director.visible 
+                        director.visible !== false 
                           ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100" 
                           : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
                       }`}
                       title="Alternar Visibilidad"
                     >
-                      {director.visible ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                      {director.visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                     </button>
                   )}
                 </div>
@@ -240,13 +240,13 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
           })}
 
           {/* Departamento Académico */}
-          {data["DEPARTAMENTO ACADÉMICO"] && (isEditMode || data["DEPARTAMENTO ACADÉMICO"].visible) && (
+          {data["DEPARTAMENTO ACADÉMICO"] && (isEditMode || data["DEPARTAMENTO ACADÉMICO"].visible !== false) && (
             <div 
               className={`p-4 rounded-lg bg-slate-50/70 border border-slate-200 space-y-4 relative ${
-                !data["DEPARTAMENTO ACADÉMICO"].visible ? "opacity-60 border-dashed border-red-200" : ""
+                data["DEPARTAMENTO ACADÉMICO"].visible === false ? "opacity-60 border-dashed border-red-200" : ""
               }`}
             >
-              {!data["DEPARTAMENTO ACADÉMICO"].visible && (
+              {data["DEPARTAMENTO ACADÉMICO"].visible === false && (
                 <span className="absolute top-2 right-2 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
                   OCULTO
                 </span>
@@ -260,7 +260,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                     <input
                       type="text"
                       className="mt-1 w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-semibold focus:outline-none focus:border-rose-800"
-                      value={data["DEPARTAMENTO ACADÉMICO"].NOMBRE}
+                      value={data["DEPARTAMENTO ACADÉMICO"].NOMBRE || ""}
                       onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "NOMBRE"], e.target.value)}
                     />
                   ) : (
@@ -271,19 +271,18 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                   <button
                     onClick={() => onUpdate(["DEPARTAMENTO ACADÉMICO", "visible"], !data["DEPARTAMENTO ACADÉMICO"].visible)}
                     className={`p-1.5 rounded border text-xs transition ${
-                      data["DEPARTAMENTO ACADÉMICO"].visible 
+                      data["DEPARTAMENTO ACADÉMICO"].visible !== false 
                         ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100" 
                         : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
                     }`}
                   >
-                    {data["DEPARTAMENTO ACADÉMICO"].visible ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                    {data["DEPARTAMENTO ACADÉMICO"].visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                   </button>
                 )}
               </div>
-
-              {/* Director de Departamento */}
+ 
               {data["DEPARTAMENTO ACADÉMICO"].Director?.map((dirDept, idx) => {
-                const showDeptDir = isEditMode || dirDept.visible;
+                const showDeptDir = isEditMode || dirDept.visible !== false;
                 if (!showDeptDir) return null;
 
                 return (
@@ -352,7 +351,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
             </div>
 
             <div className="space-y-2">
-              {data.documentos?.map((doc, idx) => (
+              {(data.documentos || []).map((doc, idx) => (
                 <div 
                   key={idx} 
                   className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 border border-slate-50 transition group"
@@ -363,27 +362,27 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-sm font-semibold text-slate-700 focus:outline-none focus:border-rose-800"
-                          value={doc.titulo}
+                          value={doc.titulo || ""}
                           onChange={(e) => onUpdate(["documentos", idx, "titulo"], e.target.value)}
                           placeholder="Nombre del documento"
                         />
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs text-slate-500 focus:outline-none focus:border-rose-800 font-mono"
-                          value={doc.url}
+                          value={doc.url || ""}
                           onChange={(e) => onUpdate(["documentos", idx, "url"], e.target.value)}
                           placeholder="Enlace URL"
                         />
                       </div>
                     ) : (
                       <a 
-                        href={doc.url} 
+                        href={doc.url || "#"} 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-red-700 group"
                       >
                         <BookOpen className="w-4 h-4 text-slate-400 group-hover:text-red-700 flex-shrink-0" />
-                        <span className="truncate">{doc.titulo}</span>
+                        <span className="truncate">{doc.titulo || ""}</span>
                         <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </a>
                     )}
@@ -422,21 +421,21 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {data.labs?.map((lab, labIdx) => {
-            const showLab = isEditMode || lab.visible;
+          {(data.labs || []).map((lab, labIdx) => {
+            const showLab = isEditMode || lab.visible !== false;
             if (!showLab) return null;
 
-            const info = lab.infoAmbiente;
+            const info = (lab.infoAmbiente || {}) as any;
             const isComputerWorkshop = info["TIPO DE LABORATORIO O TALLER"]?.toLowerCase().includes("taller") || info["CÓDIGO DE LABORATORIO O TALLER"]?.includes("TC");
 
             return (
               <div 
                 key={labIdx}
                 className={`bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-lg group relative ${
-                  !lab.visible ? "opacity-60 ring-2 ring-red-200 ring-offset-2 border-dashed" : ""
+                  lab.visible === false ? "opacity-60 ring-2 ring-red-200 ring-offset-2 border-dashed" : ""
                 }`}
               >
-                {!lab.visible && (
+                {lab.visible === false && (
                   <div className="absolute top-3 left-3 z-20 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-1 rounded shadow flex items-center gap-1">
                     <EyeOff className="w-3.5 h-3.5" /> OCULTO EN MODO PÚBLICO
                   </div>
@@ -446,11 +445,10 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                 <div className="relative h-48 bg-slate-100 overflow-hidden">
                   <img 
                     src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600"} 
-                    alt={info["NOMBRE DEL LABORATORIO O TALLER"]}
+                    alt={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent"></div>
                   
                   {/* Category Badge */}
                   <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
@@ -458,13 +456,13 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                       <button
                         onClick={() => onUpdate(["labs", labIdx, "visible"], !lab.visible)}
                         className={`p-1.5 rounded-md text-xs transition shadow-sm ${
-                          lab.visible 
+                          lab.visible !== false 
                             ? "bg-emerald-600 hover:bg-emerald-500 text-white" 
                             : "bg-amber-600 hover:bg-amber-500 text-white"
                         }`}
                         title="Alternar Visibilidad"
                       >
-                        {lab.visible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                        {lab.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                       </button>
                     )}
                     <span className={`px-2.5 py-1 text-xs font-semibold rounded-md tracking-wider uppercase text-white shadow-sm ${
@@ -477,10 +475,10 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                   {/* Code & Title on image */}
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <div className="font-mono text-xs font-semibold tracking-wider text-rose-300">
-                      {info["CÓDIGO DE LABORATORIO O TALLER"]}
+                      {info["CÓDIGO DE LABORATORIO O TALLER"] || ""}
                     </div>
                     <h3 className="font-display font-bold text-lg leading-snug line-clamp-2 mt-0.5">
-                      {info["NOMBRE DEL LABORATORIO O TALLER"]}
+                      {info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
                     </h3>
                   </div>
                 </div>
@@ -494,7 +492,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                         <input
                           type="text"
                           className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-semibold focus:outline-none focus:border-rose-800"
-                          value={info["NOMBRE DEL LABORATORIO O TALLER"]}
+                          value={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
                           onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "NOMBRE DEL LABORATORIO O TALLER"], e.target.value)}
                         />
                       </div>
@@ -504,7 +502,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                           <input
                             type="text"
                             className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-800"
-                            value={info.AFORO}
+                            value={info.AFORO || ""}
                             onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "AFORO"], e.target.value)}
                           />
                         </div>
@@ -513,7 +511,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                           <input
                             type="text"
                             className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-800"
-                            value={info["ÁREA (m2)"]}
+                            value={info["ÁREA (m2)"] || ""}
                             onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "ÁREA (m2)"], e.target.value)}
                           />
                         </div>
@@ -523,11 +521,11 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
                     <div className="grid grid-cols-2 gap-4 text-sm font-mono text-slate-600">
                       <div>
                         <span className="text-slate-400 text-xs block font-sans">Capacidad</span>
-                        <strong className="text-slate-800 font-semibold">{info.AFORO} personas</strong>
+                        <strong className="text-slate-800 font-semibold">{info.AFORO || "0"} personas</strong>
                       </div>
                       <div>
                         <span className="text-slate-400 text-xs block font-sans">Área Física</span>
-                        <strong className="text-slate-800 font-semibold">{info["ÁREA (m2)"]}</strong>
+                        <strong className="text-slate-800 font-semibold">{info["ÁREA (m2)"] || ""}</strong>
                       </div>
                       <div className="col-span-2 border-t border-slate-100 pt-2 text-xs text-slate-500 line-clamp-2">
                         {info.COMENTARIOS || "Sin descripción de ambiente."}
@@ -537,7 +535,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate }: Hom
 
                   {/* Navigation trigger button */}
                   <button
-                    onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"]}`)}
+                    onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}`)}
                     className="w-full mt-2 py-2.5 text-center text-xs font-semibold text-rose-900 border border-rose-200 rounded-lg bg-rose-50/50 hover:bg-rose-900 hover:text-white hover:border-rose-900 transition-all duration-200 flex items-center justify-center gap-1 cursor-pointer"
                   >
                     Ver Ficha Técnica de Wiki

@@ -163,26 +163,26 @@ export default function App() {
 
     const query = globalSearch.toLowerCase();
 
-    editedData.labs.forEach((lab, labIdx) => {
-      const isLabVisible = isEditMode || lab.visible;
+    (editedData.labs || []).forEach((lab, labIdx) => {
+      const isLabVisible = isEditMode || lab.visible !== false;
       if (!isLabVisible) return;
 
-      const labCode = lab.infoAmbiente["CÓDIGO DE LABORATORIO O TALLER"];
-      const labName = lab.infoAmbiente["NOMBRE DEL LABORATORIO O TALLER"];
+      const labCode = lab.infoAmbiente?.["CÓDIGO DE LABORATORIO O TALLER"];
+      const labName = lab.infoAmbiente?.["NOMBRE DEL LABORATORIO O TALLER"];
 
       // Match Lab Title
       if (labName?.toLowerCase().includes(query) || labCode?.toLowerCase().includes(query)) {
         results.push({
           type: "lab",
-          title: labName,
-          subtitle: `Código de ambiente: ${labCode}`,
-          path: `/lab/${labCode}/info`
+          title: labName || "",
+          subtitle: `Código de ambiente: ${labCode || ""}`,
+          path: `/lab/${labCode || ""}/info`
         });
       }
 
       // Match Equipments
-      lab.equipos.forEach((eq, eqIdx) => {
-        const isEqVisible = isEditMode || eq.visible;
+      (lab.equipos || []).forEach((eq, eqIdx) => {
+        const isEqVisible = isEditMode || eq.visible !== false;
         if (!isEqVisible) return;
 
         const eqName = eq["NOMBRE DEL_EQUIPO"] || eq["NOMBRE DEL EQUIPO"];
@@ -198,17 +198,17 @@ export default function App() {
         ) {
           results.push({
             type: "equipo",
-            title: eqName,
-            subtitle: `Instrumento en ${labCode} • Marca: ${eqBrand} | Mod: ${eqModel}`,
-            path: `/lab/${labCode}/equipos`,
+            title: eqName || "",
+            subtitle: `Instrumento en ${labCode || ""} • Marca: ${eqBrand || ""} | Mod: ${eqModel || ""}`,
+            path: `/lab/${labCode || ""}/equipos`,
             extra: { labIdx, eqIdx }
           });
         }
       });
 
       // Match Software
-      lab.software.forEach((sw) => {
-        const isSwVisible = isEditMode || sw.visible;
+      (lab.software || []).forEach((sw) => {
+        const isSwVisible = isEditMode || sw.visible !== false;
         if (!isSwVisible) return;
 
         const swName = sw["NOMBRE DEL SOFTWARE"];
@@ -217,9 +217,9 @@ export default function App() {
         if (swName?.toLowerCase().includes(query) || swType?.toLowerCase().includes(query)) {
           results.push({
             type: "software",
-            title: swName,
-            subtitle: `Software en ${labCode} • Licencias: ${sw["Nº DE LICENCIAS"]} (${swType})`,
-            path: `/lab/${labCode}/software`
+            title: swName || "",
+            subtitle: `Software en ${labCode || ""} • Licencias: ${sw["Nº DE LICENCIAS"] || ""} (${swType || ""})`,
+            path: `/lab/${labCode || ""}/software`
           });
         }
       });
@@ -282,8 +282,8 @@ export default function App() {
       const labId = labMatch[1];
       const tab = labMatch[2] || "info"; // default to info
       
-      const labIndex = editedData.labs.findIndex(
-        l => l.infoAmbiente["CÓDIGO DE LABORATORIO O TALLER"] === labId
+      const labIndex = (editedData.labs || []).findIndex(
+        l => l.infoAmbiente?.["CÓDIGO DE LABORATORIO O TALLER"] === labId
       );
 
       if (labIndex !== -1) {
@@ -514,7 +514,7 @@ export default function App() {
       />
 
       {/* Immersive technical profile modal sheet */}
-      {activeEquipment && editedData && (
+      {activeEquipment && editedData && editedData.labs?.[activeEquipment.labIndex]?.equipos?.[activeEquipment.equipmentIndex] && (
         <EquipmentDetailModal
           equipment={editedData.labs[activeEquipment.labIndex].equipos[activeEquipment.equipmentIndex]}
           isEditMode={isEditMode}

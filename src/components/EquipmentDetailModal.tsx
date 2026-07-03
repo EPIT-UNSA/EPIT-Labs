@@ -36,6 +36,7 @@ export default function EquipmentDetailModal({
   onUpdateEquipment 
 }: EquipmentDetailModalProps) {
   const [activeTab, setActiveTab] = React.useState<"ficha" | "preventivo" | "correctivo" | "hojavida">("ficha");
+  const infoEquipo = equipment.infoEquipo || {};
 
   // Local helper to update nested attributes
   const updateEquip = (updater: (draft: Equipo) => void) => {
@@ -113,8 +114,8 @@ export default function EquipmentDetailModal({
         draft.HojasDeVidaEquipos.push({
           visible: true,
           infoEquipo: {
-            "Codigo Inventario Equipo": draft.infoEquipo["Codigo Inventario Equipo"] || "NUEVO-COD",
-            "FECHA DE ADQUISICIÓN": draft.infoEquipo["FECHA DE ADQUISICIÓN"] || "2026",
+            "Codigo Inventario Equipo": draft.infoEquipo?.["Codigo Inventario Equipo"] || "NUEVO-COD",
+            "FECHA DE ADQUISICIÓN": draft.infoEquipo?.["FECHA DE ADQUISICIÓN"] || "2026",
             "MODO DE ADQUISICIÓN": "COMPRA",
             "Ubicación": "Estante Principal"
           },
@@ -249,11 +250,14 @@ export default function EquipmentDetailModal({
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment.infoEquipo["Denominacion Patrimonial"] || ""}
-                          onChange={(e) => updateEquip(draft => { draft.infoEquipo["Denominacion Patrimonial"] = e.target.value; })}
+                          value={infoEquipo["Denominacion Patrimonial"] || ""}
+                          onChange={(e) => updateEquip(draft => {
+                            if (!draft.infoEquipo) draft.infoEquipo = {};
+                            draft.infoEquipo["Denominacion Patrimonial"] = e.target.value;
+                          })}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-medium">{equipment.infoEquipo["Denominacion Patrimonial"] || "-"}</strong>
+                        <strong className="text-slate-800 font-medium">{infoEquipo["Denominacion Patrimonial"] || "-"}</strong>
                       )}
                     </div>
                     <div>
@@ -262,11 +266,14 @@ export default function EquipmentDetailModal({
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment.infoEquipo["Tipo de equipo:"] || ""}
-                          onChange={(e) => updateEquip(draft => { draft.infoEquipo["Tipo de equipo:"] = e.target.value; })}
+                          value={infoEquipo["Tipo de equipo:"] || ""}
+                          onChange={(e) => updateEquip(draft => {
+                            if (!draft.infoEquipo) draft.infoEquipo = {};
+                            draft.infoEquipo["Tipo de equipo:"] = e.target.value;
+                          })}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-medium">{equipment.infoEquipo["Tipo de equipo:"] || "-"}</strong>
+                        <strong className="text-slate-800 font-medium">{infoEquipo["Tipo de equipo:"] || "-"}</strong>
                       )}
                     </div>
                     <div>
@@ -275,11 +282,11 @@ export default function EquipmentDetailModal({
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment["Nº DE EQUIPOS"]}
+                          value={equipment["Nº DE EQUIPOS"] || ""}
                           onChange={(e) => updateEquip(draft => { draft["Nº DE EQUIPOS"] = e.target.value; })}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-medium">{equipment["Nº DE EQUIPOS"]} unidades</strong>
+                        <strong className="text-slate-800 font-medium">{equipment["Nº DE EQUIPOS"] || "0"} unidades</strong>
                       )}
                     </div>
                     <div>
@@ -313,11 +320,14 @@ export default function EquipmentDetailModal({
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment.infoEquipo.Marca || ""}
-                          onChange={(e) => updateEquip(draft => { draft.infoEquipo.Marca = e.target.value; })}
+                          value={infoEquipo.Marca || ""}
+                          onChange={(e) => updateEquip(draft => {
+                            if (!draft.infoEquipo) draft.infoEquipo = {};
+                            draft.infoEquipo.Marca = e.target.value;
+                          })}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-medium">{equipment.infoEquipo.Marca || "-"}</strong>
+                        <strong className="text-slate-800 font-medium">{infoEquipo.Marca || "-"}</strong>
                       )}
                     </div>
                     <div>
@@ -326,11 +336,14 @@ export default function EquipmentDetailModal({
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment.infoEquipo.Modelo || ""}
-                          onChange={(e) => updateEquip(draft => { draft.infoEquipo.Modelo = e.target.value; })}
+                          value={infoEquipo.Modelo || ""}
+                          onChange={(e) => updateEquip(draft => {
+                            if (!draft.infoEquipo) draft.infoEquipo = {};
+                            draft.infoEquipo.Modelo = e.target.value;
+                          })}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-medium">{equipment.infoEquipo.Modelo || "-"}</strong>
+                        <strong className="text-slate-800 font-medium">{infoEquipo.Modelo || "-"}</strong>
                       )}
                     </div>
                     <div>
@@ -339,11 +352,14 @@ export default function EquipmentDetailModal({
                         <input
                           type="text"
                           className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment.infoEquipo.Fabricante || ""}
-                          onChange={(e) => updateEquip(draft => { draft.infoEquipo.Fabricante = e.target.value; })}
+                          value={infoEquipo.Fabricante || ""}
+                          onChange={(e) => updateEquip(draft => {
+                            if (!draft.infoEquipo) draft.infoEquipo = {};
+                            draft.infoEquipo.Fabricante = e.target.value;
+                          })}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-medium">{equipment.infoEquipo.Fabricante || "-"}</strong>
+                        <strong className="text-slate-800 font-medium">{infoEquipo.Fabricante || "-"}</strong>
                       )}
                     </div>
                   </div>
