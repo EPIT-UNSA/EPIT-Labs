@@ -130,6 +130,143 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
         </div>
       </div>
 
+      {/* Laboratories & Computer Workshop Gallery */}
+      {hasVisibleLabs && (
+        <div className="space-y-6">
+        <h2 className="text-2xl font-display font-bold text-slate-800 border-b border-slate-200 pb-3">
+          Ambientes de Aprendizaje
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {(data.labs || []).map((lab, labIdx) => {
+            const showLab = isEditMode || lab.visible !== false;
+            if (!showLab) return null;
+
+            const info = (lab.infoAmbiente || {}) as any;
+            const isComputerWorkshop = info["TIPO DE LABORATORIO O TALLER"]?.toLowerCase().includes("taller") || info["CÓDIGO DE LABORATORIO O TALLER"]?.includes("TC");
+
+            return (
+              <div 
+                key={labIdx}
+                className={`bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-lg group relative ${
+                  lab.visible === false ? "opacity-60 ring-2 ring-red-200 ring-offset-2 border-dashed" : ""
+                }`}
+              >
+                {lab.visible === false && (
+                  <div className="absolute top-3 left-3 z-20 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-1 rounded shadow flex items-center gap-1">
+                    <EyeOff className="w-3.5 h-3.5" /> OCULTO EN MODO PÚBLICO
+                  </div>
+                )}
+
+                {/* Cover Image */}
+                <div className="relative h-48 bg-slate-100 overflow-hidden">
+                  <img 
+                    src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600"} 
+                    alt={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
+                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105 cursor-zoom-in hover:opacity-90"
+                    referrerPolicy="no-referrer"
+                    onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600")}
+                  />
+                  
+                  {/* Category Badge */}
+                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
+                    {isEditMode && (
+                      <button
+                        onClick={() => onUpdate(["labs", labIdx, "visible"], !lab.visible)}
+                        className={`p-1.5 rounded-md text-xs transition shadow-sm ${
+                          lab.visible !== false 
+                            ? "bg-emerald-600 hover:bg-emerald-500 text-white" 
+                            : "bg-amber-600 hover:bg-amber-500 text-white"
+                        }`}
+                        title="Alternar Visibilidad"
+                      >
+                        {lab.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                      </button>
+                    )}
+                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-md tracking-wider uppercase text-white shadow-sm ${
+                      isComputerWorkshop ? "bg-slate-800" : "bg-rose-900"
+                    }`}>
+                      {info["TIPO DE LABORATORIO O TALLER"] || "Enseñanza"}
+                    </span>
+                  </div>
+
+                  {/* Code & Title on image */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="font-mono text-xs font-semibold tracking-wider text-rose-300">
+                      {info["CÓDIGO DE LABORATORIO O TALLER"] || ""}
+                    </div>
+                    <h3 className="font-display font-bold text-lg leading-snug line-clamp-2 mt-0.5">
+                      {info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Details Content */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  {isEditMode ? (
+                    <div className="space-y-2.5">
+                      <div>
+                        <label className="text-[10px] font-mono font-bold text-slate-400 block uppercase">Nombre del Ambiente</label>
+                        <input
+                          type="text"
+                          className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-semibold focus:outline-none focus:border-rose-800"
+                          value={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
+                          onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "NOMBRE DEL LABORATORIO O TALLER"], e.target.value)}
+                        />
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <label className="text-[10px] font-mono font-bold text-slate-400 block uppercase">Aforo</label>
+                          <input
+                            type="text"
+                            className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-800"
+                            value={info.AFORO || ""}
+                            onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "AFORO"], e.target.value)}
+                          />
+                        </div>
+                        <div>
+                          <label className="text-[10px] font-mono font-bold text-slate-400 block uppercase">Área</label>
+                          <input
+                            type="text"
+                            className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-800"
+                            value={info["ÁREA (m2)"] || ""}
+                            onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "ÁREA (m2)"], e.target.value)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-2 gap-4 text-sm font-mono text-slate-600">
+                      <div>
+                        <span className="text-slate-400 text-xs block font-sans">Capacidad</span>
+                        <strong className="text-slate-800 font-semibold">{info.AFORO || "0"} personas</strong>
+                      </div>
+                      <div>
+                        <span className="text-slate-400 text-xs block font-sans">Área Física</span>
+                        <strong className="text-slate-800 font-semibold">{info["ÁREA (m2)"] || ""}</strong>
+                      </div>
+                      <div className="col-span-2 border-t border-slate-100 pt-2 text-xs text-slate-500 line-clamp-2">
+                        {info.COMENTARIOS || "Sin descripción de ambiente."}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Navigation trigger button */}
+                  <button
+                    onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}`)}
+                    className="w-full mt-2 py-2.5 text-center text-xs font-semibold text-rose-900 border border-rose-200 rounded-lg bg-rose-50/50 hover:bg-rose-900 hover:text-white hover:border-rose-900 transition-all duration-200 flex items-center justify-center gap-1 cursor-pointer"
+                  >
+                    Ver Ficha Técnica de Wiki
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      )}
+
       {/* Resource Statistics */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm flex items-center gap-5 transition-all duration-300 hover:shadow-md hover:border-slate-300">
@@ -442,143 +579,6 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
             </div>
           )}
         </div>
-      )}
-
-      {/* Laboratories & Computer Workshop Gallery */}
-      {hasVisibleLabs && (
-        <div className="space-y-6">
-        <h2 className="text-2xl font-display font-bold text-slate-800 border-b border-slate-200 pb-3">
-          Galería de Ambientes de Aprendizaje
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {(data.labs || []).map((lab, labIdx) => {
-            const showLab = isEditMode || lab.visible !== false;
-            if (!showLab) return null;
-
-            const info = (lab.infoAmbiente || {}) as any;
-            const isComputerWorkshop = info["TIPO DE LABORATORIO O TALLER"]?.toLowerCase().includes("taller") || info["CÓDIGO DE LABORATORIO O TALLER"]?.includes("TC");
-
-            return (
-              <div 
-                key={labIdx}
-                className={`bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-lg group relative ${
-                  lab.visible === false ? "opacity-60 ring-2 ring-red-200 ring-offset-2 border-dashed" : ""
-                }`}
-              >
-                {lab.visible === false && (
-                  <div className="absolute top-3 left-3 z-20 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-1 rounded shadow flex items-center gap-1">
-                    <EyeOff className="w-3.5 h-3.5" /> OCULTO EN MODO PÚBLICO
-                  </div>
-                )}
-
-                {/* Cover Image */}
-                <div className="relative h-48 bg-slate-100 overflow-hidden">
-                  <img 
-                    src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600"} 
-                    alt={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105 cursor-zoom-in hover:opacity-90"
-                    referrerPolicy="no-referrer"
-                    onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600")}
-                  />
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
-                    {isEditMode && (
-                      <button
-                        onClick={() => onUpdate(["labs", labIdx, "visible"], !lab.visible)}
-                        className={`p-1.5 rounded-md text-xs transition shadow-sm ${
-                          lab.visible !== false 
-                            ? "bg-emerald-600 hover:bg-emerald-500 text-white" 
-                            : "bg-amber-600 hover:bg-amber-500 text-white"
-                        }`}
-                        title="Alternar Visibilidad"
-                      >
-                        {lab.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-                      </button>
-                    )}
-                    <span className={`px-2.5 py-1 text-xs font-semibold rounded-md tracking-wider uppercase text-white shadow-sm ${
-                      isComputerWorkshop ? "bg-slate-800" : "bg-rose-900"
-                    }`}>
-                      {info["TIPO DE LABORATORIO O TALLER"] || "Enseñanza"}
-                    </span>
-                  </div>
-
-                  {/* Code & Title on image */}
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <div className="font-mono text-xs font-semibold tracking-wider text-rose-300">
-                      {info["CÓDIGO DE LABORATORIO O TALLER"] || ""}
-                    </div>
-                    <h3 className="font-display font-bold text-lg leading-snug line-clamp-2 mt-0.5">
-                      {info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Details Content */}
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  {isEditMode ? (
-                    <div className="space-y-2.5">
-                      <div>
-                        <label className="text-[10px] font-mono font-bold text-slate-400 block uppercase">Nombre del Ambiente</label>
-                        <input
-                          type="text"
-                          className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs font-semibold focus:outline-none focus:border-rose-800"
-                          value={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
-                          onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "NOMBRE DEL LABORATORIO O TALLER"], e.target.value)}
-                        />
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <label className="text-[10px] font-mono font-bold text-slate-400 block uppercase">Aforo</label>
-                          <input
-                            type="text"
-                            className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-800"
-                            value={info.AFORO || ""}
-                            onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "AFORO"], e.target.value)}
-                          />
-                        </div>
-                        <div>
-                          <label className="text-[10px] font-mono font-bold text-slate-400 block uppercase">Área</label>
-                          <input
-                            type="text"
-                            className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-800"
-                            value={info["ÁREA (m2)"] || ""}
-                            onChange={(e) => onUpdate(["labs", labIdx, "infoAmbiente", "ÁREA (m2)"], e.target.value)}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-2 gap-4 text-sm font-mono text-slate-600">
-                      <div>
-                        <span className="text-slate-400 text-xs block font-sans">Capacidad</span>
-                        <strong className="text-slate-800 font-semibold">{info.AFORO || "0"} personas</strong>
-                      </div>
-                      <div>
-                        <span className="text-slate-400 text-xs block font-sans">Área Física</span>
-                        <strong className="text-slate-800 font-semibold">{info["ÁREA (m2)"] || ""}</strong>
-                      </div>
-                      <div className="col-span-2 border-t border-slate-100 pt-2 text-xs text-slate-500 line-clamp-2">
-                        {info.COMENTARIOS || "Sin descripción de ambiente."}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Navigation trigger button */}
-                  <button
-                    onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}`)}
-                    className="w-full mt-2 py-2.5 text-center text-xs font-semibold text-rose-900 border border-rose-200 rounded-lg bg-rose-50/50 hover:bg-rose-900 hover:text-white hover:border-rose-900 transition-all duration-200 flex items-center justify-center gap-1 cursor-pointer"
-                  >
-                    Ver Ficha Técnica de Wiki
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
       )}
     </div>
   );
