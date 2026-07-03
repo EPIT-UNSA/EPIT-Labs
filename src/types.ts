@@ -129,6 +129,11 @@ export interface HojaDeVidaEquipo {
     "FECHA DE ADQUISICIÓN": string;
     "MODO DE ADQUISICIÓN": string;
     Ubicación: string;
+    "N° de serie"?: string;
+    "Codigo Patrimonial"?: string;
+    "Año Fabricación"?: string;
+    "Estado de conservación"?: string;
+    "Estado de uso"?: string;
   };
   mantenimientos: HojaDeVidaMantenimiento[];
   nota: string;
