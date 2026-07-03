@@ -13,7 +13,7 @@
       "NUMERO DE CONTACTO": "+51 959 123 456",
       "Periodo": "2024-2026",
       "Fotografias": [
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300"
+        "https://i.ibb.co/ZRKdXNr1/CHAUDER-UNSA-45-1-scaled.jpg"
       ]
     }
   ],
@@ -27,7 +27,7 @@
         "NUMERO DE CONTACTO": "+51 958 987 654",
         "Periodo": "2024-2026",
         "Fotografias": [
-          "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300"
+          "https://i.ibb.co/kVM22v0T/Jorge-Rendulich-copia.png"
         ]
       }
     ]
@@ -42,12 +42,21 @@
       "url": "https://epit.unsa.edu.pe/"
     },
     {
-      "titulo": "Planos de Evacuación Pabellón Telecom",
-      "url": "https://drive.google.com/drive/folders/ejemplo_plano"
+      "titulo": "Planos del Pabellón de Ing. Telecomunicaciones",
+      "url": "https://drive.google.com/drive/folders/1mV0ToQN95RG0ezQuQ3crxKllnG9BFBFt?usp=sharing"
     },
     {
-      "titulo": "Reglamento de Seguridad y Salud en el Trabajo",
-      "url": "https://drive.google.com/drive/folders/ejemplo_sst"
+      "titulo": "Reglamento Interno de Seguridad y Salud en el Trabajo (UNSA)",
+      "url": "https://transparencia.unsa.edu.pe/handle/123456789/1502"
+    },
+    {
+      "titulo": "Matriz IPERC Labs EPIT",
+      "url": "https://drive.google.com/drive/folders/1P0lXWCIcS8nJNIeUY8wmn5F9PlZOTq6O?usp=drive_link"
+    },
+    {
+      "visible": false,
+      "titulo": "Pozo a Tierra",
+      "url": "https://drive.google.com/drive/folders/1E29sdW9cAADA3sMgHPEZrhIWDdY4jIjh?usp=drive_link"
     }
   ],
   "labs": [
@@ -7409,7 +7418,7 @@
         "SERVICIO DE INTERNET (SI/NO)": "Sí",
         "ÁREA (m2)": "68,62 m2",
         "AFORO": "32",
-        "COMENTARIOS": "Taller general de cómputo.",
+        "COMENTARIOS": "Taller de cómputo de la EPIT.",
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "William Mullisaca Atamari",
@@ -8012,6 +8021,25 @@
           "COMENTARIOS": "Licencia Libre - Software de oficina gratuito y de código abierto."
         }
       ]
+    },
+    {
+      "visible": true,
+      "infoAmbiente": {
+        "NUMERO DE LABORATORIO O TALLER": "",
+        "CÓDIGO DE LABORATORIO O TALLER": "LABS-HEXAGONOS",
+        "NOMBRE DEL LABORATORIO O TALLER": "LABORATORIOS DE FÍSICA - HEXÁGONOS UNSA",
+        "TIPO DE LABORATORIO O TALLER": "Enseñanza",
+        "REFERENCIA DE UBICACIÓN": "Hexágonos de la Facultad de Física, 2do piso",
+        "SERVICIO DE INTERNET (SI/NO)": "Sí",
+        "COMENTARIOS": "Laboratorios de Física de la UNSA.",
+        "Fotografias": [],
+        "documentos": [
+          {
+            "titulo": "Docs Laboratorios Física - Hexágonos UNSA",
+            "url": "https://drive.google.com/drive/folders/1x0-JKjYW9e6bX9BfQTtJMv4f5vG0e5KU?usp=sharing"
+          }
+        ]
+      }
     }
   ],
   "contacto": {
@@ -8022,16 +8050,20 @@
         "url": "https://fips.unsa.edu.pe/telecomunicaciones/"
       },
       {
-        "titulo": "Facebook EPIT UNSA",
-        "url": "https://www.facebook.com/unsaoficial"
+        "titulo": "Grupo Facebook EPIT UNSA",
+        "url": "https://www.facebook.com/groups/257646917672121"
       },
       {
-        "titulo": "LinkedIn Oficial UNSA",
+        "titulo": "LinkedIn EPIT UNSA",
         "url": "https://linkedin.com/company/epit-unsa/"
       },
       {
-        "titulo": "YouTube Canal UNSA",
-        "url": "https://www.youtube.com/@unsaoficial"
+        "titulo": "YouTube Canal Labs EPIT",
+        "url": "https://www.youtube.com/@EPIT-Labs"
+      },
+      {
+        "titulo": "Correo Institucional Labs EPIT",
+        "url": "mailto:laboratorios_epit@unsa.edu.pe"
       },
       {
         "titulo": "Correo Institucional EPIT",
