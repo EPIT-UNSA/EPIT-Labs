@@ -21,7 +21,8 @@ import {
   Phone,
   FileCode,
   Sliders,
-  ExternalLink
+  ExternalLink,
+  FileText
 } from "lucide-react";
 import { Lab, Equipo, Software, PersonalTecnico, Responsable } from "../types";
 
@@ -349,6 +350,84 @@ export default function LabDetailView({
                 <span className="px-3 py-1 bg-rose-50 text-rose-800 rounded text-xs font-semibold">
                   Cantidad: {info["CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER"]} Programa
                 </span>
+              </div>
+            </div>
+
+            {/* Documentos y Enlaces del Ambiente */}
+            <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-4">
+              <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-rose-800" />
+                  Documentos del Ambiente
+                </h3>
+                {isEditMode && (
+                  <button
+                    onClick={() => {
+                      const updated = [...(info.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
+                      onUpdate(["labs", labIndex, "infoAmbiente", "documentos"], updated);
+                    }}
+                    className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    Agregar
+                  </button>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                {(info.documentos || []).map((doc: any, idx: number) => (
+                  <div key={idx} className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 border border-slate-50 transition group">
+                    <div className="flex-1 min-w-0 pr-4">
+                      {isEditMode ? (
+                        <div className="space-y-1.5">
+                          <input
+                            type="text"
+                            className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold text-slate-700 focus:outline-none"
+                            value={doc.titulo || ""}
+                            onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "documentos", idx, "titulo"], e.target.value)}
+                            placeholder="Nombre del documento"
+                          />
+                          <input
+                            type="text"
+                            className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-[10px] text-slate-500 focus:outline-none font-mono"
+                            value={doc.url || ""}
+                            onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "documentos", idx, "url"], e.target.value)}
+                            placeholder="Enlace URL"
+                          />
+                        </div>
+                      ) : (
+                        <a 
+                          href={doc.url || "#"} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex items-center gap-2 text-xs font-semibold text-rose-900 hover:text-rose-700 group"
+                        >
+                          <FileText className="w-4 h-4 text-slate-400 group-hover:text-rose-900 flex-shrink-0" />
+                          <span className="truncate">{doc.titulo || "Documento sin título"}</span>
+                          <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
+                      )}
+                    </div>
+                    {isEditMode && (
+                      <button
+                        onClick={() => {
+                          const updated = (info.documentos || []).filter((_: any, dIdx: number) => dIdx !== idx);
+                          onUpdate(["labs", labIndex, "infoAmbiente", "documentos"], updated);
+                        }}
+                        className="p-1 text-slate-400 hover:text-red-600 rounded transition hover:bg-red-50"
+                        title="Eliminar documento"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+                ))}
+
+                {(!info.documentos || info.documentos.length === 0) && (
+                  <div className="text-center py-6 text-slate-400 text-xs">
+                    No hay documentos del ambiente registrados.
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -809,6 +888,52 @@ export default function LabDetailView({
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "COMENTARIOS"], e.target.value)}
                           placeholder="Comentarios"
                         />
+
+                        {/* Software Documents Editor */}
+                        <div className="mt-3 pt-2 border-t border-slate-100 space-y-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Documentos:</span>
+                            <button
+                              onClick={() => {
+                                const docs = [...(sw.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
+                                onUpdate(["labs", labIndex, "software", idx, "documentos"], docs);
+                              }}
+                              className="text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded font-semibold hover:bg-emerald-100 transition"
+                            >
+                              + Añadir
+                            </button>
+                          </div>
+                          
+                          <div className="space-y-1.5">
+                            {(sw.documentos || []).map((doc: any, dIdx: number) => (
+                              <div key={dIdx} className="flex gap-1.5 items-center">
+                                <input
+                                  type="text"
+                                  className="flex-1 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px] font-semibold focus:outline-none"
+                                  value={doc.titulo || ""}
+                                  onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "documentos", dIdx, "titulo"], e.target.value)}
+                                  placeholder="Título"
+                                />
+                                <input
+                                  type="text"
+                                  className="flex-1 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px] font-mono focus:outline-none"
+                                  value={doc.url || ""}
+                                  onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "documentos", dIdx, "url"], e.target.value)}
+                                  placeholder="URL"
+                                />
+                                <button
+                                  onClick={() => {
+                                    const docs = (sw.documentos || []).filter((_: any, i: number) => i !== dIdx);
+                                    onUpdate(["labs", labIndex, "software", idx, "documentos"], docs);
+                                  }}
+                                  className="text-slate-400 hover:text-red-600 p-0.5 transition"
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     ) : (
                       <>
@@ -826,6 +951,28 @@ export default function LabDetailView({
                         <p className="text-xs text-slate-500 leading-relaxed pt-2 border-t border-slate-50">
                           {sw.COMENTARIOS || "Sin comentarios."}
                         </p>
+
+                        {/* Software Documents */}
+                        {sw.documentos && sw.documentos.length > 0 && (
+                          <div className="mt-3 pt-2 border-t border-slate-100 space-y-1.5">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Documentos del Software:</span>
+                            <div className="flex flex-wrap gap-2">
+                              {sw.documentos.map((doc: any, dIdx: number) => (
+                                <a
+                                  key={dIdx}
+                                  href={doc.url || "#"}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-900 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-2 py-1 rounded transition"
+                                >
+                                  <FileText className="w-3 h-3 flex-shrink-0" />
+                                  <span className="truncate max-w-[120px]">{doc.titulo || "Documento"}</span>
+                                  <ExternalLink className="w-2.5 h-2.5 flex-shrink-0" />
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </>
                     )}
                   </div>

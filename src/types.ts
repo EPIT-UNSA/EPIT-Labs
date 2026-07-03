@@ -52,6 +52,7 @@ export interface InfoAmbiente {
   "RESPONSABLE DEL LABORATORIO O TALLER"?: Responsable;
   "PERSONAL TÉCNICO"?: PersonalTecnico[];
   "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"?: Responsable;
+  documentos?: Documento[];
 }
 
 export interface InfoEquipo {
@@ -150,6 +151,7 @@ export interface Equipo {
   caracteristicas: Caracteristica[];
   ProcedimientoMantenimiento?: ProcedimientoMantenimiento;
   HojasDeVidaEquipos?: HojaDeVidaEquipo[];
+  documentos?: Documento[];
 }
 
 export interface Software {
@@ -160,6 +162,7 @@ export interface Software {
   "TIPO DE LICENCIA": string;
   Fotografias: string[];
   COMENTARIOS: string;
+  documentos?: Documento[];
 }
 
 export interface Lab {

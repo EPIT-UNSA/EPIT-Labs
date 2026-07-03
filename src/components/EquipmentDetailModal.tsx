@@ -18,7 +18,8 @@ import {
   EyeOff, 
   AlertCircle,
   FileText,
-  Clock
+  Clock,
+  ExternalLink
 } from "lucide-react";
 import { Equipo, MantenimientoItem, HojaDeVidaMantenimiento, Caracteristica } from "../types";
 
@@ -494,6 +495,89 @@ export default function EquipmentDetailModal({
                   {equipment.caracteristicas?.length === 0 && (
                     <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
                       No hay características registradas.
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Documentos y Enlaces de Referencia */}
+              <div className="space-y-3 pt-4 border-t border-slate-100">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-rose-800" />
+                    Documentos y Enlaces de Referencia
+                  </h3>
+                  {isEditMode && (
+                    <button
+                      onClick={() => updateEquip(draft => {
+                        draft.documentos = [...(draft.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
+                      })}
+                      className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      Agregar Enlace
+                    </button>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {(equipment.documentos || []).map((doc, idx) => (
+                    <div key={idx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 flex justify-between items-start">
+                      <div className="space-y-1.5 flex-1 min-w-0 pr-2">
+                        {isEditMode ? (
+                          <div className="space-y-1.5">
+                            <input
+                              type="text"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs font-semibold focus:outline-none"
+                              value={doc.titulo || ""}
+                              onChange={(e) => updateEquip(draft => {
+                                if (!draft.documentos) draft.documentos = [];
+                                if (draft.documentos[idx]) draft.documentos[idx].titulo = e.target.value;
+                              })}
+                              placeholder="Nombre del documento"
+                            />
+                            <input
+                              type="text"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:outline-none font-mono"
+                              value={doc.url || ""}
+                              onChange={(e) => updateEquip(draft => {
+                                if (!draft.documentos) draft.documentos = [];
+                                if (draft.documentos[idx]) draft.documentos[idx].url = e.target.value;
+                              })}
+                              placeholder="URL del documento"
+                            />
+                          </div>
+                        ) : (
+                          <a
+                            href={doc.url || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-xs font-semibold text-rose-900 hover:text-rose-700 transition"
+                          >
+                            <span className="truncate">{doc.titulo || "Documento sin título"}</span>
+                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+                          </a>
+                        )}
+                      </div>
+                      
+                      {isEditMode && (
+                        <button
+                          onClick={() => updateEquip(draft => {
+                            if (draft.documentos) {
+                              draft.documentos = draft.documentos.filter((_, i) => i !== idx);
+                            }
+                          })}
+                          className="p-1 text-slate-400 hover:text-red-600 transition"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+
+                  {(!equipment.documentos || equipment.documentos.length === 0) && (
+                    <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
+                      No hay documentos de referencia registrados para este equipo.
                     </div>
                   )}
                 </div>
