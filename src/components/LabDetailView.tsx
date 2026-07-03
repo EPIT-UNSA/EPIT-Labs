@@ -280,7 +280,7 @@ export default function LabDetailView({
                     onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "AFORO"], e.target.value)}
                   />
                 ) : (
-                  <strong className="text-slate-800 text-sm">{info.AFORO} vacantes</strong>
+                  <strong className="text-slate-800 text-sm">{info.AFORO} personas</strong>
                 )}
               </div>
               <div>
