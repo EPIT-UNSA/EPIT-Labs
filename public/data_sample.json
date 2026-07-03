@@ -71,6 +71,12 @@
         "Fotografias": [
           "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800"
         ],
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
+          ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Ing. Ronald Coaguila",
@@ -104,6 +110,12 @@
           },
           "Fotografias": [
             "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800"
+          ],
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
           ],
           "caracteristicas": [
             {
@@ -258,7 +270,13 @@
           "Fotografias": [
             "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=400"
           ],
-          "COMENTARIOS": "Software líder para la simulación electromagnética en 3D de antenas, acopladores, filtros y conectores."
+          "COMENTARIOS": "Software líder para la simulación electromagnética en 3D de antenas, acopladores, filtros y conectores.",
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
+          ]
         }
       ]
     },
@@ -281,6 +299,12 @@
         "COMENTARIOS": "Laboratorio orientado al diseño de redes, ruteo, conmutación, seguridad de redes, VoIP y tecnologías IoT inalámbricas.",
         "Fotografias": [
           "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800"
+        ],
+        "documentos": [
+          {
+            "titulo": "Orden de compra y manual de usuario",
+            "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+          }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
@@ -315,6 +339,12 @@
           },
           "Fotografias": [
             "https://images.unsplash.com/photo-1544256718-3bcf237f3974?auto=format&fit=crop&q=80&w=800"
+          ],
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
           ],
           "caracteristicas": [
             {
@@ -453,7 +483,13 @@
           "Fotografias": [
             "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=400"
           ],
-          "COMENTARIOS": "Herramienta de simulación interactiva para el aprendizaje de redes y diseño de topologías complejas."
+          "COMENTARIOS": "Herramienta de simulación interactiva para el aprendizaje de redes y diseño de topologías complejas.",
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
+          ]
         }
       ]
     },
@@ -476,6 +512,12 @@
         "COMENTARIOS": "Equipado con instrumental avanzado para análisis espectral, modulación digital, microondas y telefonía móvil celular.",
         "Fotografias": [
           "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
+        ],
+        "documentos": [
+          {
+            "titulo": "Orden de compra y manual de usuario",
+            "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+          }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
@@ -510,6 +552,12 @@
           },
           "Fotografias": [
             "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&q=80&w=800"
+          ],
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
           ],
           "caracteristicas": [
             {
@@ -646,7 +694,13 @@
           "Fotografias": [
             "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400"
           ],
-          "COMENTARIOS": "Utilizado para simulación matemática de sistemas de comunicaciones, modulaciones QAM/OFDM, y diseño de filtros digitales."
+          "COMENTARIOS": "Utilizado para simulación matemática de sistemas de comunicaciones, modulaciones QAM/OFDM, y diseño de filtros digitales.",
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
+          ]
         }
       ]
     },
@@ -669,6 +723,12 @@
         "COMENTARIOS": "Dedicado a experimentos de electrónica digital, programación de FPGAs, microcontroladores, DSPs y desarrollo de hardware embebido.",
         "Fotografias": [
           "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800"
+        ],
+        "documentos": [
+          {
+            "titulo": "Orden de compra y manual de usuario",
+            "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+          }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
@@ -703,6 +763,12 @@
           },
           "Fotografias": [
             "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
+          ],
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
           ],
           "caracteristicas": [
             {
@@ -822,7 +888,13 @@
           "Fotografias": [
             "https://images.unsplash.com/photo-1580894732444-8fecef2271ff?auto=format&fit=crop&q=80&w=400"
           ],
-          "COMENTARIOS": "Herramienta de síntesis y simulación de hardware para programar dispositivos lógicos complejos de marca Intel/Altera."
+          "COMENTARIOS": "Herramienta de síntesis y simulación de hardware para programar dispositivos lógicos complejos de marca Intel/Altera.",
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
+          ]
         }
       ]
     },
@@ -845,6 +917,12 @@
         "COMENTARIOS": "Entorno equipado con PCs de alto rendimiento para el desarrollo de software de simulación, diseño CAD de antenas, gestión de proyectos y programación avanzada.",
         "Fotografias": [
           "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=800"
+        ],
+        "documentos": [
+          {
+            "titulo": "Orden de compra y manual de usuario",
+            "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+          }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
@@ -879,6 +957,12 @@
           },
           "Fotografias": [
             "https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&q=80&w=800"
+          ],
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
           ],
           "caracteristicas": [
             {
@@ -1031,7 +1115,13 @@
           "Fotografias": [
             "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=400"
           ],
-          "COMENTARIOS": "Programa especializado en el modelado de enlaces de fibra óptica, sistemas de WDM, amplificadores EDFA y moduladores electro-ópticos."
+          "COMENTARIOS": "Programa especializado en el modelado de enlaces de fibra óptica, sistemas de WDM, amplificadores EDFA y moduladores electro-ópticos.",
+          "documentos": [
+            {
+              "titulo": "Orden de compra y manual de usuario",
+              "url": "https://drive.google.com/drive/folders/1x0-JKjYW9a6ba9baQTtJMv4f5vG0e5KU?usp=sharing"
+            }
+          ]
         }
       ]
     }
