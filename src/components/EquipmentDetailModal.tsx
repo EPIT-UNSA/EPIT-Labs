@@ -5,17 +5,17 @@
 
 import React from "react";
 import Markdown from "react-markdown";
-import { 
-  X, 
-  Settings, 
-  Wrench, 
-  Calendar, 
-  DollarSign, 
-  User, 
-  Plus, 
-  Trash2, 
-  Eye, 
-  EyeOff, 
+import {
+  X,
+  Settings,
+  Wrench,
+  Calendar,
+  DollarSign,
+  User,
+  Plus,
+  Trash2,
+  Eye,
+  EyeOff,
   AlertCircle,
   FileText,
   Clock,
@@ -32,10 +32,10 @@ interface EquipmentDetailModalProps {
   onZoomImage: (url: string) => void;
 }
 
-export default function EquipmentDetailModal({ 
-  equipment, 
-  isEditMode, 
-  onClose, 
+export default function EquipmentDetailModal({
+  equipment,
+  isEditMode,
+  onClose,
   onUpdateEquipment,
   onZoomImage
 }: EquipmentDetailModalProps) {
@@ -174,7 +174,7 @@ export default function EquipmentDetailModal({
           RevisadoPor: "Responsable del Laboratorio"
         });
       }
-      
+
       const sheet = draft.HojasDeVidaEquipos[unitIdx];
       const newMaint: HojaDeVidaMantenimiento = {
         visible: true,
@@ -185,7 +185,7 @@ export default function EquipmentDetailModal({
         Observaciones: "Operación de prueba conforme.",
         Fotografias: []
       };
-      
+
       sheet.mantenimientos = [...(sheet.mantenimientos || []), newMaint];
     });
   };
@@ -237,14 +237,14 @@ export default function EquipmentDetailModal({
   return (
     <div className="fixed inset-0 z-50 flex justify-end font-sans">
       {/* Backdrop */}
-      <div 
+      <div
         onClick={onClose}
         className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
       ></div>
 
       {/* Slide Panel */}
       <div className="relative w-full max-w-4xl bg-white h-full shadow-2xl flex flex-col justify-between animate-slide-left z-10">
-        
+
         {/* Modal Header */}
         <div className="p-6 border-b border-slate-100 bg-white text-slate-800 flex items-center justify-between">
           <div className="space-y-1">
@@ -255,7 +255,7 @@ export default function EquipmentDetailModal({
               {equipment["NOMBRE DEL EQUIPO"]}
             </h2>
           </div>
-          <button 
+          <button
             onClick={onClose}
             className="p-1.5 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition cursor-pointer"
           >
@@ -268,10 +268,10 @@ export default function EquipmentDetailModal({
           <button
             onClick={() => setActiveTab("ficha")}
             className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-              activeTab === "ficha" 
-                ? "border-rose-900 text-rose-900" 
+              activeTab === "ficha"
+                ? "border-rose-900 text-rose-900"
                 : "border-transparent text-slate-500 hover:text-slate-800"
-            }`}
+              }`}
           >
             <FileText className="w-4 h-4" />
             Especificaciones Técnicas
@@ -280,10 +280,10 @@ export default function EquipmentDetailModal({
             <button
               onClick={() => setActiveTab("preventivo")}
               className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                activeTab === "preventivo" 
-                  ? "border-rose-900 text-rose-900" 
+                activeTab === "preventivo"
+                  ? "border-rose-900 text-rose-900"
                   : "border-transparent text-slate-500 hover:text-slate-800"
-              }`}
+                }`}
             >
               <Clock className="w-4 h-4" />
               Mantenimiento Preventivo
@@ -293,10 +293,10 @@ export default function EquipmentDetailModal({
             <button
               onClick={() => setActiveTab("correctivo")}
               className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                activeTab === "correctivo" 
-                  ? "border-rose-900 text-rose-900" 
+                activeTab === "correctivo"
+                  ? "border-rose-900 text-rose-900"
                   : "border-transparent text-slate-500 hover:text-slate-800"
-              }`}
+                }`}
             >
               <Wrench className="w-4 h-4" />
               Mantenimiento Correctivo
@@ -306,23 +306,111 @@ export default function EquipmentDetailModal({
             <button
               onClick={() => setActiveTab("hojavida")}
               className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                activeTab === "hojavida" 
-                  ? "border-rose-900 text-rose-900" 
+                activeTab === "hojavida"
+                  ? "border-rose-900 text-rose-900"
                   : "border-transparent text-slate-500 hover:text-slate-800"
-              }`}
+                }`}
             >
               <Calendar className="w-4 h-4" />
-              Historial (Hoja de Vida)
+              Inventario | Hoja de Vida
             </button>
           )}
         </div>
 
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-6 space-y-8">
-          
+
           {/* TAB 1: FICHA TÉCNICA */}
           {activeTab === "ficha" && (
             <div className="space-y-8 animate-fade-in">
+              {/* Fotografías del Equipo */}
+              {(isEditMode || (equipment.Fotografias && equipment.Fotografias.filter(url => url && url !== "https://").length > 0)) && (
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                      <Camera className="w-4 h-4 text-rose-800" />
+                      Fotografías del Equipo
+                    </h3>
+                    {isEditMode && (
+                      <button
+                        onClick={() => updateEquip(draft => {
+                          draft.Fotografias = [...(draft.Fotografias || []), "https://"];
+                        })}
+                        className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        Agregar Imagen
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Edit mode url editor */}
+                  {isEditMode && (equipment.Fotografias || []).length > 0 && (
+                    <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Imágenes (URLs):</span>
+                      {(equipment.Fotografias || []).map((url, imgIdx) => (
+                        <div key={imgIdx} className="flex gap-2 items-center">
+                          <input
+                            type="text"
+                            className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-900"
+                            value={url || ""}
+                            onChange={(e) => updateEquip(draft => {
+                              if (!draft.Fotografias) draft.Fotografias = [];
+                              draft.Fotografias[imgIdx] = e.target.value;
+                            })}
+                            placeholder="https://ejemplo.com/imagen.jpg"
+                          />
+                          <button
+                            onClick={() => updateEquip(draft => {
+                              if (draft.Fotografias) {
+                                draft.Fotografias = draft.Fotografias.filter((_, i) => i !== imgIdx);
+                              }
+                            })}
+                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Gallery view */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    {(equipment.Fotografias || []).map((url, imgIdx) => {
+                      if (!url || url === "https://") return null;
+                      return (
+                        <div
+                          key={imgIdx}
+                          className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2 cursor-zoom-in"
+                          onClick={() => onZoomImage(url)}
+                        >
+                          <img
+                            src={url}
+                            alt={`${equipment["NOMBRE DEL EQUIPO"]} - Foto ${imgIdx + 1}`}
+                            className="object-contain w-full h-full max-h-[140px] group-hover:scale-105 transition duration-300"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2">
+                            <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                              Ampliar Foto {imgIdx + 1}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {(!equipment.Fotografias || equipment.Fotografias.filter(url => url && url !== "https://").length === 0) && (
+                      <div className="col-span-full text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-400 text-sm">
+                        No hay imágenes registradas para este equipo.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {/* Info Matrix Grid */}
               {(() => {
                 const showPatrimonial = isEditMode || (infoEquipo["Denominacion Patrimonial"] && infoEquipo["Denominacion Patrimonial"] !== "-");
@@ -407,7 +495,7 @@ export default function EquipmentDetailModal({
                                   type="text"
                                   className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
                                   value={equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación || ""}
-                                  onChange={(e) => updateEquip(draft => { 
+                                  onChange={(e) => updateEquip(draft => {
                                     if (!draft.HojasDeVidaEquipos) draft.HojasDeVidaEquipos = [];
                                     if (draft.HojasDeVidaEquipos.length === 0) draft.HojasDeVidaEquipos.push({ visible: true, infoEquipo: { Ubicación: "", "Codigo Inventario Equipo": "", "FECHA DE ADQUISICIÓN": "", "MODO DE ADQUISICIÓN": "" }, mantenimientos: [], nota: "", ultimaActualizacion: { year: 2026, month: 7, day: 2 }, HechoPor: "", RevisadoPor: "" });
                                     draft.HojasDeVidaEquipos[0].infoEquipo.Ubicación = e.target.value;
@@ -609,7 +697,7 @@ export default function EquipmentDetailModal({
                             </>
                           )}
                         </div>
-                        
+
                         {isEditMode && (
                           <button
                             onClick={() => handleRemoveChar(idx)}
@@ -690,7 +778,7 @@ export default function EquipmentDetailModal({
                             </a>
                           )}
                         </div>
-                        
+
                         {isEditMode && (
                           <button
                             onClick={() => updateEquip(draft => {
@@ -709,94 +797,6 @@ export default function EquipmentDetailModal({
                     {(!equipment.documentos || equipment.documentos.length === 0) && (
                       <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
                         No hay documentos de referencia registrados para este equipo.
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Fotografías del Equipo */}
-              {(isEditMode || (equipment.Fotografias && equipment.Fotografias.filter(url => url && url !== "https://").length > 0)) && (
-                <div className="space-y-4 pt-4 border-t border-slate-100">
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                      <Camera className="w-4 h-4 text-rose-800" />
-                      Fotografías del Equipo
-                    </h3>
-                    {isEditMode && (
-                      <button
-                        onClick={() => updateEquip(draft => {
-                          draft.Fotografias = [...(draft.Fotografias || []), "https://"];
-                        })}
-                        className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                        Agregar Imagen
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Edit mode url editor */}
-                  {isEditMode && (equipment.Fotografias || []).length > 0 && (
-                    <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Imágenes (URLs):</span>
-                      {(equipment.Fotografias || []).map((url, imgIdx) => (
-                        <div key={imgIdx} className="flex gap-2 items-center">
-                          <input
-                            type="text"
-                            className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-900"
-                            value={url || ""}
-                            onChange={(e) => updateEquip(draft => {
-                              if (!draft.Fotografias) draft.Fotografias = [];
-                              draft.Fotografias[imgIdx] = e.target.value;
-                            })}
-                            placeholder="https://ejemplo.com/imagen.jpg"
-                          />
-                          <button
-                            onClick={() => updateEquip(draft => {
-                              if (draft.Fotografias) {
-                                draft.Fotografias = draft.Fotografias.filter((_, i) => i !== imgIdx);
-                              }
-                            })}
-                            className="p-1 text-slate-400 hover:text-red-600 transition"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Gallery view */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    {(equipment.Fotografias || []).map((url, imgIdx) => {
-                      if (!url || url === "https://") return null;
-                      return (
-                        <div 
-                          key={imgIdx} 
-                          className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2 cursor-zoom-in"
-                          onClick={() => onZoomImage(url)}
-                        >
-                          <img
-                            src={url}
-                            alt={`${equipment["NOMBRE DEL EQUIPO"]} - Foto ${imgIdx + 1}`}
-                            className="object-contain w-full h-full max-h-[140px] group-hover:scale-105 transition duration-300"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2">
-                            <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
-                              Ampliar Foto {imgIdx + 1}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })}
-
-                    {(!equipment.Fotografias || equipment.Fotografias.filter(url => url && url !== "https://").length === 0) && (
-                      <div className="col-span-full text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-400 text-sm">
-                        No hay imágenes registradas para este equipo.
                       </div>
                     )}
                   </div>
@@ -843,11 +843,11 @@ export default function EquipmentDetailModal({
                         if (!showItem) return null;
 
                         return (
-                          <div 
-                            key={itemIdx} 
+                          <div
+                            key={itemIdx}
                             className={`p-3 bg-white rounded-lg border border-slate-100 space-y-2 relative ${
                               !item.visible ? "opacity-60 border-dashed border-red-200" : ""
-                            }`}
+                              }`}
                           >
                             <div className="flex justify-between items-start gap-2">
                               {isEditMode ? (
@@ -896,7 +896,7 @@ export default function EquipmentDetailModal({
                                     })}
                                     className={`p-1 rounded text-xs border ${
                                       item.visible ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-slate-500 bg-slate-50"
-                                    }`}
+                                      }`}
                                   >
                                     {item.visible ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                   </button>
@@ -998,11 +998,11 @@ export default function EquipmentDetailModal({
                         if (!showItem) return null;
 
                         return (
-                          <div 
-                            key={itemIdx} 
-                            className={`p-3 bg-white rounded-lg border border-slate-100 space-y-2 relative ${
+                          <div
+                            key={itemIdx}
+                            className={`p-3 bg-white rounded-lg border border-slate-100 space-y-2 relative $
                               !item.visible ? "opacity-60 border-dashed border-red-200" : ""
-                            }`}
+                              }`}
                           >
                             <div className="flex justify-between items-start gap-2">
                               {isEditMode ? (
@@ -1051,7 +1051,7 @@ export default function EquipmentDetailModal({
                                     })}
                                     className={`p-1 rounded text-xs border ${
                                       item.visible ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-slate-500 bg-slate-50"
-                                    }`}
+                                      }`}
                                   >
                                     {item.visible ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                   </button>
@@ -1115,13 +1115,13 @@ export default function EquipmentDetailModal({
             </div>
           )}
 
-          {/* TAB 4: HOJA DE VIDA / HISTORIAL LOGS */}
+          {/* TAB 4: INVENTARIO / HOJA DE VIDA / HISTORIAL LOGS */}
           {activeTab === "hojavida" && (
             <div className="space-y-6 animate-fade-in">
               <div className="flex justify-between items-center border-b border-slate-100 pb-3">
                 <div>
                   <h3 className="font-display font-bold text-base text-slate-800">
-                    Inventario de Existencias e Historial Técnico (Hojas de Vida)
+                    Inventario y Hojas de Vida
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">Gestión de unidades físicas y su respectivo registro de intervenciones en patrimonio.</p>
                 </div>
@@ -1146,7 +1146,7 @@ export default function EquipmentDetailModal({
                         selectedUnitIdx === uIdx
                           ? "bg-rose-900 border-rose-900 text-white"
                           : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100"
-                      }`}
+                        }`}
                     >
                       {unit.infoEquipo?.["Codigo Inventario Equipo"] || `Unidad ${uIdx + 1}`}
                     </button>
@@ -1171,7 +1171,7 @@ export default function EquipmentDetailModal({
               {equipment.HojasDeVidaEquipos && equipment.HojasDeVidaEquipos[selectedUnitIdx] && (() => {
                 const unit = equipment.HojasDeVidaEquipos[selectedUnitIdx];
                 const infoUnit = (unit.infoEquipo || {}) as any;
-                
+
                 return (
                   <div className="space-y-6">
                     {/* Inventory Details Grid */}
@@ -1376,11 +1376,11 @@ export default function EquipmentDetailModal({
                           if (!showLog) return null;
 
                           return (
-                            <div 
-                              key={logIdx} 
+                            <div
+                              key={logIdx}
                               className={`p-4 rounded-xl border border-slate-100 bg-white shadow-sm space-y-4 relative ${
                                 log.visible === false ? "opacity-60 border-dashed border-red-200 bg-red-50/25" : ""
-                              }`}
+                                }`}
                             >
                               <div className="flex justify-between items-start">
                                 <div className="flex items-center gap-2.5">
@@ -1431,7 +1431,7 @@ export default function EquipmentDetailModal({
                                         })}
                                         className={`p-1 rounded text-xs border ${
                                           log.visible !== false ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-slate-500 bg-slate-50"
-                                        }`}
+                                          }`}
                                       >
                                         {log.visible !== false ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                       </button>

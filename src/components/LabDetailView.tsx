@@ -4,20 +4,20 @@
  */
 
 import React from "react";
-import { 
-  Building2, 
-  Users, 
-  MapPin, 
-  CheckCircle2, 
-  XCircle, 
-  Search, 
-  Plus, 
-  Trash2, 
-  Eye, 
-  EyeOff, 
-  Cpu, 
-  Laptop, 
-  User, 
+import {
+  Building2,
+  Users,
+  MapPin,
+  CheckCircle2,
+  XCircle,
+  Search,
+  Plus,
+  Trash2,
+  Eye,
+  EyeOff,
+  Cpu,
+  Laptop,
+  User,
   Phone,
   FileCode,
   Sliders,
@@ -38,12 +38,12 @@ interface LabDetailViewProps {
   onZoomImage: (url: string) => void;
 }
 
-export default function LabDetailView({ 
-  lab, 
-  labIndex, 
-  subSection, 
-  isEditMode, 
-  onUpdate, 
+export default function LabDetailView({
+  lab,
+  labIndex,
+  subSection,
+  isEditMode,
+  onUpdate,
   onNavigate,
   onOpenEquipment,
   onZoomImage
@@ -63,17 +63,17 @@ export default function LabDetailView({
     const list = [
       { id: "info", label: "ℹ️ Ambiente" }
     ];
-    
+
     const equipCount = lab.equipos?.filter(e => isEditMode || e.visible !== false).length || 0;
     if (isEditMode || equipCount > 0) {
       list.push({ id: "equipos", label: `🛠️ Equipos e Instrumentos (${equipCount})` });
     }
-    
+
     const softCount = lab.software?.filter(s => isEditMode || s.visible !== false).length || 0;
     if (isEditMode || softCount > 0) {
       list.push({ id: "software", label: `💻 Software y Licencias (${softCount})` });
     }
-    
+
     return list;
   }, [lab.equipos, lab.software, isEditMode]);
 
@@ -110,10 +110,10 @@ export default function LabDetailView({
   const filteredEquipos = React.useMemo(() => {
     return (lab.equipos || []).map((eq, idx) => ({ eq, idx })).filter(({ eq }) => {
       const isVisible = isEditMode || eq.visible !== false;
-      const matchesSearch = eq["NOMBRE DEL EQUIPO"]?.toLowerCase().includes(equipSearch.toLowerCase()) || 
-        eq.infoEquipo?.Modelo?.toLowerCase().includes(equipSearch.toLowerCase()) || 
+      const matchesSearch = eq["NOMBRE DEL EQUIPO"]?.toLowerCase().includes(equipSearch.toLowerCase()) ||
+        eq.infoEquipo?.Modelo?.toLowerCase().includes(equipSearch.toLowerCase()) ||
         eq.infoEquipo?.["Codigo Inventario Equipo"]?.toLowerCase().includes(equipSearch.toLowerCase());
-      
+
       const matchesBrand = equipBrandFilter === "todas" || eq.infoEquipo?.Marca === equipBrandFilter;
       const matchesType = equipTypeFilter === "todos" || eq.infoEquipo?.["Tipo de equipo:"] === equipTypeFilter;
 
@@ -125,9 +125,9 @@ export default function LabDetailView({
   const filteredSoftware = React.useMemo(() => {
     return (lab.software || []).map((sw, idx) => ({ sw, idx })).filter(({ sw }) => {
       const isVisible = isEditMode || sw.visible !== false;
-      const matchesSearch = sw["NOMBRE DEL SOFTWARE"]?.toLowerCase().includes(softSearch.toLowerCase()) || 
+      const matchesSearch = sw["NOMBRE DEL SOFTWARE"]?.toLowerCase().includes(softSearch.toLowerCase()) ||
         sw["TIPO DE LICENCIA"]?.toLowerCase().includes(softSearch.toLowerCase());
-      
+
       return isVisible && matchesSearch;
     });
   }, [lab.software, isEditMode, softSearch]);
@@ -213,20 +213,20 @@ export default function LabDetailView({
 
   return (
     <div className="space-y-8 animate-fade-in">
-      
+
       {/* Lab Hero Header */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-200/10 text-white shadow p-6 md:p-8">
         <div className="absolute inset-0 opacity-20">
-          <img 
-            src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800"} 
-            alt={info["NOMBRE DEL LABORATORIO O TALLER"]} 
+          <img
+            src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800"}
+            alt={info["NOMBRE DEL LABORATORIO O TALLER"]}
             className="w-full h-full object-cover filter blur-sm cursor-zoom-in"
             referrerPolicy="no-referrer"
             onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800")}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/40"></div>
-        
+
         {/* Lab meta header info */}
         <div className="relative z-10 max-w-4xl space-y-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -266,10 +266,10 @@ export default function LabDetailView({
             key={tab.id}
             onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}/${tab.id}`)}
             className={`py-3 px-5 text-sm font-semibold border-b-2 transition duration-200 whitespace-nowrap cursor-pointer ${
-              subSection === tab.id 
-                ? "border-red-700 text-red-700 font-bold" 
-                : "border-transparent text-slate-500 hover:text-slate-800"
-            }`}
+              subSection === tab.id
+              ? "border-red-700 text-red-700 font-bold"
+              : "border-transparent text-slate-500 hover:text-slate-800"
+              }`}
           >
             {tab.label}
           </button>
@@ -300,6 +300,96 @@ export default function LabDetailView({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-fade-in">
             {/* Main info panel */}
             <div className={hasRightSidebar ? "lg:col-span-8 space-y-6" : "lg:col-span-12 space-y-6"}>
+
+              {/* Galería de Fotos del Ambiente */}
+              {hasPhotos && (
+                <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-4">
+                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                      <Camera className="w-4 h-4 text-rose-800" />
+                      Galería del Ambiente
+                    </h3>
+                    {isEditMode && (
+                      <button
+                        onClick={() => {
+                          const updated = [...(info.Fotografias || []), "https://"];
+                          onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
+                        }}
+                        className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        Agregar
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Edit URL mode */}
+                  {isEditMode && (info.Fotografias || []).length > 0 && (
+                    <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Fotos (URLs):</span>
+                      {(info.Fotografias || []).map((url: string, imgIdx: number) => (
+                        <div key={imgIdx} className="flex gap-2 items-center">
+                          <input
+                            type="text"
+                            className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none"
+                            value={url || ""}
+                            onChange={(e) => {
+                              const updated = [...(info.Fotografias || [])];
+                              updated[imgIdx] = e.target.value;
+                              onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
+                            }}
+                            placeholder="https://ejemplo.com/foto.jpg"
+                          />
+                          <button
+                            onClick={() => {
+                              const updated = (info.Fotografias || []).filter((_: any, i: number) => i !== imgIdx);
+                              onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
+                            }}
+                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Photos Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {(info.Fotografias || []).map((url: string, imgIdx: number) => {
+                      if (!url || url === "https://") return null;
+                      return (
+                        <div
+                          key={imgIdx}
+                          className="relative group rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm aspect-video flex items-center justify-center p-1 cursor-zoom-in"
+                          onClick={() => onZoomImage(url)}
+                        >
+                          <img
+                            src={url}
+                            alt={`Ambiente - Foto ${imgIdx + 1}`}
+                            className="object-cover w-full h-full rounded-lg group-hover:scale-105 transition duration-300"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2 rounded-xl">
+                            <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                              Ampliar Foto {imgIdx + 1}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {(!info.Fotografias || info.Fotografias.filter((url: string) => url && url !== "https://").length === 0) && (
+                      <div className="col-span-full text-center py-6 text-slate-400 text-xs">
+                        No hay fotografías registradas de este ambiente.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {/* Environment Metrics Grid */}
               {hasMetrics && (
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-slate-50 p-5 rounded-xl border border-slate-100">
@@ -394,94 +484,6 @@ export default function LabDetailView({
                 </div>
               )}
 
-              {/* Galería de Fotos del Ambiente */}
-              {hasPhotos && (
-                <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                      <Camera className="w-4 h-4 text-rose-800" />
-                      Galería del Ambiente
-                    </h3>
-                    {isEditMode && (
-                      <button
-                        onClick={() => {
-                          const updated = [...(info.Fotografias || []), "https://"];
-                          onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
-                        }}
-                        className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                        Agregar
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Edit URL mode */}
-                  {isEditMode && (info.Fotografias || []).length > 0 && (
-                    <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Fotos (URLs):</span>
-                      {(info.Fotografias || []).map((url: string, imgIdx: number) => (
-                        <div key={imgIdx} className="flex gap-2 items-center">
-                          <input
-                            type="text"
-                            className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none"
-                            value={url || ""}
-                            onChange={(e) => {
-                              const updated = [...(info.Fotografias || [])];
-                              updated[imgIdx] = e.target.value;
-                              onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
-                            }}
-                            placeholder="https://ejemplo.com/foto.jpg"
-                          />
-                          <button
-                            onClick={() => {
-                              const updated = (info.Fotografias || []).filter((_: any, i: number) => i !== imgIdx);
-                              onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
-                            }}
-                            className="p-1 text-slate-400 hover:text-red-600 transition"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Photos Grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {(info.Fotografias || []).map((url: string, imgIdx: number) => {
-                      if (!url || url === "https://") return null;
-                      return (
-                        <div 
-                          key={imgIdx} 
-                          className="relative group rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm aspect-video flex items-center justify-center p-1 cursor-zoom-in"
-                          onClick={() => onZoomImage(url)}
-                        >
-                          <img
-                            src={url}
-                            alt={`Ambiente - Foto ${imgIdx + 1}`}
-                            className="object-cover w-full h-full rounded-lg group-hover:scale-105 transition duration-300"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
-                            }}
-                          />
-                          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2 rounded-xl">
-                            <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
-                              Ampliar Foto {imgIdx + 1}
-                            </span>
-                          </div>
-                        </div>
-                      );
-                    })}
-
-                    {(!info.Fotografias || info.Fotografias.filter((url: string) => url && url !== "https://").length === 0) && (
-                      <div className="col-span-full text-center py-6 text-slate-400 text-xs">
-                        No hay fotografías registradas de este ambiente.
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
 
               {/* Program details */}
               {hasPrograms && (
@@ -544,10 +546,10 @@ export default function LabDetailView({
                               />
                             </div>
                           ) : (
-                            <a 
-                              href={doc.url || "#"} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
+                            <a
+                              href={doc.url || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="flex items-center gap-2 text-xs font-semibold text-rose-900 hover:text-rose-700 group"
                             >
                               <FileText className="w-4 h-4 text-slate-400 group-hover:text-rose-900 flex-shrink-0" />
@@ -586,10 +588,10 @@ export default function LabDetailView({
               <div className="lg:col-span-4 space-y-6">
                 {/* Encargado Docente */}
                 {hasResponsible && (
-                  <div 
+                  <div
                     className={`bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4 relative ${
                       info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible === false ? "opacity-60 border-dashed" : ""
-                    }`}
+                      }`}
                   >
                     <div className="flex justify-between items-center border-b border-slate-100 pb-2">
                       <span className="text-xs font-bold font-mono text-slate-400 uppercase tracking-wide">
@@ -672,11 +674,11 @@ export default function LabDetailView({
                         if (!showTech) return null;
 
                         return (
-                          <div 
-                            key={techIdx} 
+                          <div
+                            key={techIdx}
                             className={`flex gap-3 items-center justify-between p-2.5 rounded-lg bg-slate-50/70 border border-slate-100 relative ${
                               tech.visible === false ? "opacity-60 border-dashed" : ""
-                            }`}
+                              }`}
                           >
                             <div className="flex gap-2.5 items-center min-w-0 flex-1">
                               <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
@@ -740,10 +742,10 @@ export default function LabDetailView({
 
                 {/* Verificador de CBC III */}
                 {hasVerifier && (
-                  <div 
+                  <div
                     className={`bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4 relative ${
                       info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible === false ? "opacity-60 border-dashed" : ""
-                    }`}
+                      }`}
                   >
                     <div className="flex justify-between items-center border-b border-slate-100 pb-2">
                       <span className="text-[10px] font-bold font-mono text-slate-400 uppercase tracking-wide">
@@ -807,7 +809,7 @@ export default function LabDetailView({
       {/* TAB 2: EQUIPOS E INSTRUMENTOS */}
       {subSection === "equipos" && (
         <div className="space-y-6 animate-fade-in">
-          
+
           {/* Filters Bar */}
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative w-full md:w-80">
@@ -867,11 +869,11 @@ export default function LabDetailView({
           {/* Equipments list grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredEquipos.map(({ eq, idx }) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`bg-white rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden hover:shadow-md transition relative ${
                   eq.visible === false ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
-                }`}
+                  }`}
               >
                 {eq.visible === false && (
                   <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shadow">
@@ -883,9 +885,9 @@ export default function LabDetailView({
                   {/* Photo & title */}
                   <div className="flex gap-4 items-start">
                     <div className="w-16 h-16 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
-                      <img 
-                        src={eq.Fotografias?.[0] || "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&q=80&w=150"} 
-                        alt={eq["NOMBRE DEL EQUIPO"]} 
+                      <img
+                        src={eq.Fotografias?.[0] || "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&q=80&w=150"}
+                        alt={eq["NOMBRE DEL EQUIPO"]}
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"
                       />
@@ -906,19 +908,19 @@ export default function LabDetailView({
                         </>
                       ) : (
                         <>
-                          {eq.HojasDeVidaEquipos?.[0]?.infoEquipo?.["Codigo Inventario Equipo"] && 
-                           eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"] !== "-" && 
-                           eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"] !== "N/A" && (
-                            <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase">
-                              Código: {eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"]}
-                            </span>
-                          )}
+                          {eq.HojasDeVidaEquipos?.[0]?.infoEquipo?.["Codigo Inventario Equipo"] &&
+                            eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"] !== "-" &&
+                            eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"] !== "N/A" && (
+                              <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase">
+                                Código: {eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"]}
+                              </span>
+                            )}
                           <h3 className="font-semibold text-slate-800 text-sm leading-tight break-words truncate group-hover:text-rose-900">
                             {eq["NOMBRE DEL EQUIPO"]}
                           </h3>
                         </>
                       )}
-                      
+
                       {isEditMode ? (
                         <div className="text-xs text-slate-500 font-mono">
                           Marca: <span className="font-semibold text-slate-700">{eq.infoEquipo?.Marca || "N/A"}</span>
@@ -992,7 +994,7 @@ export default function LabDetailView({
       {/* TAB 3: SOFTWARE Y LICENCIAS */}
       {subSection === "software" && (
         <div className="space-y-6 animate-fade-in">
-          
+
           {/* Filters Bar */}
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
             <div className="relative w-full sm:w-80">
@@ -1020,11 +1022,11 @@ export default function LabDetailView({
           {/* Software list grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredSoftware.map(({ sw, idx }) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition relative ${
                   sw.visible === false ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
-                }`}
+                  }`}
               >
                 {sw.visible === false && (
                   <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shadow">
@@ -1094,7 +1096,7 @@ export default function LabDetailView({
                               + Añadir
                             </button>
                           </div>
-                          
+
                           <div className="space-y-1.5">
                             {(sw.documentos || []).map((doc: any, dIdx: number) => (
                               <div key={dIdx} className="flex gap-1.5 items-center">
@@ -1177,7 +1179,7 @@ export default function LabDetailView({
                       </>
                     )}
                   </div>
-                  
+
                   {isEditMode && (
                     <div className="flex flex-col gap-1 flex-shrink-0">
                       <button
