@@ -201,28 +201,32 @@ export default function Sidebar({
                       </button>
 
                       {/* Equipos sub-node */}
-                      <button
-                        onClick={() => handleNav(`/lab/${code}/equipos`)}
-                        className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
-                          isActive(`/lab/${code}/equipos`)
-                            ? "text-blue-600 font-medium bg-blue-50"
-                            : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
-                        }`}
-                      >
-                        Equipos Técnicos
-                      </button>
+                      {(isEditMode || (lab.equipos && lab.equipos.filter(e => e.visible !== false).length > 0)) && (
+                        <button
+                          onClick={() => handleNav(`/lab/${code}/equipos`)}
+                          className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
+                            isActive(`/lab/${code}/equipos`)
+                              ? "text-blue-600 font-medium bg-blue-50"
+                              : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                          }`}
+                        >
+                          Equipos Técnicos
+                        </button>
+                      )}
 
                       {/* Software sub-node */}
-                      <button
-                        onClick={() => handleNav(`/lab/${code}/software`)}
-                        className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
-                          isActive(`/lab/${code}/software`)
-                            ? "text-blue-600 font-medium bg-blue-50"
-                            : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
-                        }`}
-                      >
-                        Software & Licencias
-                      </button>
+                      {(isEditMode || (lab.software && lab.software.filter(s => s.visible !== false).length > 0)) && (
+                        <button
+                          onClick={() => handleNav(`/lab/${code}/software`)}
+                          className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
+                            isActive(`/lab/${code}/software`)
+                              ? "text-blue-600 font-medium bg-blue-50"
+                              : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                          }`}
+                        >
+                          Software & Licencias
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>

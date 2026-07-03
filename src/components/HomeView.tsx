@@ -67,6 +67,23 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
     onUpdate(["documentos"], newDocs);
   };
 
+  const hasAuthorities = React.useMemo(() => {
+    if (isEditMode) return true;
+    const hasDirector = Array.isArray(data["DIRECTOR DEL PROGRAMA DE ESTUDIOS"]) && data["DIRECTOR DEL PROGRAMA DE ESTUDIOS"].some(director => director.visible !== false);
+    const hasDept = data["DEPARTAMENTO ACADÉMICO"] && data["DEPARTAMENTO ACADÉMICO"].visible !== false;
+    return !!(hasDirector || hasDept);
+  }, [data, isEditMode]);
+
+  const hasDocuments = React.useMemo(() => {
+    if (isEditMode) return true;
+    return Array.isArray(data.documentos) && data.documentos.length > 0;
+  }, [data.documentos, isEditMode]);
+
+  const hasVisibleLabs = React.useMemo(() => {
+    if (isEditMode) return true;
+    return (data.labs || []).some(lab => lab.visible !== false);
+  }, [data.labs, isEditMode]);
+
   return (
     <div className="space-y-10 animate-fade-in">
       {/* Institutional Hero Banner */}
@@ -147,278 +164,289 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
       </div>
 
       {/* Main Grid: Management Info vs Documents */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* Management & Directorate Card */}
-        <div className="lg:col-span-7 bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6">
-          <h2 className="text-lg font-display font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
-            <Users className="w-5 h-5 text-red-700" />
-            Autoridades y Gestión del Programa
-          </h2>
+      {(hasAuthorities || hasDocuments) && (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Director de la Escuela */}
-          {data["DIRECTOR DEL PROGRAMA DE ESTUDIOS"]?.map((director, idx) => {
-            const showDirector = isEditMode || director.visible !== false;
-            if (!showDirector) return null;
-
-            return (
-              <div 
-                key={idx} 
-                className={`p-4 rounded-lg bg-slate-50/70 border border-slate-200 space-y-3 relative ${
-                  director.visible === false ? "opacity-60 border-dashed border-red-200" : ""
-                }`}
-              >
-                {director.visible === false && (
-                  <span className="absolute top-2 right-2 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
-                    OCULTO
-                  </span>
-                )}
-                
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-sm font-semibold tracking-wider text-red-700 uppercase">
-                      Dirección del Programa de Estudios
-                    </h3>
-                    <p className="text-xs text-slate-500 font-mono mt-0.5">Gestión: {director.Periodo}</p>
-                  </div>
-                  {isEditMode && (
-                    <button
-                      onClick={() => handleDirectorChange(idx, "visible", !director.visible)}
-                      className={`p-1.5 rounded border text-xs transition ${
-                        director.visible !== false 
-                          ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100" 
-                          : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
-                      }`}
-                      title="Alternar Visibilidad"
-                    >
-                      {director.visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                    </button>
-                  )}
-                </div>
-
-                <div className="flex gap-4 items-center">
-                  <div className="w-14 h-14 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 border-2 border-white shadow-sm">
-                    <img 
-                      src={director.Fotografias?.[0] || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120"} 
-                      alt={director.NOMBRE}
-                      className="w-full h-full object-cover cursor-zoom-in hover:opacity-90 transition"
-                      referrerPolicy="no-referrer"
-                      onClick={() => onZoomImage(director.Fotografias?.[0] || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120")}
-                    />
-                  </div>
-                  <div className="flex-1 space-y-1">
-                    {isEditMode ? (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-semibold focus:outline-none focus:border-rose-800"
-                          value={director.NOMBRE || ""}
-                          onChange={(e) => handleDirectorChange(idx, "NOMBRE", e.target.value)}
-                          placeholder="Nombre del Director"
-                        />
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm focus:outline-none focus:border-rose-800"
-                          value={director["NUMERO DE CONTACTO"] || ""}
-                          onChange={(e) => handleDirectorChange(idx, "NUMERO DE CONTACTO", e.target.value)}
-                          placeholder="Contacto"
-                        />
-                      </div>
-                    ) : (
-                      <>
-                        <h4 className="font-semibold text-slate-800 text-base">{director.NOMBRE}</h4>
-                        <div className="flex gap-4 text-xs text-slate-500 font-medium">
-                          <span className="flex items-center gap-1">
-                            <Phone className="w-3 h-3 text-red-700" />
-                            {director["NUMERO DE CONTACTO"]}
-                          </span>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-
-          {/* Departamento Académico */}
-          {data["DEPARTAMENTO ACADÉMICO"] && (isEditMode || data["DEPARTAMENTO ACADÉMICO"].visible !== false) && (
-            <div 
-              className={`p-4 rounded-lg bg-slate-50/70 border border-slate-200 space-y-4 relative ${
-                data["DEPARTAMENTO ACADÉMICO"].visible === false ? "opacity-60 border-dashed border-red-200" : ""
-              }`}
-            >
-              {data["DEPARTAMENTO ACADÉMICO"].visible === false && (
-                <span className="absolute top-2 right-2 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
-                  OCULTO
-                </span>
-              )}
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-sm font-semibold tracking-wider text-red-700 uppercase">
-                    Departamento Académico de Adscripción
-                  </h3>
-                  {isEditMode ? (
-                    <input
-                      type="text"
-                      className="mt-1 w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-semibold focus:outline-none focus:border-rose-800"
-                      value={data["DEPARTAMENTO ACADÉMICO"].NOMBRE || ""}
-                      onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "NOMBRE"], e.target.value)}
-                    />
-                  ) : (
-                    <p className="text-slate-700 text-sm font-medium mt-0.5">{data["DEPARTAMENTO ACADÉMICO"].NOMBRE}</p>
-                  )}
-                </div>
-                {isEditMode && (
-                  <button
-                    onClick={() => onUpdate(["DEPARTAMENTO ACADÉMICO", "visible"], !data["DEPARTAMENTO ACADÉMICO"].visible)}
-                    className={`p-1.5 rounded border text-xs transition ${
-                      data["DEPARTAMENTO ACADÉMICO"].visible !== false 
-                        ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100" 
-                        : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
-                    }`}
-                  >
-                    {data["DEPARTAMENTO ACADÉMICO"].visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
-                  </button>
-                )}
-              </div>
- 
-              {data["DEPARTAMENTO ACADÉMICO"].Director?.map((dirDept, idx) => {
-                const showDeptDir = isEditMode || dirDept.visible !== false;
-                if (!showDeptDir) return null;
+          {/* Management & Directorate Card */}
+          {hasAuthorities && (
+            <div className={`${hasDocuments ? "lg:col-span-7" : "lg:col-span-12"} bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-6`}>
+              <h2 className="text-lg font-display font-semibold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                <Users className="w-5 h-5 text-red-700" />
+                Autoridades y Gestión del Programa
+              </h2>
+              
+              {/* Director de la Escuela */}
+              {data["DIRECTOR DEL PROGRAMA DE ESTUDIOS"]?.map((director, idx) => {
+                const showDirector = isEditMode || director.visible !== false;
+                if (!showDirector) return null;
 
                 return (
-                  <div key={idx} className="flex gap-4 items-center pt-2 border-t border-slate-200">
-                    <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 border-2 border-white shadow-sm">
-                      <img 
-                        src={dirDept.Fotografias?.[0] || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120"} 
-                        alt={dirDept.Nombre}
-                        className="w-full h-full object-cover cursor-zoom-in hover:opacity-90 transition"
-                        referrerPolicy="no-referrer"
-                        onClick={() => onZoomImage(dirDept.Fotografias?.[0] || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120")}
-                      />
-                    </div>
-                    <div className="flex-1 space-y-1">
-                      <p className="text-xs font-medium text-slate-400 font-mono uppercase">Director de Departamento</p>
-                      {isEditMode ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          <input
-                            type="text"
-                            className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-rose-800"
-                            value={dirDept.Nombre || ""}
-                            onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "Director", idx, "Nombre"], e.target.value)}
-                            placeholder="Nombre Director"
-                          />
-                          <input
-                            type="text"
-                            className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs focus:outline-none focus:border-rose-800"
-                            value={dirDept["NUMERO DE CONTACTO"] || ""}
-                            onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "Director", idx, "NUMERO DE CONTACTO"], e.target.value)}
-                            placeholder="Contacto"
-                          />
-                        </div>
-                      ) : (
-                        <>
-                          <h4 className="font-semibold text-slate-800 text-sm">{dirDept.Nombre}</h4>
-                          <span className="flex items-center gap-1 text-xs text-slate-500 font-medium">
-                            <Phone className="w-3 h-3 text-red-700" />
-                            {dirDept["NUMERO DE CONTACTO"]}
-                          </span>
-                        </>
+                  <div 
+                    key={idx} 
+                    className={`p-4 rounded-lg bg-slate-50/70 border border-slate-200 space-y-3 relative ${
+                      director.visible === false ? "opacity-60 border-dashed border-red-200" : ""
+                    }`}
+                  >
+                    {director.visible === false && (
+                      <span className="absolute top-2 right-2 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
+                        OCULTO
+                      </span>
+                    )}
+                    
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="text-sm font-semibold tracking-wider text-red-700 uppercase">
+                          Dirección del Programa de Estudios
+                        </h3>
+                        <p className="text-xs text-slate-500 font-mono mt-0.5">Gestión: {director.Periodo}</p>
+                      </div>
+                      {isEditMode && (
+                        <button
+                          onClick={() => handleDirectorChange(idx, "visible", !director.visible)}
+                          className={`p-1.5 rounded border text-xs transition ${
+                            director.visible !== false 
+                              ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100" 
+                              : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                          }`}
+                          title="Alternar Visibilidad"
+                        >
+                          {director.visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                        </button>
                       )}
+                    </div>
+
+                    <div className="flex gap-4 items-center">
+                      <div className="w-14 h-14 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 border-2 border-white shadow-sm">
+                        <img 
+                          src={director.Fotografias?.[0] || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120"} 
+                          alt={director.NOMBRE}
+                          className="w-full h-full object-cover cursor-zoom-in hover:opacity-90 transition"
+                          referrerPolicy="no-referrer"
+                          onClick={() => onZoomImage(director.Fotografias?.[0] || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=120")}
+                        />
+                      </div>
+                      <div className="flex-1 space-y-1">
+                        {isEditMode ? (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <input
+                              type="text"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-semibold focus:outline-none focus:border-rose-800"
+                              value={director.NOMBRE || ""}
+                              onChange={(e) => handleDirectorChange(idx, "NOMBRE", e.target.value)}
+                              placeholder="Nombre del Director"
+                            />
+                            <input
+                              type="text"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm focus:outline-none focus:border-rose-800"
+                              value={director["NUMERO DE CONTACTO"] || ""}
+                              onChange={(e) => handleDirectorChange(idx, "NUMERO DE CONTACTO", e.target.value)}
+                              placeholder="Contacto"
+                            />
+                          </div>
+                        ) : (
+                          <>
+                            <h4 className="font-semibold text-slate-800 text-base">{director.NOMBRE}</h4>
+                            {director["NUMERO DE CONTACTO"] && director["NUMERO DE CONTACTO"] !== "-" && (
+                              <div className="flex gap-4 text-xs text-slate-500 font-medium">
+                                <span className="flex items-center gap-1">
+                                  <Phone className="w-3 h-3 text-red-700" />
+                                  {director["NUMERO DE CONTACTO"]}
+                                </span>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
               })}
-            </div>
-          )}
-        </div>
 
-        {/* Regulatory Documents Box */}
-        <div className="lg:col-span-5 bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
-          <div className="space-y-4">
-            <div className="flex justify-between items-center border-b border-slate-200 pb-3">
-              <h2 className="text-lg font-display font-semibold text-slate-800 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-red-700" />
-                Documentos Técnicos y SST
-              </h2>
-              {isEditMode && (
-                <button
-                  onClick={handleAddDocument}
-                  className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  Agregar
-                </button>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              {(data.documentos || []).map((doc, idx) => (
+              {/* Departamento Académico */}
+              {data["DEPARTAMENTO ACADÉMICO"] && (isEditMode || data["DEPARTAMENTO ACADÉMICO"].visible !== false) && (
                 <div 
-                  key={idx} 
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 border border-slate-50 transition group"
+                  className={`p-4 rounded-lg bg-slate-50/70 border border-slate-200 space-y-4 relative ${
+                    data["DEPARTAMENTO ACADÉMICO"].visible === false ? "opacity-60 border-dashed border-red-200" : ""
+                  }`}
                 >
-                  <div className="flex-1 min-w-0 pr-4">
-                    {isEditMode ? (
-                      <div className="space-y-1.5">
+                  {data["DEPARTAMENTO ACADÉMICO"].visible === false && (
+                    <span className="absolute top-2 right-2 text-xs font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded">
+                      OCULTO
+                    </span>
+                  )}
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-sm font-semibold tracking-wider text-red-700 uppercase">
+                        Departamento Académico de Adscripción
+                      </h3>
+                      {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-sm font-semibold text-slate-700 focus:outline-none focus:border-rose-800"
-                          value={doc.titulo || ""}
-                          onChange={(e) => onUpdate(["documentos", idx, "titulo"], e.target.value)}
-                          placeholder="Nombre del documento"
+                          className="mt-1 w-full bg-white border border-slate-200 rounded px-2 py-1 text-sm font-semibold focus:outline-none focus:border-rose-800"
+                          value={data["DEPARTAMENTO ACADÉMICO"].NOMBRE || ""}
+                          onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "NOMBRE"], e.target.value)}
                         />
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs text-slate-500 focus:outline-none focus:border-rose-800 font-mono"
-                          value={doc.url || ""}
-                          onChange={(e) => onUpdate(["documentos", idx, "url"], e.target.value)}
-                          placeholder="Enlace URL"
-                        />
-                      </div>
-                    ) : (
-                      <a 
-                        href={doc.url || "#"} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-red-700 group"
+                      ) : (
+                        <p className="text-slate-700 text-sm font-medium mt-0.5">{data["DEPARTAMENTO ACADÉMICO"].NOMBRE}</p>
+                      )}
+                    </div>
+                    {isEditMode && (
+                      <button
+                        onClick={() => onUpdate(["DEPARTAMENTO ACADÉMICO", "visible"], !data["DEPARTAMENTO ACADÉMICO"].visible)}
+                        className={`p-1.5 rounded border text-xs transition ${
+                          data["DEPARTAMENTO ACADÉMICO"].visible !== false 
+                            ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100" 
+                            : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                        }`}
                       >
-                        <BookOpen className="w-4 h-4 text-slate-400 group-hover:text-red-700 flex-shrink-0" />
-                        <span className="truncate">{doc.titulo || ""}</span>
-                        <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </a>
+                        {data["DEPARTAMENTO ACADÉMICO"].visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                      </button>
                     )}
                   </div>
-                  
+     
+                  {data["DEPARTAMENTO ACADÉMICO"].Director?.map((dirDept, idx) => {
+                    const showDeptDir = isEditMode || dirDept.visible !== false;
+                    if (!showDeptDir) return null;
+
+                    return (
+                      <div key={idx} className="flex gap-4 items-center pt-2 border-t border-slate-200">
+                        <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden flex-shrink-0 border-2 border-white shadow-sm">
+                          <img 
+                            src={dirDept.Fotografias?.[0] || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120"} 
+                            alt={dirDept.Nombre}
+                            className="w-full h-full object-cover cursor-zoom-in hover:opacity-90 transition"
+                            referrerPolicy="no-referrer"
+                            onClick={() => onZoomImage(dirDept.Fotografias?.[0] || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=120")}
+                          />
+                        </div>
+                        <div className="flex-1 space-y-1">
+                          <p className="text-xs font-medium text-slate-400 font-mono uppercase">Director de Departamento</p>
+                          {isEditMode ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                              <input
+                                type="text"
+                                className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-rose-800"
+                                value={dirDept.Nombre || ""}
+                                onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "Director", idx, "Nombre"], e.target.value)}
+                                placeholder="Nombre Director"
+                              />
+                              <input
+                                type="text"
+                                className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs focus:outline-none focus:border-rose-800"
+                                value={dirDept["NUMERO DE CONTACTO"] || ""}
+                                onChange={(e) => onUpdate(["DEPARTAMENTO ACADÉMICO", "Director", idx, "NUMERO DE CONTACTO"], e.target.value)}
+                                placeholder="Contacto"
+                              />
+                            </div>
+                          ) : (
+                            <>
+                              <h4 className="font-semibold text-slate-800 text-sm">{dirDept.Nombre}</h4>
+                              {dirDept["NUMERO DE CONTACTO"] && dirDept["NUMERO DE CONTACTO"] !== "-" && (
+                                <span className="flex items-center gap-1 text-xs text-slate-500 font-medium">
+                                  <Phone className="w-3 h-3 text-red-700" />
+                                  {dirDept["NUMERO DE CONTACTO"]}
+                                </span>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Regulatory Documents Box */}
+          {hasDocuments && (
+            <div className={`${hasAuthorities ? "lg:col-span-5" : "lg:col-span-12"} bg-white rounded-xl p-6 border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between`}>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center border-b border-slate-200 pb-3">
+                  <h2 className="text-lg font-display font-semibold text-slate-800 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-red-700" />
+                    Documentos Técnicos y SST
+                  </h2>
                   {isEditMode && (
                     <button
-                      onClick={() => handleDeleteDocument(idx)}
-                      className="p-1 text-slate-400 hover:text-red-600 rounded transition hover:bg-red-50"
-                      title="Eliminar documento"
+                      onClick={handleAddDocument}
+                      className="flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2 py-1 rounded text-xs font-semibold transition"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Plus className="w-3.5 h-3.5" />
+                      Agregar
                     </button>
                   )}
                 </div>
-              ))}
 
-              {data.documentos?.length === 0 && (
-                <div className="text-center py-6 text-slate-400 text-sm">
-                  No hay documentos técnicos registrados.
+                <div className="space-y-2">
+                  {(data.documentos || []).map((doc, idx) => (
+                    <div 
+                      key={idx} 
+                      className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 border border-slate-50 transition group"
+                    >
+                      <div className="flex-1 min-w-0 pr-4">
+                        {isEditMode ? (
+                          <div className="space-y-1.5">
+                            <input
+                              type="text"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-sm font-semibold text-slate-700 focus:outline-none focus:border-rose-800"
+                              value={doc.titulo || ""}
+                              onChange={(e) => onUpdate(["documentos", idx, "titulo"], e.target.value)}
+                              placeholder="Nombre del documento"
+                            />
+                            <input
+                              type="text"
+                              className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs text-slate-500 focus:outline-none focus:border-rose-800 font-mono"
+                              value={doc.url || ""}
+                              onChange={(e) => onUpdate(["documentos", idx, "url"], e.target.value)}
+                              placeholder="Enlace URL"
+                            />
+                          </div>
+                        ) : (
+                          <a 
+                            href={doc.url || "#"} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-red-700 group"
+                          >
+                            <BookOpen className="w-4 h-4 text-slate-400 group-hover:text-red-700 flex-shrink-0" />
+                            <span className="truncate">{doc.titulo || ""}</span>
+                            <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </a>
+                        )}
+                      </div>
+                      
+                      {isEditMode && (
+                        <button
+                          onClick={() => handleDeleteDocument(idx)}
+                          className="p-1 text-slate-400 hover:text-red-600 rounded transition hover:bg-red-50"
+                          title="Eliminar documento"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+
+                  {data.documentos?.length === 0 && (
+                    <div className="text-center py-6 text-slate-400 text-sm">
+                      No hay documentos técnicos registrados.
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
+              
+              <div className="bg-red-50/40 rounded-lg p-4 border border-red-200/50 text-xs text-slate-600 leading-relaxed mt-4">
+                <strong>Nota de Acceso Técnico:</strong> La consulta y descarga de planos de evacuación o reglamentos de SST está sujeta a credenciales del dominio institucional de la UNSA.
+              </div>
             </div>
-          </div>
-          
-          <div className="bg-red-50/40 rounded-lg p-4 border border-red-200/50 text-xs text-slate-600 leading-relaxed mt-4">
-            <strong>Nota de Acceso Técnico:</strong> La consulta y descarga de planos de evacuación o reglamentos de SST está sujeta a credenciales del dominio institucional de la UNSA.
-          </div>
+          )}
         </div>
-      </div>
+      )}
 
       {/* Laboratories & Computer Workshop Gallery */}
-      <div className="space-y-6">
+      {hasVisibleLabs && (
+        <div className="space-y-6">
         <h2 className="text-2xl font-display font-bold text-slate-800 border-b border-slate-200 pb-3">
           Galería de Ambientes de Aprendizaje
         </h2>
@@ -551,6 +579,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
           })}
         </div>
       </div>
+      )}
     </div>
   );
 }

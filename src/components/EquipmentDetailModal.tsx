@@ -202,6 +202,38 @@ export default function EquipmentDetailModal({
   // Get cron fields
   const cronKeys = ["enCadaUso", "semanal", "quincenal", "mensual", "bimestral", "trimestral", "semestral", "anual"];
 
+  const hasPreventive = React.useMemo(() => {
+    return cronKeys.some(key => {
+      const arr = (equipment.ProcedimientoMantenimiento?.mantenimiento?.preventivo as any)?.[key];
+      return Array.isArray(arr) && arr.length > 0;
+    });
+  }, [equipment.ProcedimientoMantenimiento?.mantenimiento?.preventivo]);
+
+  const hasCorrective = React.useMemo(() => {
+    return cronKeys.some(key => {
+      const arr = (equipment.ProcedimientoMantenimiento?.mantenimiento?.correctivo as any)?.[key];
+      return Array.isArray(arr) && arr.length > 0;
+    });
+  }, [equipment.ProcedimientoMantenimiento?.mantenimiento?.correctivo]);
+
+  const hasHojaVida = React.useMemo(() => {
+    return Array.isArray(equipment.HojasDeVidaEquipos) && equipment.HojasDeVidaEquipos.length > 0 && equipment.HojasDeVidaEquipos.some(unit => {
+      return (unit.mantenimientos && unit.mantenimientos.length > 0) || unit.nota || unit.HechoPor || unit.RevisadoPor;
+    });
+  }, [equipment.HojasDeVidaEquipos]);
+
+  React.useEffect(() => {
+    if (!isEditMode) {
+      if (activeTab === "preventivo" && !hasPreventive) {
+        setActiveTab("ficha");
+      } else if (activeTab === "correctivo" && !hasCorrective) {
+        setActiveTab("ficha");
+      } else if (activeTab === "hojavida" && !hasHojaVida) {
+        setActiveTab("ficha");
+      }
+    }
+  }, [isEditMode, activeTab, hasPreventive, hasCorrective, hasHojaVida]);
+
   return (
     <div className="fixed inset-0 z-50 flex justify-end font-sans">
       {/* Backdrop */}
@@ -244,39 +276,45 @@ export default function EquipmentDetailModal({
             <FileText className="w-4 h-4" />
             Especificaciones Técnicas
           </button>
-          <button
-            onClick={() => setActiveTab("preventivo")}
-            className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-              activeTab === "preventivo" 
-                ? "border-rose-900 text-rose-900" 
-                : "border-transparent text-slate-500 hover:text-slate-800"
-            }`}
-          >
-            <Clock className="w-4 h-4" />
-            Mantenimiento Preventivo
-          </button>
-          <button
-            onClick={() => setActiveTab("correctivo")}
-            className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-              activeTab === "correctivo" 
-                ? "border-rose-900 text-rose-900" 
-                : "border-transparent text-slate-500 hover:text-slate-800"
-            }`}
-          >
-            <Wrench className="w-4 h-4" />
-            Mantenimiento Correctivo
-          </button>
-          <button
-            onClick={() => setActiveTab("hojavida")}
-            className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-              activeTab === "hojavida" 
-                ? "border-rose-900 text-rose-900" 
-                : "border-transparent text-slate-500 hover:text-slate-800"
-            }`}
-          >
-            <Calendar className="w-4 h-4" />
-            Historial (Hoja de Vida)
-          </button>
+          {(isEditMode || hasPreventive) && (
+            <button
+              onClick={() => setActiveTab("preventivo")}
+              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+                activeTab === "preventivo" 
+                  ? "border-rose-900 text-rose-900" 
+                  : "border-transparent text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <Clock className="w-4 h-4" />
+              Mantenimiento Preventivo
+            </button>
+          )}
+          {(isEditMode || hasCorrective) && (
+            <button
+              onClick={() => setActiveTab("correctivo")}
+              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+                activeTab === "correctivo" 
+                  ? "border-rose-900 text-rose-900" 
+                  : "border-transparent text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <Wrench className="w-4 h-4" />
+              Mantenimiento Correctivo
+            </button>
+          )}
+          {(isEditMode || hasHojaVida) && (
+            <button
+              onClick={() => setActiveTab("hojavida")}
+              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
+                activeTab === "hojavida" 
+                  ? "border-rose-900 text-rose-900" 
+                  : "border-transparent text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <Calendar className="w-4 h-4" />
+              Historial (Hoja de Vida)
+            </button>
+          )}
         </div>
 
         {/* Scrollable Content */}
@@ -286,435 +324,484 @@ export default function EquipmentDetailModal({
           {activeTab === "ficha" && (
             <div className="space-y-8 animate-fade-in">
               {/* Info Matrix Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-5 rounded-xl border border-slate-100">
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase border-b border-slate-200/60 pb-1.5">
-                    Identificación del Equipo
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <span className="text-xs text-slate-500 block">Denominación Patrimonial</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={infoEquipo["Denominacion Patrimonial"] || ""}
-                          onChange={(e) => updateEquip(draft => {
-                            if (!draft.infoEquipo) draft.infoEquipo = {};
-                            draft.infoEquipo["Denominacion Patrimonial"] = e.target.value;
-                          })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{infoEquipo["Denominacion Patrimonial"] || "-"}</strong>
-                      )}
-                    </div>
-                    <div>
-                      <span className="text-xs text-slate-500 block">Tipo de Equipo</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={infoEquipo["Tipo de equipo:"] || ""}
-                          onChange={(e) => updateEquip(draft => {
-                            if (!draft.infoEquipo) draft.infoEquipo = {};
-                            draft.infoEquipo["Tipo de equipo:"] = e.target.value;
-                          })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{infoEquipo["Tipo de equipo:"] || "-"}</strong>
-                      )}
-                    </div>
-                    <div>
-                      <span className="text-xs text-slate-500 block">Nº de Equipos (Stock)</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment["Nº DE EQUIPOS"] || ""}
-                          onChange={(e) => updateEquip(draft => { draft["Nº DE EQUIPOS"] = e.target.value; })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{equipment["Nº DE EQUIPOS"] || "0"} unidades</strong>
-                      )}
-                    </div>
-                    <div>
-                      <span className="text-xs text-slate-500 block">Ubicación de Resguardo</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación || ""}
-                          onChange={(e) => updateEquip(draft => { 
-                            if (!draft.HojasDeVidaEquipos) draft.HojasDeVidaEquipos = [];
-                            if (draft.HojasDeVidaEquipos.length === 0) draft.HojasDeVidaEquipos.push({ visible: true, infoEquipo: { Ubicación: "", "Codigo Inventario Equipo": "", "FECHA DE ADQUISICIÓN": "", "MODO DE ADQUISICIÓN": "" }, mantenimientos: [], nota: "", ultimaActualizacion: { year: 2026, month: 7, day: 2 }, HechoPor: "", RevisadoPor: "" });
-                            draft.HojasDeVidaEquipos[0].infoEquipo.Ubicación = e.target.value;
-                          })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación || "-"}</strong>
-                      )}
-                    </div>
-                  </div>
-                </div>
+              {(() => {
+                const showPatrimonial = isEditMode || (infoEquipo["Denominacion Patrimonial"] && infoEquipo["Denominacion Patrimonial"] !== "-");
+                const showTipo = isEditMode || (infoEquipo["Tipo de equipo:"] && infoEquipo["Tipo de equipo:"] !== "-");
+                const showStock = isEditMode || (equipment["Nº DE EQUIPOS"] && equipment["Nº DE EQUIPOS"] !== "0" && equipment["Nº DE EQUIPOS"] !== "-");
+                const showUbicacion = isEditMode || (equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación && equipment.HojasDeVidaEquipos[0].infoEquipo.Ubicación !== "-");
 
-                <div className="space-y-4">
-                  <h3 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase border-b border-slate-200/60 pb-1.5">
-                    Fabricación y Modelo
-                  </h3>
-                  <div className="grid grid-cols-3 gap-4 text-sm">
-                    <div>
-                      <span className="text-xs text-slate-500 block">Marca</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={infoEquipo.Marca || ""}
-                          onChange={(e) => updateEquip(draft => {
-                            if (!draft.infoEquipo) draft.infoEquipo = {};
-                            draft.infoEquipo.Marca = e.target.value;
-                          })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{infoEquipo.Marca || "-"}</strong>
-                      )}
-                    </div>
-                    <div>
-                      <span className="text-xs text-slate-500 block">Modelo</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={infoEquipo.Modelo || ""}
-                          onChange={(e) => updateEquip(draft => {
-                            if (!draft.infoEquipo) draft.infoEquipo = {};
-                            draft.infoEquipo.Modelo = e.target.value;
-                          })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{infoEquipo.Modelo || "-"}</strong>
-                      )}
-                    </div>
-                    <div>
-                      <span className="text-xs text-slate-500 block">Fabricante</span>
-                      {isEditMode ? (
-                        <input
-                          type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
-                          value={infoEquipo.Fabricante || ""}
-                          onChange={(e) => updateEquip(draft => {
-                            if (!draft.infoEquipo) draft.infoEquipo = {};
-                            draft.infoEquipo.Fabricante = e.target.value;
-                          })}
-                        />
-                      ) : (
-                        <strong className="text-slate-800 font-medium">{infoEquipo.Fabricante || "-"}</strong>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                const hasIdentificacion = showPatrimonial || showTipo || showStock || showUbicacion;
 
-              {/* Principle of operation */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                  <Settings className="w-4 h-4 text-rose-800" />
-                  Principio de Operación
-                </h3>
-                {isEditMode ? (
-                  <textarea
-                    rows={4}
-                    className="w-full bg-white border border-slate-200 rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
-                    value={equipment.ProcedimientoMantenimiento?.["Principio de Operacion"] || ""}
-                    onChange={(e) => updateEquip(draft => {
-                      if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
-                      draft.ProcedimientoMantenimiento["Principio de Operacion"] = e.target.value;
-                    })}
-                    placeholder="Principio de funcionamiento en formato Markdown..."
-                  />
-                ) : (
-                  <div className="prose prose-sm max-w-none text-slate-600 bg-slate-50/50 p-4 rounded-lg border border-slate-100 leading-relaxed markdown-body">
-                    <Markdown>{equipment.ProcedimientoMantenimiento?.["Principio de Operacion"] || "*Sin información registrada.*"}</Markdown>
-                  </div>
-                )}
-              </div>
+                const showMarca = isEditMode || (infoEquipo.Marca && infoEquipo.Marca !== "-");
+                const showModelo = isEditMode || (infoEquipo.Modelo && infoEquipo.Modelo !== "-");
+                const showFabricante = isEditMode || (infoEquipo.Fabricante && infoEquipo.Fabricante !== "-");
 
-              {/* Required installations */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                  <Wrench className="w-4 h-4 text-rose-800" />
-                  Instalaciones Requeridas
-                </h3>
-                {isEditMode ? (
-                  <textarea
-                    rows={3}
-                    className="w-full bg-white border border-slate-200 rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
-                    value={equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"] || ""}
-                    onChange={(e) => updateEquip(draft => {
-                      if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
-                      draft.ProcedimientoMantenimiento["Instalaciones Requeridas"] = e.target.value;
-                    })}
-                    placeholder="Suministros e instalaciones requeridos en Markdown..."
-                  />
-                ) : (
-                  <div className="prose prose-sm max-w-none text-slate-600 bg-slate-50/50 p-4 rounded-lg border border-slate-100 leading-relaxed markdown-body">
-                    <Markdown>{equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"] || "*Sin información registrada.*"}</Markdown>
-                  </div>
-                )}
-              </div>
+                const hasFabricacion = showMarca || showModelo || showFabricante;
 
-              {/* Parts & Subsystems */}
-              <div className="space-y-3">
-                <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-rose-800" />
-                  Partes y Subsistemas
-                </h3>
-                {isEditMode ? (
-                  <textarea
-                    rows={5}
-                    className="w-full bg-white border border-slate-200 rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
-                    value={equipment.ProcedimientoMantenimiento?.Partes || ""}
-                    onChange={(e) => updateEquip(draft => {
-                      if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
-                      draft.ProcedimientoMantenimiento.Partes = e.target.value;
-                    })}
-                    placeholder="Describa las partes principales usando Markdown..."
-                  />
-                ) : (
-                  <div className="prose prose-sm max-w-none text-slate-600 bg-slate-50/50 p-4 rounded-lg border border-slate-100 leading-relaxed markdown-body">
-                    <Markdown>{equipment.ProcedimientoMantenimiento?.Partes || "*Sin información registrada.*"}</Markdown>
-                  </div>
-                )}
-              </div>
+                if (!hasIdentificacion && !hasFabricacion) return null;
 
-              {/* Key Characteristics list */}
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-semibold text-slate-800">Características Técnicas Notables</h3>
-                  {isEditMode && (
-                    <button
-                      onClick={handleAddChar}
-                      className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
-                    >
-                      <Plus className="w-3 h-3" />
-                      Agregar
-                    </button>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {equipment.caracteristicas?.map((char, idx) => (
-                    <div key={idx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 flex justify-between items-start">
-                      <div className="space-y-1 flex-1 min-w-0 pr-2">
-                        {isEditMode ? (
-                          <div className="space-y-1">
-                            <input
-                              type="text"
-                              className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-bold text-slate-800 focus:outline-none"
-                              value={char.Caracteristica}
-                              onChange={(e) => updateEquip(draft => { draft.caracteristicas[idx].Caracteristica = e.target.value; })}
-                            />
-                            <input
-                              type="text"
-                              className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs text-slate-600 focus:outline-none"
-                              value={char.Descripcion}
-                              onChange={(e) => updateEquip(draft => { draft.caracteristicas[idx].Descripcion = e.target.value; })}
-                            />
-                          </div>
-                        ) : (
-                          <>
-                            <span className="text-xs font-mono tracking-wider text-rose-900 uppercase font-semibold block">{char.Caracteristica}</span>
-                            <span className="text-sm text-slate-700 font-medium break-words">{char.Descripcion}</span>
-                          </>
-                        )}
-                      </div>
-                      
-                      {isEditMode && (
-                        <button
-                          onClick={() => handleRemoveChar(idx)}
-                          className="p-1 text-slate-400 hover:text-red-600 transition"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                    </div>
-                  ))}
-
-                  {equipment.caracteristicas?.length === 0 && (
-                    <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
-                      No hay características registradas.
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Documentos y Enlaces de Referencia */}
-              <div className="space-y-3 pt-4 border-t border-slate-100">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-rose-800" />
-                    Documentos y Enlaces de Referencia
-                  </h3>
-                  {isEditMode && (
-                    <button
-                      onClick={() => updateEquip(draft => {
-                        draft.documentos = [...(draft.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
-                      })}
-                      className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                      Agregar Enlace
-                    </button>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {(equipment.documentos || []).map((doc, idx) => (
-                    <div key={idx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 flex justify-between items-start">
-                      <div className="space-y-1.5 flex-1 min-w-0 pr-2">
-                        {isEditMode ? (
-                          <div className="space-y-1.5">
-                            <input
-                              type="text"
-                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs font-semibold focus:outline-none"
-                              value={doc.titulo || ""}
-                              onChange={(e) => updateEquip(draft => {
-                                if (!draft.documentos) draft.documentos = [];
-                                if (draft.documentos[idx]) draft.documentos[idx].titulo = e.target.value;
-                              })}
-                              placeholder="Nombre del documento"
-                            />
-                            <input
-                              type="text"
-                              className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:outline-none font-mono"
-                              value={doc.url || ""}
-                              onChange={(e) => updateEquip(draft => {
-                                if (!draft.documentos) draft.documentos = [];
-                                if (draft.documentos[idx]) draft.documentos[idx].url = e.target.value;
-                              })}
-                              placeholder="URL del documento"
-                            />
-                          </div>
-                        ) : (
-                          <a
-                            href={doc.url || "#"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-xs font-semibold text-rose-900 hover:text-rose-700 transition"
-                          >
-                            <span className="truncate">{doc.titulo || "Documento sin título"}</span>
-                            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
-                          </a>
-                        )}
-                      </div>
-                      
-                      {isEditMode && (
-                        <button
-                          onClick={() => updateEquip(draft => {
-                            if (draft.documentos) {
-                              draft.documentos = draft.documentos.filter((_, i) => i !== idx);
-                            }
-                          })}
-                          className="p-1 text-slate-400 hover:text-red-600 transition"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                    </div>
-                  ))}
-
-                  {(!equipment.documentos || equipment.documentos.length === 0) && (
-                    <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
-                      No hay documentos de referencia registrados para este equipo.
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Fotografías del Equipo */}
-              <div className="space-y-4 pt-4 border-t border-slate-100">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
-                    <Camera className="w-4 h-4 text-rose-800" />
-                    Fotografías del Equipo
-                  </h3>
-                  {isEditMode && (
-                    <button
-                      onClick={() => updateEquip(draft => {
-                        draft.Fotografias = [...(draft.Fotografias || []), "https://"];
-                      })}
-                      className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                      Agregar Imagen
-                    </button>
-                  )}
-                </div>
-
-                {/* Edit mode url editor */}
-                {isEditMode && (equipment.Fotografias || []).length > 0 && (
-                  <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Imágenes (URLs):</span>
-                    {(equipment.Fotografias || []).map((url, imgIdx) => (
-                      <div key={imgIdx} className="flex gap-2 items-center">
-                        <input
-                          type="text"
-                          className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-900"
-                          value={url || ""}
-                          onChange={(e) => updateEquip(draft => {
-                            if (!draft.Fotografias) draft.Fotografias = [];
-                            draft.Fotografias[imgIdx] = e.target.value;
-                          })}
-                          placeholder="https://ejemplo.com/imagen.jpg"
-                        />
-                        <button
-                          onClick={() => updateEquip(draft => {
-                            if (draft.Fotografias) {
-                              draft.Fotografias = draft.Fotografias.filter((_, i) => i !== imgIdx);
-                            }
-                          })}
-                          className="p-1 text-slate-400 hover:text-red-600 transition"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Gallery view */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                  {(equipment.Fotografias || []).map((url, imgIdx) => {
-                    if (!url || url === "https://") return null;
-                    return (
-                      <div 
-                        key={imgIdx} 
-                        className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2 cursor-zoom-in"
-                        onClick={() => onZoomImage(url)}
-                      >
-                        <img
-                          src={url}
-                          alt={`${equipment["NOMBRE DEL EQUIPO"]} - Foto ${imgIdx + 1}`}
-                          className="object-contain w-full h-full max-h-[140px] group-hover:scale-105 transition duration-300"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2">
-                          <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
-                            Ampliar Foto {imgIdx + 1}
-                          </span>
+                return (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    {hasIdentificacion && (
+                      <div className="space-y-4">
+                        <h3 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase border-b border-slate-200/60 pb-1.5">
+                          Identificación del Equipo
+                        </h3>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          {showPatrimonial && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Denominación Patrimonial</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={infoEquipo["Denominacion Patrimonial"] || ""}
+                                  onChange={(e) => updateEquip(draft => {
+                                    if (!draft.infoEquipo) draft.infoEquipo = {};
+                                    draft.infoEquipo["Denominacion Patrimonial"] = e.target.value;
+                                  })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{infoEquipo["Denominacion Patrimonial"]}</strong>
+                              )}
+                            </div>
+                          )}
+                          {showTipo && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Tipo de Equipo</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={infoEquipo["Tipo de equipo:"] || ""}
+                                  onChange={(e) => updateEquip(draft => {
+                                    if (!draft.infoEquipo) draft.infoEquipo = {};
+                                    draft.infoEquipo["Tipo de equipo:"] = e.target.value;
+                                  })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{infoEquipo["Tipo de equipo:"]}</strong>
+                              )}
+                            </div>
+                          )}
+                          {showStock && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Nº de Equipos (Stock)</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={equipment["Nº DE EQUIPOS"] || ""}
+                                  onChange={(e) => updateEquip(draft => { draft["Nº DE EQUIPOS"] = e.target.value; })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{equipment["Nº DE EQUIPOS"]} unidades</strong>
+                              )}
+                            </div>
+                          )}
+                          {showUbicacion && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Ubicación de Resguardo</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación || ""}
+                                  onChange={(e) => updateEquip(draft => { 
+                                    if (!draft.HojasDeVidaEquipos) draft.HojasDeVidaEquipos = [];
+                                    if (draft.HojasDeVidaEquipos.length === 0) draft.HojasDeVidaEquipos.push({ visible: true, infoEquipo: { Ubicación: "", "Codigo Inventario Equipo": "", "FECHA DE ADQUISICIÓN": "", "MODO DE ADQUISICIÓN": "" }, mantenimientos: [], nota: "", ultimaActualizacion: { year: 2026, month: 7, day: 2 }, HechoPor: "", RevisadoPor: "" });
+                                    draft.HojasDeVidaEquipos[0].infoEquipo.Ubicación = e.target.value;
+                                  })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación}</strong>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </div>
-                    );
-                  })}
+                    )}
 
-                  {(!equipment.Fotografias || equipment.Fotografias.filter(url => url && url !== "https://").length === 0) && (
-                    <div className="col-span-full text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-400 text-sm">
-                      No hay imágenes registradas para este equipo.
+                    {hasFabricacion && (
+                      <div className="space-y-4">
+                        <h3 className="text-xs font-mono font-bold tracking-wider text-slate-400 uppercase border-b border-slate-200/60 pb-1.5">
+                          Fabricación y Modelo
+                        </h3>
+                        <div className="grid grid-cols-3 gap-4 text-sm">
+                          {showMarca && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Marca</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={infoEquipo.Marca || ""}
+                                  onChange={(e) => updateEquip(draft => {
+                                    if (!draft.infoEquipo) draft.infoEquipo = {};
+                                    draft.infoEquipo.Marca = e.target.value;
+                                  })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{infoEquipo.Marca}</strong>
+                              )}
+                            </div>
+                          )}
+                          {showModelo && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Modelo</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={infoEquipo.Modelo || ""}
+                                  onChange={(e) => updateEquip(draft => {
+                                    if (!draft.infoEquipo) draft.infoEquipo = {};
+                                    draft.infoEquipo.Modelo = e.target.value;
+                                  })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{infoEquipo.Modelo}</strong>
+                              )}
+                            </div>
+                          )}
+                          {showFabricante && (
+                            <div>
+                              <span className="text-xs text-slate-500 block">Fabricante</span>
+                              {isEditMode ? (
+                                <input
+                                  type="text"
+                                  className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  value={infoEquipo.Fabricante || ""}
+                                  onChange={(e) => updateEquip(draft => {
+                                    if (!draft.infoEquipo) draft.infoEquipo = {};
+                                    draft.infoEquipo.Fabricante = e.target.value;
+                                  })}
+                                />
+                              ) : (
+                                <strong className="text-slate-800 font-medium">{infoEquipo.Fabricante}</strong>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+
+              {/* Principle of operation */}
+              {(isEditMode || equipment.ProcedimientoMantenimiento?.["Principio de Operacion"]) && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                    <Settings className="w-4 h-4 text-rose-800" />
+                    Principio de Operación
+                  </h3>
+                  {isEditMode ? (
+                    <textarea
+                      rows={4}
+                      className="w-full bg-white border border-slate-200 rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
+                      value={equipment.ProcedimientoMantenimiento?.["Principio de Operacion"] || ""}
+                      onChange={(e) => updateEquip(draft => {
+                        if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
+                        draft.ProcedimientoMantenimiento["Principio de Operacion"] = e.target.value;
+                      })}
+                      placeholder="Principio de funcionamiento en formato Markdown..."
+                    />
+                  ) : (
+                    <div className="prose prose-sm max-w-none text-slate-600 bg-slate-50/50 p-4 rounded-lg border border-slate-100 leading-relaxed markdown-body">
+                      <Markdown>{equipment.ProcedimientoMantenimiento?.["Principio de Operacion"] || "*Sin información registrada.*"}</Markdown>
                     </div>
                   )}
                 </div>
-              </div>
+              )}
+
+              {/* Required installations */}
+              {(isEditMode || equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"]) && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                    <Wrench className="w-4 h-4 text-rose-800" />
+                    Instalaciones Requeridas
+                  </h3>
+                  {isEditMode ? (
+                    <textarea
+                      rows={3}
+                      className="w-full bg-white border border-slate-200 rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
+                      value={equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"] || ""}
+                      onChange={(e) => updateEquip(draft => {
+                        if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
+                        draft.ProcedimientoMantenimiento["Instalaciones Requeridas"] = e.target.value;
+                      })}
+                      placeholder="Suministros e instalaciones requeridos en Markdown..."
+                    />
+                  ) : (
+                    <div className="prose prose-sm max-w-none text-slate-600 bg-slate-50/50 p-4 rounded-lg border border-slate-100 leading-relaxed markdown-body">
+                      <Markdown>{equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"] || "*Sin información registrada.*"}</Markdown>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Parts & Subsystems */}
+              {(isEditMode || equipment.ProcedimientoMantenimiento?.Partes) && (
+                <div className="space-y-3">
+                  <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-rose-800" />
+                    Partes y Subsistemas
+                  </h3>
+                  {isEditMode ? (
+                    <textarea
+                      rows={5}
+                      className="w-full bg-white border border-slate-200 rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
+                      value={equipment.ProcedimientoMantenimiento?.Partes || ""}
+                      onChange={(e) => updateEquip(draft => {
+                        if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
+                        draft.ProcedimientoMantenimiento.Partes = e.target.value;
+                      })}
+                      placeholder="Describa las partes principales usando Markdown..."
+                    />
+                  ) : (
+                    <div className="prose prose-sm max-w-none text-slate-600 bg-slate-50/50 p-4 rounded-lg border border-slate-100 leading-relaxed markdown-body">
+                      <Markdown>{equipment.ProcedimientoMantenimiento?.Partes || "*Sin información registrada.*"}</Markdown>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Key Characteristics list */}
+              {(isEditMode || (equipment.caracteristicas && equipment.caracteristicas.length > 0)) && (
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-slate-800">Características Técnicas Notables</h3>
+                    {isEditMode && (
+                      <button
+                        onClick={handleAddChar}
+                        className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                      >
+                        <Plus className="w-3 h-3" />
+                        Agregar
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {equipment.caracteristicas?.map((char, idx) => (
+                      <div key={idx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 flex justify-between items-start">
+                        <div className="space-y-1 flex-1 min-w-0 pr-2">
+                          {isEditMode ? (
+                            <div className="space-y-1">
+                              <input
+                                type="text"
+                                className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-bold text-slate-800 focus:outline-none"
+                                value={char.Caracteristica}
+                                onChange={(e) => updateEquip(draft => { draft.caracteristicas[idx].Caracteristica = e.target.value; })}
+                              />
+                              <input
+                                type="text"
+                                className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs text-slate-600 focus:outline-none"
+                                value={char.Descripcion}
+                                onChange={(e) => updateEquip(draft => { draft.caracteristicas[idx].Descripcion = e.target.value; })}
+                              />
+                            </div>
+                          ) : (
+                            <>
+                              <span className="text-xs font-mono tracking-wider text-rose-900 uppercase font-semibold block">{char.Caracteristica}</span>
+                              <span className="text-sm text-slate-700 font-medium break-words">{char.Descripcion}</span>
+                            </>
+                          )}
+                        </div>
+                        
+                        {isEditMode && (
+                          <button
+                            onClick={() => handleRemoveChar(idx)}
+                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+
+                    {equipment.caracteristicas?.length === 0 && (
+                      <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
+                        No hay características registradas.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Documentos y Enlaces de Referencia */}
+              {(isEditMode || (equipment.documentos && equipment.documentos.length > 0)) && (
+                <div className="space-y-3 pt-4 border-t border-slate-100">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-rose-800" />
+                      Documentos y Enlaces de Referencia
+                    </h3>
+                    {isEditMode && (
+                      <button
+                        onClick={() => updateEquip(draft => {
+                          draft.documentos = [...(draft.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
+                        })}
+                        className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        Agregar Enlace
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {(equipment.documentos || []).map((doc, idx) => (
+                      <div key={idx} className="p-3.5 rounded-lg bg-slate-50 border border-slate-100 flex justify-between items-start">
+                        <div className="space-y-1.5 flex-1 min-w-0 pr-2">
+                          {isEditMode ? (
+                            <div className="space-y-1.5">
+                              <input
+                                type="text"
+                                className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs font-semibold focus:outline-none"
+                                value={doc.titulo || ""}
+                                onChange={(e) => updateEquip(draft => {
+                                  if (!draft.documentos) draft.documentos = [];
+                                  if (draft.documentos[idx]) draft.documentos[idx].titulo = e.target.value;
+                                })}
+                                placeholder="Nombre del documento"
+                              />
+                              <input
+                                type="text"
+                                className="w-full bg-white border border-slate-200 rounded px-2 py-1 text-xs text-slate-500 focus:outline-none font-mono"
+                                value={doc.url || ""}
+                                onChange={(e) => updateEquip(draft => {
+                                  if (!draft.documentos) draft.documentos = [];
+                                  if (draft.documentos[idx]) draft.documentos[idx].url = e.target.value;
+                                })}
+                                placeholder="URL del documento"
+                              />
+                            </div>
+                          ) : (
+                            <a
+                              href={doc.url || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-xs font-semibold text-rose-900 hover:text-rose-700 transition"
+                            >
+                              <span className="truncate">{doc.titulo || "Documento sin título"}</span>
+                              <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+                            </a>
+                          )}
+                        </div>
+                        
+                        {isEditMode && (
+                          <button
+                            onClick={() => updateEquip(draft => {
+                              if (draft.documentos) {
+                                draft.documentos = draft.documentos.filter((_, i) => i !== idx);
+                              }
+                            })}
+                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+
+                    {(!equipment.documentos || equipment.documentos.length === 0) && (
+                      <div className="col-span-2 text-center py-6 text-slate-400 text-sm">
+                        No hay documentos de referencia registrados para este equipo.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Fotografías del Equipo */}
+              {(isEditMode || (equipment.Fotografias && equipment.Fotografias.filter(url => url && url !== "https://").length > 0)) && (
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                      <Camera className="w-4 h-4 text-rose-800" />
+                      Fotografías del Equipo
+                    </h3>
+                    {isEditMode && (
+                      <button
+                        onClick={() => updateEquip(draft => {
+                          draft.Fotografias = [...(draft.Fotografias || []), "https://"];
+                        })}
+                        className="flex items-center gap-1 bg-rose-50 text-rose-900 border border-rose-200 hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        Agregar Imagen
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Edit mode url editor */}
+                  {isEditMode && (equipment.Fotografias || []).length > 0 && (
+                    <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Imágenes (URLs):</span>
+                      {(equipment.Fotografias || []).map((url, imgIdx) => (
+                        <div key={imgIdx} className="flex gap-2 items-center">
+                          <input
+                            type="text"
+                            className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-900"
+                            value={url || ""}
+                            onChange={(e) => updateEquip(draft => {
+                              if (!draft.Fotografias) draft.Fotografias = [];
+                              draft.Fotografias[imgIdx] = e.target.value;
+                            })}
+                            placeholder="https://ejemplo.com/imagen.jpg"
+                          />
+                          <button
+                            onClick={() => updateEquip(draft => {
+                              if (draft.Fotografias) {
+                                draft.Fotografias = draft.Fotografias.filter((_, i) => i !== imgIdx);
+                              }
+                            })}
+                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Gallery view */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    {(equipment.Fotografias || []).map((url, imgIdx) => {
+                      if (!url || url === "https://") return null;
+                      return (
+                        <div 
+                          key={imgIdx} 
+                          className="relative group rounded-xl overflow-hidden border border-slate-100 bg-white shadow-sm aspect-video flex items-center justify-center p-2 cursor-zoom-in"
+                          onClick={() => onZoomImage(url)}
+                        >
+                          <img
+                            src={url}
+                            alt={`${equipment["NOMBRE DEL EQUIPO"]} - Foto ${imgIdx + 1}`}
+                            className="object-contain w-full h-full max-h-[140px] group-hover:scale-105 transition duration-300"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=400";
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition duration-200 flex items-end p-2">
+                            <span className="text-[10px] text-white font-semibold truncate bg-slate-900/80 px-1.5 py-0.5 rounded">
+                              Ampliar Foto {imgIdx + 1}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {(!equipment.Fotografias || equipment.Fotografias.filter(url => url && url !== "https://").length === 0) && (
+                      <div className="col-span-full text-center py-8 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-slate-400 text-sm">
+                        No hay imágenes registradas para este equipo.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
