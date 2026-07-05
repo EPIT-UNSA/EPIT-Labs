@@ -350,7 +350,7 @@ export default function LabDetailView({
                         <div key={imgIdx} className="flex gap-2 items-center">
                           <input
                             type="text"
-                            className="flex-1 bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-mono focus:outline-none"
+                            className="flex-1 bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-theme-brand text-theme-text-primary"
                             value={url || ""}
                             onChange={(e) => {
                               const updated = [...(info.Fotografias || [])];
@@ -462,7 +462,7 @@ export default function LabDetailView({
                       {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                           value={info["CODIGO PATRIMONIO AMBIENTE"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "CODIGO PATRIMONIO AMBIENTE"], e.target.value)}
                         />
@@ -477,7 +477,7 @@ export default function LabDetailView({
                       {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                           value={info.AFORO || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "AFORO"], e.target.value)}
                         />
@@ -492,7 +492,7 @@ export default function LabDetailView({
                       {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                           value={info["ÁREA (m2)"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "ÁREA (m2)"], e.target.value)}
                         />
@@ -506,7 +506,7 @@ export default function LabDetailView({
                       <span className="text-[11px] text-theme-text-tertiary font-medium block">Acceso a Internet</span>
                       {isEditMode ? (
                         <select
-                          className="w-full bg-theme-card border border-theme-border-medium rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand focus:border-theme-brand text-theme-text-primary"
                           value={info["SERVICIO DE INTERNET (SI/NO)"] || "Sí"}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "SERVICIO DE INTERNET (SI/NO)"], e.target.value)}
                         >
@@ -535,7 +535,7 @@ export default function LabDetailView({
                   {isEditMode ? (
                     <textarea
                       rows={4}
-                      className="w-full bg-theme-page border border-theme-border-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-rose-900"
+                      className="w-full bg-theme-page border border-theme-border-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-rose-900 focus:border-theme-brand text-theme-text-primary"
                       value={info.COMENTARIOS || ""}
                       onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "COMENTARIOS"], e.target.value)}
                     />
@@ -595,14 +595,14 @@ export default function LabDetailView({
                             <div className="space-y-1.5">
                               <input
                                 type="text"
-                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold text-theme-text-secondary focus:outline-none"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold text-theme-text-secondary focus:outline-none focus:border-theme-brand text-theme-text-primary"
                                 value={doc.titulo || ""}
                                 onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "documentos", idx, "titulo"], e.target.value)}
                                 placeholder="Nombre del documento"
                               />
                               <input
                                 type="text"
-                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-[10px] text-theme-text-muted focus:outline-none font-mono"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-[10px] text-theme-text-muted focus:outline-none font-mono focus:border-theme-brand"
                                 value={doc.url || ""}
                                 onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "documentos", idx, "url"], e.target.value)}
                                 placeholder="Enlace URL"
