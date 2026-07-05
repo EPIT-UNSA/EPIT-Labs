@@ -199,6 +199,621 @@
         {
           "visible": true,
           "Nº DE EQUIPOS": "1",
+          "NOMBRE DEL EQUIPO": "OSCILOSCOPIO",
+          "COMENTARIOS": "Osciloscopio de 100MHz con puntas de prueba.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "Osciloscopio",
+            "Tipo de equipo:": "Osciloscopio",
+            "Fabricante": "Rohde & Schwarz",
+            "Marca": "Rohde & Schwarz",
+            "Modelo": "RTC1002"
+          },
+          "Fotografias": [
+            "https://cdn.rohde-schwarz.com/image/products/test-and-measurement/oscilloscopes/rtc1000/rtc1000-oscilloscope-side-view-rohde-schwarz_200_2205_1024_576_1.jpg",
+            "https://cdn.rohde-schwarz.com/image/products/test-and-measurement/oscilloscopes/rtc1000/rtc1000-oscilloscope-front-view-rohde-schwarz_200_2203_1024_576_3.jpg"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Bandwidth",
+              "Descripcion": "100 MHz"
+            },
+            {
+              "Caracteristica": "Channels",
+              "Descripcion": "2"
+            },
+            {
+              "Caracteristica": "Max. memory depth",
+              "Descripcion": "2 Mpts"
+            },
+            {
+              "Caracteristica": "Sample rate",
+              "Descripcion": "2 Gsample"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Conectar la sonda al canal deseado, ajustar la escala vertical (voltaje) y horizontal (tiempo) mediante las perillas del panel frontal y presionar el botón \"Autoset\" para visualizar automáticamente la señal de forma estable en la pantalla.",
+            "Instalaciones Requeridas": "Energía: Enchufe de 100-240V con toma de tierra obligatoria.\nEspacio: Superficie plana y 10 cm libres atrás para que respire.\nSondas: Conectadas a los puertos BNC frontales y bien calibradas.\n",
+            "Partes": "Osciloscopio, puntas de prueba, cable de poder.",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Verificación Operativa",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Verificar la integridad del cable de poder.",
+                        "Verificar la integridad de los conectores BNC.",
+                        "Ejecutar la función interna \"Self-Alignment\" (Autoajuste) desde el menú \"Setup\"."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0"
+                    },
+                    "responsable": "Laboratorista"
+                  }
+                ],
+                "anual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Limpieza, verificación y ajuste técnico.",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Limpiar el exterior con un paño seco y soplar aire comprimido en las rejillas de ventilación.",
+                        "Verificar la integridad del cable de poder y los conectores BNC.",
+                        "Ejecutar la función interna \"Self-Alignment\" (Autoajuste) desde el menú \"Setup\"."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "0"
+                    },
+                    "responsable": "Laboratorista"
+                  }
+                ]
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": [
+                  {
+                    "visible": true,
+                    "descripcion": {
+                      "title": "Diagnóstico y reparación de hardware/firmware.",
+                      "Prioridad": 1,
+                      "contenido": [
+                        "Identificar el código de error o falla física (ej. pantalla negra, puertos sin lectura).",
+                        "Actualizar o reinstalar el firmware desde el sitio oficial de Rohde & Schwarz.",
+                        "Sustitución de componentes internos dañados (fuente de poder o placa madre) en taller."
+                      ]
+                    },
+                    "MONTO REF": {
+                      "currency": "S/.",
+                      "amount": "3000"
+                    },
+                    "responsable": "Servicio técnico autorizado de Rohde & Schwarz."
+                  }
+                ]
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "",
+                "FECHA DE ADQUISICIÓN": "",
+                "MODO DE ADQUISICIÓN": "Compra",
+                "Ubicación": "Estante 1"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 3,
+                  "Actividad realizada": "Verificación Operativa",
+                  "Fecha": "2024-01-01",
+                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
+                  "Observaciones": "Prueba de funcionamiento, operativo.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Verificación Operativa",
+                  "Fecha": "2024-09-16",
+                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Observaciones": "Prueba de funcionamiento, operativo.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 4,
+                  "Actividad realizada": "Verificación Operativa",
+                  "Fecha": "2025-03-14",
+                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
+                  "Observaciones": "Prueba de funcionamiento, operativo.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 2,
+                  "Actividad realizada": "Verificación Operativa",
+                  "Fecha": "2025-09-08",
+                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Observaciones": "Prueba de funcionamiento, operativo.",
+                  "Fotografias": []
+                }
+              ],
+              "nota": "",
+              "ultimaActualizacion": {
+                "year": 2026,
+                "month": 2,
+                "day": 19
+              },
+              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "RevisadoPor": "Dr. Juan Borja Murillo"
+            }
+          ],
+          "documentos": [
+            {
+              "titulo": "Web",
+              "url": "https://www.rohde-schwarz.com/es/productos/test-y-medida/osciloscopios/rs-rtc1000-oscilloscope_63493-515585.html"
+            },
+            {
+              "titulo": "Folleto del producto",
+              "url": "https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_common_library/dl_brochures_and_datasheets/pdf_1/RTC1000_bro_es_3607-4287-17_v0700.pdf"
+            },
+            {
+              "titulo": "Datasheet",
+              "url": "https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_common_library/dl_brochures_and_datasheets/pdf_1/RTC1000_dat_en_3607-4287-32_v0501.pdf"
+            },
+            {
+              "titulo": "Especificaciones",
+              "url": "https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/pdm/cl_brochures_and_datasheets/specifications/3607_4287_22/RTC1000_specs_en_3607-4287-22_v1000.pdf"
+            }
+          ]
+        },
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "1",
+          "NOMBRE DEL EQUIPO": "GENERADOR DE SEÑALES/FUNCIONES",
+          "COMENTARIOS": "Marca RIGOL, Modelo DG4062. Generador de formas de onda.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "Generador de Señales",
+            "Tipo de equipo:": "Instrumento",
+            "Fabricante": "Rigol",
+            "Marca": "RIGOL",
+            "Modelo": "DG4062"
+          },
+          "Fotografias": [
+            "https://www.rigol-uk.co.uk/jg/wp-content/uploads/2020/06/Rigol-DG4062-Function-Generator-Front.jpg",
+            "https://www.rigol-uk.co.uk/jg/wp-content/uploads/2020/06/Rigol-DG4000-Function-Generator-Side-768x543.jpg",
+            "https://www.rigol-uk.co.uk/jg/wp-content/uploads/2020/06/Rigol-DG4000-Function-Generator-Rear.jpg"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Sample rate",
+              "Descripcion": "500MSa/s"
+            },
+            {
+              "Caracteristica": "Vertical resolution",
+              "Descripcion": "14-bit"
+            },
+            {
+              "Caracteristica": "Phase noise",
+              "Descripcion": "<-115dBc/Hz @ 10kHz (f = 10MHz)"
+            },
+            {
+              "Caracteristica": "Supported modulation",
+              "Descripcion": "AM, FM, PM, ASK, FSK, PSK,BPSK, QPSK, 3FSK, 4FSK, OSK & PWM"
+            },
+            {
+              "Caracteristica": "Connectivity",
+              "Descripcion": "LAN(LXI), USB Host & Device"
+            },
+            {
+              "Caracteristica": "Frequency stability",
+              "Descripcion": "±2ppm"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Generación de señales eléctricas.",
+            "Instalaciones Requeridas": "Energía.",
+            "Partes": "Salidas BNC, Pantalla. Cable de poder. Cable BNC.",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [
+            {
+              "visible": true,
+              "infoEquipo": {
+                "Codigo Inventario Equipo": "RIGOL-01",
+                "FECHA DE ADQUISICIÓN": "2022",
+                "MODO DE ADQUISICIÓN": "Compra",
+                "Ubicación": "Estante 1"
+              },
+              "mantenimientos": [
+                {
+                  "visible": true,
+                  "Nro": 5,
+                  "Actividad realizada": "Inspección",
+                  "Fecha": "2022-11-24",
+                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
+                  "Observaciones": "Operativo.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 3,
+                  "Actividad realizada": "Inspección",
+                  "Fecha": "2023-10-03",
+                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
+                  "Observaciones": "Operativo.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 4,
+                  "Actividad realizada": "Inspección",
+                  "Fecha": "2024-11-05",
+                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
+                  "Observaciones": "Operativo.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 2,
+                  "Actividad realizada": "Mantenimiento",
+                  "Fecha": "2025-06-11",
+                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Observaciones": "Limpieza.",
+                  "Fotografias": []
+                },
+                {
+                  "visible": true,
+                  "Nro": 1,
+                  "Actividad realizada": "Inspección",
+                  "Fecha": "2025-11-18",
+                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
+                  "Observaciones": "Operativo.",
+                  "Fotografias": []
+                }
+              ],
+              "nota": "Actividades incluyen calibración y limpieza de equipos",
+              "ultimaActualizacion": {
+                "year": 2025,
+                "month": 12,
+                "day": 10
+              },
+              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "RevisadoPor": "Dr. Juan Borja Murillo"
+            }
+          ]
+        },
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "1",
+          "NOMBRE DEL EQUIPO": "MEDIDOR DE SEÑAL DE TV",
+          "COMENTARIOS": "Ruiyan RY-S200D Digital Signal Level Meter & DB Tester for CATV System.\nCapaz de medir MER, nivel de señal BER, poder del canal, V/A, C/N, FM, voltaje del tronco",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "Medidor de Campo",
+            "Tipo de equipo:": "Instrumento",
+            "Fabricante": "Ruiyan",
+            "Marca": "RUIYAN",
+            "Modelo": "RY-S200D"
+          },
+          "Fotografias": [
+            "https://m.media-amazon.com/images/I/81T-RC23azL._AC_SL400_.jpg",
+            "https://m.media-amazon.com/images/I/81sk+j9J3EL._AC_SY550_.jpg",
+            "https://m.media-amazon.com/images/I/811lEDOWTQL._AC_SY550_.jpg"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Alcance de frecuencia (DVB digital)",
+              "Descripcion": "5 ~ 870MHz"
+            },
+            {
+              "Caracteristica": "Modulación (DVB digital)",
+              "Descripcion": "DVB-C/ITU-T"
+            },
+            {
+              "Caracteristica": "Soporte (DVB digital)",
+              "Descripcion": " 64QAM/256QAM"
+            },
+            {
+              "Caracteristica": "Potencia media digital (DVB digital)",
+              "Descripcion": "30dBuV ~ 110dBuV"
+            },
+            {
+              "Caracteristica": "Precisión (DVB digital)",
+              "Descripcion": "+2dB"
+            },
+            {
+              "Caracteristica": "Alcance de frecuencia (TV analógica)",
+              "Descripcion": "46/5 ~ 870MHz"
+            },
+            {
+              "Caracteristica": "Nivel (TV analógica)",
+              "Descripcion": "20dBuV ~ 120dBuV"
+            },
+            {
+              "Caracteristica": "Precisión (TV analógica)",
+              "Descripcion": "+1.5dB"
+            },
+            {
+              "Caracteristica": "Escaneo de canales (TV analógica)",
+              "Descripcion": "150"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Medición de nivel de señal CATV.",
+            "Instalaciones Requeridas": "Batería / Red.",
+            "Partes": "Entrada RF, Pantalla.",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": []
+        },
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "1",
+          "NOMBRE DEL EQUIPO": "GENERADOR DE DATOS GENERALES",
+          "COMENTARIOS": "Generador de códigos generales Acute TD3008E. \nEl TD3008E cuenta con 8 canales independientes, cada uno de los cuales es capaz de generar señales digitales de forma independiente, lo que lo hace adecuado para pruebas de sistemas multicanal. Se utiliza para la emulación y reproducción de señales, y se puede controlar mediante comandos para establecer reglas de transmisión de señales. Permite importar diversos archivos de datos de fuentes de señales o editar formatos de señales.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "Generador de códigos digitales",
+            "Tipo de equipo:": "Travel Data",
+            "Fabricante": "Acute ",
+            "Marca": "ACUTE",
+            "Modelo": "TD3008E"
+          },
+          "Fotografias": [
+            "https://acutena.com/images/products/td3008e/main.webp",
+            "https://acutena.com/images/products/td3008e/2.webp",
+            "https://acutena.com/images/products/td3008e/3.webp",
+            "https://acutena.com/images/products/td3008e/4.webp",
+            "https://acutena.com/images/products/td3008e/5.webp",
+            "https://cdn.shopify.com/s/files/1/0752/4489/6557/files/731e579d584b8ffe4e7a65359354171c.webp?v=1751474612",
+            "https://cdn.shopify.com/s/files/1/0752/4489/6557/files/f046505a793b93351a8414c6c1af03d9.webp?v=1728476185",
+            "https://cdn.shopify.com/s/files/1/0752/4489/6557/files/6b50a887e74ca53c637e6e2e8a5b22a1_480x480.webp?v=1728317214",
+            "https://www.yoie.com.tw/files/TD3008E%20TD3116B%20TD3216B-%E8%A6%8F%E6%A0%BC.jpg"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Supported Operating Systems",
+              "Descripcion": "Windows 7/8/10/11 (64-bit)"
+            },
+            {
+              "Caracteristica": "Data Channels",
+              "Descripcion": "8"
+            },
+            {
+              "Caracteristica": "Event Channels",
+              "Descripcion": "16"
+            },
+            {
+              "Caracteristica": "Pattern Depth",
+              "Descripcion": "512Kb/ch"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "El TD3008E cuenta con 8 canales independientes, cada uno de los cuales es capaz de generar señales digitales de forma independiente, lo que lo hace adecuado para pruebas de sistemas multicanal. Se utiliza para la emulación y reproducción de señales, y se puede controlar mediante comandos para establecer reglas de transmisión de señales. Permite importar varios archivos de datos de fuentes de señales o editar formatos de señales.\n\nEs compatible con múltiples protocolos de comunicación, incluidos MIPI I3C, SVI3, SVID y muchos más. Se puede utilizar para probar y verificar diversas interfaces de comunicación para diferentes aplicaciones durante la fase de desarrollo. El generador de formas de onda digitales puede simular datos y transmitirlos a circuitos integrados para realizar pruebas de validación.",
+            "Instalaciones Requeridas": "",
+            "Partes": "TD3000 Main unit\nUSB 3.0 Cable\n18.5cm Lead Cable\nAux In/Out Cable\nGrippers",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [],
+          "documentos": [
+            {
+              "titulo": "Web",
+              "url": "https://acutena.com/products/td3008e"
+            },
+            {
+              "titulo": "User Manual (PDF)",
+              "url": "https://www.acute.com.tw/Download/Manual/DG_TD/DG_Manual_en.pdf"
+            },
+            {
+              "titulo": "Software: Acute USB 3.0 Driver",
+              "url": "https://assets.acutena-cdn.com/software/AcuteUSB3_Driver.zip"
+            },
+            {
+              "titulo": "Acute TD3000 Main Program",
+              "url": "https://assets.acutena-cdn.com/software/DG_TD3000_InstallPack_Intel_latest_x64.zip"
+            },
+            {
+              "titulo": "Datasheet",
+              "url": "https://www.acute.com.tw/Download/Catalog/Acute_data_generator_TD3000_en.pdf"
+            }
+          ]
+        },
+        {
+          "visible": true,
+          "Nº DE EQUIPOS": "1",
+          "NOMBRE DEL EQUIPO": "SONDA LÓGICA",
+          "COMENTARIOS": "R&S® RT-LZ03 8 Channel Logic Probe for RTC, RTB series scopes.",
+          "infoEquipo": {
+            "Denominacion Patrimonial": "Sonda Lógica",
+            "Tipo de equipo:": "Logic Probe",
+            "Fabricante": "Rohde & Schwarz",
+            "Marca": "Rohde & Schwarz",
+            "Modelo": "RT-LZ03"
+          },
+          "Fotografias": [
+            "https://imex.co.uk/WebRoot/Store15/Shops/20249b99-f30f-43a5-8f50-a5e2562eae4e/5CFE/0E2B/768B/468B/49A4/0A48/3535/458A/RT-LZ03_ml.jpg",
+            "https://assets.testequity.com/te1/product-images/large/26856.1_01_0722.jpg"
+          ],
+          "caracteristicas": [
+            {
+              "Caracteristica": "Input channels",
+              "Descripcion": "8"
+            },
+            {
+              "Caracteristica": "Max input frequency",
+              "Descripcion": "300 MHz (meas.)"
+            },
+            {
+              "Caracteristica": "Input impedance (DC input resistance)",
+              "Descripcion": "100 kilohm ﻿± 2 % (meas.)"
+            },
+            {
+              "Caracteristica": "Input impedance (Input capacitance)",
+              "Descripcion": "4 pF (meas.)"
+            },
+            {
+              "Caracteristica": "Min input voltage swing",
+              "Descripcion": "500 mV (Vpp) (meas.)"
+            },
+            {
+              "Caracteristica": "Max rated input voltage (Transient overvoltage)",
+              "Descripcion": "±40 V (Vp)"
+            },
+            {
+              "Caracteristica": "Use with",
+              "Descripcion": "R&S RTC1000, R&S RTB2000"
+            },
+            {
+              "Caracteristica": "Length of probe cable",
+              "Descripcion": "approx. 1 m (39 in)"
+            },
+            {
+              "Caracteristica": "Length of tip cables approx.",
+              "Descripcion": "160 mm (6.3 in)"
+            },
+            {
+              "Caracteristica": "Connector pin header",
+              "Descripcion": "26-pole"
+            },
+            {
+              "Caracteristica": "Attenuation",
+              "Descripcion": "1X, 10X"
+            }
+          ],
+          "ProcedimientoMantenimiento": {
+            "visible": true,
+            "Principio de Operacion": "Instrumento utilizado en electrónica digital para determinar el nivel lógico en los distintos puntos de un circuito, siempre que las variaciones en los mismos sean relativamente lentas. En caso contrario, en lugar de indicar estado lógico Alto o Bajo, indicará Oscilación o tren de pulsos.",
+            "Instalaciones Requeridas": "Requiere usarse junto con un osciloscopio de las series R&S RTC1000 o R&S RTB2000.",
+            "Partes": "RT-ZL03 logic probe\ntip cable (8)\nmini clip (8)\nlead, 6 cm (8)\nlead, 10 cm (2)\noperating manual",
+            "mantenimiento": {
+              "visible": true,
+              "preventivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              },
+              "correctivo": {
+                "enCadaUso": [],
+                "semanal": [],
+                "quincenal": [],
+                "mensual": [],
+                "bimestral": [],
+                "trimestral": [],
+                "semestral": [],
+                "anual": []
+              }
+            }
+          },
+          "HojasDeVidaEquipos": [],
+          "documentos": [
+            {
+              "titulo": "Probes and Accessories Brochure",
+              "url": "https://assets.testequity.com/te1/Documents/pdf/rs/Probes_and_accessories_bro_en_3606-8866-12_v1700.pdf"
+            },
+            {
+              "titulo": "RT-Zxx Standard Datasheet",
+              "url": "https://assets.testequity.com/te1/Documents/pdf/rs/RT-Zxx_Standard_dat-sw_en_3607-3851-22_v2200.pdf"
+            }
+          ]
+        },
+        {
+          "visible": false,
+          "Nº DE EQUIPOS": "1",
           "NOMBRE DEL EQUIPO": "SISTEMA DE PRUEBAS DE ANTENAS",
           "COMENTARIOS": "Antennas Lab. El laboratorio de «Antenas» se basa en la plataforma NI USRP / NI PXI. El software se desarrolla en el entorno de programación gráfica LabVIEW.\nEl laboratorio está destinado al estudio práctico de los patrones tradicionales de las antenas.\nIncluye Chasis PXI, Controlador, VNA 10MHz-6GHz, Generador RF y accesorios. ",
           "infoEquipo": {
@@ -403,7 +1018,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "1",
           "NOMBRE DEL EQUIPO": "VATÍMETRO",
           "COMENTARIOS": "Wattmeter Bird Electronic Corp, Modelo 43. Incluye 3 elementos insertables.\n\nUn instrumento portátil de inserción probado en el campo, diseñado para medir tanto la potencia CW directa como la reflejada en líneas de transmisión coaxiales bajo cualquier condición de carga. ",
@@ -1320,7 +1935,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "2",
           "NOMBRE DEL EQUIPO": "COMPUTADORA PERSONAL (CPU)",
           "COMENTARIOS": "Marca Lenovo, Modelo ThinkCentre 000ULS. RAM 8GB, 1TB HDD.",
@@ -1497,7 +2112,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "1",
           "NOMBRE DEL EQUIPO": "MONITOR",
           "COMENTARIOS": "Lenovo ThinkVision LT2423 - Monitor LCD - 24\"\" - 1920 x 1080 - TN - 250 cd/m2 - 1000:1 - 5 ms - altavoces - negro business",
@@ -1602,7 +2217,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "12",
           "NOMBRE DEL EQUIPO": "TECLADO",
           "COMENTARIOS": "",
@@ -1835,338 +2450,6 @@
       "equipos": [
         {
           "visible": true,
-          "Nº DE EQUIPOS": "1",
-          "NOMBRE DEL EQUIPO": "OSCILOSCOPIO",
-          "COMENTARIOS": "Osciloscopio de 100MHz con puntas de prueba.",
-          "infoEquipo": {
-            "Denominacion Patrimonial": "Osciloscopio",
-            "Tipo de equipo:": "Osciloscopio",
-            "Fabricante": "Rohde & Schwarz",
-            "Marca": "Rohde & Schwarz",
-            "Modelo": "RTC1002"
-          },
-          "Fotografias": [
-            "https://cdn.rohde-schwarz.com/image/products/test-and-measurement/oscilloscopes/rtc1000/rtc1000-oscilloscope-side-view-rohde-schwarz_200_2205_1024_576_1.jpg",
-            "https://cdn.rohde-schwarz.com/image/products/test-and-measurement/oscilloscopes/rtc1000/rtc1000-oscilloscope-front-view-rohde-schwarz_200_2203_1024_576_3.jpg"
-          ],
-          "caracteristicas": [
-            {
-              "Caracteristica": "Bandwidth",
-              "Descripcion": "100 MHz"
-            },
-            {
-              "Caracteristica": "Channels",
-              "Descripcion": "2"
-            },
-            {
-              "Caracteristica": "Max. memory depth",
-              "Descripcion": "2 Mpts"
-            },
-            {
-              "Caracteristica": "Sample rate",
-              "Descripcion": "2 Gsample"
-            }
-          ],
-          "ProcedimientoMantenimiento": {
-            "visible": true,
-            "Principio de Operacion": "Conectar la sonda al canal deseado, ajustar la escala vertical (voltaje) y horizontal (tiempo) mediante las perillas del panel frontal y presionar el botón \"Autoset\" para visualizar automáticamente la señal de forma estable en la pantalla.",
-            "Instalaciones Requeridas": "Energía: Enchufe de 100-240V con toma de tierra obligatoria.\nEspacio: Superficie plana y 10 cm libres atrás para que respire.\nSondas: Conectadas a los puertos BNC frontales y bien calibradas.\n",
-            "Partes": "Osciloscopio, puntas de prueba, cable de poder.",
-            "mantenimiento": {
-              "visible": true,
-              "preventivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [
-                  {
-                    "visible": true,
-                    "descripcion": {
-                      "title": "Verificación Operativa",
-                      "Prioridad": 1,
-                      "contenido": [
-                        "Verificar la integridad del cable de poder.",
-                        "Verificar la integridad de los conectores BNC.",
-                        "Ejecutar la función interna \"Self-Alignment\" (Autoajuste) desde el menú \"Setup\"."
-                      ]
-                    },
-                    "MONTO REF": {
-                      "currency": "S/.",
-                      "amount": "0"
-                    },
-                    "responsable": "Laboratorista"
-                  }
-                ],
-                "anual": [
-                  {
-                    "visible": true,
-                    "descripcion": {
-                      "title": "Limpieza, verificación y ajuste técnico.",
-                      "Prioridad": 1,
-                      "contenido": [
-                        "Limpiar el exterior con un paño seco y soplar aire comprimido en las rejillas de ventilación.",
-                        "Verificar la integridad del cable de poder y los conectores BNC.",
-                        "Ejecutar la función interna \"Self-Alignment\" (Autoajuste) desde el menú \"Setup\"."
-                      ]
-                    },
-                    "MONTO REF": {
-                      "currency": "S/.",
-                      "amount": "0"
-                    },
-                    "responsable": "Laboratorista"
-                  }
-                ]
-              },
-              "correctivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": [
-                  {
-                    "visible": true,
-                    "descripcion": {
-                      "title": "Diagnóstico y reparación de hardware/firmware.",
-                      "Prioridad": 1,
-                      "contenido": [
-                        "Identificar el código de error o falla física (ej. pantalla negra, puertos sin lectura).",
-                        "Actualizar o reinstalar el firmware desde el sitio oficial de Rohde & Schwarz.",
-                        "Sustitución de componentes internos dañados (fuente de poder o placa madre) en taller."
-                      ]
-                    },
-                    "MONTO REF": {
-                      "currency": "S/.",
-                      "amount": "3000"
-                    },
-                    "responsable": "Servicio técnico autorizado de Rohde & Schwarz."
-                  }
-                ]
-              }
-            }
-          },
-          "HojasDeVidaEquipos": [
-            {
-              "visible": true,
-              "infoEquipo": {
-                "Codigo Inventario Equipo": "",
-                "FECHA DE ADQUISICIÓN": "",
-                "MODO DE ADQUISICIÓN": "Compra",
-                "Ubicación": "Estante 1"
-              },
-              "mantenimientos": [
-                {
-                  "visible": true,
-                  "Nro": 3,
-                  "Actividad realizada": "Verificación Operativa",
-                  "Fecha": "2024-01-01",
-                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
-                  "Observaciones": "Prueba de funcionamiento, operativo.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 1,
-                  "Actividad realizada": "Verificación Operativa",
-                  "Fecha": "2024-09-16",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
-                  "Observaciones": "Prueba de funcionamiento, operativo.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 4,
-                  "Actividad realizada": "Verificación Operativa",
-                  "Fecha": "2025-03-14",
-                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
-                  "Observaciones": "Prueba de funcionamiento, operativo.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 2,
-                  "Actividad realizada": "Verificación Operativa",
-                  "Fecha": "2025-09-08",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
-                  "Observaciones": "Prueba de funcionamiento, operativo.",
-                  "Fotografias": []
-                }
-              ],
-              "nota": "",
-              "ultimaActualizacion": {
-                "year": 2026,
-                "month": 2,
-                "day": 19
-              },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
-              "RevisadoPor": "Dr. Juan Borja Murillo"
-            }
-          ],
-          "documentos": [
-            {
-              "titulo": "Web",
-              "url": "https://www.rohde-schwarz.com/es/productos/test-y-medida/osciloscopios/rs-rtc1000-oscilloscope_63493-515585.html"
-            },
-            {
-              "titulo": "Folleto del producto",
-              "url": "https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_common_library/dl_brochures_and_datasheets/pdf_1/RTC1000_bro_es_3607-4287-17_v0700.pdf"
-            },
-            {
-              "titulo": "Datasheet",
-              "url": "https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_common_library/dl_brochures_and_datasheets/pdf_1/RTC1000_dat_en_3607-4287-32_v0501.pdf"
-            },
-            {
-              "titulo": "Especificaciones",
-              "url": "https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/pdm/cl_brochures_and_datasheets/specifications/3607_4287_22/RTC1000_specs_en_3607-4287-22_v1000.pdf"
-            }
-          ]
-        },
-        {
-          "visible": true,
-          "Nº DE EQUIPOS": "1",
-          "NOMBRE DEL EQUIPO": "GENERADOR DE SEÑALES/FUNCIONES",
-          "COMENTARIOS": "Marca RIGOL, Modelo DG4062. Generador de formas de onda.",
-          "infoEquipo": {
-            "Denominacion Patrimonial": "Generador de Señales",
-            "Tipo de equipo:": "Instrumento",
-            "Fabricante": "Rigol",
-            "Marca": "RIGOL",
-            "Modelo": "DG4062"
-          },
-          "Fotografias": [
-            "https://www.rigol-uk.co.uk/jg/wp-content/uploads/2020/06/Rigol-DG4062-Function-Generator-Front.jpg",
-            "https://www.rigol-uk.co.uk/jg/wp-content/uploads/2020/06/Rigol-DG4000-Function-Generator-Side-768x543.jpg",
-            "https://www.rigol-uk.co.uk/jg/wp-content/uploads/2020/06/Rigol-DG4000-Function-Generator-Rear.jpg"
-          ],
-          "caracteristicas": [
-            {
-              "Caracteristica": "Sample rate",
-              "Descripcion": "500MSa/s"
-            },
-            {
-              "Caracteristica": "Vertical resolution",
-              "Descripcion": "14-bit"
-            },
-            {
-              "Caracteristica": "Phase noise",
-              "Descripcion": "<-115dBc/Hz @ 10kHz (f = 10MHz)"
-            },
-            {
-              "Caracteristica": "Supported modulation",
-              "Descripcion": "AM, FM, PM, ASK, FSK, PSK,BPSK, QPSK, 3FSK, 4FSK, OSK & PWM"
-            },
-            {
-              "Caracteristica": "Connectivity",
-              "Descripcion": "LAN(LXI), USB Host & Device"
-            },
-            {
-              "Caracteristica": "Frequency stability",
-              "Descripcion": "±2ppm"
-            }
-          ],
-          "ProcedimientoMantenimiento": {
-            "visible": true,
-            "Principio de Operacion": "Generación de señales eléctricas.",
-            "Instalaciones Requeridas": "Energía.",
-            "Partes": "Salidas BNC, Pantalla. Cable de poder. Cable BNC.",
-            "mantenimiento": {
-              "visible": true,
-              "preventivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              },
-              "correctivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              }
-            }
-          },
-          "HojasDeVidaEquipos": [
-            {
-              "visible": true,
-              "infoEquipo": {
-                "Codigo Inventario Equipo": "RIGOL-01",
-                "FECHA DE ADQUISICIÓN": "2022",
-                "MODO DE ADQUISICIÓN": "Compra",
-                "Ubicación": "Estante 1"
-              },
-              "mantenimientos": [
-                {
-                  "visible": true,
-                  "Nro": 5,
-                  "Actividad realizada": "Inspección",
-                  "Fecha": "2022-11-24",
-                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
-                  "Observaciones": "Operativo.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 3,
-                  "Actividad realizada": "Inspección",
-                  "Fecha": "2023-10-03",
-                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
-                  "Observaciones": "Operativo.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 4,
-                  "Actividad realizada": "Inspección",
-                  "Fecha": "2024-11-05",
-                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
-                  "Observaciones": "Operativo.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 2,
-                  "Actividad realizada": "Mantenimiento",
-                  "Fecha": "2025-06-11",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
-                  "Observaciones": "Limpieza.",
-                  "Fotografias": []
-                },
-                {
-                  "visible": true,
-                  "Nro": 1,
-                  "Actividad realizada": "Inspección",
-                  "Fecha": "2025-11-18",
-                  "Responsable": "Ing. Edgar Jamil Valdez Funes",
-                  "Observaciones": "Operativo.",
-                  "Fotografias": []
-                }
-              ],
-              "nota": "Actividades incluyen calibración y limpieza de equipos",
-              "ultimaActualizacion": {
-                "year": 2025,
-                "month": 12,
-                "day": 10
-              },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
-              "RevisadoPor": "Dr. Juan Borja Murillo"
-            }
-          ]
-        },
-        {
-          "visible": true,
           "Nº DE EQUIPOS": "3",
           "NOMBRE DEL EQUIPO": "KIT DE FIBRA ÓPTICA",
           "COMENTARIOS": "Maletín Herramientas para encabezamiento de Fibra Óptica. Modelo HT-K3032. Incluye herramientas de conectorización.",
@@ -2386,289 +2669,6 @@
               },
               "HechoPor": "Bach. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
-            }
-          ]
-        },
-        {
-          "visible": true,
-          "Nº DE EQUIPOS": "1",
-          "NOMBRE DEL EQUIPO": "MEDIDOR DE SEÑAL DE TV",
-          "COMENTARIOS": "Ruiyan RY-S200D Digital Signal Level Meter & DB Tester for CATV System.\nCapaz de medir MER, nivel de señal BER, poder del canal, V/A, C/N, FM, voltaje del tronco",
-          "infoEquipo": {
-            "Denominacion Patrimonial": "Medidor de Campo",
-            "Tipo de equipo:": "Instrumento",
-            "Fabricante": "Ruiyan",
-            "Marca": "RUIYAN",
-            "Modelo": "RY-S200D"
-          },
-          "Fotografias": [
-            "https://m.media-amazon.com/images/I/81T-RC23azL._AC_SL400_.jpg",
-            "https://m.media-amazon.com/images/I/81sk+j9J3EL._AC_SY550_.jpg",
-            "https://m.media-amazon.com/images/I/811lEDOWTQL._AC_SY550_.jpg"
-          ],
-          "caracteristicas": [
-            {
-              "Caracteristica": "Alcance de frecuencia (DVB digital)",
-              "Descripcion": "5 ~ 870MHz"
-            },
-            {
-              "Caracteristica": "Modulación (DVB digital)",
-              "Descripcion": "DVB-C/ITU-T"
-            },
-            {
-              "Caracteristica": "Soporte (DVB digital)",
-              "Descripcion": " 64QAM/256QAM"
-            },
-            {
-              "Caracteristica": "Potencia media digital (DVB digital)",
-              "Descripcion": "30dBuV ~ 110dBuV"
-            },
-            {
-              "Caracteristica": "Precisión (DVB digital)",
-              "Descripcion": "+2dB"
-            },
-            {
-              "Caracteristica": "Alcance de frecuencia (TV analógica)",
-              "Descripcion": "46/5 ~ 870MHz"
-            },
-            {
-              "Caracteristica": "Nivel (TV analógica)",
-              "Descripcion": "20dBuV ~ 120dBuV"
-            },
-            {
-              "Caracteristica": "Precisión (TV analógica)",
-              "Descripcion": "+1.5dB"
-            },
-            {
-              "Caracteristica": "Escaneo de canales (TV analógica)",
-              "Descripcion": "150"
-            }
-          ],
-          "ProcedimientoMantenimiento": {
-            "visible": true,
-            "Principio de Operacion": "Medición de nivel de señal CATV.",
-            "Instalaciones Requeridas": "Batería / Red.",
-            "Partes": "Entrada RF, Pantalla.",
-            "mantenimiento": {
-              "visible": true,
-              "preventivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              },
-              "correctivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              }
-            }
-          },
-          "HojasDeVidaEquipos": []
-        },
-        {
-          "visible": true,
-          "Nº DE EQUIPOS": "1",
-          "NOMBRE DEL EQUIPO": "GENERADOR DE DATOS GENERALES",
-          "COMENTARIOS": "Generador de códigos generales Acute TD3008E. \nEl TD3008E cuenta con 8 canales independientes, cada uno de los cuales es capaz de generar señales digitales de forma independiente, lo que lo hace adecuado para pruebas de sistemas multicanal. Se utiliza para la emulación y reproducción de señales, y se puede controlar mediante comandos para establecer reglas de transmisión de señales. Permite importar diversos archivos de datos de fuentes de señales o editar formatos de señales.",
-          "infoEquipo": {
-            "Denominacion Patrimonial": "Generador de códigos digitales",
-            "Tipo de equipo:": "Travel Data",
-            "Fabricante": "Acute ",
-            "Marca": "ACUTE",
-            "Modelo": "TD3008E"
-          },
-          "Fotografias": [
-            "https://acutena.com/images/products/td3008e/main.webp",
-            "https://acutena.com/images/products/td3008e/2.webp",
-            "https://acutena.com/images/products/td3008e/3.webp",
-            "https://acutena.com/images/products/td3008e/4.webp",
-            "https://acutena.com/images/products/td3008e/5.webp",
-            "https://cdn.shopify.com/s/files/1/0752/4489/6557/files/731e579d584b8ffe4e7a65359354171c.webp?v=1751474612",
-            "https://cdn.shopify.com/s/files/1/0752/4489/6557/files/f046505a793b93351a8414c6c1af03d9.webp?v=1728476185",
-            "https://cdn.shopify.com/s/files/1/0752/4489/6557/files/6b50a887e74ca53c637e6e2e8a5b22a1_480x480.webp?v=1728317214",
-            "https://www.yoie.com.tw/files/TD3008E%20TD3116B%20TD3216B-%E8%A6%8F%E6%A0%BC.jpg"
-          ],
-          "caracteristicas": [
-            {
-              "Caracteristica": "Supported Operating Systems",
-              "Descripcion": "Windows 7/8/10/11 (64-bit)"
-            },
-            {
-              "Caracteristica": "Data Channels",
-              "Descripcion": "8"
-            },
-            {
-              "Caracteristica": "Event Channels",
-              "Descripcion": "16"
-            },
-            {
-              "Caracteristica": "Pattern Depth",
-              "Descripcion": "512Kb/ch"
-            }
-          ],
-          "ProcedimientoMantenimiento": {
-            "visible": true,
-            "Principio de Operacion": "El TD3008E cuenta con 8 canales independientes, cada uno de los cuales es capaz de generar señales digitales de forma independiente, lo que lo hace adecuado para pruebas de sistemas multicanal. Se utiliza para la emulación y reproducción de señales, y se puede controlar mediante comandos para establecer reglas de transmisión de señales. Permite importar varios archivos de datos de fuentes de señales o editar formatos de señales.\n\nEs compatible con múltiples protocolos de comunicación, incluidos MIPI I3C, SVI3, SVID y muchos más. Se puede utilizar para probar y verificar diversas interfaces de comunicación para diferentes aplicaciones durante la fase de desarrollo. El generador de formas de onda digitales puede simular datos y transmitirlos a circuitos integrados para realizar pruebas de validación.",
-            "Instalaciones Requeridas": "",
-            "Partes": "TD3000 Main unit\nUSB 3.0 Cable\n18.5cm Lead Cable\nAux In/Out Cable\nGrippers",
-            "mantenimiento": {
-              "visible": true,
-              "preventivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              },
-              "correctivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              }
-            }
-          },
-          "HojasDeVidaEquipos": [],
-          "documentos": [
-            {
-              "titulo": "Web",
-              "url": "https://acutena.com/products/td3008e"
-            },
-            {
-              "titulo": "TD3000 Manual",
-              "url": "https://assets.acutena-cdn.com/manuals/Acute_data_generator_TravelData_manual_en.pdf"
-            },
-            {
-              "titulo": "Software: Acute USB 3.0 Driver",
-              "url": "https://assets.acutena-cdn.com/software/AcuteUSB3_Driver.zip"
-            },
-            {
-              "titulo": "Acute TD3000 Main Program",
-              "url": "https://assets.acutena-cdn.com/software/DG_TD3000_InstallPack_Intel_latest_x64.zip"
-            },
-            {
-              "titulo": "Datasheet",
-              "url": "https://www.yoie.com.tw/v_comm/inc/product_file_download.asp?customer_id=2828&lang=2&id=618276&file_name=p_190506_03399.pdf"
-            }
-          ]
-        },
-        {
-          "visible": true,
-          "Nº DE EQUIPOS": "1",
-          "NOMBRE DEL EQUIPO": "SONDA LÓGICA",
-          "COMENTARIOS": "R&S® RT-LZ03 8 Channel Logic Probe for RTC, RTB series scopes.",
-          "infoEquipo": {
-            "Denominacion Patrimonial": "Sonda Lógica",
-            "Tipo de equipo:": "Logic Probe",
-            "Fabricante": "Rohde & Schwarz",
-            "Marca": "Rohde & Schwarz",
-            "Modelo": "RT-LZ03"
-          },
-          "Fotografias": [
-            "https://imex.co.uk/WebRoot/Store15/Shops/20249b99-f30f-43a5-8f50-a5e2562eae4e/5CFE/0E2B/768B/468B/49A4/0A48/3535/458A/RT-LZ03_ml.jpg",
-            "https://assets.testequity.com/te1/product-images/large/26856.1_01_0722.jpg"
-          ],
-          "caracteristicas": [
-            {
-              "Caracteristica": "Input channels",
-              "Descripcion": "8"
-            },
-            {
-              "Caracteristica": "Max input frequency",
-              "Descripcion": "300 MHz (meas.)"
-            },
-            {
-              "Caracteristica": "Input impedance (DC input resistance)",
-              "Descripcion": "100 kilohm ﻿± 2 % (meas.)"
-            },
-            {
-              "Caracteristica": "Input impedance (Input capacitance)",
-              "Descripcion": "4 pF (meas.)"
-            },
-            {
-              "Caracteristica": "Min input voltage swing",
-              "Descripcion": "500 mV (Vpp) (meas.)"
-            },
-            {
-              "Caracteristica": "Max rated input voltage (Transient overvoltage)",
-              "Descripcion": "±40 V (Vp)"
-            },
-            {
-              "Caracteristica": "Use with",
-              "Descripcion": "R&S RTC1000, R&S RTB2000"
-            },
-            {
-              "Caracteristica": "Length of probe cable",
-              "Descripcion": "approx. 1 m (39 in)"
-            },
-            {
-              "Caracteristica": "Length of tip cables approx.",
-              "Descripcion": "160 mm (6.3 in)"
-            },
-            {
-              "Caracteristica": "Connector pin header",
-              "Descripcion": "26-pole"
-            },
-            {
-              "Caracteristica": "Attenuation",
-              "Descripcion": "1X, 10X"
-            }
-          ],
-          "ProcedimientoMantenimiento": {
-            "visible": true,
-            "Principio de Operacion": "Instrumento utilizado en electrónica digital para determinar el nivel lógico en los distintos puntos de un circuito, siempre que las variaciones en los mismos sean relativamente lentas. En caso contrario, en lugar de indicar estado lógico Alto o Bajo, indicará Oscilación o tren de pulsos.",
-            "Instalaciones Requeridas": "Requiere usarse junto con un osciloscopio de las series R&S RTC1000 o R&S RTB2000.",
-            "Partes": "RT-ZL03 logic probe\ntip cable (8)\nmini clip (8)\nlead, 6 cm (8)\nlead, 10 cm (2)\noperating manual",
-            "mantenimiento": {
-              "visible": true,
-              "preventivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              },
-              "correctivo": {
-                "enCadaUso": [],
-                "semanal": [],
-                "quincenal": [],
-                "mensual": [],
-                "bimestral": [],
-                "trimestral": [],
-                "semestral": [],
-                "anual": []
-              }
-            }
-          },
-          "HojasDeVidaEquipos": [],
-          "documentos": [
-            {
-              "titulo": "Probes and Accessories Brochure",
-              "url": "https://assets.testequity.com/te1/Documents/pdf/rs/Probes_and_accessories_bro_en_3606-8866-12_v1700.pdf"
-            },
-            {
-              "titulo": "RT-Zxx Standard Datasheet",
-              "url": "https://assets.testequity.com/te1/Documents/pdf/rs/RT-Zxx_Standard_dat-sw_en_3607-3851-22_v2200.pdf"
             }
           ]
         },
@@ -3993,7 +3993,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "8",
           "NOMBRE DEL EQUIPO": "COMPUTADORA PERSONAL (CPU)",
           "COMENTARIOS": "Marca Lenovo, Modelo ThinkCentre 000ULS. RAM 8GB, 1TB HDD.",
@@ -4124,7 +4124,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "8",
           "NOMBRE DEL EQUIPO": "MONITOR",
           "COMENTARIOS": "Lenovo ThinkVision LT2423 - Monitor LCD - 24\"\" - 1920 x 1080 - TN - 250 cd/m2 - 1000:1 - 5 ms - altavoces - negro business",
@@ -4229,7 +4229,7 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "Nº DE EQUIPOS": "8",
           "NOMBRE DEL EQUIPO": "TECLADO",
           "COMENTARIOS": "",
