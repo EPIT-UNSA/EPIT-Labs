@@ -936,7 +936,7 @@ export default function EquipmentDetailModal({
                               ) : (
                                 <div className="space-y-1 flex-1">
                                   <h4 className="font-semibold text-theme-text-primary text-xs flex items-center gap-1.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-rose-800"></span>
+                                    <span className="w-1.5 h-1.5 rounded-full bg-theme-brand"></span>
                                     {item.descripcion.title}
                                   </h4>
                                   <ul className="list-disc pl-5 text-[11px] text-theme-text-muted space-y-0.5">
