@@ -193,11 +193,11 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                 {/* Cover Image */}
                 <div className="relative h-48 bg-slate-100 overflow-hidden">
                   <img 
-                    src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600"} 
+                    src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1602052577122-f73b9710adba?auto=format&fit=crop&q=80&w=600"} 
                     alt={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105 cursor-zoom-in hover:opacity-90"
                     referrerPolicy="no-referrer"
-                    onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600")}
+                    onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1602052577122-f73b9710adba?auto=format&fit=crop&q=80&w=600")}
                   />
                   
                   {/* Category Badge */}
