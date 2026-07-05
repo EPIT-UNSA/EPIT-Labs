@@ -239,7 +239,7 @@ export default function App() {
     if (!editedData || globalSearch.trim().length < 2) return [];
 
     const results: {
-      type: "lab" | "equipo" | "software";
+      type: "lab" | "equipo" | "software" | "general" | "campo";
       title: string;
       subtitle: string;
       path: string;
@@ -248,69 +248,376 @@ export default function App() {
 
     const query = globalSearch.toLowerCase();
 
+    // Helper to check if string contains query
+    const matches = (val: any): boolean => {
+      if (val === null || val === undefined) return false;
+      return String(val).toLowerCase().includes(query);
+    };
+
+    // 1. General University Fields (Home)
+    const genFields = [
+      { key: "NOMBRE DE LA UNIVERSIDAD", label: "Universidad" },
+      { key: "ABREVIATURA UNIVERSIDAD", label: "Sigla Universidad" },
+      { key: "FACULTAD", label: "Facultad" },
+      { key: "ESCUELA", label: "Escuela" },
+      { key: "PROGRAMA DE ESTUDIOS", label: "Programa de Estudios" },
+      { key: "ABREVIATURA PROGRAMA DE ESTUDIOS", label: "Abreviatura Programa" },
+      { key: "CODIGO PROGRAMA", label: "Código de Programa" },
+      { key: "CODIGO LOCAL", label: "Código Local" }
+    ];
+
+    genFields.forEach(f => {
+      const val = (editedData as any)[f.key];
+      if (matches(val) || matches(f.label)) {
+        results.push({
+          type: "general",
+          title: String(val || ""),
+          subtitle: `${f.label} de la institución`,
+          path: "/"
+        });
+      }
+    });
+
+    // 1.1 Directors
+    if (Array.isArray(editedData["DIRECTOR DEL PROGRAMA DE ESTUDIOS"])) {
+      editedData["DIRECTOR DEL PROGRAMA DE ESTUDIOS"].forEach(d => {
+        if (d.visible === false && !isEditMode) return;
+        if (matches(d.NOMBRE) || matches(d.Nombre) || matches(d.Periodo) || matches(d["NUMERO DE CONTACTO"]) || matches(d.CORREO)) {
+          results.push({
+            type: "general",
+            title: d.NOMBRE || d.Nombre || "Director",
+            subtitle: `Director de Programa • Periodo: ${d.Periodo || ""}`,
+            path: "/"
+          });
+        }
+      });
+    }
+
+    // 1.2 Departamento Académico
+    const dept = editedData["DEPARTAMENTO ACADÉMICO"];
+    if (dept && typeof dept === "object") {
+      const typedDept = dept as any;
+      if (typedDept.visible !== false || isEditMode) {
+        if (matches(typedDept.NOMBRE)) {
+          results.push({
+            type: "general",
+            title: typedDept.NOMBRE || "",
+            subtitle: "Departamento Académico",
+            path: "/"
+          });
+        }
+        if (Array.isArray(typedDept.Director)) {
+          typedDept.Director.forEach((d: any) => {
+            if (d.visible === false && !isEditMode) return;
+            if (matches(d.NOMBRE) || matches(d.Nombre) || matches(d.Periodo) || matches(d["NUMERO DE CONTACTO"]) || matches(d.CORREO)) {
+              results.push({
+                type: "general",
+                title: d.NOMBRE || d.Nombre || "Director",
+                subtitle: `Director de Depto. Académico • Periodo: ${d.Periodo || ""}`,
+                path: "/"
+              });
+            }
+          });
+        }
+      }
+    }
+
+    // 1.3 General Documents
+    if (Array.isArray(editedData.documentos)) {
+      editedData.documentos.forEach(doc => {
+        if (matches(doc.titulo) || matches(doc.url)) {
+          results.push({
+            type: "general",
+            title: doc.titulo,
+            subtitle: `Documento general: ${doc.url}`,
+            path: "/"
+          });
+        }
+      });
+    }
+
+    // 2. Labs
     (editedData.labs || []).forEach((lab, labIdx) => {
       const isLabVisible = isEditMode || lab.visible !== false;
       if (!isLabVisible) return;
 
-      const labCode = lab.infoAmbiente?.["CÓDIGO DE LABORATORIO O TALLER"];
-      const labName = lab.infoAmbiente?.["NOMBRE DEL LABORATORIO O TALLER"];
+      const labCode = lab.infoAmbiente?.["CÓDIGO DE LABORATORIO O TALLER"] || "";
+      const labName = lab.infoAmbiente?.["NOMBRE DEL LABORATORIO O TALLER"] || "";
+      const labRef = `Lab: ${labName || labCode}`;
 
-      // Match Lab Title
-      if (labName?.toLowerCase().includes(query) || labCode?.toLowerCase().includes(query)) {
-        results.push({
-          type: "lab",
-          title: labName || "",
-          subtitle: `Código de ambiente: ${labCode || ""}`,
-          path: `/lab/${labCode || ""}/info`
-        });
-      }
+      // Check infoAmbiente fields
+      const infoAmb = lab.infoAmbiente || {};
+      const infoFields = [
+        { key: "NUMERO DE LABORATORIO O TALLER", label: "Número de Laboratorio" },
+        { key: "CÓDIGO DE LABORATORIO O TALLER", label: "Código de Laboratorio" },
+        { key: "NOMBRE DEL LABORATORIO O TALLER", label: "Nombre de Laboratorio" },
+        { key: "TIPO DE LABORATORIO O TALLER", label: "Tipo de Laboratorio" },
+        { key: "CODIGO PATRIMONIO AMBIENTE", label: "Código Patrimonial Ambiente" },
+        { key: "REFERENCIA DE UBICACIÓN", label: "Ubicación" },
+        { key: "ÁREA (m2)", label: "Área" },
+        { key: "AFORO", label: "Aforo" },
+        { key: "COMENTARIOS", label: "Comentarios" }
+      ];
 
-      // Match Equipments
-      (lab.equipos || []).forEach((eq, eqIdx) => {
-        const isEqVisible = isEditMode || eq.visible !== false;
-        if (!isEqVisible) return;
-
-        const eqName = eq["NOMBRE DEL_EQUIPO"] || eq["NOMBRE DEL EQUIPO"];
-        const eqModel = eq.infoEquipo?.Modelo;
-        const eqBrand = eq.infoEquipo?.Marca;
-        const eqInv = eq.HojasDeVidaEquipos?.[0]?.infoEquipo?.["Codigo Inventario Equipo"] || "";
-
-        if (
-          eqName?.toLowerCase().includes(query) || 
-          eqModel?.toLowerCase().includes(query) || 
-          eqBrand?.toLowerCase().includes(query) ||
-          eqInv?.toLowerCase().includes(query)
-        ) {
+      infoFields.forEach(f => {
+        const val = (infoAmb as any)[f.key];
+        if (matches(val)) {
           results.push({
-            type: "equipo",
-            title: eqName || "",
-            subtitle: `Instrumento en ${labCode || ""} • Marca: ${eqBrand || ""} | Mod: ${eqModel || ""}`,
-            path: `/lab/${labCode || ""}/equipos`,
-            extra: { labIdx, eqIdx }
+            type: "lab",
+            title: `${f.label}: ${val}`,
+            subtitle: labRef,
+            path: `/lab/${labCode}/info`
           });
         }
       });
 
-      // Match Software
-      (lab.software || []).forEach((sw) => {
+      // Programs that use lab
+      const programs = infoAmb["PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER"];
+      if (Array.isArray(programs)) {
+        programs.forEach(prog => {
+          if (matches(prog)) {
+            results.push({
+              type: "lab",
+              title: `Programa: ${prog}`,
+              subtitle: `Usa el ${labRef}`,
+              path: `/lab/${labCode}/info`
+            });
+          }
+        });
+      }
+
+      // Responsable
+      const resp = infoAmb["RESPONSABLE DEL LABORATORIO O TALLER"];
+      if (resp && (resp.visible !== false || isEditMode)) {
+        if (matches(resp.NOMBRE) || matches(resp["NUMERO DE CONTACTO"]) || matches(resp.CORREO)) {
+          results.push({
+            type: "lab",
+            title: resp.NOMBRE || "Responsable",
+            subtitle: `Responsable del ${labRef}`,
+            path: `/lab/${labCode}/info`
+          });
+        }
+      }
+
+      // Personal Técnico
+      if (Array.isArray(infoAmb["PERSONAL TÉCNICO"])) {
+        infoAmb["PERSONAL TÉCNICO"].forEach(t => {
+          if (t.visible === false && !isEditMode) return;
+          if (matches(t.NOMBRE) || matches(t["NUMERO DE CONTACTO"]) || matches(t.CORREO)) {
+            results.push({
+              type: "lab",
+              title: t.NOMBRE || "Personal Técnico",
+              subtitle: `Personal Técnico del ${labRef}`,
+              path: `/lab/${labCode}/info`
+            });
+          }
+        });
+      }
+
+      // CBC Verification staff
+      const cbc = infoAmb["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"];
+      if (cbc && (cbc.visible !== false || isEditMode)) {
+        if (matches(cbc.NOMBRE) || matches(cbc["NUMERO DE CONTACTO"]) || matches(cbc.CORREO)) {
+          results.push({
+            type: "lab",
+            title: cbc.NOMBRE || "Verificador CBC III",
+            subtitle: `Personal Verificador CBC III en ${labRef}`,
+            path: `/lab/${labCode}/info`
+          });
+        }
+      }
+
+      // Lab documents
+      if (Array.isArray(infoAmb.documentos)) {
+        infoAmb.documentos.forEach(doc => {
+          if (matches(doc.titulo) || matches(doc.url)) {
+            results.push({
+              type: "lab",
+              title: doc.titulo,
+              subtitle: `Documento de ${labRef}`,
+              path: `/lab/${labCode}/info`
+            });
+          }
+        });
+      }
+
+      // Equipos
+      (lab.equipos || []).forEach((eq, eqIdx) => {
+        const isEqVisible = isEditMode || eq.visible !== false;
+        if (!isEqVisible) return;
+
+        const eqName = eq["NOMBRE DEL EQUIPO"] || eq["NOMBRE DEL_EQUIPO"] || "";
+        const eqRef = `Equipo: ${eqName} (en ${labCode})`;
+
+        if (matches(eqName) || matches(eq.COMENTARIOS)) {
+          results.push({
+            type: "equipo",
+            title: eqName,
+            subtitle: `${eq.COMENTARIOS || "Equipo de laboratorio"} • ${labRef}`,
+            path: `/lab/${labCode}/equipos`,
+            extra: { labIdx, eqIdx }
+          });
+        }
+
+        // infoEquipo fields
+        const infoEq = eq.infoEquipo || {};
+        const infoEqFields = [
+          { key: "Denominacion Patrimonial", label: "Denominación Patrimonial" },
+          { key: "Tipo de equipo:", label: "Tipo de Equipo" },
+          { key: "Fabricante", label: "Fabricante" },
+          { key: "Marca", label: "Marca" },
+          { key: "Modelo", label: "Modelo" },
+          { key: "Dimensiones", label: "Dimensiones" },
+          { key: "Codigo Inventario Equipo", label: "Código Inventario" },
+          { key: "FECHA DE ADQUISICIÓN", label: "Fecha de Adquisición" },
+          { key: "MODO DE ADQUISICIÓN", label: "Modo de Adquisición" },
+          { key: "Ubicación", label: "Ubicación interna" }
+        ];
+
+        infoEqFields.forEach(f => {
+          const val = (infoEq as any)[f.key];
+          if (matches(val)) {
+            results.push({
+              type: "equipo",
+              title: `${f.label}: ${val}`,
+              subtitle: eqRef,
+              path: `/lab/${labCode}/equipos`,
+              extra: { labIdx, eqIdx }
+            });
+          }
+        });
+
+        // características
+        if (Array.isArray(eq.caracteristicas)) {
+          eq.caracteristicas.forEach(c => {
+            if (matches(c.Caracteristica) || matches(c.Descripcion)) {
+              results.push({
+                type: "equipo",
+                title: `${c.Caracteristica || "Característica"}: ${c.Descripcion || ""}`,
+                subtitle: eqRef,
+                path: `/lab/${labCode}/equipos`,
+                extra: { labIdx, eqIdx }
+              });
+            }
+          });
+        }
+
+        // ProcedimientoMantenimiento
+        const pm = eq.ProcedimientoMantenimiento || {};
+        if (pm.visible !== false || isEditMode) {
+          if (matches(pm["Principio de Operacion"])) {
+            results.push({
+              type: "equipo",
+              title: "Principio de Operación",
+              subtitle: eqRef,
+              path: `/lab/${labCode}/equipos`,
+              extra: { labIdx, eqIdx }
+            });
+          }
+          if (matches(pm["Instalaciones Requeridas"])) {
+            results.push({
+              type: "equipo",
+              title: "Instalaciones Requeridas",
+              subtitle: eqRef,
+              path: `/lab/${labCode}/equipos`,
+              extra: { labIdx, eqIdx }
+            });
+          }
+          if (matches(pm.Partes)) {
+            results.push({
+              type: "equipo",
+              title: "Partes/Módulos del Equipo",
+              subtitle: eqRef,
+              path: `/lab/${labCode}/equipos`,
+              extra: { labIdx, eqIdx }
+            });
+          }
+        }
+
+        // HojasDeVidaEquipos
+        if (Array.isArray(eq.HojasDeVidaEquipos)) {
+          eq.HojasDeVidaEquipos.forEach(hv => {
+            if (hv.visible === false && !isEditMode) return;
+            if (matches(hv.nota) || matches(hv.HechoPor) || matches(hv.RevisadoPor)) {
+              results.push({
+                type: "equipo",
+                title: `Hoja de Vida: ${hv.nota || "Detalle"}`,
+                subtitle: eqRef,
+                path: `/lab/${labCode}/equipos`,
+                extra: { labIdx, eqIdx }
+              });
+            }
+
+            // hv infoEquipo
+            const hvInfo = hv.infoEquipo || {};
+            const hvInfoFields = [
+              { key: "N° de serie", label: "N° de Serie" },
+              { key: "Codigo Patrimonial", label: "Código Patrimonial" },
+              { key: "Año Fabricación", label: "Año de Fabricación" },
+              { key: "Estado de conservación", label: "Estado de Conservación" },
+              { key: "Estado de uso", label: "Estado de Uso" }
+            ];
+            hvInfoFields.forEach(f => {
+              const val = (hvInfo as any)[f.key];
+              if (matches(val)) {
+                results.push({
+                  type: "equipo",
+                  title: `Hoja Vida • ${f.label}: ${val}`,
+                  subtitle: eqRef,
+                  path: `/lab/${labCode}/equipos`,
+                  extra: { labIdx, eqIdx }
+                });
+              }
+            });
+
+            // hv mantenimientos log
+            if (Array.isArray(hv.mantenimientos)) {
+              hv.mantenimientos.forEach(m => {
+                if (m.visible === false && !isEditMode) return;
+                if (matches(m["Actividad realizada"]) || matches(m.Responsable) || matches(m.Observaciones)) {
+                  results.push({
+                    type: "equipo",
+                    title: `Mantenimiento: ${m["Actividad realizada"] || "Actividad"}`,
+                    subtitle: `${eqRef} • Obs: ${m.Observaciones || ""}`,
+                    path: `/lab/${labCode}/equipos`,
+                    extra: { labIdx, eqIdx }
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+
+      // Software
+      (lab.software || []).forEach(sw => {
         const isSwVisible = isEditMode || sw.visible !== false;
         if (!isSwVisible) return;
 
-        const swName = sw["NOMBRE DEL SOFTWARE"];
-        const swType = sw["TIPO DE LICENCIA"];
+        const swName = sw["NOMBRE DEL SOFTWARE"] || "";
+        const swRef = `Software: ${swName} (en ${labCode})`;
 
-        if (swName?.toLowerCase().includes(query) || swType?.toLowerCase().includes(query)) {
+        if (matches(swName) || matches(sw["TIPO DE LICENCIA"]) || matches(sw.VERSIÓN) || matches(sw.COMENTARIOS)) {
           results.push({
             type: "software",
-            title: swName || "",
-            subtitle: `Software en ${labCode || ""} • Licencias: ${sw["Nº DE LICENCIAS"] || ""} (${swType || ""})`,
-            path: `/lab/${labCode || ""}/software`
+            title: swName,
+            subtitle: `Licencia: ${sw["TIPO DE LICENCIA"] || ""} | Versión: ${sw.VERSIÓN || ""} • ${labRef}`,
+            path: `/lab/${labCode}/software`
           });
         }
       });
     });
 
-    return results.slice(0, 8); // Max 8 matches
+    // Deduplicate results by path + title + subtitle
+    const seen = new Set<string>();
+    const uniqueResults = results.filter(r => {
+      const key = `${r.path}-${r.title}-${r.subtitle}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    return uniqueResults.slice(0, 10); // Max 10 matches
   }, [editedData, globalSearch, isEditMode]);
 
   // Export JSON payload trigger
