@@ -328,7 +328,7 @@ export default function Sidebar({
           )}
           
           <div className="space-y-0.5">
-            {data.contacto?.enlaces?.slice(0, 3).map((link, idx) => (
+            {data.contacto?.enlaces?.slice(0, 6).map((link, idx) => (
               <a
                 key={idx}
                 href={link.url || "#"}
