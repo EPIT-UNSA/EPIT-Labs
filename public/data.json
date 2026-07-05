@@ -81,9 +81,9 @@
         "SERVICIO DE INTERNET (SI/NO)": "Sí",
         "ÁREA (m2)": "62,87 m2",
         "AFORO": "20",
-        "COMENTARIOS": "Equipado con instrumental de alta frecuencia, sistema de entrenamiento de antenas NI y componentes de RF.",
+        "COMENTARIOS": "Equipado con sistema de entrenamiento de microondas, sistema de entrenamiento de microcintas, sistema de entrenamiento de comunicaciones satelitales, sistema de entrenamiento de antenas Lucas Nülle y componentes de RF.",
         "RESPONSABLE DEL LABORATORIO O TALLER": {
-          "visible": true,
+          "visible": false,
           "NOMBRE": "Mg. Ebert Gabriel San Roman Castillo",
           "NUMERO DE CONTACTO": "938 293 738",
           "CORREO": "esanroman@unsa.edu.pe"
@@ -96,14 +96,14 @@
             "CORREO": "tcasani@unsa.edu.pe"
           },
           {
-            "visible": true,
+            "visible": false,
             "NOMBRE": "Ing. Edgar Jamil Valdez Funes",
             "NUMERO DE CONTACTO": "996 998 889",
             "CORREO": "evaldezf@unsa.edu.pe"
           }
         ],
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
-          "visible": true,
+          "visible": false,
           "NOMBRE": "Ing. Manuel Julio Aguilar Quiroz",
           "NUMERO DE CONTACTO": "958 665 604",
           "CORREO": "maguilarqui@unsa.edu.pe"
@@ -167,6 +167,20 @@
           "https://i.ibb.co/nMkGZRsp/IMG-20260701-185424468-HDR.jpg",
           "https://i.ibb.co/GvvLWm0y/IMG-20260701-185349254-HDR-AE.jpg",
           "https://i.ibb.co/2QDSMND/IMG-20260630-162231998-HDR-AE.jpg"
+        ],
+        "documentos": [
+          {
+            "titulo": "Inventario Labs EPIT 2025",
+            "url": "https://drive.google.com/file/d/17ofmrieiZDuo529L37Vd3hQ0FrxzxqpN/view?usp=sharing"
+          },
+          {
+            "titulo": "Software EPIT 2025",
+            "url": "https://drive.google.com/file/d/1rM0jIwxnmuT_MiGkA8_V_vZln5sod09k/view?usp=sharing"
+          },
+          {
+            "titulo": "Cursos con prácticas y_o laboratorios dictados por el DAIE en los Planes de Estudios de la EPIT",
+            "url": "https://docs.google.com/spreadsheets/d/13DK7umFNGtaVzT2RUT_wsj7dujhWEzL0/edit?usp=sharing&ouid=102725324819298634110&rtpof=true&sd=true"
+          }
         ]
       },
       "equipos": [
