@@ -8,6 +8,7 @@ export interface Director {
   NOMBRE?: string;
   Nombre?: string; // Standardize name keys
   "NUMERO DE CONTACTO"?: string;
+  "CORREO"?: string;
   Periodo?: string;
   Fotografias?: string[];
 }
@@ -27,12 +28,14 @@ export interface Responsable {
   visible: boolean;
   NOMBRE: string;
   "NUMERO DE CONTACTO": string;
+  "CORREO": string;
 }
 
 export interface PersonalTecnico {
   visible: boolean;
   NOMBRE: string;
   "NUMERO DE CONTACTO": string;
+  "CORREO": string;
 }
 
 export interface InfoAmbiente {
