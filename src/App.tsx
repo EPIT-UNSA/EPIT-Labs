@@ -64,7 +64,7 @@ export default function App() {
   // Theme state
   const [themeMode, setThemeMode] = useState<"light" | "dark">(getInitialThemeMode);
   const [themeColor, setThemeColor] = useState<string>(
-    () => localStorage.getItem("epit-theme-color") || "#b91c1c"
+    () => localStorage.getItem("epit-theme-color") || "#00a7d1"
   );
 
   // Apply theme mode class to documentElement
@@ -515,7 +515,7 @@ export default function App() {
             onThemeModeChange={setThemeMode}
             themeColor={themeColor}
             onThemeColorChange={setThemeColor}
-            onResetThemeColor={() => setThemeColor("#b91c1c")}
+            onResetThemeColor={() => setThemeColor("#00a7d1")}
           />
         )}
 

@@ -206,8 +206,8 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                         <button
                           onClick={() => onUpdate(["labs", labIdx, "visible"], !lab.visible)}
                           className={`p-1.5 rounded-md text-xs transition shadow-sm cursor-pointer ${lab.visible !== false
-                              ? "bg-emerald-600 hover:bg-emerald-500 text-white"
-                              : "bg-amber-600 hover:bg-amber-500 text-white"
+                            ? "bg-emerald-600 hover:bg-emerald-500 text-white"
+                            : "bg-amber-600 hover:bg-amber-500 text-white"
                             }`}
                           title="Alternar Visibilidad"
                         >
@@ -370,8 +370,8 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                         <button
                           onClick={() => handleDirectorChange(idx, "visible", !director.visible)}
                           className={`p-1.5 rounded border text-xs transition cursor-pointer ${director.visible !== false
-                              ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
-                              : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                            ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
+                            : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
                             }`}
                           title="Alternar Visibilidad"
                         >
@@ -458,8 +458,8 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                       <button
                         onClick={() => onUpdate(["DEPARTAMENTO ACADÉMICO", "visible"], !data["DEPARTAMENTO ACADÉMICO"].visible)}
                         className={`p-1.5 rounded border text-xs transition cursor-pointer ${data["DEPARTAMENTO ACADÉMICO"].visible !== false
-                            ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
-                            : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                          ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
+                          : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
                           }`}
                       >
                         {data["DEPARTAMENTO ACADÉMICO"].visible !== false ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
@@ -528,7 +528,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                 <div className="flex justify-between items-center border-b border-theme-border-medium pb-3">
                   <h2 className="text-lg font-display font-semibold text-theme-text-primary flex items-center gap-2">
                     <FileText className="w-5 h-5 text-theme-brand" />
-                    Documentos Técnicos y SST
+                    Documentos y Enlaces de Referencia
                   </h2>
                   {isEditMode && (
                     <button
@@ -545,6 +545,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                   {(data.documentos || []).map((doc, idx) => (
                     <div
                       key={idx}
+                      title={doc.titulo || "Documento Técnico"}
                       className="flex items-center justify-between p-3 rounded-lg hover:bg-theme-hover border border-theme-border-light transition-colors duration-200 group"
                     >
                       <div className="flex-1 min-w-0 pr-4">

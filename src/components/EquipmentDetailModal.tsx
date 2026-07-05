@@ -290,7 +290,7 @@ export default function EquipmentDetailModal({
             onClick={() => setActiveTab("ficha")}
             className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
               activeTab === "ficha"
-                ? "border-rose-900 text-theme-brand"
+                ? "border-theme-brand text-theme-brand"
                 : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
               }`}
           >
@@ -302,7 +302,7 @@ export default function EquipmentDetailModal({
               onClick={() => setActiveTab("preventivo")}
               className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
                 activeTab === "preventivo"
-                  ? "border-rose-900 text-theme-brand"
+                  ? "border-theme-brand text-theme-brand"
                   : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
                 }`}
             >
@@ -315,7 +315,7 @@ export default function EquipmentDetailModal({
               onClick={() => setActiveTab("correctivo")}
               className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
                 activeTab === "correctivo"
-                  ? "border-rose-900 text-theme-brand"
+                  ? "border-theme-brand text-theme-brand"
                   : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
                 }`}
             >
@@ -328,7 +328,7 @@ export default function EquipmentDetailModal({
               onClick={() => setActiveTab("hojavida")}
               className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
                 activeTab === "hojavida"
-                  ? "border-rose-900 text-theme-brand"
+                  ? "border-theme-brand text-theme-brand"
                   : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
                 }`}
             >
@@ -349,7 +349,7 @@ export default function EquipmentDetailModal({
                 <div className="space-y-4 pt-4 border-t border-theme-border-light">
                   <div className="flex justify-between items-center">
                     <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
-                      <Camera className="w-4 h-4 text-rose-800" />
+                      <Camera className="w-4 h-4 focus:border-theme-brand text-theme-brand" />
                       Fotografías del Equipo
                     </h3>
                     {isEditMode && (
@@ -373,7 +373,7 @@ export default function EquipmentDetailModal({
                         <div key={imgIdx} className="flex gap-2 items-center">
                           <input
                             type="text"
-                            className="flex-1 bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-rose-900"
+                            className="flex-1 bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                             value={url || ""}
                             onChange={(e) => updateEquip(draft => {
                               if (!draft.Fotografias) draft.Fotografias = [];
@@ -507,7 +507,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={infoEquipo["Denominacion Patrimonial"] || ""}
                                   onChange={(e) => updateEquip(draft => {
                                     if (!draft.infoEquipo) draft.infoEquipo = {};
@@ -525,7 +525,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={infoEquipo["Tipo de equipo:"] || ""}
                                   onChange={(e) => updateEquip(draft => {
                                     if (!draft.infoEquipo) draft.infoEquipo = {};
@@ -543,7 +543,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={equipment["Nº DE EQUIPOS"] || ""}
                                   onChange={(e) => updateEquip(draft => { draft["Nº DE EQUIPOS"] = e.target.value; })}
                                 />
@@ -558,7 +558,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={equipment.HojasDeVidaEquipos?.[0]?.infoEquipo?.Ubicación || ""}
                                   onChange={(e) => updateEquip(draft => {
                                     if (!draft.HojasDeVidaEquipos) draft.HojasDeVidaEquipos = [];
@@ -587,7 +587,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={infoEquipo.Marca || ""}
                                   onChange={(e) => updateEquip(draft => {
                                     if (!draft.infoEquipo) draft.infoEquipo = {};
@@ -605,7 +605,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={infoEquipo.Modelo || ""}
                                   onChange={(e) => updateEquip(draft => {
                                     if (!draft.infoEquipo) draft.infoEquipo = {};
@@ -623,7 +623,7 @@ export default function EquipmentDetailModal({
                               {isEditMode ? (
                                 <input
                                   type="text"
-                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-rose-900 focus:outline-none"
+                                  className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                   value={infoEquipo.Fabricante || ""}
                                   onChange={(e) => updateEquip(draft => {
                                     if (!draft.infoEquipo) draft.infoEquipo = {};
@@ -646,13 +646,13 @@ export default function EquipmentDetailModal({
               {(isEditMode || equipment.ProcedimientoMantenimiento?.["Principio de Operacion"]) && (
                 <div className="space-y-3">
                   <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
-                    <Settings className="w-4 h-4 text-rose-800" />
+                    <Settings className="w-4 h-4 focus:border-theme-brand text-theme-brand" />
                     Principio de Operación
                   </h3>
                   {isEditMode ? (
                     <textarea
                       rows={4}
-                      className="w-full bg-theme-card border border-theme-border-medium rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
+                      className="w-full bg-theme-card border border-theme-border-medium rounded px-3 py-2 text-sm focus:border-theme-brand text-theme-text-secondary focus:outline-none font-mono"
                       value={equipment.ProcedimientoMantenimiento?.["Principio de Operacion"] || ""}
                       onChange={(e) => updateEquip(draft => {
                         if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
@@ -672,13 +672,13 @@ export default function EquipmentDetailModal({
               {(isEditMode || equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"]) && (
                 <div className="space-y-3">
                   <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
-                    <Wrench className="w-4 h-4 text-rose-800" />
+                    <Wrench className="w-4 h-4 focus:border-theme-brand text-theme-brand" />
                     Instalaciones Requeridas
                   </h3>
                   {isEditMode ? (
                     <textarea
                       rows={3}
-                      className="w-full bg-theme-card border border-theme-border-medium rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
+                      className="w-full bg-theme-card border border-theme-border-medium rounded px-3 py-2 text-sm focus:border-theme-brand text-theme-text-secondary focus:outline-none font-mono"
                       value={equipment.ProcedimientoMantenimiento?.["Instalaciones Requeridas"] || ""}
                       onChange={(e) => updateEquip(draft => {
                         if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
@@ -698,13 +698,13 @@ export default function EquipmentDetailModal({
               {(isEditMode || equipment.ProcedimientoMantenimiento?.Partes) && (
                 <div className="space-y-3">
                   <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-rose-800" />
+                    <FileText className="w-4 h-4 focus:border-theme-brand text-theme-brand" />
                     Partes y Subsistemas
                   </h3>
                   {isEditMode ? (
                     <textarea
                       rows={5}
-                      className="w-full bg-theme-card border border-theme-border-medium rounded px-3 py-2 text-sm focus:border-rose-900 focus:outline-none font-mono"
+                      className="w-full bg-theme-card border border-theme-border-medium rounded px-3 py-2 text-sm focus:border-theme-brand text-theme-text-secondary focus:outline-none font-mono"
                       value={equipment.ProcedimientoMantenimiento?.Partes || ""}
                       onChange={(e) => updateEquip(draft => {
                         if (!draft.ProcedimientoMantenimiento) draft.ProcedimientoMantenimiento = { visible: true };
@@ -744,13 +744,13 @@ export default function EquipmentDetailModal({
                             <div className="space-y-1">
                               <input
                                 type="text"
-                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-bold text-theme-text-primary focus:outline-none"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-bold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                                 value={char.Caracteristica}
                                 onChange={(e) => updateEquip(draft => { draft.caracteristicas[idx].Caracteristica = e.target.value; })}
                               />
                               <input
                                 type="text"
-                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs text-theme-text-secondary focus:outline-none"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs text-theme-text-secondary focus:outline-none focus:border-theme-brand"
                                 value={char.Descripcion}
                                 onChange={(e) => updateEquip(draft => { draft.caracteristicas[idx].Descripcion = e.target.value; })}
                               />
@@ -788,7 +788,7 @@ export default function EquipmentDetailModal({
                 <div className="space-y-3 pt-4 border-t border-theme-border-light">
                   <div className="flex justify-between items-center">
                     <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-rose-800" />
+                      <FileText className="w-4 h-4 focus:border-theme-brand text-theme-brand" />
                       Documentos y Enlaces de Referencia
                     </h3>
                     {isEditMode && (
@@ -806,13 +806,13 @@ export default function EquipmentDetailModal({
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {(equipment.documentos || []).map((doc, idx) => (
-                      <div key={idx} className="p-3.5 rounded-lg bg-theme-page border border-theme-border-light flex justify-between items-start">
+                      <div title={doc.titulo || "Documento Técnico"} key={idx} className="p-3.5 rounded-lg bg-theme-page border border-theme-border-light flex justify-between items-start">
                         <div className="space-y-1.5 flex-1 min-w-0 pr-2">
                           {isEditMode ? (
                             <div className="space-y-1.5">
                               <input
                                 type="text"
-                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-semibold focus:outline-none"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                                 value={doc.titulo || ""}
                                 onChange={(e) => updateEquip(draft => {
                                   if (!draft.documentos) draft.documentos = [];
@@ -822,7 +822,7 @@ export default function EquipmentDetailModal({
                               />
                               <input
                                 type="text"
-                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs text-theme-text-muted focus:outline-none font-mono"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs text-theme-text-muted focus:outline-none font-mono focus:border-theme-brand text-theme-text-secondary"
                                 value={doc.url || ""}
                                 onChange={(e) => updateEquip(draft => {
                                   if (!draft.documentos) draft.documentos = [];
@@ -836,7 +836,7 @@ export default function EquipmentDetailModal({
                               href={doc.url || "#"}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-xs font-semibold text-theme-brand hover:text-rose-700 transition"
+                              className="flex items-center gap-2 text-xs font-semibold text-theme-brand hover:text-theme-brand transition"
                             >
                               <span className="truncate">{doc.titulo || "Documento sin título"}</span>
                               <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
@@ -888,7 +888,7 @@ export default function EquipmentDetailModal({
                 return (
                   <div key={cronKey} className="space-y-3 p-4 rounded-xl border border-theme-border-light bg-theme-page/50">
                     <div className="flex justify-between items-center border-b border-theme-border-light pb-2">
-                      <span className="font-display font-bold text-sm text-rose-950 uppercase tracking-wider">
+                      <span className="font-display font-bold text-sm text-theme-brand uppercase tracking-wider">
                         Intervalo: {cronKey.replace(/([A-Z])/g, " $1")}
                       </span>
                       {isEditMode && (
@@ -919,7 +919,7 @@ export default function EquipmentDetailModal({
                                 <div className="space-y-1.5 flex-1">
                                   <input
                                     type="text"
-                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                                     value={item.descripcion.title}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.preventivo as any)[cronKey];
@@ -929,7 +929,7 @@ export default function EquipmentDetailModal({
                                   />
                                   <input
                                     type="text"
-                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-[11px] focus:outline-none"
+                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-[11px] focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                     value={item.descripcion.contenido.join("\n")}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.preventivo as any)[cronKey];
@@ -983,7 +983,7 @@ export default function EquipmentDetailModal({
                                 {isEditMode ? (
                                   <input
                                     type="text"
-                                    className="bg-theme-page px-1 rounded border border-theme-border-medium"
+                                    className="bg-theme-page px-1 rounded border border-theme-border-medium focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                     value={item.responsable}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.preventivo as any)[cronKey];
@@ -1000,7 +1000,7 @@ export default function EquipmentDetailModal({
                                 {isEditMode ? (
                                   <input
                                     type="text"
-                                    className="bg-theme-page px-1 rounded border border-theme-border-medium w-16 text-center"
+                                    className="bg-theme-page px-1 rounded border border-theme-border-medium w-16 text-center focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                     value={item["MONTO REF"]?.amount || "-"}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.preventivo as any)[cronKey];
@@ -1043,7 +1043,7 @@ export default function EquipmentDetailModal({
                 return (
                   <div key={cronKey} className="space-y-3 p-4 rounded-xl border border-theme-border-light bg-theme-page/50">
                     <div className="flex justify-between items-center border-b border-theme-border-light pb-2">
-                      <span className="font-display font-bold text-sm text-rose-950 uppercase tracking-wider">
+                      <span className="font-display font-bold text-sm text-theme-brand uppercase tracking-wider">
                         Protocolo ante fallas: {cronKey.replace(/([A-Z])/g, " $1")}
                       </span>
                       {isEditMode && (
@@ -1074,7 +1074,7 @@ export default function EquipmentDetailModal({
                                 <div className="space-y-1.5 flex-1">
                                   <input
                                     type="text"
-                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                                     value={item.descripcion.title}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.correctivo as any)[cronKey];
@@ -1084,7 +1084,7 @@ export default function EquipmentDetailModal({
                                   />
                                   <input
                                     type="text"
-                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-[11px] focus:outline-none"
+                                    className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-[11px] focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                     value={item.descripcion.contenido.join("\n")}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.correctivo as any)[cronKey];
@@ -1138,7 +1138,7 @@ export default function EquipmentDetailModal({
                                 {isEditMode ? (
                                   <input
                                     type="text"
-                                    className="bg-theme-page px-1 rounded border border-theme-border-medium"
+                                    className="bg-theme-page px-1 rounded border border-theme-border-medium focus:border-theme-brand text-theme-text-secondary focus:outline-none"
                                     value={item.responsable}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.correctivo as any)[cronKey];
@@ -1155,7 +1155,7 @@ export default function EquipmentDetailModal({
                                 {isEditMode ? (
                                   <input
                                     type="text"
-                                    className="bg-theme-page px-1 rounded border border-theme-border-medium w-16 text-center"
+                                    className="bg-theme-page px-1 rounded border border-theme-border-medium w-16 text-center focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                     value={item["MONTO REF"]?.amount || "-"}
                                     onChange={(e) => updateEquip(draft => {
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.correctivo as any)[cronKey];
@@ -1209,7 +1209,7 @@ export default function EquipmentDetailModal({
                       onClick={() => setSelectedUnitIdx(uIdx)}
                       className={`px-3 py-1.5 rounded text-xs font-semibold border transition ${
                         selectedUnitIdx === uIdx
-                          ? "bg-rose-900 border-rose-900 text-white"
+                          ? "focus:outline-none focus:border-theme-brand text-theme-text-primary bg-theme-brand-light"
                           : "bg-theme-page border-theme-border-medium text-theme-text-secondary hover:bg-theme-hover"
                         }`}
                     >
@@ -1250,7 +1250,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["Codigo Inventario Equipo"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1268,7 +1268,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["Codigo Patrimonial"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1286,7 +1286,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["N° de serie"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1304,7 +1304,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit.Ubicación || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1322,7 +1322,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["FECHA DE ADQUISICIÓN"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1340,7 +1340,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["MODO DE ADQUISICIÓN"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1358,7 +1358,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["Año Fabricación"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1375,7 +1375,7 @@ export default function EquipmentDetailModal({
                           <span className="text-theme-text-muted block">Estado de Conservación</span>
                           {isEditMode ? (
                             <select
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["Estado de conservación"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1397,7 +1397,7 @@ export default function EquipmentDetailModal({
                           <span className="text-theme-text-muted block">Estado de Uso</span>
                           {isEditMode ? (
                             <select
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-rose-900 font-semibold"
+                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-1 focus:outline-none focus:border-theme-brand text-theme-text-secondary font-semibold"
                               value={infoUnit["Estado de uso"] || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.infoEquipo) {
@@ -1455,7 +1455,7 @@ export default function EquipmentDetailModal({
                                   {isEditMode ? (
                                     <input
                                       type="text"
-                                      className="bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                                      className="bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none focus:border-theme-brand text-theme-text-primary"
                                       value={log["Actividad realizada"] || ""}
                                       onChange={(e) => updateEquip(draft => {
                                         if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.mantenimientos?.[logIdx]) {
@@ -1473,7 +1473,7 @@ export default function EquipmentDetailModal({
                                     {isEditMode ? (
                                       <input
                                         type="date"
-                                        className="bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px]"
+                                        className="bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px] focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                         value={log.Fecha || ""}
                                         onChange={(e) => updateEquip(draft => {
                                           if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.mantenimientos?.[logIdx]) {
@@ -1517,7 +1517,7 @@ export default function EquipmentDetailModal({
                                   {isEditMode ? (
                                     <textarea
                                       rows={2}
-                                      className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-1 text-xs focus:outline-none focus:border-rose-900"
+                                      className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-1 text-xs focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                       value={log.Observaciones || ""}
                                       onChange={(e) => updateEquip(draft => {
                                         if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.mantenimientos?.[logIdx]) {
@@ -1536,7 +1536,7 @@ export default function EquipmentDetailModal({
                                     {isEditMode ? (
                                       <input
                                         type="text"
-                                        className="bg-theme-page px-1 rounded border border-theme-border-medium"
+                                        className="bg-theme-page px-1 rounded border border-theme-border-medium focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                                         value={log.Responsable || ""}
                                         onChange={(e) => updateEquip(draft => {
                                           if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]?.mantenimientos?.[logIdx]) {
@@ -1570,7 +1570,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="bg-theme-card px-1.5 py-0.5 rounded border border-theme-border-medium text-xs text-theme-text-secondary w-full focus:outline-none focus:border-rose-900"
+                              className="bg-theme-card px-1.5 py-0.5 rounded border border-theme-border-medium text-xs text-theme-text-secondary w-full focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                               value={unit.HechoPor || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]) {
@@ -1587,7 +1587,7 @@ export default function EquipmentDetailModal({
                           {isEditMode ? (
                             <input
                               type="text"
-                              className="bg-theme-card px-1.5 py-0.5 rounded border border-theme-border-medium text-xs text-theme-text-secondary w-full focus:outline-none focus:border-rose-900"
+                              className="bg-theme-card px-1.5 py-0.5 rounded border border-theme-border-medium text-xs text-theme-text-secondary w-full focus:outline-none focus:border-theme-brand text-theme-text-secondary"
                               value={unit.RevisadoPor || ""}
                               onChange={(e) => updateEquip(draft => {
                                 if (draft.HojasDeVidaEquipos?.[selectedUnitIdx]) {

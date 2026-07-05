@@ -308,7 +308,7 @@ export default function Sidebar({
                 </div>
               </div>
 
-              {themeColor !== "#b91c1c" && (
+              {themeColor !== "#00a7d1" && (
                 <button
                   onClick={onResetThemeColor}
                   className="p-1 rounded text-theme-text-muted hover:text-theme-brand hover:bg-theme-hover transition cursor-pointer"
