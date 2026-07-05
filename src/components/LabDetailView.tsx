@@ -234,26 +234,25 @@ export default function LabDetailView({
   return (
     <div className="space-y-8 animate-fade-in">
 
-      {/* Lab Hero Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-200/10 text-white shadow p-6 md:p-8">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-theme-brand to-theme-brand-hover border border-theme-border-medium/10 text-white shadow p-6 md:p-8 transition-colors duration-200">
+        <div className="absolute inset-0">
           <img
             src={info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800"}
             alt={info["NOMBRE DEL LABORATORIO O TALLER"]}
-            className="w-full h-full object-cover filter blur-sm cursor-zoom-in"
+            className="w-full h-full object-cover cursor-zoom-in"
             referrerPolicy="no-referrer"
             onClick={() => onZoomImage(info.Fotografias?.[0] || "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=800")}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/40"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
 
         {/* Lab meta header info */}
         <div className="relative z-10 max-w-4xl space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-xs font-bold text-red-400 bg-red-950/40 border border-red-900/40 px-2.5 py-0.5 rounded uppercase tracking-wider">
+            <span className="font-mono text-xs font-bold text-white bg-theme-card/20 border border-white/10 px-2.5 py-0.5 rounded uppercase tracking-wider">
               {info["CÓDIGO DE LABORATORIO O TALLER"]}
             </span>
-            <span className="text-xs text-slate-400">•</span>
+            <span className="text-xs text-theme-text-tertiary">•</span>
             <span className="text-xs font-bold tracking-wider uppercase text-slate-300 font-mono">
               {info["TIPO DE LABORATORIO O TALLER"]}
             </span>
@@ -261,7 +260,7 @@ export default function LabDetailView({
 
           {isEditMode ? (
             <textarea
-              className="w-full bg-white/10 border border-white/20 rounded px-3 py-1.5 text-xl md:text-2xl font-display font-bold text-white focus:outline-none focus:border-white/50"
+              className="w-full bg-theme-card/10 border border-white/20 rounded px-3 py-1.5 text-xl md:text-2xl font-display font-bold text-white focus:outline-none focus:border-white/50"
               rows={2}
               value={info["NOMBRE DEL LABORATORIO O TALLER"] || ""}
               onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "NOMBRE DEL LABORATORIO O TALLER"], e.target.value)}
@@ -280,15 +279,15 @@ export default function LabDetailView({
       </div>
 
       {/* Navigation tabs inside specific lab */}
-      <div className="flex border-b border-slate-200 overflow-x-auto gap-2">
+      <div className="flex border-b border-theme-border-medium overflow-x-auto gap-2">
         {tabs.map(tab => (
           <button
             key={tab.id}
             onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}/${tab.id}`)}
             className={`py-3 px-5 text-sm font-semibold border-b-2 transition duration-200 whitespace-nowrap cursor-pointer ${
               subSection === tab.id
-              ? "border-red-700 text-red-700 font-bold"
-              : "border-transparent text-slate-500 hover:text-slate-800"
+              ? "border-red-700 text-theme-brand font-bold"
+              : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
               }`}
           >
             {tab.label}
@@ -323,9 +322,9 @@ export default function LabDetailView({
 
               {/* Galería de Fotos del Ambiente */}
               {hasPhotos && (
-                <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                <div className="bg-theme-card rounded-xl p-6 border border-theme-border-light shadow-sm space-y-4">
+                  <div className="flex justify-between items-center border-b border-theme-border-light pb-3">
+                    <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
                       <Camera className="w-4 h-4 text-rose-800" />
                       Galería del Ambiente
                     </h3>
@@ -345,13 +344,13 @@ export default function LabDetailView({
 
                   {/* Edit URL mode */}
                   {isEditMode && (info.Fotografias || []).length > 0 && (
-                    <div className="space-y-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Enlaces de Fotos (URLs):</span>
+                    <div className="space-y-2 bg-theme-page p-3 rounded-lg border border-theme-border-medium">
+                      <span className="text-[10px] font-bold text-theme-text-tertiary uppercase tracking-wider block">Enlaces de Fotos (URLs):</span>
                       {(info.Fotografias || []).map((url: string, imgIdx: number) => (
                         <div key={imgIdx} className="flex gap-2 items-center">
                           <input
                             type="text"
-                            className="flex-1 bg-white border border-slate-200 rounded px-2 py-1 text-xs font-mono focus:outline-none"
+                            className="flex-1 bg-theme-card border border-theme-border-medium rounded px-2 py-1 text-xs font-mono focus:outline-none"
                             value={url || ""}
                             onChange={(e) => {
                               const updated = [...(info.Fotografias || [])];
@@ -365,7 +364,7 @@ export default function LabDetailView({
                               const updated = (info.Fotografias || []).filter((_: any, i: number) => i !== imgIdx);
                               onUpdate(["labs", labIndex, "infoAmbiente", "Fotografias"], updated);
                             }}
-                            className="p-1 text-slate-400 hover:text-red-600 transition"
+                            className="p-1 text-theme-text-tertiary hover:text-theme-brand transition"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
@@ -393,7 +392,7 @@ export default function LabDetailView({
                               <div
                                 key={photoIdx}
                                 style={{ display: isActive ? "flex" : "none" }}
-                                className="relative group rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm aspect-video items-center justify-center p-1 cursor-zoom-in"
+                                className="relative group rounded-xl overflow-hidden border border-theme-border-light bg-theme-page shadow-sm aspect-video items-center justify-center p-1 cursor-zoom-in"
                                 onClick={() => onZoomImage(validPhotos, photoIdx)}
                               >
                                 <img
@@ -414,33 +413,33 @@ export default function LabDetailView({
                           })}
 
                           {validPhotos.length === 0 && (
-                            <div className="col-span-full text-center py-6 text-slate-400 text-xs">
+                            <div className="col-span-full text-center py-6 text-theme-text-tertiary text-xs">
                               No hay fotografías registradas de este ambiente.
                             </div>
                           )}
                         </div>
 
                         {totalPages > 1 && (
-                          <div className="flex items-center justify-between border-t border-slate-100 pt-4 mt-2">
-                            <span className="text-xs text-slate-500 font-medium">
+                          <div className="flex items-center justify-between border-t border-theme-border-light pt-4 mt-2">
+                            <span className="text-xs text-theme-text-muted font-medium">
                               Mostrando {photoPage * 5 + 1} - {Math.min((photoPage + 1) * 5, validPhotos.length)} de {validPhotos.length} fotos
                             </span>
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => handlePageChange(photoPage - 1)}
                                 disabled={photoPage === 0}
-                                className="px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 disabled:opacity-40 disabled:hover:bg-slate-50 rounded-lg text-xs font-semibold border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                                className="px-3 py-1.5 bg-theme-page hover:bg-theme-hover text-theme-text-secondary disabled:opacity-40 disabled:hover:bg-theme-page rounded-lg text-xs font-semibold border border-theme-border-medium transition cursor-pointer flex items-center gap-1"
                               >
                                 <ChevronLeft className="w-3.5 h-3.5" />
                                 Anterior
                               </button>
-                              <span className="text-xs font-mono font-bold text-slate-600 px-2">
+                              <span className="text-xs font-mono font-bold text-theme-text-secondary px-2">
                                 {photoPage + 1} / {totalPages}
                               </span>
                               <button
                                 onClick={() => handlePageChange(photoPage + 1)}
                                 disabled={photoPage === totalPages - 1}
-                                className="px-3 py-1.5 bg-slate-50 hover:bg-slate-100 text-slate-700 disabled:opacity-40 disabled:hover:bg-slate-50 rounded-lg text-xs font-semibold border border-slate-200 transition cursor-pointer flex items-center gap-1"
+                                className="px-3 py-1.5 bg-theme-page hover:bg-theme-hover text-theme-text-secondary disabled:opacity-40 disabled:hover:bg-theme-page rounded-lg text-xs font-semibold border border-theme-border-medium transition cursor-pointer flex items-center gap-1"
                               >
                                 Siguiente
                                 <ChevronRight className="w-3.5 h-3.5" />
@@ -456,58 +455,58 @@ export default function LabDetailView({
 
               {/* Environment Metrics Grid */}
               {hasMetrics && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-theme-page p-5 rounded-xl border border-theme-border-light">
                   {showCodAmbiente && (
                     <div>
-                      <span className="text-[11px] text-slate-400 font-medium block">Código Ambiente</span>
+                      <span className="text-[11px] text-theme-text-tertiary font-medium block">Código Ambiente</span>
                       {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
                           value={info["CODIGO PATRIMONIO AMBIENTE"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "CODIGO PATRIMONIO AMBIENTE"], e.target.value)}
                         />
                       ) : (
-                        <strong className="text-slate-800 font-mono text-sm">{info["CODIGO PATRIMONIO AMBIENTE"]}</strong>
+                        <strong className="text-theme-text-primary font-mono text-sm">{info["CODIGO PATRIMONIO AMBIENTE"]}</strong>
                       )}
                     </div>
                   )}
                   {showAforo && (
                     <div>
-                      <span className="text-[11px] text-slate-400 font-medium block">Capacidad Aforo</span>
+                      <span className="text-[11px] text-theme-text-tertiary font-medium block">Capacidad Aforo</span>
                       {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
                           value={info.AFORO || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "AFORO"], e.target.value)}
                         />
                       ) : (
-                        <strong className="text-slate-800 text-sm">{info.AFORO} personas</strong>
+                        <strong className="text-theme-text-primary text-sm">{info.AFORO} personas</strong>
                       )}
                     </div>
                   )}
                   {showArea && (
                     <div>
-                      <span className="text-[11px] text-slate-400 font-medium block">Área Física (m²)</span>
+                      <span className="text-[11px] text-theme-text-tertiary font-medium block">Área Física (m²)</span>
                       {isEditMode ? (
                         <input
                           type="text"
-                          className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold focus:outline-none"
                           value={info["ÁREA (m2)"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "ÁREA (m2)"], e.target.value)}
                         />
                       ) : (
-                        <strong className="text-slate-800 text-sm">{info["ÁREA (m2)"]}</strong>
+                        <strong className="text-theme-text-primary text-sm">{info["ÁREA (m2)"]}</strong>
                       )}
                     </div>
                   )}
                   {showInternet && (
                     <div>
-                      <span className="text-[11px] text-slate-400 font-medium block">Acceso a Internet</span>
+                      <span className="text-[11px] text-theme-text-tertiary font-medium block">Acceso a Internet</span>
                       {isEditMode ? (
                         <select
-                          className="w-full bg-white border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
+                          className="w-full bg-theme-card border border-theme-border-medium rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
                           value={info["SERVICIO DE INTERNET (SI/NO)"] || "Sí"}
                           onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "SERVICIO DE INTERNET (SI/NO)"], e.target.value)}
                         >
@@ -515,7 +514,7 @@ export default function LabDetailView({
                           <option value="No">No</option>
                         </select>
                       ) : (
-                        <strong className="text-slate-800 text-sm flex items-center gap-1">
+                        <strong className="text-theme-text-primary text-sm flex items-center gap-1">
                           {info["SERVICIO DE INTERNET (SI/NO)"]?.toLowerCase() === "sí" ? (
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                           ) : (
@@ -531,17 +530,17 @@ export default function LabDetailView({
 
               {/* Description Card */}
               {hasDescription && (
-                <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-3">
-                  <h3 className="text-sm font-semibold text-slate-800">Descripción General del Ambiente</h3>
+                <div className="bg-theme-card rounded-xl p-6 border border-theme-border-light shadow-sm space-y-3">
+                  <h3 className="text-sm font-semibold text-theme-text-primary">Descripción General del Ambiente</h3>
                   {isEditMode ? (
                     <textarea
                       rows={4}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-rose-900"
+                      className="w-full bg-theme-page border border-theme-border-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-rose-900"
                       value={info.COMENTARIOS || ""}
                       onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "COMENTARIOS"], e.target.value)}
                     />
                   ) : (
-                    <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
+                    <p className="text-theme-text-secondary text-sm leading-relaxed whitespace-pre-line">
                       {info.COMENTARIOS || "Sin descripción asignada."}
                     </p>
                   )}
@@ -551,15 +550,15 @@ export default function LabDetailView({
 
               {/* Program details */}
               {hasPrograms && (
-                <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-3">
-                  <h3 className="text-sm font-semibold text-slate-800">Programas de Estudios Vinculados</h3>
+                <div className="bg-theme-card rounded-xl p-6 border border-theme-border-light shadow-sm space-y-3">
+                  <h3 className="text-sm font-semibold text-theme-text-primary">Programas de Estudios Vinculados</h3>
                   <div className="flex flex-wrap gap-2 pt-1">
                     {info["PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER"]?.map((prog, pidx) => (
-                      <span key={pidx} className="px-3 py-1 bg-slate-100 rounded text-xs font-mono font-bold text-slate-700">
+                      <span key={pidx} className="px-3 py-1 bg-theme-hover rounded text-xs font-mono font-bold text-theme-text-secondary">
                         Programa: {prog}
                       </span>
                     ))}
-                    <span className="px-3 py-1 bg-rose-50 text-rose-800 rounded text-xs font-semibold">
+                    <span className="px-3 py-1 bg-theme-brand-light text-rose-800 rounded text-xs font-semibold">
                       Cantidad: {info["CANTIDAD DE PROGRAMA(S) QUE UTILIZAN EL LABORATORIO O TALLER"]} Programa
                     </span>
                   </div>
@@ -568,9 +567,9 @@ export default function LabDetailView({
 
               {/* Documentos y Enlaces del Ambiente */}
               {hasDocs && (
-                <div className="bg-white rounded-xl p-6 border border-slate-100 shadow-sm space-y-4">
-                  <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-                    <h3 className="text-sm font-semibold text-slate-800 flex items-center gap-2">
+                <div className="bg-theme-card rounded-xl p-6 border border-theme-border-light shadow-sm space-y-4">
+                  <div className="flex justify-between items-center border-b border-theme-border-light pb-3">
+                    <h3 className="text-sm font-semibold text-theme-text-primary flex items-center gap-2">
                       <FileText className="w-4 h-4 text-rose-800" />
                       Documentos del Ambiente
                     </h3>
@@ -590,20 +589,20 @@ export default function LabDetailView({
 
                   <div className="space-y-2">
                     {(info.documentos || []).map((doc: any, idx: number) => (
-                      <div key={idx} className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 border border-slate-50 transition group">
+                      <div key={idx} className="flex items-center justify-between p-3 rounded-lg hover:bg-theme-page border border-slate-50 transition group">
                         <div className="flex-1 min-w-0 pr-4">
                           {isEditMode ? (
                             <div className="space-y-1.5">
                               <input
                                 type="text"
-                                className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold text-slate-700 focus:outline-none"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold text-theme-text-secondary focus:outline-none"
                                 value={doc.titulo || ""}
                                 onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "documentos", idx, "titulo"], e.target.value)}
                                 placeholder="Nombre del documento"
                               />
                               <input
                                 type="text"
-                                className="w-full bg-white border border-slate-200 rounded px-2 py-0.5 text-[10px] text-slate-500 focus:outline-none font-mono"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-[10px] text-theme-text-muted focus:outline-none font-mono"
                                 value={doc.url || ""}
                                 onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "documentos", idx, "url"], e.target.value)}
                                 placeholder="Enlace URL"
@@ -614,11 +613,11 @@ export default function LabDetailView({
                               href={doc.url || "#"}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 text-xs font-semibold text-rose-900 hover:text-rose-700 group"
+                              className="flex items-center gap-2 text-xs font-semibold text-theme-brand hover:text-rose-700 group"
                             >
-                              <FileText className="w-4 h-4 text-slate-400 group-hover:text-rose-900 flex-shrink-0" />
+                              <FileText className="w-4 h-4 text-theme-text-tertiary group-hover:text-theme-brand flex-shrink-0" />
                               <span className="truncate">{doc.titulo || "Documento sin título"}</span>
-                              <ExternalLink className="w-3 h-3 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                              <ExternalLink className="w-3 h-3 text-theme-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
                             </a>
                           )}
                         </div>
@@ -628,7 +627,7 @@ export default function LabDetailView({
                               const updated = (info.documentos || []).filter((_: any, dIdx: number) => dIdx !== idx);
                               onUpdate(["labs", labIndex, "infoAmbiente", "documentos"], updated);
                             }}
-                            className="p-1 text-slate-400 hover:text-red-600 rounded transition hover:bg-red-50"
+                            className="p-1 text-theme-text-tertiary hover:text-theme-brand rounded transition hover:bg-theme-brand-light"
                             title="Eliminar documento"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -638,7 +637,7 @@ export default function LabDetailView({
                     ))}
 
                     {(!info.documentos || info.documentos.length === 0) && (
-                      <div className="text-center py-6 text-slate-400 text-xs">
+                      <div className="text-center py-6 text-theme-text-tertiary text-xs">
                         No hay documentos del ambiente registrados.
                       </div>
                     )}
@@ -653,18 +652,18 @@ export default function LabDetailView({
                 {/* Encargado Docente */}
                 {hasResponsible && (
                   <div
-                    className={`bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4 relative ${
+                    className={`bg-theme-card rounded-xl p-5 border border-theme-border-light shadow-sm space-y-4 relative ${
                       info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible === false ? "opacity-60 border-dashed" : ""
                       }`}
                   >
-                    <div className="flex justify-between items-center border-b border-slate-100 pb-2">
-                      <span className="text-xs font-bold font-mono text-slate-400 uppercase tracking-wide">
+                    <div className="flex justify-between items-center border-b border-theme-border-light pb-2">
+                      <span className="text-xs font-bold font-mono text-theme-text-tertiary uppercase tracking-wide">
                         Responsable de Turno
                       </span>
                       {isEditMode && (
                         <button
                           onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "visible"], info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible !== false ? false : true)}
-                          className="p-1 rounded text-xs border bg-slate-50 text-slate-500 hover:bg-slate-100"
+                          className="p-1 rounded text-xs border bg-theme-page text-theme-text-muted hover:bg-theme-hover"
                         >
                           {info["RESPONSABLE DEL LABORATORIO O TALLER"]?.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                         </button>
@@ -672,7 +671,7 @@ export default function LabDetailView({
                     </div>
 
                     <div className="flex gap-3.5 items-center">
-                      <div className="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 text-rose-900 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-theme-brand-light border border-theme-brand-border text-theme-brand flex items-center justify-center">
                         <User className="w-5 h-5" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -680,13 +679,13 @@ export default function LabDetailView({
                           <div className="space-y-1.5">
                             <input
                               type="text"
-                              className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold"
+                              className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold"
                               value={info["RESPONSABLE DEL LABORATORIO O TALLER"].NOMBRE || ""}
                               onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "NOMBRE"], e.target.value)}
                             />
                             <input
                               type="text"
-                              className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-[10px]"
+                              className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-[10px]"
                               value={info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"] || ""}
                               onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "RESPONSABLE DEL LABORATORIO O TALLER", "NUMERO DE CONTACTO"], e.target.value)}
                             />
@@ -694,12 +693,12 @@ export default function LabDetailView({
                         ) : (
                           <>
                             {info["RESPONSABLE DEL LABORATORIO O TALLER"].NOMBRE && (
-                              <h4 className="text-sm font-semibold text-slate-800 truncate">
+                              <h4 className="text-sm font-semibold text-theme-text-primary truncate">
                                 {info["RESPONSABLE DEL LABORATORIO O TALLER"].NOMBRE}
                               </h4>
                             )}
                             {info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"] && (
-                              <span className="text-xs text-slate-500 flex items-center gap-1 mt-0.5 font-mono">
+                              <span className="text-xs text-theme-text-muted flex items-center gap-1 mt-0.5 font-mono">
                                 <Phone className="w-3 h-3 text-rose-800" />
                                 {info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"]}
                               </span>
@@ -713,19 +712,19 @@ export default function LabDetailView({
 
                 {/* Técnico Encargado list */}
                 {hasTech && (
-                  <div className="bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4">
-                    <div className="flex justify-between items-center border-b border-slate-100 pb-2">
-                      <span className="text-xs font-bold font-mono text-slate-400 uppercase tracking-wide">
+                  <div className="bg-theme-card rounded-xl p-5 border border-theme-border-light shadow-sm space-y-4">
+                    <div className="flex justify-between items-center border-b border-theme-border-light pb-2">
+                      <span className="text-xs font-bold font-mono text-theme-text-tertiary uppercase tracking-wide">
                         Soporte Técnico
                       </span>
                       {isEditMode && (
                         <button
                           onClick={() => {
-                            const newT: PersonalTecnico = { visible: true, NOMBRE: "Nuevo Técnico", "NUMERO DE CONTACTO": "Contacto" };
+                            const newT: PersonalTecnico = { visible: true, NOMBRE: "Nuevo Técnico", "NUMERO DE CONTACTO": "Contacto", "CORREO": "correo@unsa.edu.pe" };
                             const updated = [...(info["PERSONAL TÉCNICO"] || []), newT];
                             onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO"], updated);
                           }}
-                          className="p-1 rounded text-[10px] border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 flex items-center gap-0.5 font-semibold"
+                          className="p-1 rounded text-[10px] border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 flex items-center gap-0.5 font-semibold cursor-pointer"
                         >
                           <Plus className="w-3 h-3" /> Añadir
                         </button>
@@ -740,12 +739,12 @@ export default function LabDetailView({
                         return (
                           <div
                             key={techIdx}
-                            className={`flex gap-3 items-center justify-between p-2.5 rounded-lg bg-slate-50/70 border border-slate-100 relative ${
+                            className={`flex gap-3 items-center justify-between p-2.5 rounded-lg bg-theme-page/70 border border-theme-border-light relative ${
                               tech.visible === false ? "opacity-60 border-dashed" : ""
                               }`}
                           >
                             <div className="flex gap-2.5 items-center min-w-0 flex-1">
-                              <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                              <div className="w-8 h-8 rounded-full bg-theme-hover flex items-center justify-center text-theme-text-muted">
                                 <User className="w-4 h-4" />
                               </div>
                               <div className="min-w-0 flex-1">
@@ -753,22 +752,22 @@ export default function LabDetailView({
                                   <div className="space-y-1">
                                     <input
                                       type="text"
-                                      className="w-full bg-white border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold"
+                                      className="w-full bg-theme-card border border-theme-border-medium rounded px-1.5 py-0.5 text-xs font-semibold"
                                       value={tech.NOMBRE || ""}
                                       onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO", techIdx, "NOMBRE"], e.target.value)}
                                     />
                                     <input
                                       type="text"
-                                      className="w-full bg-white border border-slate-200 rounded px-1.5 py-0.5 text-[9px]"
+                                      className="w-full bg-theme-card border border-theme-border-medium rounded px-1.5 py-0.5 text-[9px]"
                                       value={tech["NUMERO DE CONTACTO"] || ""}
                                       onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO", techIdx, "NUMERO DE CONTACTO"], e.target.value)}
                                     />
                                   </div>
                                 ) : (
                                   <>
-                                    {tech.NOMBRE && <h4 className="text-xs font-semibold text-slate-800 truncate">{tech.NOMBRE}</h4>}
+                                    {tech.NOMBRE && <h4 className="text-xs font-semibold text-theme-text-primary truncate">{tech.NOMBRE}</h4>}
                                     {tech["NUMERO DE CONTACTO"] && (
-                                      <p className="text-[10px] text-slate-500 flex items-center gap-0.5 font-mono">
+                                      <p className="text-[10px] text-theme-text-muted flex items-center gap-0.5 font-mono">
                                         <Phone className="w-2.5 h-2.5 text-rose-800" />
                                         {tech["NUMERO DE CONTACTO"]}
                                       </p>
@@ -782,7 +781,7 @@ export default function LabDetailView({
                               <div className="flex items-center gap-0.5">
                                 <button
                                   onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO", techIdx, "visible"], !tech.visible)}
-                                  className="p-1 text-slate-400 hover:text-slate-600"
+                                  className="p-1 text-theme-text-tertiary hover:text-theme-text-secondary"
                                 >
                                   {tech.visible ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                 </button>
@@ -791,7 +790,7 @@ export default function LabDetailView({
                                     const updated = info["PERSONAL TÉCNICO"]?.filter((_, tIdx) => tIdx !== techIdx);
                                     onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL TÉCNICO"], updated);
                                   }}
-                                  className="p-1 text-slate-400 hover:text-red-600"
+                                  className="p-1 text-theme-text-tertiary hover:text-theme-brand"
                                 >
                                   <Trash2 className="w-3 h-3" />
                                 </button>
@@ -807,18 +806,18 @@ export default function LabDetailView({
                 {/* Verificador de CBC III */}
                 {hasVerifier && (
                   <div
-                    className={`bg-white rounded-xl p-5 border border-slate-100 shadow-sm space-y-4 relative ${
+                    className={`bg-theme-card rounded-xl p-5 border border-theme-border-light shadow-sm space-y-4 relative ${
                       info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible === false ? "opacity-60 border-dashed" : ""
                       }`}
                   >
-                    <div className="flex justify-between items-center border-b border-slate-100 pb-2">
-                      <span className="text-[10px] font-bold font-mono text-slate-400 uppercase tracking-wide">
+                    <div className="flex justify-between items-center border-b border-theme-border-light pb-2">
+                      <span className="text-[10px] font-bold font-mono text-theme-text-tertiary uppercase tracking-wide">
                         Verificador CBC III (Calidad)
                       </span>
                       {isEditMode && (
                         <button
                           onClick={() => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "visible"], info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible !== false ? false : true)}
-                          className="p-1 rounded text-xs border bg-slate-50 text-slate-500"
+                          className="p-1 rounded text-xs border bg-theme-page text-theme-text-muted"
                         >
                           {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]?.visible !== false ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                         </button>
@@ -826,7 +825,7 @@ export default function LabDetailView({
                     </div>
 
                     <div className="flex gap-3.5 items-center">
-                      <div className="w-9 h-9 rounded-full bg-rose-50 text-rose-800 flex items-center justify-center">
+                      <div className="w-9 h-9 rounded-full bg-theme-brand-light text-rose-800 flex items-center justify-center">
                         <User className="w-4.5 h-4.5" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -834,13 +833,13 @@ export default function LabDetailView({
                           <div className="space-y-1">
                             <input
                               type="text"
-                              className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-xs font-semibold"
+                              className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-xs font-semibold"
                               value={info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].NOMBRE || ""}
                               onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "NOMBRE"], e.target.value)}
                             />
                             <input
                               type="text"
-                              className="w-full bg-slate-50 border border-slate-200 rounded px-2 py-0.5 text-[10px]"
+                              className="w-full bg-theme-page border border-theme-border-medium rounded px-2 py-0.5 text-[10px]"
                               value={info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"] || ""}
                               onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III", "NUMERO DE CONTACTO"], e.target.value)}
                             />
@@ -848,12 +847,12 @@ export default function LabDetailView({
                         ) : (
                           <>
                             {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].NOMBRE && (
-                              <h4 className="text-xs font-semibold text-slate-800 truncate">
+                              <h4 className="text-xs font-semibold text-theme-text-primary truncate">
                                 {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"].NOMBRE}
                               </h4>
                             )}
                             {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"] && (
-                              <span className="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5 font-mono">
+                              <span className="text-[11px] text-theme-text-muted flex items-center gap-1 mt-0.5 font-mono">
                                 <Phone className="w-2.5 h-2.5 text-rose-800" />
                                 {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"]}
                               </span>
@@ -875,12 +874,12 @@ export default function LabDetailView({
         <div className="space-y-6 animate-fade-in">
 
           {/* Filters Bar */}
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div className="bg-theme-page p-4 rounded-xl border border-theme-border-light flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative w-full md:w-80">
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 w-4 h-4 text-theme-text-tertiary" />
               <input
                 type="text"
-                className="w-full bg-white border border-slate-200 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-rose-900 transition"
+                className="w-full bg-theme-card border border-theme-border-medium rounded-lg pl-9 pr-3 py-2 text-xs text-theme-text-secondary placeholder-slate-400 focus:outline-none focus:border-rose-900 transition"
                 placeholder="Buscar por equipo, modelo, patrimonio..."
                 value={equipSearch}
                 onChange={(e) => setEquipSearch(e.target.value)}
@@ -890,9 +889,9 @@ export default function LabDetailView({
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
               {/* Brand Select */}
               <div className="flex items-center gap-1 text-xs">
-                <span className="text-slate-400">Marca:</span>
+                <span className="text-theme-text-tertiary">Marca:</span>
                 <select
-                  className="bg-white border border-slate-200 px-2 py-1.5 rounded-lg focus:outline-none text-slate-700 font-medium"
+                  className="bg-theme-card border border-theme-border-medium px-2 py-1.5 rounded-lg focus:outline-none text-theme-text-secondary font-medium"
                   value={equipBrandFilter}
                   onChange={(e) => setEquipBrandFilter(e.target.value)}
                 >
@@ -905,9 +904,9 @@ export default function LabDetailView({
 
               {/* Type Select */}
               <div className="flex items-center gap-1 text-xs">
-                <span className="text-slate-400">Tipo:</span>
+                <span className="text-theme-text-tertiary">Tipo:</span>
                 <select
-                  className="bg-white border border-slate-200 px-2 py-1.5 rounded-lg focus:outline-none text-slate-700 font-medium"
+                  className="bg-theme-card border border-theme-border-medium px-2 py-1.5 rounded-lg focus:outline-none text-theme-text-secondary font-medium"
                   value={equipTypeFilter}
                   onChange={(e) => setEquipTypeFilter(e.target.value)}
                 >
@@ -935,12 +934,12 @@ export default function LabDetailView({
             {filteredEquipos.map(({ eq, idx }) => (
               <div
                 key={idx}
-                className={`bg-white rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden hover:shadow-md transition relative ${
-                  eq.visible === false ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
+                className={`bg-theme-card rounded-xl border border-theme-border-light shadow-sm flex flex-col justify-between overflow-hidden hover:shadow-md transition relative ${
+                  eq.visible === false ? "opacity-60 ring-2 ring-theme-brand-border border-dashed" : ""
                   }`}
               >
                 {eq.visible === false && (
-                  <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shadow">
+                  <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-theme-brand bg-theme-brand-light px-2 py-0.5 rounded shadow">
                     OCULTO
                   </div>
                 )}
@@ -948,7 +947,7 @@ export default function LabDetailView({
                 <div className="p-5 space-y-4">
                   {/* Photo & title */}
                   <div className="flex gap-4 items-start">
-                    <div className="w-16 h-16 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
+                    <div className="w-16 h-16 rounded-lg bg-theme-hover overflow-hidden flex-shrink-0 border border-theme-border-light">
                       <img
                         src={eq.Fotografias?.[0] || "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&q=80&w=150"}
                         alt={eq["NOMBRE DEL EQUIPO"]}
@@ -960,12 +959,12 @@ export default function LabDetailView({
                     <div className="flex-1 space-y-1 min-w-0">
                       {isEditMode ? (
                         <>
-                          <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase">
+                          <span className="text-[10px] font-mono tracking-widest text-theme-text-tertiary block uppercase">
                             Código: {eq.HojasDeVidaEquipos?.[0]?.infoEquipo?.["Codigo Inventario Equipo"] || "N/A"}
                           </span>
                           <input
                             type="text"
-                            className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
+                            className="w-full bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-xs font-semibold focus:outline-none"
                             value={eq["NOMBRE DEL EQUIPO"] || ""}
                             onChange={(e) => onUpdate(["labs", labIndex, "equipos", idx, "NOMBRE DEL EQUIPO"], e.target.value)}
                           />
@@ -975,21 +974,21 @@ export default function LabDetailView({
                           {eq.HojasDeVidaEquipos?.[0]?.infoEquipo?.["Codigo Inventario Equipo"] &&
                             eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"] !== "-" &&
                             eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"] !== "N/A" && (
-                              <span className="text-[10px] font-mono tracking-widest text-slate-400 block uppercase">
+                              <span className="text-[10px] font-mono tracking-widest text-theme-text-tertiary block uppercase">
                                 Código: {eq.HojasDeVidaEquipos[0].infoEquipo["Codigo Inventario Equipo"]}
                               </span>
                             )}
-                          <h3 className="font-semibold text-slate-800 text-sm leading-tight break-words truncate group-hover:text-rose-900">
+                          <h3 className="font-semibold text-theme-text-primary text-sm leading-tight break-words truncate group-hover:text-theme-brand">
                             {eq["NOMBRE DEL EQUIPO"]}
                           </h3>
                         </>
                       )}
 
                       {isEditMode ? (
-                        <div className="text-xs text-slate-500 font-mono">
-                          Marca: <span className="font-semibold text-slate-700">{eq.infoEquipo?.Marca || "N/A"}</span>
+                        <div className="text-xs text-theme-text-muted font-mono">
+                          Marca: <span className="font-semibold text-theme-text-secondary">{eq.infoEquipo?.Marca || "N/A"}</span>
                           {" • "}
-                          Modelo: <span className="font-semibold text-slate-700">{eq.infoEquipo?.Modelo || "N/A"}</span>
+                          Modelo: <span className="font-semibold text-theme-text-secondary">{eq.infoEquipo?.Modelo || "N/A"}</span>
                         </div>
                       ) : (
                         (() => {
@@ -997,10 +996,10 @@ export default function LabDetailView({
                           const hasModel = eq.infoEquipo?.Modelo && eq.infoEquipo.Modelo !== "-" && eq.infoEquipo.Modelo !== "N/A";
                           if (!hasBrand && !hasModel) return null;
                           return (
-                            <div className="text-xs text-slate-500 font-mono">
-                              {hasBrand && <>Marca: <span className="font-semibold text-slate-700">{eq.infoEquipo!.Marca}</span></>}
+                            <div className="text-xs text-theme-text-muted font-mono">
+                              {hasBrand && <>Marca: <span className="font-semibold text-theme-text-secondary">{eq.infoEquipo!.Marca}</span></>}
                               {hasBrand && hasModel && " • "}
-                              {hasModel && <>Modelo: <span className="font-semibold text-slate-700">{eq.infoEquipo!.Modelo}</span></>}
+                              {hasModel && <>Modelo: <span className="font-semibold text-theme-text-secondary">{eq.infoEquipo!.Modelo}</span></>}
                             </div>
                           );
                         })()
@@ -1011,14 +1010,14 @@ export default function LabDetailView({
                       <div className="flex flex-col gap-1 flex-shrink-0">
                         <button
                           onClick={() => onUpdate(["labs", labIndex, "equipos", idx, "visible"], !eq.visible)}
-                          className="p-1 rounded text-slate-400 hover:text-slate-600 transition"
+                          className="p-1 rounded text-theme-text-tertiary hover:text-theme-text-secondary transition"
                           title="Alternar Visibilidad"
                         >
                           {eq.visible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                         </button>
                         <button
                           onClick={() => handleRemoveEquipment(idx)}
-                          className="p-1 rounded text-slate-400 hover:text-red-600 transition"
+                          className="p-1 rounded text-theme-text-tertiary hover:text-theme-brand transition"
                           title="Eliminar equipo"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -1028,7 +1027,7 @@ export default function LabDetailView({
                   </div>
 
                   {(isEditMode || (eq.COMENTARIOS && eq.COMENTARIOS !== "Sin descripción registrada." && eq.COMENTARIOS !== "-")) && (
-                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 pt-1 border-t border-slate-50">
+                    <p className="text-xs text-theme-text-muted leading-relaxed line-clamp-2 pt-1 border-t border-slate-50">
                       {eq.COMENTARIOS || "Sin descripción registrada."}
                     </p>
                   )}
@@ -1037,7 +1036,7 @@ export default function LabDetailView({
                 <div className="px-5 pb-5 pt-1">
                   <button
                     onClick={() => onOpenEquipment(idx)}
-                    className="w-full py-2 bg-rose-50 text-rose-900 border border-rose-100 hover:bg-rose-900 hover:text-white hover:border-rose-900 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition cursor-pointer"
+                    className="w-full py-2 bg-theme-brand-light text-theme-brand border border-rose-100 hover:bg-rose-900 hover:text-white hover:border-rose-900 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition cursor-pointer"
                   >
                     Ver Ficha y Calibraciones
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -1047,7 +1046,7 @@ export default function LabDetailView({
             ))}
 
             {filteredEquipos.length === 0 && (
-              <div className="col-span-2 text-center py-12 bg-slate-50 rounded-2xl border border-dashed border-slate-200 text-slate-400 text-sm">
+              <div className="col-span-2 text-center py-12 bg-theme-page rounded-2xl border border-dashed border-theme-border-medium text-theme-text-tertiary text-sm">
                 No se encontraron equipos bajo los criterios de búsqueda.
               </div>
             )}
@@ -1060,12 +1059,12 @@ export default function LabDetailView({
         <div className="space-y-6 animate-fade-in">
 
           {/* Filters Bar */}
-          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
+          <div className="bg-theme-page p-4 rounded-xl border border-theme-border-light flex flex-col sm:flex-row gap-4 items-center justify-between">
             <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 w-4 h-4 text-theme-text-tertiary" />
               <input
                 type="text"
-                className="w-full bg-white border border-slate-200 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-rose-900 transition"
+                className="w-full bg-theme-card border border-theme-border-medium rounded-lg pl-9 pr-3 py-2 text-xs text-theme-text-secondary placeholder-slate-400 focus:outline-none focus:border-rose-900 transition"
                 placeholder="Buscar software..."
                 value={softSearch}
                 onChange={(e) => setSoftSearch(e.target.value)}
@@ -1088,44 +1087,44 @@ export default function LabDetailView({
             {filteredSoftware.map(({ sw, idx }) => (
               <div
                 key={idx}
-                className={`bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition relative ${
-                  sw.visible === false ? "opacity-60 ring-2 ring-red-100 border-dashed" : ""
+                className={`bg-theme-card rounded-xl border border-theme-border-light shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition relative ${
+                  sw.visible === false ? "opacity-60 ring-2 ring-theme-brand-border border-dashed" : ""
                   }`}
               >
                 {sw.visible === false && (
-                  <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded shadow">
+                  <div className="absolute top-3 left-3 z-10 text-[10px] font-mono font-bold text-theme-brand bg-theme-brand-light px-2 py-0.5 rounded shadow">
                     OCULTO
                   </div>
                 )}
 
                 <div className="p-5 flex gap-4 items-start">
-                  <div className="w-16 h-16 rounded-lg bg-slate-50 overflow-hidden flex-shrink-0 border border-slate-100 flex items-center justify-center text-rose-800">
+                  <div className="w-16 h-16 rounded-lg bg-theme-page overflow-hidden flex-shrink-0 border border-theme-border-light flex items-center justify-center text-rose-800">
                     <FileCode className="w-8 h-8" />
                   </div>
 
                   <div className="flex-1 space-y-1 min-w-0">
-                    <span className="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase block">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-theme-text-tertiary uppercase block">
                       Software Licenciado
                     </span>
                     {isEditMode ? (
                       <div className="space-y-1.5">
                         <input
                           type="text"
-                          className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-xs font-semibold"
+                          className="w-full bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-xs font-semibold"
                           value={sw["NOMBRE DEL SOFTWARE"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "NOMBRE DEL SOFTWARE"], e.target.value)}
                         />
                         <div className="grid grid-cols-2 gap-1.5">
                           <input
                             type="text"
-                            className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
+                            className="w-full bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px]"
                             value={sw.VERSIÓN || ""}
                             onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "VERSIÓN"], e.target.value)}
                             placeholder="Versión"
                           />
                           <input
                             type="text"
-                            className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
+                            className="w-full bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px]"
                             value={sw["Nº DE LICENCIAS"] || ""}
                             onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "Nº DE LICENCIAS"], e.target.value)}
                             placeholder="Nº Licencias"
@@ -1133,23 +1132,23 @@ export default function LabDetailView({
                         </div>
                         <input
                           type="text"
-                          className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
+                          className="w-full bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px]"
                           value={sw["TIPO DE LICENCIA"] || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "TIPO DE LICENCIA"], e.target.value)}
                           placeholder="Tipo Licencia"
                         />
                         <textarea
                           rows={2}
-                          className="w-full bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px]"
+                          className="w-full bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px]"
                           value={sw.COMENTARIOS || ""}
                           onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "COMENTARIOS"], e.target.value)}
                           placeholder="Comentarios"
                         />
 
                         {/* Software Documents Editor */}
-                        <div className="mt-3 pt-2 border-t border-slate-100 space-y-2">
+                        <div className="mt-3 pt-2 border-t border-theme-border-light space-y-2">
                           <div className="flex justify-between items-center">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Documentos:</span>
+                            <span className="text-[10px] font-bold text-theme-text-tertiary uppercase tracking-wider">Documentos:</span>
                             <button
                               onClick={() => {
                                 const docs = [...(sw.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
@@ -1166,14 +1165,14 @@ export default function LabDetailView({
                               <div key={dIdx} className="flex gap-1.5 items-center">
                                 <input
                                   type="text"
-                                  className="flex-1 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px] font-semibold focus:outline-none"
+                                  className="flex-1 bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px] font-semibold focus:outline-none"
                                   value={doc.titulo || ""}
                                   onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "documentos", dIdx, "titulo"], e.target.value)}
                                   placeholder="Título"
                                 />
                                 <input
                                   type="text"
-                                  className="flex-1 bg-slate-50 border border-slate-200 rounded px-1.5 py-0.5 text-[10px] font-mono focus:outline-none"
+                                  className="flex-1 bg-theme-page border border-theme-border-medium rounded px-1.5 py-0.5 text-[10px] font-mono focus:outline-none"
                                   value={doc.url || ""}
                                   onChange={(e) => onUpdate(["labs", labIndex, "software", idx, "documentos", dIdx, "url"], e.target.value)}
                                   placeholder="URL"
@@ -1183,7 +1182,7 @@ export default function LabDetailView({
                                     const docs = (sw.documentos || []).filter((_: any, i: number) => i !== dIdx);
                                     onUpdate(["labs", labIndex, "software", idx, "documentos"], docs);
                                   }}
-                                  className="text-slate-400 hover:text-red-600 p-0.5 transition"
+                                  className="text-theme-text-tertiary hover:text-theme-brand p-0.5 transition"
                                 >
                                   <Trash2 className="w-3.5 h-3.5" />
                                 </button>
@@ -1194,35 +1193,35 @@ export default function LabDetailView({
                       </div>
                     ) : (
                       <>
-                        <h3 className="font-semibold text-slate-800 text-sm leading-tight break-words">
+                        <h3 className="font-semibold text-theme-text-primary text-sm leading-tight break-words">
                           {sw["NOMBRE DEL SOFTWARE"]}
                         </h3>
                         {(sw.VERSIÓN || sw["Nº DE LICENCIAS"]) && (
-                          <p className="text-xs text-slate-500 font-mono pt-0.5">
+                          <p className="text-xs text-theme-text-muted font-mono pt-0.5">
                             {sw.VERSIÓN && sw.VERSIÓN !== "-" && sw.VERSIÓN !== "N/A" && (
-                              <>Versión: <span className="font-semibold text-slate-700">{sw.VERSIÓN}</span></>
+                              <>Versión: <span className="font-semibold text-theme-text-secondary">{sw.VERSIÓN}</span></>
                             )}
                             {sw.VERSIÓN && sw.VERSIÓN !== "-" && sw.VERSIÓN !== "N/A" && sw["Nº DE LICENCIAS"] && sw["Nº DE LICENCIAS"] !== "-" && " • "}
                             {sw["Nº DE LICENCIAS"] && sw["Nº DE LICENCIAS"] !== "-" && (
-                              <>Licencias: <span className="font-semibold text-slate-700">{sw["Nº DE LICENCIAS"]}</span></>
+                              <>Licencias: <span className="font-semibold text-theme-text-secondary">{sw["Nº DE LICENCIAS"]}</span></>
                             )}
                           </p>
                         )}
                         {sw["TIPO DE LICENCIA"] && sw["TIPO DE LICENCIA"] !== "-" && sw["TIPO DE LICENCIA"] !== "N/A" && (
-                          <p className="text-xs font-semibold text-rose-900 font-mono bg-rose-50 px-2 py-0.5 rounded inline-block mt-1">
+                          <p className="text-xs font-semibold text-theme-brand font-mono bg-theme-brand-light px-2 py-0.5 rounded inline-block mt-1">
                             {sw["TIPO DE LICENCIA"]}
                           </p>
                         )}
                         {sw.COMENTARIOS && sw.COMENTARIOS !== "Sin comentarios." && sw.COMENTARIOS !== "-" && (
-                          <p className="text-xs text-slate-500 leading-relaxed pt-2 border-t border-slate-50 mt-2">
+                          <p className="text-xs text-theme-text-muted leading-relaxed pt-2 border-t border-slate-50 mt-2">
                             {sw.COMENTARIOS}
                           </p>
                         )}
 
                         {/* Software Documents */}
                         {sw.documentos && sw.documentos.length > 0 && (
-                          <div className="mt-3 pt-2 border-t border-slate-100 space-y-1.5">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Documentos del Software:</span>
+                          <div className="mt-3 pt-2 border-t border-theme-border-light space-y-1.5">
+                            <span className="text-[10px] font-bold text-theme-text-tertiary uppercase tracking-wider block">Documentos del Software:</span>
                             <div className="flex flex-wrap gap-2">
                               {sw.documentos.map((doc: any, dIdx: number) => (
                                 <a
@@ -1230,7 +1229,7 @@ export default function LabDetailView({
                                   href={doc.url || "#"}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-900 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 px-2 py-1 rounded transition"
+                                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-theme-brand hover:text-rose-700 bg-theme-brand-light hover:bg-rose-100 px-2 py-1 rounded transition"
                                 >
                                   <FileText className="w-3 h-3 flex-shrink-0" />
                                   <span className="truncate max-w-[120px]">{doc.titulo || "Documento"}</span>
@@ -1248,14 +1247,14 @@ export default function LabDetailView({
                     <div className="flex flex-col gap-1 flex-shrink-0">
                       <button
                         onClick={() => onUpdate(["labs", labIndex, "software", idx, "visible"], !sw.visible)}
-                        className="p-1 rounded text-slate-400 hover:text-slate-600 transition"
+                        className="p-1 rounded text-theme-text-tertiary hover:text-theme-text-secondary transition"
                         title="Alternar Visibilidad"
                       >
                         {sw.visible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                       </button>
                       <button
                         onClick={() => handleRemoveSoftware(idx)}
-                        className="p-1 rounded text-slate-400 hover:text-red-600 transition"
+                        className="p-1 rounded text-theme-text-tertiary hover:text-theme-brand transition"
                         title="Eliminar software"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -1267,7 +1266,7 @@ export default function LabDetailView({
             ))}
 
             {filteredSoftware.length === 0 && (
-              <div className="col-span-2 text-center py-12 bg-slate-50 rounded-2xl border border-dashed border-slate-200 text-slate-400 text-sm">
+              <div className="col-span-2 text-center py-12 bg-theme-page rounded-2xl border border-dashed border-theme-border-medium text-theme-text-tertiary text-sm">
                 No se encontraron paquetes de software cargados.
               </div>
             )}

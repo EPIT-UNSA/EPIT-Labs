@@ -25,7 +25,81 @@ import LabDetailView from "./components/LabDetailView";
 import EquipmentDetailModal from "./components/EquipmentDetailModal";
 import ImageZoomModal from "./components/ImageZoomModal";
 
+const getInitialThemeMode = (): "light" | "dark" => {
+  const saved = localStorage.getItem("epit-theme-mode");
+  if (saved === "light" || saved === "dark") return saved;
+  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+  return "light";
+};
+
+const hexToRgb = (hex: string) => {
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const fullHex = hex.replace(shorthandRegex, (_, r, g, b) => r + r + g + g + b + b);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(fullHex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+};
+
+const darkenColor = (hex: string, percent: number) => {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return hex;
+  const factor = 1 - percent / 100;
+  const r = Math.max(0, Math.min(255, Math.floor(rgb.r * factor)));
+  const g = Math.max(0, Math.min(255, Math.floor(rgb.g * factor)));
+  const b = Math.max(0, Math.min(255, Math.floor(rgb.b * factor)));
+  
+  const toHex = (c: number) => {
+    const h = c.toString(16);
+    return h.length === 1 ? "0" + h : h;
+  };
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+};
+
 export default function App() {
+  // Theme state
+  const [themeMode, setThemeMode] = useState<"light" | "dark">(getInitialThemeMode);
+  const [themeColor, setThemeColor] = useState<string>(
+    () => localStorage.getItem("epit-theme-color") || "#b91c1c"
+  );
+
+  // Apply theme mode class to documentElement
+  useEffect(() => {
+    const root = document.documentElement;
+    if (themeMode === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("epit-theme-mode", themeMode);
+  }, [themeMode]);
+
+  // Apply theme color custom variables to documentElement
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty("--brand-primary", themeColor);
+    
+    // Hover color (darker version)
+    const hoverColor = darkenColor(themeColor, 15);
+    root.style.setProperty("--brand-hover", hoverColor);
+    
+    // Light and Border colors
+    const rgb = hexToRgb(themeColor);
+    if (rgb) {
+      root.style.setProperty("--brand-light", `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${themeMode === "dark" ? "0.18" : "0.08"})`);
+      root.style.setProperty("--brand-border", `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${themeMode === "dark" ? "0.35" : "0.2"})`);
+    } else {
+      root.style.setProperty("--brand-light", themeColor + (themeMode === "dark" ? "2d" : "14"));
+      root.style.setProperty("--brand-border", themeColor + (themeMode === "dark" ? "59" : "33"));
+    }
+    
+    localStorage.setItem("epit-theme-color", themeColor);
+  }, [themeColor, themeMode]);
+
   // Global database states
   const [originalData, setOriginalData] = useState<EpitData | null>(null);
   const [editedData, setEditedData] = useState<EpitData | null>(null);
@@ -315,25 +389,25 @@ export default function App() {
   // Loading Screen Render
   if (loading) {
     return (
-      <div className="w-screen h-screen flex flex-col items-center justify-center bg-slate-50 font-sans gap-4">
-        <div className="w-12 h-12 border-4 border-rose-900 border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-slate-500 font-mono text-xs tracking-widest animate-pulse">CARGANDO EPIT LABS WIKI...</p>
+      <div className="w-screen h-screen flex flex-col items-center justify-center bg-theme-page font-sans gap-4 transition-colors duration-200">
+        <div className="w-12 h-12 border-4 border-theme-brand border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-theme-text-muted font-mono text-xs tracking-widest animate-pulse">CARGANDO EPIT LABS WIKI...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-theme-page flex flex-col font-sans transition-colors duration-200">
       
       {/* Top Main Navigation Header */}
-      <header className="sticky top-0 z-30 bg-white text-slate-800 border-b border-slate-100 shadow-sm">
+      <header className="sticky top-0 z-30 bg-theme-card text-theme-text-primary border-b border-theme-border-light shadow-sm transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           
           {/* Logo & Hamburguer toggle */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition cursor-pointer"
+              className="md:hidden p-2 rounded-lg text-theme-text-tertiary hover:text-theme-text-primary hover:bg-theme-hover transition cursor-pointer"
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -342,12 +416,12 @@ export default function App() {
               onClick={() => handleNavigate("/")}
               className="flex items-center gap-2.5 cursor-pointer select-none group"
             >
-              <div className="w-8 h-8 rounded bg-red-700 flex items-center justify-center font-display font-extrabold text-white text-sm shadow transition duration-300 group-hover:bg-red-800">
+              <div className="w-8 h-8 rounded bg-theme-brand flex items-center justify-center font-display font-extrabold text-white text-sm shadow transition duration-300 group-hover:bg-theme-brand-hover">
                 U
               </div>
               <div className="hidden sm:block">
-                <span className="text-xs font-bold text-slate-400 tracking-widest uppercase block">EPIT Labs</span>
-                <span className="text-sm font-bold text-slate-800 block -mt-1">UNSA Wiki</span>
+                <span className="text-xs font-bold text-theme-text-tertiary tracking-widest uppercase block">EPIT Labs</span>
+                <span className="text-sm font-bold text-theme-text-primary block -mt-1">UNSA Wiki</span>
               </div>
             </div>
           </div>
@@ -355,10 +429,10 @@ export default function App() {
           {/* Interactive Global Search Bar */}
           <div className="flex-1 max-w-md relative" ref={searchRef}>
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 w-4.5 h-4.5 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 w-4.5 h-4.5 text-theme-text-tertiary" />
               <input
                 type="text"
-                className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-10 pr-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                className="w-full bg-theme-page border border-theme-border-medium rounded-lg pl-10 pr-4 py-2 text-xs text-theme-text-primary placeholder-theme-text-tertiary focus:outline-none focus:border-theme-brand focus:ring-1 focus:ring-theme-brand transition-colors duration-200"
                 placeholder="Buscar equipos, laboratorios, software..."
                 value={globalSearch}
                 onFocus={() => setShowSearchResults(true)}
@@ -370,7 +444,7 @@ export default function App() {
               {globalSearch && (
                 <button 
                   onClick={() => setGlobalSearch("")}
-                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-800"
+                  className="absolute right-3 top-2.5 text-theme-text-tertiary hover:text-theme-text-primary"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -379,7 +453,7 @@ export default function App() {
 
             {/* Results popup */}
             {showSearchResults && searchResults.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1.5 bg-white border border-slate-200 rounded-xl shadow-2xl p-2 z-50 text-xs space-y-1 divide-y divide-slate-100">
+              <div className="absolute top-full left-0 right-0 mt-1.5 bg-theme-card border border-theme-border-medium rounded-xl shadow-2xl p-2 z-50 text-xs space-y-1 divide-y divide-theme-border-light transition-colors duration-200">
                 {searchResults.map((res, index) => (
                   <div
                     key={index}
@@ -394,15 +468,15 @@ export default function App() {
                         });
                       }
                     }}
-                    className="p-2.5 hover:bg-slate-50 rounded-lg flex flex-col gap-0.5 cursor-pointer transition text-left"
+                    className="p-2.5 hover:bg-theme-hover rounded-lg flex flex-col gap-0.5 cursor-pointer transition text-left"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold text-slate-800 truncate max-w-[80%]">{res.title}</span>
-                      <span className="text-[9px] px-1.5 py-0.5 rounded uppercase font-mono font-bold tracking-wider shrink-0 bg-blue-50 text-blue-700 border border-blue-100">
+                      <span className="font-semibold text-theme-text-primary truncate max-w-[80%]">{res.title}</span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded uppercase font-mono font-bold tracking-wider shrink-0 bg-theme-brand-light text-theme-brand border border-theme-brand-border">
                         {res.type}
                       </span>
                     </div>
-                    <span className="text-[10px] text-slate-500 truncate">{res.subtitle}</span>
+                    <span className="text-[10px] text-theme-text-muted truncate">{res.subtitle}</span>
                   </div>
                 ))}
               </div>
@@ -412,12 +486,12 @@ export default function App() {
           {/* Action links */}
           <div className="flex items-center gap-3">
             {isEditMode ? (
-              <div className="hidden md:flex items-center gap-1.5 bg-red-50 border border-red-200 px-3 py-1.5 rounded-lg text-xs font-bold text-red-700">
-                <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+              <div className="hidden md:flex items-center gap-1.5 bg-theme-brand-light border border-theme-brand-border px-3 py-1.5 rounded-lg text-xs font-bold text-theme-brand">
+                <span className="w-2 h-2 rounded-full bg-theme-brand animate-pulse"></span>
                 MODO EDICIÓN ACTIVO
               </div>
             ) : (
-              <div className="hidden md:block text-xs font-semibold text-slate-400 tracking-wider font-mono uppercase">
+              <div className="hidden md:block text-xs font-semibold text-theme-text-tertiary tracking-wider font-mono uppercase">
                 Portal UNSA • EPIT
               </div>
             )}
@@ -437,19 +511,24 @@ export default function App() {
             isMobileOpen={isSidebarOpen}
             onCloseMobile={() => setIsSidebarOpen(false)}
             onNavigate={handleNavigate}
+            themeMode={themeMode}
+            onThemeModeChange={setThemeMode}
+            themeColor={themeColor}
+            onThemeColorChange={setThemeColor}
+            onResetThemeColor={() => setThemeColor("#b91c1c")}
           />
         )}
 
         {/* Main Content View Switcher */}
-        <main className="flex-1 min-w-0 bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-sm">
+        <main className="flex-1 min-w-0 bg-theme-card rounded-2xl border border-theme-border-light p-6 md:p-8 shadow-sm transition-colors duration-200">
           {error ? (
             <div className="py-12 flex flex-col items-center justify-center max-w-md mx-auto text-center space-y-6">
               <div className="p-4 bg-amber-50 border border-amber-200 text-amber-700 rounded-full">
                 <AlertTriangle className="w-12 h-12" />
               </div>
               <div className="space-y-2">
-                <h2 className="text-lg font-display font-bold text-slate-800">Servidor sin Base de Datos</h2>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <h2 className="text-lg font-display font-bold text-theme-text-primary">Servidor sin Base de Datos</h2>
+                <p className="text-xs text-theme-text-muted leading-relaxed">
                   {error}
                 </p>
               </div>
@@ -457,12 +536,12 @@ export default function App() {
               {/* Upload fallback zone */}
               <div 
                 onClick={() => fileInputRef.current?.click()}
-                className="w-full border-2 border-dashed border-slate-200 rounded-xl p-8 bg-slate-50 hover:bg-slate-100 transition cursor-pointer flex flex-col items-center justify-center gap-3 group"
+                className="w-full border-2 border-dashed border-theme-border-medium rounded-xl p-8 bg-theme-page hover:bg-theme-hover transition cursor-pointer flex flex-col items-center justify-center gap-3 group"
               >
-                <UploadCloud className="w-8 h-8 text-slate-400 group-hover:text-rose-900 transition" />
+                <UploadCloud className="w-8 h-8 text-theme-text-tertiary group-hover:text-theme-brand transition" />
                 <div>
-                  <span className="text-xs font-bold text-slate-700 block">Subir archivo data.json</span>
-                  <span className="text-[10px] text-slate-400 font-mono mt-0.5 block">Formatos admitidos: JSON de EPIT</span>
+                  <span className="text-xs font-bold text-theme-text-secondary block">Subir archivo data.json</span>
+                  <span className="text-[10px] text-theme-text-tertiary font-mono mt-0.5 block">Formatos admitidos: JSON de EPIT</span>
                 </div>
               </div>
             </div>
@@ -498,14 +577,14 @@ export default function App() {
 
               {matchedRoute.view === "not-found" && (
                 <div className="py-20 flex flex-col items-center justify-center text-center space-y-4">
-                  <span className="text-3xl font-display font-extrabold text-slate-300">404</span>
+                  <span className="text-3xl font-display font-extrabold text-theme-text-tertiary">404</span>
                   <div className="space-y-1">
-                    <h3 className="font-semibold text-slate-800 text-base">Ruta no Encontrada</h3>
-                    <p className="text-xs text-slate-400">El ambiente o sección solicitado no existe en la base de datos de EPIT.</p>
+                    <h3 className="font-semibold text-theme-text-primary text-base">Ruta no Encontrada</h3>
+                    <p className="text-xs text-theme-text-tertiary">El ambiente o sección solicitado no existe en la base de datos de EPIT.</p>
                   </div>
                   <button
                     onClick={() => handleNavigate("/")}
-                    className="mt-4 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-lg transition"
+                    className="mt-4 px-4 py-2 bg-theme-brand hover:bg-theme-brand-hover text-white text-xs font-semibold rounded-lg transition"
                   >
                     Volver al Inicio
                   </button>
@@ -542,7 +621,7 @@ export default function App() {
       {isEditMode && editedData && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-950 text-white rounded-full px-6 py-3.5 flex items-center gap-4 shadow-2xl border border-slate-800 animate-slide-up w-[90vw] max-w-xl justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-theme-brand animate-pulse"></div>
             <span className="text-xs font-mono font-bold tracking-wide text-slate-300">Panel Admin</span>
           </div>
 
@@ -581,7 +660,7 @@ export default function App() {
             {/* MAIN EXPORT TRIGGER */}
             <button
               onClick={handleExportJSON}
-              className="flex items-center gap-1.5 bg-red-800 hover:bg-red-700 text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow border border-red-700 transition duration-200 cursor-pointer"
+              className="flex items-center gap-1.5 bg-theme-brand hover:bg-theme-brand-hover text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow border border-theme-brand-border transition duration-200 cursor-pointer"
               title="Descargar data.json modificado para sobreescribir el archivo en GitHub"
             >
               <Download className="w-3.5 h-3.5" />

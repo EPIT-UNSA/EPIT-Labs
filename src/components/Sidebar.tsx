@@ -15,7 +15,10 @@ import {
   X, 
   Search,
   Sliders,
-  Sparkles
+  Sparkles,
+  Sun,
+  Moon,
+  RotateCcw
 } from "lucide-react";
 import { EpitData, Lab } from "../types";
 import { motion, AnimatePresence } from "motion/react";
@@ -27,6 +30,11 @@ interface SidebarProps {
   isMobileOpen: boolean;
   onCloseMobile: () => void;
   onNavigate: (path: string) => void;
+  themeMode: "light" | "dark";
+  onThemeModeChange: (mode: "light" | "dark") => void;
+  themeColor: string;
+  onThemeColorChange: (color: string) => void;
+  onResetThemeColor: () => void;
 }
 
 export default function Sidebar({ 
@@ -35,7 +43,12 @@ export default function Sidebar({
   isEditMode, 
   isMobileOpen, 
   onCloseMobile, 
-  onNavigate 
+  onNavigate,
+  themeMode,
+  onThemeModeChange,
+  themeColor,
+  onThemeColorChange,
+  onResetThemeColor
 }: SidebarProps) {
   // Track collapsed nodes in local state or preserve across renders
   const [expandedNodes, setExpandedNodes] = React.useState<Record<string, boolean>>({
@@ -78,34 +91,34 @@ export default function Sidebar({
   };
 
   const renderContent = () => (
-    <div className="flex flex-col h-full bg-white text-slate-800 font-sans border-r border-slate-200 shadow-sm">
+    <div className="flex flex-col h-full bg-theme-card text-theme-text-primary font-sans border-r border-theme-border-medium shadow-sm transition-colors duration-200">
       {/* Brand Header */}
-      <div className="p-6 border-b border-slate-100 flex items-center justify-between">
+      <div className="p-6 border-b border-theme-border-light flex items-center justify-between transition-colors duration-200">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded bg-red-700 flex items-center justify-center font-display font-extrabold text-white text-xl tracking-wider shadow-md">
+          <div className="w-10 h-10 rounded bg-theme-brand flex items-center justify-center font-display font-extrabold text-white text-xl tracking-wider shadow-md transition-colors duration-200">
             U
           </div>
           <div>
-            <h1 className="text-xs font-bold text-slate-400 tracking-widest uppercase">EPIT Labs</h1>
-            <p className="text-sm font-bold text-slate-800">UNSA Wiki</p>
+            <h1 className="text-xs font-bold text-theme-text-tertiary tracking-widest uppercase">EPIT Labs</h1>
+            <p className="text-sm font-bold text-theme-text-primary">UNSA Wiki</p>
           </div>
         </div>
         {/* Mobile close button */}
         <button 
           onClick={onCloseMobile}
-          className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition"
+          className="md:hidden p-1.5 rounded-lg text-theme-text-tertiary hover:text-theme-text-primary hover:bg-theme-hover transition-colors duration-200"
         >
           <X className="w-5 h-5" />
         </button>
       </div>
 
       {/* Sidebar Search */}
-      <div className="p-4 border-b border-slate-100 bg-slate-50/30">
+      <div className="p-4 border-b border-theme-border-light bg-theme-page/30 transition-colors duration-200">
         <div className="relative">
-          <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+          <Search className="absolute left-3 top-2.5 w-4 h-4 text-theme-text-tertiary" />
           <input
             type="text"
-            className="w-full bg-white border border-slate-200 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+            className="w-full bg-theme-card border border-theme-border-medium rounded-lg pl-9 pr-3 py-1.5 text-xs text-theme-text-primary placeholder-theme-text-tertiary focus:outline-none focus:border-theme-brand focus:ring-1 focus:ring-theme-brand transition-all duration-200"
             placeholder="Filtrar mapa del sitio..."
             value={sidebarSearch}
             onChange={(e) => setSidebarSearch(e.target.value)}
@@ -120,10 +133,10 @@ export default function Sidebar({
         <div className="space-y-1">
           <button
             onClick={() => handleNav("/")}
-            className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition cursor-pointer ${
+            className={`w-full flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer ${
               isActive("/") 
-                ? "bg-slate-100 text-slate-900 font-semibold" 
-                : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                ? "bg-theme-hover text-theme-text-primary font-semibold" 
+                : "text-theme-text-secondary hover:bg-theme-hover hover:text-theme-text-primary"
             }`}
           >
             <Home className="w-4 h-4 flex-shrink-0" />
@@ -133,7 +146,7 @@ export default function Sidebar({
 
         {/* Tree Laboratories Section */}
         <div className="space-y-2">
-          <p className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Laboratorios</p>
+          <p className="px-3 text-[10px] font-bold text-theme-text-tertiary uppercase tracking-widest mb-2">Laboratorios</p>
           
           <div className="space-y-1">
             {filteredLabs.map((lab, idx) => {
@@ -154,19 +167,19 @@ export default function Sidebar({
                   {/* Parent Tree Node */}
                   <div
                     onClick={() => handleNav(`/lab/${code}/info`)}
-                    className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition ${
+                    className={`flex items-center justify-between px-3 py-2 rounded-md cursor-pointer transition-colors duration-200 ${
                       isLabActive && currentPath.endsWith("/info")
-                        ? "bg-slate-100 text-slate-900"
-                        : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+                        ? "bg-theme-hover text-theme-text-primary"
+                        : "text-theme-text-muted hover:bg-theme-hover hover:text-theme-text-primary"
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <div 
                         onClick={(e) => toggleNode(code, e)}
-                        className="p-1 rounded hover:bg-slate-200/50 text-slate-400 transition"
+                        className="p-1 rounded hover:bg-theme-active/50 text-theme-text-tertiary transition-colors duration-200"
                         title={isExpanded ? "Contraer" : "Expandir"}
                       >
-                        <ChevronRight className={`w-3 h-3 flex-shrink-0 transition-transform ${isExpanded ? "transform rotate-90 text-slate-600" : ""}`} />
+                        <ChevronRight className={`w-3 h-3 flex-shrink-0 transition-transform duration-200 ${isExpanded ? "transform rotate-90 text-theme-text-secondary" : ""}`} />
                       </div>
                       <span className="text-sm font-semibold truncate">
                         {code}
@@ -174,11 +187,11 @@ export default function Sidebar({
                     </div>
 
                     <div className="flex items-center gap-1 flex-shrink-0">
-                      <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded uppercase font-bold tracking-tight">
+                      <span className="text-[10px] bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 px-1.5 py-0.5 rounded uppercase font-bold tracking-tight">
                         {programAbbrev}
                       </span>
                       {lab.visible === false && (
-                        <span title="Oculto para el público" className="text-[9px] bg-slate-200 text-slate-600 px-1 rounded uppercase">
+                        <span title="Oculto para el público" className="text-[9px] bg-theme-active text-theme-text-secondary px-1 rounded uppercase">
                           Oculto
                         </span>
                       )}
@@ -187,14 +200,14 @@ export default function Sidebar({
 
                   {/* Nested Sub-nodes */}
                   {isExpanded && (
-                    <div className="ml-6 mt-1 border-l border-slate-200 pl-2 space-y-1">
+                    <div className="ml-6 mt-1 border-l border-theme-border-medium pl-2 space-y-1">
                       {/* Info sub-node */}
                       <button
                         onClick={() => handleNav(`/lab/${code}/info`)}
-                        className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
+                        className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition-all duration-200 cursor-pointer ${
                           isActive(`/lab/${code}/info`)
-                            ? "text-blue-600 font-medium bg-blue-50"
-                            : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                            ? "text-theme-brand font-medium bg-theme-brand-light"
+                            : "text-theme-text-muted hover:text-theme-text-primary hover:bg-theme-hover"
                         }`}
                       >
                         Información General
@@ -204,10 +217,10 @@ export default function Sidebar({
                       {(isEditMode || (lab.equipos && lab.equipos.filter(e => e.visible !== false).length > 0)) && (
                         <button
                           onClick={() => handleNav(`/lab/${code}/equipos`)}
-                          className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
+                          className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition-all duration-200 cursor-pointer ${
                             isActive(`/lab/${code}/equipos`)
-                              ? "text-blue-600 font-medium bg-blue-50"
-                              : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                              ? "text-theme-brand font-medium bg-theme-brand-light"
+                              : "text-theme-text-muted hover:text-theme-text-primary hover:bg-theme-hover"
                           }`}
                         >
                           Equipos Técnicos
@@ -218,10 +231,10 @@ export default function Sidebar({
                       {(isEditMode || (lab.software && lab.software.filter(s => s.visible !== false).length > 0)) && (
                         <button
                           onClick={() => handleNav(`/lab/${code}/software`)}
-                          className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer ${
+                          className={`w-full text-left px-3 py-1.5 rounded text-xs font-medium transition-all duration-200 cursor-pointer ${
                             isActive(`/lab/${code}/software`)
-                              ? "text-blue-600 font-medium bg-blue-50"
-                              : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
+                              ? "text-theme-brand font-medium bg-theme-brand-light"
+                              : "text-theme-text-muted hover:text-theme-text-primary hover:bg-theme-hover"
                           }`}
                         >
                           Software & Licencias
@@ -234,17 +247,84 @@ export default function Sidebar({
             })}
 
             {filteredLabs.length === 0 && (
-              <div className="text-center py-4 text-slate-400 text-xs">
+              <div className="text-center py-4 text-theme-text-tertiary text-xs">
                 Ningún ambiente encontrado.
               </div>
             )}
           </div>
         </div>
 
+        {/* Theme Settings Section */}
+        <div className="pt-4 border-t border-theme-border-light space-y-3 transition-colors duration-200">
+          <p className="px-3 text-[10px] font-bold text-theme-text-tertiary uppercase tracking-widest flex items-center gap-1.5">
+            <Sliders className="w-3 h-3 text-theme-text-muted" /> Personalizar Tema
+          </p>
+          
+          <div className="px-3 space-y-3">
+            {/* Mode Select Buttons */}
+            <div className="grid grid-cols-2 gap-1.5 p-1 bg-theme-page rounded-lg border border-theme-border-light transition-colors duration-200">
+              <button
+                onClick={() => onThemeModeChange("light")}
+                className={`flex items-center justify-center gap-1.5 py-1 px-2 text-xs font-semibold rounded-md transition duration-200 cursor-pointer ${
+                  themeMode === "light"
+                    ? "bg-theme-card text-theme-text-primary shadow-sm"
+                    : "text-theme-text-muted hover:text-theme-text-primary hover:bg-theme-hover/50"
+                }`}
+              >
+                <Sun className="w-3.5 h-3.5" />
+                <span>Claro</span>
+              </button>
+              <button
+                onClick={() => onThemeModeChange("dark")}
+                className={`flex items-center justify-center gap-1.5 py-1 px-2 text-xs font-semibold rounded-md transition duration-200 cursor-pointer ${
+                  themeMode === "dark"
+                    ? "bg-theme-card text-theme-text-primary shadow-sm"
+                    : "text-theme-text-muted hover:text-theme-text-primary hover:bg-theme-hover/50"
+                }`}
+              >
+                <Moon className="w-3.5 h-3.5" />
+                <span>Oscuro</span>
+              </button>
+            </div>
+
+            {/* Custom Color Selector */}
+            <div className="flex items-center justify-between gap-2 p-1.5 bg-theme-page/50 rounded-lg border border-theme-border-light transition-colors duration-200">
+              <div className="flex items-center gap-2 min-w-0">
+                <div className="relative w-6 h-6 rounded-md border border-theme-border-medium shadow-inner flex-shrink-0 cursor-pointer overflow-hidden group">
+                  <input
+                    type="color"
+                    value={themeColor}
+                    onChange={(e) => onThemeColorChange(e.target.value)}
+                    className="absolute inset-0 w-[200%] h-[200%] -translate-x-1/4 -translate-y-1/4 cursor-pointer border-0 p-0"
+                  />
+                  <div 
+                    className="absolute inset-0 pointer-events-none rounded border-2 border-white/20"
+                    style={{ backgroundColor: themeColor }}
+                  />
+                </div>
+                <div className="truncate">
+                  <p className="text-[10px] font-bold text-theme-text-secondary leading-tight">Color personalizado</p>
+                  <p className="text-[9px] text-theme-text-muted font-mono leading-none uppercase">{themeColor}</p>
+                </div>
+              </div>
+
+              {themeColor !== "#b91c1c" && (
+                <button
+                  onClick={onResetThemeColor}
+                  className="p-1 rounded text-theme-text-muted hover:text-theme-brand hover:bg-theme-hover transition cursor-pointer"
+                  title="Restablecer color UNSA"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
         {/* Footer info inside sidebar */}
-        <div className="pt-4 border-t border-slate-100 space-y-2">
+        <div className="pt-4 border-t border-theme-border-light space-y-2 transition-colors duration-200">
           {data.contacto?.visible !== false && data.contacto?.enlaces && (
-            <p className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Enlaces Institucionales</p>
+            <p className="px-3 text-[10px] font-bold text-theme-text-tertiary uppercase tracking-widest mb-2">Enlaces Institucionales</p>
           )}
           
           <div className="space-y-0.5">
@@ -254,9 +334,9 @@ export default function Sidebar({
                 href={link.url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-xs text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition"
+                className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-xs text-theme-text-muted hover:text-theme-text-primary hover:bg-theme-hover transition-colors duration-200"
               >
-                <BookOpen className="w-3.5 h-3.5 flex-shrink-0 text-slate-400" />
+                <BookOpen className="w-3.5 h-3.5 flex-shrink-0 text-theme-text-tertiary" />
                 <span className="truncate font-medium">{link.titulo || ""}</span>
               </a>
             ))}
