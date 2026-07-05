@@ -18,7 +18,7 @@ import {
   ShieldAlert,
   AlertTriangle
 } from "lucide-react";
-import { EpitData, Lab, Equipo } from "./types";
+import { EpitData, Lab, Equipo, normalizeData } from "./types";
 import HomeView from "./components/HomeView";
 import Sidebar from "./components/Sidebar";
 import LabDetailView from "./components/LabDetailView";
@@ -137,8 +137,9 @@ export default function App() {
         return res.json();
       })
       .then(data => {
-        setOriginalData(data);
-        setEditedData(data);
+        const normalized = normalizeData(data);
+        setOriginalData(normalized);
+        setEditedData(normalized);
         setLoading(false);
       })
       .catch(err => {
@@ -340,7 +341,7 @@ export default function App() {
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
-        const parsed = JSON.parse(event.target?.result as string);
+        const parsed = normalizeData(JSON.parse(event.target?.result as string));
         setOriginalData(parsed);
         setEditedData(parsed);
         setError(null);
