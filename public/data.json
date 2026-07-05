@@ -648,11 +648,23 @@
             },
             {
               "Caracteristica": "Event Channels",
-              "Descripcion": "16"
+              "Descripcion": "3"
+            },
+            {
+              "Caracteristica": "Max. Data Rate",
+              "Descripcion": "200 Mbps/ch"
+            },
+            {
+              "Caracteristica": "Clock Range",
+              "Descripcion": "1 Hz - 200 MHz"
             },
             {
               "Caracteristica": "Pattern Depth",
-              "Descripcion": "512Kb/ch"
+              "Descripcion": "512 Kb/ch"
+            },
+            {
+              "Caracteristica": "Data Output",
+              "Descripcion": "0.9-4.5 Vpp"
             }
           ],
           "ProcedimientoMantenimiento": {
