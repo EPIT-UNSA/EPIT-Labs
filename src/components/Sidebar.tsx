@@ -187,7 +187,7 @@ export default function Sidebar({
                     </div>
 
                     <div className="flex items-center gap-1 flex-shrink-0">
-                      <span className="text-[10px] bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 px-1.5 py-0.5 rounded uppercase font-bold tracking-tight">
+                      <span className="text-[10px] bg-theme-active text-theme-text-primary px-1.5 py-0.5 rounded uppercase font-bold tracking-tight">
                         {programAbbrev}
                       </span>
                       {lab.visible === false && (

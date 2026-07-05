@@ -272,7 +272,7 @@ export default function LabDetailView({
           )}
 
           <p className="text-slate-300 text-xs md:text-sm max-w-2xl font-sans flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
+            <MapPin className="w-4 h-4 text-theme-brand flex-shrink-0" />
             {info["REFERENCIA DE UBICACIÓN"] || ""}
           </p>
         </div>
@@ -286,7 +286,7 @@ export default function LabDetailView({
             onClick={() => onNavigate(`/lab/${info["CÓDIGO DE LABORATORIO O TALLER"] || ""}/${tab.id}`)}
             className={`py-3 px-5 text-sm font-semibold border-b-2 transition duration-200 whitespace-nowrap cursor-pointer ${
               subSection === tab.id
-              ? "border-red-700 text-theme-brand font-bold"
+              ? "border-theme-brand text-theme-brand font-bold"
               : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
               }`}
           >
@@ -535,7 +535,7 @@ export default function LabDetailView({
                   {isEditMode ? (
                     <textarea
                       rows={4}
-                      className="w-full bg-theme-page border border-theme-border-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-rose-900 focus:border-theme-brand text-theme-text-primary"
+                      className="w-full bg-theme-page border border-theme-border-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-theme-brand text-theme-text-primary"
                       value={info.COMENTARIOS || ""}
                       onChange={(e) => onUpdate(["labs", labIndex, "infoAmbiente", "COMENTARIOS"], e.target.value)}
                     />
@@ -699,7 +699,7 @@ export default function LabDetailView({
                             )}
                             {info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"] && (
                               <span className="text-xs text-theme-text-muted flex items-center gap-1 mt-0.5 font-mono">
-                                <Phone className="w-3 h-3 text-rose-800" />
+                                <Phone className="w-3 h-3 text-theme-brand" />
                                 {info["RESPONSABLE DEL LABORATORIO O TALLER"]["NUMERO DE CONTACTO"]}
                               </span>
                             )}
@@ -768,7 +768,7 @@ export default function LabDetailView({
                                     {tech.NOMBRE && <h4 className="text-xs font-semibold text-theme-text-primary truncate">{tech.NOMBRE}</h4>}
                                     {tech["NUMERO DE CONTACTO"] && (
                                       <p className="text-[10px] text-theme-text-muted flex items-center gap-0.5 font-mono focus:border-theme-brand text-theme-text-secondary">
-                                        <Phone className="w-2.5 h-2.5 text-rose-800" />
+                                        <Phone className="w-2.5 h-2.5 text-theme-brand" />
                                         {tech["NUMERO DE CONTACTO"]}
                                       </p>
                                     )}
@@ -825,7 +825,7 @@ export default function LabDetailView({
                     </div>
 
                     <div className="flex gap-3.5 items-center">
-                      <div className="w-9 h-9 rounded-full bg-theme-brand-light text-rose-800 flex items-center justify-center">
+                      <div className="w-9 h-9 rounded-full bg-theme-brand-light text-theme-brand flex items-center justify-center">
                         <User className="w-4.5 h-4.5" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -853,7 +853,7 @@ export default function LabDetailView({
                             )}
                             {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"] && (
                               <span className="text-[11px] text-theme-text-muted flex items-center gap-1 mt-0.5 font-mono">
-                                <Phone className="w-2.5 h-2.5 text-rose-800" />
+                                <Phone className="w-2.5 h-2.5 text-theme-brand" />
                                 {info["PERSONAL ASIGNADO PARA VERIFICAR LA CBC III"]["NUMERO DE CONTACTO"]}
                               </span>
                             )}
@@ -1036,7 +1036,7 @@ export default function LabDetailView({
                 <div className="px-5 pb-5 pt-1">
                   <button
                     onClick={() => onOpenEquipment(idx)}
-                    className="w-full py-2 bg-theme-brand-light text-theme-brand border border-rose-100 hover:bg-rose-900 hover:text-white hover:border-rose-900 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition cursor-pointer"
+                    className="w-full py-2 bg-theme-brand-light text-theme-brand border border-theme-border-medium hover:bg-theme-brand hover:text-white hover:border-theme-brand rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition cursor-pointer"
                   >
                     Ver Ficha y Calibraciones
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -1098,7 +1098,7 @@ export default function LabDetailView({
                 )}
 
                 <div className="p-5 flex gap-4 items-start">
-                  <div className="w-16 h-16 rounded-lg bg-theme-page overflow-hidden flex-shrink-0 border border-theme-border-light flex items-center justify-center text-rose-800">
+                  <div className="w-16 h-16 rounded-lg bg-theme-page overflow-hidden flex-shrink-0 border border-theme-border-light flex items-center justify-center text-theme-brand">
                     <FileCode className="w-8 h-8" />
                   </div>
 
@@ -1229,7 +1229,7 @@ export default function LabDetailView({
                                   href={doc.url || "#"}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-theme-brand hover:text-rose-700 bg-theme-brand-light hover:bg-rose-100 px-2 py-1 rounded transition"
+                                  className="inline-flex items-center gap-1 text-[11px] font-semibold text-theme-brand hover:text-white bg-theme-brand-light hover:bg-theme-brand px-2 py-1 rounded transition"
                                 >
                                   <FileText className="w-3 h-3 flex-shrink-0" />
                                   <span className="truncate max-w-[120px]">{doc.titulo || "Documento"}</span>

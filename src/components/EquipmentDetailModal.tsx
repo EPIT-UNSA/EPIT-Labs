@@ -43,7 +43,7 @@ export default function EquipmentDetailModal({
 }: EquipmentDetailModalProps) {
   const [activeTab, setActiveTab] = React.useState<"ficha" | "preventivo" | "correctivo" | "hojavida">("ficha");
   const [selectedUnitIdx, setSelectedUnitIdx] = React.useState(0);
-  
+
   // Photo gallery pagination state
   const [photoPage, setPhotoPage] = React.useState(0);
   const [visitedPages, setVisitedPages] = React.useState<Set<number>>(new Set([0]));
@@ -288,10 +288,9 @@ export default function EquipmentDetailModal({
         <div className="flex border-b border-theme-border-light px-6 bg-theme-page/50 text-sm overflow-x-auto">
           <button
             onClick={() => setActiveTab("ficha")}
-            className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-              activeTab === "ficha"
-                ? "border-theme-brand text-theme-brand"
-                : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
+            className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${activeTab === "ficha"
+              ? "border-theme-brand text-theme-brand"
+              : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
               }`}
           >
             <FileText className="w-4 h-4" />
@@ -300,10 +299,9 @@ export default function EquipmentDetailModal({
           {(isEditMode || hasPreventive) && (
             <button
               onClick={() => setActiveTab("preventivo")}
-              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                activeTab === "preventivo"
-                  ? "border-theme-brand text-theme-brand"
-                  : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
+              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${activeTab === "preventivo"
+                ? "border-theme-brand text-theme-brand"
+                : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
                 }`}
             >
               <Clock className="w-4 h-4" />
@@ -313,10 +311,9 @@ export default function EquipmentDetailModal({
           {(isEditMode || hasCorrective) && (
             <button
               onClick={() => setActiveTab("correctivo")}
-              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                activeTab === "correctivo"
-                  ? "border-theme-brand text-theme-brand"
-                  : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
+              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${activeTab === "correctivo"
+                ? "border-theme-brand text-theme-brand"
+                : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
                 }`}
             >
               <Wrench className="w-4 h-4" />
@@ -326,10 +323,9 @@ export default function EquipmentDetailModal({
           {(isEditMode || hasHojaVida) && (
             <button
               onClick={() => setActiveTab("hojavida")}
-              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                activeTab === "hojavida"
-                  ? "border-theme-brand text-theme-brand"
-                  : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
+              className={`py-3 px-4 font-semibold border-b-2 transition flex items-center gap-2 whitespace-nowrap cursor-pointer ${activeTab === "hojavida"
+                ? "border-theme-brand text-theme-brand"
+                : "border-transparent text-theme-text-muted hover:text-theme-text-primary"
                 }`}
             >
               <Calendar className="w-4 h-4" />
@@ -357,7 +353,7 @@ export default function EquipmentDetailModal({
                         onClick={() => updateEquip(draft => {
                           draft.Fotografias = [...(draft.Fotografias || []), "https://"];
                         })}
-                        className="flex items-center gap-1 bg-theme-brand-light text-theme-brand border border-theme-brand-border hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                        className="flex items-center gap-1 bg-theme-brand-light text-theme-brand border border-theme-brand-border hover:bg-theme-brand hover:text-theme-text-primary px-2 py-1 rounded text-xs font-semibold transition"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         Agregar Imagen
@@ -728,7 +724,7 @@ export default function EquipmentDetailModal({
                     {isEditMode && (
                       <button
                         onClick={handleAddChar}
-                        className="flex items-center gap-1 bg-theme-brand-light text-theme-brand border border-theme-brand-border hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                        className="flex items-center gap-1 bg-theme-brand-light text-theme-brand border border-theme-brand-border hover:bg-theme-brand hover:text-theme-text-primary px-2 py-1 rounded text-xs font-semibold transition"
                       >
                         <Plus className="w-3 h-3" />
                         Agregar
@@ -796,7 +792,7 @@ export default function EquipmentDetailModal({
                         onClick={() => updateEquip(draft => {
                           draft.documentos = [...(draft.documentos || []), { titulo: "Nuevo Documento", url: "https://" }];
                         })}
-                        className="flex items-center gap-1 bg-theme-brand-light text-theme-brand border border-theme-brand-border hover:bg-rose-100 px-2 py-1 rounded text-xs font-semibold transition"
+                        className="flex items-center gap-1 bg-theme-brand-light text-theme-brand border border-theme-brand-border hover:bg-theme-brand hover:text-theme-text-primary px-2 py-1 rounded text-xs font-semibold transition"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         Agregar Enlace
@@ -910,8 +906,7 @@ export default function EquipmentDetailModal({
                         return (
                           <div
                             key={itemIdx}
-                            className={`p-3 bg-theme-card rounded-lg border border-theme-border-light space-y-2 relative ${
-                              !item.visible ? "opacity-60 border-dashed border-theme-brand-border" : ""
+                            className={`p-3 bg-theme-card rounded-lg border border-theme-border-light space-y-2 relative ${!item.visible ? "opacity-60 border-dashed border-theme-brand-border" : ""
                               }`}
                           >
                             <div className="flex justify-between items-start gap-2">
@@ -959,15 +954,14 @@ export default function EquipmentDetailModal({
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.preventivo as any)[cronKey];
                                       arr[itemIdx].visible = !arr[itemIdx].visible;
                                     })}
-                                    className={`p-1 rounded text-xs border ${
-                                      item.visible ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-theme-text-muted bg-theme-page"
+                                    className={`p-1 rounded text-xs border ${item.visible ? "text-theme-brand bg-theme-brand-light border-theme-brand-border hover:text-white hover:bg-theme-brand" : "text-theme-text-muted bg-theme-page hover:bg-theme-hover"
                                       }`}
                                   >
                                     {item.visible ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                   </button>
                                   <button
                                     onClick={() => handleRemoveMaintItem("preventivo", cronKey, itemIdx)}
-                                    className="p-1 rounded text-theme-brand bg-theme-brand-light border border-theme-brand-border hover:bg-theme-brand-light"
+                                    className="p-1 rounded text-theme-text-muted bg-theme-page border border-theme-border-medium hover:bg-rose-700 hover:text-rose-50 transition text-xs"
                                   >
                                     <Trash2 className="w-3 h-3" />
                                   </button>
@@ -1096,7 +1090,7 @@ export default function EquipmentDetailModal({
                               ) : (
                                 <div className="space-y-1 flex-1">
                                   <h4 className="font-semibold text-theme-text-primary text-xs flex items-center gap-1.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+                                    <span className="w-1.5 h-1.5 rounded-full bg-theme-brand animate-pulse"></span>
                                     {item.descripcion.title}
                                   </h4>
                                   <ul className="list-disc pl-5 text-[11px] text-theme-text-muted space-y-0.5">
@@ -1114,15 +1108,14 @@ export default function EquipmentDetailModal({
                                       const arr = (draft.ProcedimientoMantenimiento?.mantenimiento?.correctivo as any)[cronKey];
                                       arr[itemIdx].visible = !arr[itemIdx].visible;
                                     })}
-                                    className={`p-1 rounded text-xs border ${
-                                      item.visible ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-theme-text-muted bg-theme-page"
+                                    className={`p-1 rounded text-xs border ${item.visible ? "text-theme-brand bg-theme-brand-light border-theme-brand-border hover:text-white hover:bg-theme-brand" : "text-theme-text-muted bg-theme-page hover:bg-theme-hover"
                                       }`}
                                   >
                                     {item.visible ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                   </button>
                                   <button
                                     onClick={() => handleRemoveMaintItem("correctivo", cronKey, itemIdx)}
-                                    className="p-1 rounded text-theme-brand bg-theme-brand-light border border-theme-brand-border hover:bg-theme-brand-light"
+                                    className="p-1 rounded text-theme-text-muted bg-theme-page border border-theme-border-medium hover:bg-rose-700 hover:text-rose-50 transition text-xs"
                                   >
                                     <Trash2 className="w-3 h-3" />
                                   </button>
@@ -1207,10 +1200,9 @@ export default function EquipmentDetailModal({
                   <div key={uIdx} className="flex items-center gap-1">
                     <button
                       onClick={() => setSelectedUnitIdx(uIdx)}
-                      className={`px-3 py-1.5 rounded text-xs font-semibold border transition ${
-                        selectedUnitIdx === uIdx
-                          ? "focus:outline-none focus:border-theme-brand text-theme-text-primary bg-theme-brand-light"
-                          : "bg-theme-page border-theme-border-medium text-theme-text-secondary hover:bg-theme-hover"
+                      className={`px-3 py-1.5 rounded text-xs font-semibold border transition ${selectedUnitIdx === uIdx
+                        ? "focus:outline-none focus:border-theme-brand text-theme-text-primary bg-theme-brand-light"
+                        : "bg-theme-page border-theme-border-medium text-theme-text-secondary hover:bg-theme-hover"
                         }`}
                     >
                       {unit.infoEquipo?.["Codigo Inventario Equipo"] || `Unidad ${uIdx + 1}`}
@@ -1443,8 +1435,7 @@ export default function EquipmentDetailModal({
                           return (
                             <div
                               key={logIdx}
-                              className={`p-4 rounded-xl border border-theme-border-light bg-theme-card shadow-sm space-y-4 relative ${
-                                log.visible === false ? "opacity-60 border-dashed border-theme-brand-border bg-theme-brand-light/25" : ""
+                              className={`p-4 rounded-xl border border-theme-border-light bg-theme-card shadow-sm space-y-4 relative ${log.visible === false ? "opacity-60 border-dashed border-theme-brand-border bg-theme-brand-light/25" : ""
                                 }`}
                             >
                               <div className="flex justify-between items-start">
@@ -1494,15 +1485,14 @@ export default function EquipmentDetailModal({
                                             draft.HojasDeVidaEquipos[selectedUnitIdx].mantenimientos[logIdx].visible = draft.HojasDeVidaEquipos[selectedUnitIdx].mantenimientos[logIdx].visible !== false ? false : true;
                                           }
                                         })}
-                                        className={`p-1 rounded text-xs border ${
-                                          log.visible !== false ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-theme-text-muted bg-theme-page"
+                                        className={`p-1 rounded text-xs border ${log.visible !== false ? "text-theme-brand bg-theme-brand-light border-theme-brand-border hover:text-white hover:bg-theme-brand" : "text-theme-text-muted bg-theme-page hover:bg-theme-hover"
                                           }`}
                                       >
                                         {log.visible !== false ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
                                       </button>
                                       <button
                                         onClick={() => handleRemoveLogEntry(selectedUnitIdx, logIdx)}
-                                        className="p-1 rounded text-theme-brand bg-theme-brand-light border border-theme-brand-border hover:bg-theme-brand-light"
+                                        className="p-1 rounded text-theme-text-muted bg-theme-page border border-theme-border-medium hover:bg-rose-700 hover:text-rose-50 transition text-xs"
                                       >
                                         <Trash2 className="w-3.5 h-3.5" />
                                       </button>
