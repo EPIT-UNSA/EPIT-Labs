@@ -70,6 +70,18 @@
     {
       "titulo": "Números de emergencia - UNSA Ingenierías",
       "url": "https://drive.google.com/file/d/1X5LmKPBG3DbniugamfFlfI2q3ir4eL82/view?usp=sharing"
+    },
+    {
+      "titulo": "BROCHURE EPIT-2026",
+      "url": "https://drive.google.com/file/d/16CX5T81qYBPg1cOsoq_xzn2lYDbpSWqa/view?usp=sharing"
+    },
+    {
+      "titulo": "2025-11-25 - Inventario Botiquínes - Labs EPIT",
+      "url": "https://drive.google.com/file/d/1vWoRUz_yujx-dReTIxina4-crK_d1F5X/view?usp=sharing"
+    },
+    {
+      "titulo": "Horarios EPIT 2026A",
+      "url": "https://docs.google.com/spreadsheets/d/15k-722aOjfOTHxiWNb-yVQhSaD4d9qSOgm8sqxcirWI/edit?usp=drive_link"
     }
   ],
   "labs": [
@@ -7630,6 +7642,16 @@
           "https://i.ibb.co/rfb5HJpd/20200827-IMG-9924.jpg",
           "https://i.ibb.co/vCPJPPwL/20200827-IMG-9925.jpg",
           "https://i.ibb.co/HTn0qyXb/tele001.jpg"
+        ],
+        "documentos": [
+          {
+            "titulo": "Horario Taller Cómputo EPIT 2026-A",
+            "url": "https://docs.google.com/spreadsheets/d/18NG5zcNlrMLeGnucQKKnFj85X88s1PVV/edit?usp=sharing&ouid=102725324819298634110&rtpof=true&sd=true"
+          },
+          {
+            "titulo": "2025_Inventario de Software - Taller de Cómputo EPIT",
+            "url": "https://drive.google.com/file/d/1fgiOr69N76ShxZhWvo8HhFjoGuVXRaX-/view?usp=drive_link"
+          }
         ]
       },
       "equipos": [
