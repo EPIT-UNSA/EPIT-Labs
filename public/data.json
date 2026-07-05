@@ -84,6 +84,38 @@
     {
       "titulo": "Horarios EPIT 2026A",
       "url": "https://docs.google.com/spreadsheets/d/15k-722aOjfOTHxiWNb-yVQhSaD4d9qSOgm8sqxcirWI/edit?usp=drive_link"
+    },
+    {
+      "titulo": "Inventario Software 2026",
+      "url": "https://drive.google.com/file/d/1ysc-EPvw0Z0H9yVM4xpt29A9dms9kM_P/view?usp=sharing"
+    },
+    {
+      "titulo": "Procedimiento de mantenimiento",
+      "url": "https://drive.google.com/file/d/1FJbVfn1LbzFK2tH56-H-HrlOgnQ6qBNi/view?usp=drive_link"
+    },
+    {
+      "titulo": "Evidencias Mantenimiento",
+      "url": "https://drive.google.com/file/d/1mM9e5Rn8ddOvCn3iZzSthXzB1_oLey0s/view?usp=drive_link"
+    },
+    {
+      "titulo": "Anexo 04 - Hojas de Vida Equipos",
+      "url": "https://drive.google.com/file/d/1JBfRpNVI7mDZa_QyQk7F26BwYTHQSYmC/view?usp=drive_link"
+    },
+    {
+      "titulo": "Inventario Software EPIT - Ordenes de compra",
+      "url": "https://drive.google.com/file/d/1Cd-fBmnc9QmksE7p_r5X3YYS6FlKNFB_/view?usp=drive_link"
+    },
+    {
+      "titulo": "Lista de publicaciones, revistas y base de datos",
+      "url": "https://drive.google.com/file/d/1x-KPLpt-rfZdsuW-85sMshXZujuEDx2d/view?usp=drive_link"
+    },
+    {
+      "titulo": "Partidas lab_Presupuesto Operativo y Ejecucion EPIT 25_",
+      "url": "https://drive.google.com/file/d/1XZz_OJq3-VdOWTZp5A0IW-GR6PsM3ZKc/view?usp=drive_link"
+    },
+    {
+      "titulo": "Aprobación del Plan de Mantenimiento Resolución Directoral N° 448-2024",
+      "url": "https://drive.google.com/file/d/1NzYwehc5HI8GCzZnzcAIgwapZYkx2GdJ/view?usp=drive_link"
     }
   ],
   "labs": [
@@ -180,6 +212,14 @@
           {
             "titulo": "Números de emergencia - UNSA Ingenierías",
             "url": "https://drive.google.com/file/d/1X5LmKPBG3DbniugamfFlfI2q3ir4eL82/view?usp=sharing"
+          },
+          {
+            "titulo": "IPERC DOCENTE - LINEAS DE TRANSMISION Y ANTENAS",
+            "url": "https://drive.google.com/file/d/1y6DXuXu5s5lSR4j3MpH40ZaDCc871yDP/view?usp=drive_link"
+          },
+          {
+            "titulo": "IPERC ESTUDIANTE - LINEAS DE TRANSMISION Y ANTENAS",
+            "url": "https://drive.google.com/file/d/1fLF3ZbiW-SBX5QMBtIQrxyO7r4R9Q5cB/view?usp=drive_link"
           }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
@@ -6382,7 +6422,6 @@
           "https://i.ibb.co/TMQk6cnb/20240826-111145.jpg",
           "https://i.ibb.co/zWdZ3y7M/20240826-111231.jpg",
           "https://i.ibb.co/DfxtvKDt/20240912-112350.jpg"
-          
         ],
         "documentos": [],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
@@ -10247,6 +10286,26 @@
           {
             "titulo": "2025_Inventario de Software - Taller de Cómputo EPIT",
             "url": "https://drive.google.com/file/d/1fgiOr69N76ShxZhWvo8HhFjoGuVXRaX-/view?usp=drive_link"
+          },
+          {
+            "titulo": "2026 - Hojas de vida - Taller de Cómputo EPIT",
+            "url": "https://docs.google.com/spreadsheets/d/1B7fPRdsbTl0WaOIogGz0gAYFkWIyfeSx/edit?usp=sharing&ouid=102725324819298634110&rtpof=true&sd=true"
+          },
+          {
+            "titulo": "2025-2026_Taller de Cómputo EPIT - Lista de PCs",
+            "url": "https://docs.google.com/spreadsheets/d/1q1LanXjJCgZiPSB4MI8kgrIQ4eFzCUjo/edit?usp=sharing&ouid=102725324819298634110&rtpof=true&sd=true"
+          },
+          {
+            "titulo": "Protocolo de Seguridad del Taller de Computo.pdf",
+            "url": "https://drive.google.com/file/d/1BdSa-b3TaloAo2FUkGbuTknYveSZJLQE/view?usp=drive_link"
+          },
+          {
+            "titulo": "2020_2024_Inventario de Software - Taller de Cómputo EPIT",
+            "url": "https://drive.google.com/file/d/169GJ-x4XAOjxvtds8v1oCkMZxLsO_Zet/view?usp=drive_link"
+          },
+          {
+            "titulo": "Inventario Taller de computo EPIT",
+            "url": "https://drive.google.com/file/d/1Xadhh74-8EgXm4kDQVx7tvK2zmVg-M9H/view?usp=sharing"
           }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
