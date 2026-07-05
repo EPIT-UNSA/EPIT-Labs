@@ -162,7 +162,7 @@ export default function ImageZoomModal({ images = [], initialIndex = 0, onClose 
         <img
           src={currentUrl}
           alt={`Zoomed - ${currentIndex + 1}`}
-          className="max-w-[90vw] max-h-[75vh] object-contain transition-transform duration-75 pointer-events-none select-none"
+          className="max-w-[90vw] max-h-[75vh] object-contain transition-transform duration-75"
           style={{
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
           }}
