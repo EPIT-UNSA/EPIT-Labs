@@ -220,6 +220,10 @@
           {
             "titulo": "IPERC ESTUDIANTE - LINEAS DE TRANSMISION Y ANTENAS",
             "url": "https://drive.google.com/file/d/1fLF3ZbiW-SBX5QMBtIQrxyO7r4R9Q5cB/view?usp=drive_link"
+          },
+          {
+            "titulo": "Capacitación Laboratorio 01: Líneas de Transmisión y Antenas",
+            "url": "https://drive.google.com/drive/folders/1hrKyC6vYr3ZYTVeKEAKLn8JhUQ2J2c3V?usp=drive_link"
           }
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
@@ -3158,7 +3162,24 @@
           "https://i.ibb.co/CKbCkD0v/IMG-20260702-185118447-HDR.jpg",
           "https://i.ibb.co/gM4nsLMT/IMG-20260702-185103718-HDR.jpg"
         ],
-        "documentos": [],
+        "documentos": [
+          {
+            "titulo": "Capacitación Laboratorio 02: Comunicaciones Ópticas",
+            "url": "https://drive.google.com/drive/folders/12xmfnVtP_9sYouJKSC2HtUzKpOzm8vAp?usp=drive_link"
+          },
+          {
+            "titulo": "Diseño Isométrico - Planta de Laboratorio de Fibra Óptica - EPIT UNSA",
+            "url": "https://drive.google.com/file/d/1qlAfrm9nIqnu6ZbhRFOBDjl8bkjEFGil/view?usp=drive_link"
+          },
+          {
+            "titulo": "GUIAS DE PRACTICA",
+            "url": "https://drive.google.com/drive/folders/1_UcI45oMW0lr9KjwWoIXDtQZU7LluFBy?usp=drive_link"
+          },
+          {
+            "titulo": "Material Didáctico",
+            "url": "https://drive.google.com/drive/folders/1ZZyuIaC_jRk2LCC_A6M8UtRlme5YbEZz?usp=sharing"
+          }
+        ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Dr. Mauricio Postigo Malaga",
@@ -4983,7 +5004,12 @@
           "https://i.ibb.co/j9NHvdtL/IMG-20260314-015827-267.png",
           "https://i.ibb.co/7tLXXRLF/IMG-20260314-015802-156.png"
         ],
-        "documentos": [],
+        "documentos": [
+          {
+            "titulo": "Capacitación Laboratorio 04: Comunicaciones Inalámbricas",
+            "url": "https://drive.google.com/drive/folders/1qlHq7O3_wcWr0z3E8nCGPDj9WFWqAjT1?usp=drive_link"
+          }
+        ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Dr. Ronald Percing Coaguila Gómez",
@@ -6423,7 +6449,24 @@
           "https://i.ibb.co/zWdZ3y7M/20240826-111231.jpg",
           "https://i.ibb.co/DfxtvKDt/20240912-112350.jpg"
         ],
-        "documentos": [],
+        "documentos": [
+          {
+            "titulo": "Capacitación Laboratorio 03: Telemática",
+            "url": "https://drive.google.com/drive/folders/1FFrX9isJbmVMwZ3rr03rJECw_1kgth2q?usp=drive_link"
+          },
+          {
+            "titulo": "Documentación con anexos",
+            "url": "https://drive.google.com/file/d/1w1nwjGR_OXgArvKfsUTQpUcg0UlV0Rio/view?usp=drive_link"
+          },
+          {
+            "titulo": "Guías de práctica",
+            "url": "https://drive.google.com/drive/folders/16m6sjW3kfV_DSNFpXt1l6O-Qx0EKhA6Y?usp=drive_link"
+          },
+          {
+            "titulo": "Material Teórico Capacitación",
+            "url": "https://drive.google.com/drive/folders/1y1us9lFoQCbLhL83rWcRqaBqhmmxE6KM?usp=drive_link"
+          }
+        ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Dr. Asencio Huaita Bedregal",
