@@ -11,7 +11,7 @@
   --border-medium: #e2e8f0; /* slate-200 */
   --text-primary: #1e293b; /* slate-800 */
   --text-secondary: #475569; /* slate-600 */
-  --text-muted: #64748b; /* slate-500 */
+  --text-muted: #64748b; /* slate-50 */
   --text-tertiary: #94a3b8; /* slate-400 */
   
   /* Primary Theme (UNSA Crimson default) */
@@ -19,6 +19,12 @@
   --brand-hover: #991b1b; /* red-800 */
   --brand-light: #fef2f2; /* red-50 */
   --brand-border: #fee2e2; /* red-100 */
+
+  /* Scrollbar Arrow SVGs (Light Mode - Color: slate-600 #475569) */
+  --arrow-up: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 15 12 9 6 15'></polyline></svg>");
+  --arrow-down: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  --arrow-left: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'></polyline></svg>");
+  --arrow-right: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'></polyline></svg>");
 }
 
 /* Theme variables for DARK mode */
@@ -37,6 +43,12 @@
   /* brand light should be darker in dark mode, or adapt to avoid blinding */
   --brand-light: rgba(185, 28, 28, 0.15); 
   --brand-border: rgba(185, 28, 28, 0.3);
+
+  /* Scrollbar Arrow SVGs (Dark Mode - Color: slate-300 #cbd5e1) */
+  --arrow-up: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='18 15 12 9 6 15'></polyline></svg>");
+  --arrow-down: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  --arrow-left: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'></polyline></svg>");
+  --arrow-right: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cbd5e1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'></polyline></svg>");
 }
 
 @theme {
@@ -62,4 +74,72 @@
   --color-theme-brand-border: var(--brand-border);
 }
 
+@layer base {
+  /* Ancho de la barra de scroll */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
 
+  /* Fondo de la barra (donde se desliza el thumb) */
+  ::-webkit-scrollbar-track {
+    background: var(--bg-page);
+  }
+
+  /* La barra o manija (lo que arrastras) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--brand-primary);
+    border-radius: 9999px;
+    border: 3px solid var(--bg-page); /* Crea un efecto de margen alrededor del indicador */
+  }
+
+  /* Efecto hover en la manija */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-hover);
+  }
+
+  /* Botones de desplazamiento / Flechas (button) */
+  ::-webkit-scrollbar-button {
+    background-color: var(--bg-page);
+    display: block;
+    height: 12px;
+    width: 12px;
+  }
+
+  /* Hover sobre los botones de flecha */
+  ::-webkit-scrollbar-button:hover {
+    background-color: var(--bg-hover);
+  }
+
+  /* Flecha hacia arriba */
+  ::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background-image: var(--arrow-up);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Flecha hacia abajo */
+  ::-webkit-scrollbar-button:single-button:vertical:increment {
+    background-image: var(--arrow-down);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Flecha hacia la izquierda */
+  ::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    background-image: var(--arrow-left);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Flecha hacia la derecha */
+  ::-webkit-scrollbar-button:single-button:horizontal:increment {
+    background-image: var(--arrow-right);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
