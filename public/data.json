@@ -43,8 +43,12 @@
   ],
   "documentos": [
     {
-      "titulo": "Web Institucional EPIT",
-      "url": "https://epit.unsa.edu.pe/"
+      "titulo": "Web Institucional UNSA",
+      "url": "https://www.unsa.edu.pe/"
+    },
+    {
+      "titulo": "Web Institucional EPIT UNSA",
+      "url": "https://fips.unsa.edu.pe/telecomunicaciones/"
     },
     {
       "titulo": "Planos del Pabellón de Ing. Telecomunicaciones",
