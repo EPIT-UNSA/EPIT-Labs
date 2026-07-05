@@ -11,6 +11,7 @@
       "visible": true,
       "NOMBRE": "Dr. Juan Borja Murillo",
       "NUMERO DE CONTACTO": "+51 959 123 456",
+      "CORREO": "jborjam@unsa.edu.pe",
       "Periodo": "2024-2026",
       "Fotografias": [
         "https://i.ibb.co/ZRKdXNr1/CHAUDER-UNSA-45-1-scaled.jpg"
@@ -25,6 +26,7 @@
         "visible": true,
         "Nombre": "Dr. Jorge Eusebio Rendulich Talavera",
         "NUMERO DE CONTACTO": "+51 958 987 654",
+        "CORREO": "jrendulich@unsa.edu.pe",
         "Periodo": "2024-2026",
         "Fotografias": [
           "https://i.ibb.co/kVM22v0T/Jorge-Rendulich-copia.png"
@@ -83,26 +85,31 @@
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Mg. Ebert Gabriel San Roman Castillo",
-          "NUMERO DE CONTACTO": "938 293 738"
+          "NUMERO DE CONTACTO": "938 293 738",
+          "CORREO": "esanroman@unsa.edu.pe"
         },
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
             "NOMBRE": "Bach. Terry Joel Casani Valencia",
-            "NUMERO DE CONTACTO": "970 304 636"
+            "NUMERO DE CONTACTO": "970 304 636",
+            "CORREO": "tcasani@unsa.edu.pe"
           },
           {
             "visible": true,
             "NOMBRE": "Ing. Edgar Jamil Valdez Funes",
-            "NUMERO DE CONTACTO": "996 998 889"
+            "NUMERO DE CONTACTO": "996 998 889",
+            "CORREO": "evaldezf@unsa.edu.pe"
           }
         ],
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
           "NOMBRE": "Ing. Manuel Julio Aguilar Quiroz",
-          "NUMERO DE CONTACTO": "958 665 604"
+          "NUMERO DE CONTACTO": "958 665 604",
+          "CORREO": "maguilarqui@unsa.edu.pe"
         },
         "Fotografias": [
+          "https://i.ibb.co/tPM4Rhjj/IMG-20260702-165453249-HDR-AE.jpg",
           "https://i.ibb.co/bMqh9FG0/IMG-20260328-165849.jpg",
           "https://i.ibb.co/Wh2Gb9g/IMG-20260328-165858.jpg",
           "https://i.ibb.co/jPTXQ6xg/IMG-20260328-170029.jpg",
@@ -122,7 +129,6 @@
           "https://i.ibb.co/qYXr5n0g/IMG-20260702-175757289-HDR-AE.jpg",
           "https://i.ibb.co/S4pzZbzH/IMG-20260702-165459086-HDR-AE.jpg",
           "https://i.ibb.co/SgZH5vm/IMG-20260702-165456748-HDR-AE.jpg",
-          "https://i.ibb.co/tPM4Rhjj/IMG-20260702-165453249-HDR-AE.jpg",
           "https://i.ibb.co/cXJ5QR0N/IMG-20260702-165451059-HDR-AE.jpg",
           "https://i.ibb.co/G3CJxcqn/IMG-20260702-165447601-HDR.jpg",
           "https://i.ibb.co/TqPJx7hF/IMG-20260702-165445660-HDR-AE.jpg",
@@ -1721,24 +1727,28 @@
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Dr. Mauricio Postigo Malaga",
-          "NUMERO DE CONTACTO": "958 339 925"
+          "NUMERO DE CONTACTO": "958 339 925",
+          "CORREO": "mpostigom@unsa.edu.pe"
         },
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
-            "NOMBRE": "Bach. Terry Joel Casani Valencia",
-            "NUMERO DE CONTACTO": "970 304 636"
+            "NOMBRE": "Ing. Susana Graciel Carrion Quiñones",
+            "NUMERO DE CONTACTO": "952 340 664",
+            "CORREO": "scarrionq@unsa.edu.pe"
           },
           {
             "visible": true,
-            "NOMBRE": "Ing. Edgar Jamil Valdez Funes",
-            "NUMERO DE CONTACTO": "996 998 889"
+            "NOMBRE": "Bach. Terry Joel Casani Valencia",
+            "NUMERO DE CONTACTO": "970 304 636",
+            "CORREO": "tcasani@unsa.edu.pe"
           }
         ],
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
           "NOMBRE": "Ing. Manuel Julio Aguilar Quiroz",
-          "NUMERO DE CONTACTO": "958 665 604"
+          "NUMERO DE CONTACTO": "958 665 604",
+          "CORREO": "maguilarqui@unsa.edu.pe"
         },
         "Fotografias": [
           "https://i.ibb.co/TMftSMQm/IMG-20260702-182359788-HDR-AE.jpg",
@@ -3129,24 +3139,28 @@
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Dr. Ronald Percing Coaguila Gómez",
-          "NUMERO DE CONTACTO": "959 301 845"
+          "NUMERO DE CONTACTO": "959 301 845",
+          "CORREO": "rcoaguilag@unsa.edu.pe"
         },
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
             "NOMBRE": "Bach. Terry Joel Casani Valencia",
-            "NUMERO DE CONTACTO": "970 304 636"
+            "NUMERO DE CONTACTO": "970 304 636",
+            "CORREO": "tcasani@unsa.edu.pe"
           },
           {
             "visible": true,
             "NOMBRE": "Ing. Edgar Jamil Valdez Funes",
-            "NUMERO DE CONTACTO": "996 998 889"
+            "NUMERO DE CONTACTO": "996 998 889",
+            "CORREO": "evaldezf@unsa.edu.pe"
           }
         ],
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
           "NOMBRE": "Ing. Manuel Julio Aguilar Quiroz",
-          "NUMERO DE CONTACTO": "958 665 604"
+          "NUMERO DE CONTACTO": "958 665 604",
+          "CORREO": "maguilarqui@unsa.edu.pe"
         },
         "Fotografias": [
           "https://i.ibb.co/Z1WSGQBh/20251113-195858.jpg",
@@ -4339,24 +4353,28 @@
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "Dr. Asencio Huaita Bedregal",
-          "NUMERO DE CONTACTO": "959 612 151"
+          "NUMERO DE CONTACTO": "959 612 151",
+          "CORREO": "ahuaita@unsa.edu.pe"
         },
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
             "NOMBRE": "Bach. Terry Joel Casani Valencia",
-            "NUMERO DE CONTACTO": "970 304 636"
+            "NUMERO DE CONTACTO": "970 304 636",
+            "CORREO": "tcasani@unsa.edu.pe"
           },
           {
             "visible": true,
             "NOMBRE": "Ing. Edgar Jamil Valdez Funes",
-            "NUMERO DE CONTACTO": "996 998 889"
+            "NUMERO DE CONTACTO": "996 998 889",
+            "CORREO": "evaldezf@unsa.edu.pe"
           }
         ],
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
           "NOMBRE": "Ing. Manuel Julio Aguilar Quiroz",
-          "NUMERO DE CONTACTO": "958 665 604"
+          "NUMERO DE CONTACTO": "958 665 604",
+          "CORREO": "maguilarqui@unsa.edu.pe"
         },
         "Fotografias": [
           "https://i.ibb.co/dwQ9wbkt/20251110-135919.jpg",
@@ -7554,19 +7572,22 @@
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
           "NOMBRE": "William Mullisaca Atamari",
-          "NUMERO DE CONTACTO": "954 980 810"
+          "NUMERO DE CONTACTO": "954 980 810",
+          "CORREO": "wmullisaca@unsa.edu.pe"
         },
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
             "NOMBRE": "Mario Antonio Arista Sarmiento",
-            "NUMERO DE CONTACTO": "959 807 367"
+            "NUMERO DE CONTACTO": "959 807 367",
+            "CORREO": "marista@unsa.edu.pe"
           }
         ],
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
           "NOMBRE": "Ing. Manuel Julio Aguilar Quiroz",
-          "NUMERO DE CONTACTO": "958 665 604"
+          "NUMERO DE CONTACTO": "958 665 604",
+          "CORREO": "maguilarqui@unsa.edu.pe"
         },
         "Fotografias": [
           "https://i.ibb.co/rfb5HJpd/20200827-IMG-9924.jpg",
