@@ -63,10 +63,10 @@
       "titulo": "Pozo a Tierra",
       "url": "https://drive.google.com/drive/folders/1E29sdW9cAADA3sMgHPEZrhIWDdY4jIjh?usp=drive_link"
     },
-          {
-            "titulo": "Números de emergencia - UNSA Ingenierías",
-            "url": "https://drive.google.com/file/d/1X5LmKPBG3DbniugamfFlfI2q3ir4eL82/view?usp=sharing"
-          }
+    {
+      "titulo": "Números de emergencia - UNSA Ingenierías",
+      "url": "https://drive.google.com/file/d/1X5LmKPBG3DbniugamfFlfI2q3ir4eL82/view?usp=sharing"
+    }
   ],
   "labs": [
     {
@@ -8284,8 +8284,41 @@
           {
             "titulo": "Números de emergencia - UNSA Ingenierías",
             "url": "https://drive.google.com/file/d/1X5LmKPBG3DbniugamfFlfI2q3ir4eL82/view?usp=sharing"
+          },
+          {
+            "titulo": "PLAN DE MANTENIMIENTO DE LABORATORIOS",
+            "url": "https://drive.google.com/drive/folders/1AEy5xD3LbVabswPHKMm-ommeOE1kMGFG?usp=drive_link"
+          },
+          {
+            "titulo": "FORMATO C6 Y C7",
+            "url": "https://drive.google.com/drive/folders/1arZVE9RZ3kDtt4snvxxSC4kBVHZsDy2w?usp=drive_link"
+          },
+          {
+            "titulo": "PLANOS",
+            "url": "https://drive.google.com/drive/folders/1O376ZicbYqD7b8_kOa96sRzti2176pjg?usp=drive_link"
+          },
+          {
+            "titulo": "IPERC`S",
+            "url": "https://drive.google.com/drive/folders/109j1hqAgxR7epCaicILMG9wCMDvh_k0f?usp=drive_link"
+          },
+          {
+            "titulo": "MAPAS DE RIESGO",
+            "url": "https://drive.google.com/drive/folders/1pBlIiZGANkF4S9foQex6EWRQ5_Dbz62y?usp=drive_link"
+          },
+          {
+            "titulo": "CERTIFICADO POZO A TIERRA",
+            "url": "https://drive.google.com/drive/folders/1gDtYa3F6lY82DmxIaO02-vWDtkc2f98Y?usp=drive_link"
+          },
+          {
+            "titulo": "PROTOCOLO DE SEGURIDAD",
+            "url": "https://drive.google.com/drive/folders/1bHTBjiQpeY59-NuHHe0E3-GAFf1Hn5gW?usp=drive_link"
+          },
+          {
+            "titulo": "REGLAMENTO INTERNO DE SST",
+            "url": "https://drive.google.com/drive/folders/1yw9FT3Wye55jTKyTfHOu-gzmDXaVv4de?usp=drive_link"
           }
-        ]
+        ],
+        "AFORO": "-"
       }
     }
   ],
