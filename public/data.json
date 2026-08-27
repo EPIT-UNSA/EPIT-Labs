@@ -137,6 +137,14 @@
         "AFORO": "20",
         "COMENTARIOS": "Equipado con sistema de entrenamiento de microondas, sistema de entrenamiento de microcintas, sistema de entrenamiento de comunicaciones satelitales, sistema de entrenamiento de antenas Lucas Nülle y componentes de RF.",
         "Fotografias": [
+          "https://i.ibb.co/YTVx3NFX/IMG-20260820-200616875-HDR-AE.jpg",
+          "https://i.ibb.co/rKvPJPJr/IMG-20260820-200626815-HDR-AE.jpg",
+          "https://i.ibb.co/p6SLS566/IMG-20260803-124142635-HDR.jpg",
+          "https://i.ibb.co/R4S7W8fb/IMG-20260820-200643783-HDR-AE.jpg",
+          "https://i.ibb.co/6cfgdpfk/IMG-20260820-200646714-HDR-AE.jpg",
+          "https://i.ibb.co/GQPkLLn2/IMG-20260813-190100373-HDR-AE.jpg",
+          "https://i.ibb.co/sdr8n14S/IMG-20260813-180200137-HDR-AE.jpg",
+          "https://i.ibb.co/RTtNQbrw/IMG-20260813-190127853-HDR-AE.jpg",
           "https://i.ibb.co/27WFMXPC/IMG-20260630-193936504-HDR-AE.jpg",
           "https://i.ibb.co/TqmBfTWF/IMG-20260630-193956049-HDR-AE.jpg",
           "https://i.ibb.co/Kpg9pzXq/IMG-20260630-193953805-HDR-AE.jpg",
@@ -228,9 +236,9 @@
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": false,
-          "NOMBRE": "Mg. Ebert Gabriel San Roman Castillo",
-          "NUMERO DE CONTACTO": "938 293 738",
-          "CORREO": "esanroman@unsa.edu.pe"
+          "NOMBRE": "Dr. Asencio Huaita Bedregal",
+          "NUMERO DE CONTACTO": "959 612 151",
+          "CORREO": "ahuaita@unsa.edu.pe"
         },
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": false,
@@ -241,7 +249,7 @@
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
-            "NOMBRE": "Bach. Terry Joel Casani Valencia",
+            "NOMBRE": "Ing. Terry Joel Casani Valencia",
             "NUMERO DE CONTACTO": "970 304 636",
             "CORREO": "tcasani@unsa.edu.pe"
           },
@@ -408,7 +416,7 @@
                   "Actividad realizada": "Verificación Operativa",
                   "Fecha": "2024-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Prueba de funcionamiento, operativo.",
                   "Fotografias": [],
                   "documentos": []
@@ -430,7 +438,7 @@
                   "Actividad realizada": "Verificación Operativa",
                   "Fecha": "2025-09-08",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Prueba de funcionamiento, operativo.",
                   "Fotografias": [],
                   "documentos": []
@@ -442,7 +450,7 @@
                 "month": 2,
                 "day": 19
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -596,7 +604,7 @@
                   "Actividad realizada": "Mantenimiento",
                   "Fecha": "2025-06-11",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza.",
                   "Fotografias": [],
                   "documentos": []
@@ -619,7 +627,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -1104,7 +1112,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-04-24",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza de filtros de ventilación. Actualización de LabVIEW drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -1115,7 +1123,7 @@
                   "Actividad realizada": "Verificación Operativa",
                   "Fecha": "2024-11-04",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Prueba de VNA exitosa con kit de calibración.",
                   "Fotografias": [],
                   "documentos": []
@@ -1126,7 +1134,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-04-14",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza general.",
                   "Fotografias": [],
                   "documentos": []
@@ -1137,7 +1145,7 @@
                   "Actividad realizada": "Verificación Operativa",
                   "Fecha": "2025-05-12",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Prueba de VNA exitosa con kit de calibración.",
                   "Fotografias": [],
                   "documentos": []
@@ -1149,7 +1157,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -1347,7 +1355,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-08-20",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza de contactos. Verificación con carga fantasma.",
                   "Fotografias": [],
                   "documentos": []
@@ -1370,7 +1378,7 @@
                 "month": 12,
                 "day": 1
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -1563,7 +1571,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-08-20",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza de contactos.",
                   "Fotografias": [],
                   "documentos": []
@@ -1586,7 +1594,7 @@
                 "month": 12,
                 "day": 1
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -1868,7 +1876,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-06-20",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza.",
                   "Fotografias": [],
                   "documentos": []
@@ -1880,7 +1888,7 @@
                 "month": 12,
                 "day": 15
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -2259,7 +2267,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-05-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza interna.",
                   "Fotografias": [],
                   "documentos": []
@@ -2270,7 +2278,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-11-10",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Todo OK.",
                   "Fotografias": [],
                   "documentos": []
@@ -2281,7 +2289,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-05-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza general.",
                   "Fotografias": [],
                   "documentos": []
@@ -2293,7 +2301,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -2316,7 +2324,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-05-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza.",
                   "Fotografias": [],
                   "documentos": []
@@ -2327,7 +2335,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-05-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "OK.",
                   "Fotografias": [],
                   "documentos": []
@@ -2339,7 +2347,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -3201,7 +3209,7 @@
           },
           {
             "visible": true,
-            "NOMBRE": "Bach. Terry Joel Casani Valencia",
+            "NOMBRE": "Ing. Terry Joel Casani Valencia",
             "NUMERO DE CONTACTO": "970 304 636",
             "CORREO": "tcasani@unsa.edu.pe"
           }
@@ -3339,7 +3347,7 @@
                   "Actividad realizada": "Inspección.",
                   "Fecha": "2025-04-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Verificación Visual",
                   "Fotografias": [],
                   "documentos": []
@@ -3351,7 +3359,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -3396,7 +3404,7 @@
                   "Actividad realizada": "Inspección.",
                   "Fecha": "2025-04-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Verificación Visual",
                   "Fotografias": [],
                   "documentos": []
@@ -3408,7 +3416,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -3453,7 +3461,7 @@
                   "Actividad realizada": "Inspección.",
                   "Fecha": "2025-04-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Verificación Visual",
                   "Fotografias": [],
                   "documentos": []
@@ -3465,7 +3473,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -3633,7 +3641,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -4992,6 +5000,11 @@
         "AFORO": "20",
         "COMENTARIOS": "Cuenta con USRPs, Antenas y sistema de Benchmarking.",
         "Fotografias": [
+          "https://i.ibb.co/3m7rbCHn/IMG-20260827-123311711-HDR-AE.jpg",
+          "https://i.ibb.co/dw8wzBXD/IMG-20260827-123256421-HDR-AE.jpg",
+          "https://i.ibb.co/SwM4gYnP/IMG-20260827-123249335-HDR-AE.jpg",
+          "https://i.ibb.co/x8fD23Fk/IMG-20260827-122548585-HDR-AE.jpg",
+          "https://i.ibb.co/0pn1RpJ6/IMG-20260827-122501940-HDR-AE.jpg",
           "https://i.ibb.co/Z1WSGQBh/20251113-195858.jpg",
           "https://i.ibb.co/HpBhBCkw/20251022-080748.jpg",
           "https://i.ibb.co/Nd4dGjF9/IMG-20260314-015804-321.png",
@@ -5012,9 +5025,9 @@
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
-          "NOMBRE": "Dr. Ronald Percing Coaguila Gómez",
-          "NUMERO DE CONTACTO": "959 301 845",
-          "CORREO": "rcoaguilag@unsa.edu.pe"
+          "NOMBRE": "Mg. Ebert Gabriel San Roman Castillo",
+          "NUMERO DE CONTACTO": "938 293 738",
+          "CORREO": "esanroman@unsa.edu.pe"
         },
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
@@ -5025,7 +5038,7 @@
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
-            "NOMBRE": "Bach. Terry Joel Casani Valencia",
+            "NOMBRE": "Ing. Terry Joel Casani Valencia",
             "NUMERO DE CONTACTO": "970 304 636",
             "CORREO": "tcasani@unsa.edu.pe"
           },
@@ -5209,7 +5222,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-11-07",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5220,7 +5233,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-06-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5231,7 +5244,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-11-25",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5243,7 +5256,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -5288,7 +5301,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-11-07",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5299,7 +5312,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-06-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5310,7 +5323,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-11-25",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5322,7 +5335,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -5367,7 +5380,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-11-07",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5378,7 +5391,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-06-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5389,7 +5402,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-11-25",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5401,7 +5414,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -5446,7 +5459,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-11-07",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5457,7 +5470,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-06-23",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5468,7 +5481,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-11-25",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización de FPGA.",
                   "Fotografias": [],
                   "documentos": []
@@ -5480,7 +5493,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -5607,7 +5620,7 @@
                   "Actividad realizada": "Inspección",
                   "Fecha": "2024-12-11",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Verificación visual.",
                   "Fotografias": [],
                   "documentos": []
@@ -5618,7 +5631,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-05-19",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza interna",
                   "Fotografias": [],
                   "documentos": []
@@ -5629,7 +5642,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-11-10",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza interna",
                   "Fotografias": [],
                   "documentos": []
@@ -5641,7 +5654,7 @@
                 "month": 2,
                 "day": 19
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -5748,7 +5761,7 @@
                   "Actividad realizada": "Verificación Operativa",
                   "Fecha": "2024-10-14",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Estado operativo.",
                   "Fotografias": [],
                   "documentos": []
@@ -5759,7 +5772,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-03-10",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza interna, pasta térmica.",
                   "Fotografias": [],
                   "documentos": []
@@ -5770,7 +5783,7 @@
                   "Actividad realizada": "Verificación Operativa",
                   "Fecha": "2025-09-07",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Estado operativo.",
                   "Fotografias": [],
                   "documentos": []
@@ -5782,7 +5795,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -6071,7 +6084,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -6469,9 +6482,9 @@
         ],
         "RESPONSABLE DEL LABORATORIO O TALLER": {
           "visible": true,
-          "NOMBRE": "Dr. Asencio Huaita Bedregal",
-          "NUMERO DE CONTACTO": "959 612 151",
-          "CORREO": "ahuaita@unsa.edu.pe"
+          "NOMBRE": "Mg. Ramiro Banda Valdivia",
+          "NUMERO DE CONTACTO": "923 232 000",
+          "CORREO": "rbandav@unsa.edu.pe"
         },
         "PERSONAL ASIGNADO PARA VERIFICAR LA CBC III": {
           "visible": true,
@@ -6482,7 +6495,7 @@
         "PERSONAL TÉCNICO": [
           {
             "visible": true,
-            "NOMBRE": "Bach. Terry Joel Casani Valencia",
+            "NOMBRE": "Ing. Terry Joel Casani Valencia",
             "NUMERO DE CONTACTO": "970 304 636",
             "CORREO": "tcasani@unsa.edu.pe"
           },
@@ -6643,7 +6656,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6654,7 +6667,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -6665,7 +6678,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -6687,7 +6700,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6709,7 +6722,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6731,7 +6744,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6743,7 +6756,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -6777,7 +6790,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6788,7 +6801,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -6799,7 +6812,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -6821,7 +6834,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6843,7 +6856,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6865,7 +6878,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6877,7 +6890,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -6911,7 +6924,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6922,7 +6935,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -6933,7 +6946,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -6955,7 +6968,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6977,7 +6990,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -6999,7 +7012,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7011,7 +7024,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7045,7 +7058,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7056,7 +7069,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7067,7 +7080,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7089,7 +7102,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7111,7 +7124,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7133,7 +7146,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7145,7 +7158,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7179,7 +7192,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7190,7 +7203,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7201,7 +7214,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7223,7 +7236,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7245,7 +7258,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7267,7 +7280,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7279,7 +7292,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7313,7 +7326,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7324,7 +7337,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7335,7 +7348,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7357,7 +7370,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7379,7 +7392,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7401,7 +7414,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7413,7 +7426,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7447,7 +7460,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7458,7 +7471,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7469,7 +7482,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7491,7 +7504,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7513,7 +7526,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7535,7 +7548,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7547,7 +7560,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7581,7 +7594,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7592,7 +7605,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7603,7 +7616,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7625,7 +7638,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7647,7 +7660,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7669,7 +7682,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7681,7 +7694,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7715,7 +7728,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7726,7 +7739,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7737,7 +7750,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7759,7 +7772,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7781,7 +7794,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7803,7 +7816,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7815,7 +7828,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7849,7 +7862,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7860,7 +7873,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -7871,7 +7884,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -7893,7 +7906,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7915,7 +7928,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7937,7 +7950,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7949,7 +7962,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -7983,7 +7996,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -7994,7 +8007,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8005,7 +8018,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8027,7 +8040,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8049,7 +8062,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8071,7 +8084,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8083,7 +8096,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8117,7 +8130,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8128,7 +8141,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8139,7 +8152,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8161,7 +8174,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8183,7 +8196,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8205,7 +8218,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8217,7 +8230,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8251,7 +8264,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8262,7 +8275,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8273,7 +8286,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8295,7 +8308,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8317,7 +8330,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8339,7 +8352,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8351,7 +8364,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8385,7 +8398,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8396,7 +8409,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8407,7 +8420,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8429,7 +8442,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8451,7 +8464,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8473,7 +8486,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8485,7 +8498,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8519,7 +8532,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8530,7 +8543,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8541,7 +8554,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8563,7 +8576,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8585,7 +8598,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8607,7 +8620,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8619,7 +8632,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8653,7 +8666,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8664,7 +8677,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8675,7 +8688,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8697,7 +8710,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8719,7 +8732,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8741,7 +8754,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8753,7 +8766,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8787,7 +8800,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8798,7 +8811,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8809,7 +8822,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8831,7 +8844,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8853,7 +8866,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8875,7 +8888,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8887,7 +8900,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -8921,7 +8934,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8932,7 +8945,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -8943,7 +8956,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -8965,7 +8978,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -8987,7 +9000,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9009,7 +9022,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9021,7 +9034,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -9055,7 +9068,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9066,7 +9079,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -9077,7 +9090,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -9099,7 +9112,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9121,7 +9134,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9143,7 +9156,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9155,7 +9168,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -9189,7 +9202,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9200,7 +9213,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -9211,7 +9224,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -9233,7 +9246,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9255,7 +9268,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9277,7 +9290,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9289,7 +9302,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -9323,7 +9336,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9334,7 +9347,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -9345,7 +9358,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -9367,7 +9380,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9389,7 +9402,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9411,7 +9424,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9423,7 +9436,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -9457,7 +9470,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9468,7 +9481,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación brew, Google Chrome, Brave, UHD drivers.",
                   "Fotografias": [],
                   "documentos": []
@@ -9479,7 +9492,7 @@
                   "Actividad realizada": "Instalación software",
                   "Fecha": "2024-10-18",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Instalación Android Studio",
                   "Fotografias": [],
                   "documentos": []
@@ -9501,7 +9514,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-01-06",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9523,7 +9536,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-09-16",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9545,7 +9558,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2025-12-15",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Actualización macOS",
                   "Fotografias": [],
                   "documentos": []
@@ -9557,7 +9570,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
@@ -9667,7 +9680,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-06-10",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza polvo.",
                   "Fotografias": [],
                   "documentos": []
@@ -9690,7 +9703,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             },
             {
@@ -9724,7 +9737,7 @@
                   "Actividad realizada": "Mantenimiento Preventivo",
                   "Fecha": "2024-06-10",
                   "fechaFin": "",
-                  "Responsable": "Bach. Terry Joel Casani Valencia",
+                  "Responsable": "Ing. Terry Joel Casani Valencia",
                   "Observaciones": "Limpieza polvo.",
                   "Fotografias": [],
                   "documentos": []
@@ -9747,7 +9760,7 @@
                 "month": 12,
                 "day": 10
               },
-              "HechoPor": "Bach. Terry Joel Casani Valencia",
+              "HechoPor": "Ing. Terry Joel Casani Valencia",
               "RevisadoPor": "Dr. Juan Borja Murillo"
             }
           ],
