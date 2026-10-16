@@ -332,7 +332,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
 
       {/* Main Grid: Management Info vs Documents */}
       {(hasAuthorities || hasDocuments) && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <>
 
           {/* Management & Directorate Card */}
           {hasAuthorities && (
@@ -633,7 +633,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
               </div>
             </div>
           )}
-        </div>
+        </>
       )}
 
       {/* Galería de la Escuela/Universidad */}
