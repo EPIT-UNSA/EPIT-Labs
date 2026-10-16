@@ -45,14 +45,16 @@
   ],
   "documentos": [
     {
-      "titulo": "Web Institucional UNSA",
-      "url": "https://www.unsa.edu.pe/"
+      "titulo": "Protocolos de Uso Labs EPIT",
+      "url": "https://drive.google.com/drive/folders/1PZms-fDNBcrmitUozOaYy4QE9dP1bw9U?usp=sharing"
     },
     {
+      "visible": false,
       "titulo": "Web Institucional EPIT UNSA",
       "url": "https://fips.unsa.edu.pe/telecomunicaciones/"
     },
     {
+      "visible": false,
       "titulo": "Planos del Pabellón de Ing. Telecomunicaciones",
       "url": "https://drive.google.com/drive/folders/1mV0ToQN95RG0ezQuQ3crxKllnG9BFBFt?usp=sharing"
     },
@@ -70,6 +72,7 @@
       "url": "https://drive.google.com/drive/folders/1E29sdW9cAADA3sMgHPEZrhIWDdY4jIjh?usp=drive_link"
     },
     {
+      "visible": false,
       "titulo": "Números de emergencia - UNSA Ingenierías",
       "url": "https://drive.google.com/file/d/1X5LmKPBG3DbniugamfFlfI2q3ir4eL82/view?usp=sharing"
     },
@@ -78,22 +81,25 @@
       "url": "https://drive.google.com/file/d/16CX5T81qYBPg1cOsoq_xzn2lYDbpSWqa/view?usp=sharing"
     },
     {
+      "visible": false,
       "titulo": "2025-11-25 - Inventario Botiquínes - Labs EPIT",
       "url": "https://drive.google.com/file/d/1vWoRUz_yujx-dReTIxina4-crK_d1F5X/view?usp=sharing"
     },
     {
-      "titulo": "Horarios EPIT 2026A",
-      "url": "https://docs.google.com/spreadsheets/d/15k-722aOjfOTHxiWNb-yVQhSaD4d9qSOgm8sqxcirWI/edit?usp=drive_link"
+      "titulo": "Horarios EPIT",
+      "url": "https://fips.unsa.edu.pe/telecomunicaciones/horarios-epit/"
     },
     {
       "titulo": "Inventario Software 2026",
       "url": "https://drive.google.com/file/d/1ysc-EPvw0Z0H9yVM4xpt29A9dms9kM_P/view?usp=sharing"
     },
     {
+      "visible": false,
       "titulo": "Procedimiento de mantenimiento",
       "url": "https://drive.google.com/file/d/1FJbVfn1LbzFK2tH56-H-HrlOgnQ6qBNi/view?usp=drive_link"
     },
     {
+      "visible": false,
       "titulo": "Evidencias Mantenimiento",
       "url": "https://drive.google.com/file/d/1mM9e5Rn8ddOvCn3iZzSthXzB1_oLey0s/view?usp=drive_link"
     },
@@ -102,14 +108,17 @@
       "url": "https://drive.google.com/file/d/1JBfRpNVI7mDZa_QyQk7F26BwYTHQSYmC/view?usp=drive_link"
     },
     {
+      "visible": false,
       "titulo": "Inventario Software EPIT - Ordenes de compra",
       "url": "https://drive.google.com/file/d/1Cd-fBmnc9QmksE7p_r5X3YYS6FlKNFB_/view?usp=drive_link"
     },
     {
+      "visible": false,
       "titulo": "Lista de publicaciones, revistas y base de datos",
       "url": "https://drive.google.com/file/d/1x-KPLpt-rfZdsuW-85sMshXZujuEDx2d/view?usp=drive_link"
     },
     {
+      "visible": false,
       "titulo": "Partidas lab_Presupuesto Operativo y Ejecucion EPIT 25_",
       "url": "https://drive.google.com/file/d/1XZz_OJq3-VdOWTZp5A0IW-GR6PsM3ZKc/view?usp=drive_link"
     },
@@ -205,6 +214,10 @@
           "https://i.ibb.co/2QDSMND/IMG-20260630-162231998-HDR-AE.jpg"
         ],
         "documentos": [
+          {
+            "titulo": "2026-B Protocolo de Lab 01_EPIT",
+            "url": "https://drive.google.com/file/d/1-tHSw6GTzqXEgccuub_Mnxp6d_TJp6Ip/view?usp=drive_link"
+          },
           {
             "titulo": "Inventario Labs EPIT 2025",
             "url": "https://drive.google.com/file/d/17ofmrieiZDuo529L37Vd3hQ0FrxzxqpN/view?usp=sharing"
@@ -3172,6 +3185,10 @@
         ],
         "documentos": [
           {
+            "titulo": "2026-B Protocolo de Lab 02_EPIT",
+            "url": "https://drive.google.com/file/d/1SRravHMRqWoLJLp7CIhUVGleb1x-7m-l/view?usp=drive_link"
+          },
+          {
             "titulo": "Capacitación Laboratorio 02: Comunicaciones Ópticas",
             "url": "https://drive.google.com/drive/folders/12xmfnVtP_9sYouJKSC2HtUzKpOzm8vAp?usp=drive_link"
           },
@@ -5019,6 +5036,10 @@
         ],
         "documentos": [
           {
+            "titulo": "2026-B Protocolo de Lab 04_EPIT",
+            "url": "https://drive.google.com/file/d/1TLPAc_WAgfLYi2I7czynVhaaRrELYJwt/view?usp=drive_link"
+          },
+          {
             "titulo": "Capacitación Laboratorio 04: Comunicaciones Inalámbricas",
             "url": "https://drive.google.com/drive/folders/1qlHq7O3_wcWr0z3E8nCGPDj9WFWqAjT1?usp=drive_link"
           }
@@ -6469,6 +6490,10 @@
           "https://i.ibb.co/DfxtvKDt/20240912-112350.jpg"
         ],
         "documentos": [
+          {
+            "titulo": "2026-B Protocolo de Lab 03_EPIT",
+            "url": "https://drive.google.com/file/d/17H9UdoCnets3C0yJ6W_RQ0Ea8ilmnLcW/view?usp=drive_link"
+          },
           {
             "titulo": "Capacitación Laboratorio 03: Telemática",
             "url": "https://drive.google.com/drive/folders/1FFrX9isJbmVMwZ3rr03rJECw_1kgth2q?usp=drive_link"
