@@ -86,10 +86,12 @@
       "url": "https://drive.google.com/file/d/1vWoRUz_yujx-dReTIxina4-crK_d1F5X/view?usp=sharing"
     },
     {
+      "visible": false,
       "titulo": "Horarios EPIT",
       "url": "https://fips.unsa.edu.pe/telecomunicaciones/horarios-epit/"
     },
     {
+      "visible": false,
       "titulo": "Inventario Software 2026",
       "url": "https://drive.google.com/file/d/1ysc-EPvw0Z0H9yVM4xpt29A9dms9kM_P/view?usp=sharing"
     },
@@ -104,6 +106,7 @@
       "url": "https://drive.google.com/file/d/1mM9e5Rn8ddOvCn3iZzSthXzB1_oLey0s/view?usp=drive_link"
     },
     {
+      "visible": false,
       "titulo": "Anexo 04 - Hojas de Vida Equipos",
       "url": "https://drive.google.com/file/d/1JBfRpNVI7mDZa_QyQk7F26BwYTHQSYmC/view?usp=drive_link"
     },
@@ -215,7 +218,7 @@
         ],
         "documentos": [
           {
-            "titulo": "2026-B Protocolo de Lab 01_EPIT",
+            "titulo": "2026-B Protocolo de Uso Lab 01_EPIT",
             "url": "https://drive.google.com/file/d/1-tHSw6GTzqXEgccuub_Mnxp6d_TJp6Ip/view?usp=drive_link"
           },
           {
@@ -3185,7 +3188,7 @@
         ],
         "documentos": [
           {
-            "titulo": "2026-B Protocolo de Lab 02_EPIT",
+            "titulo": "2026-B Protocolo de Uso Lab 02_EPIT",
             "url": "https://drive.google.com/file/d/1SRravHMRqWoLJLp7CIhUVGleb1x-7m-l/view?usp=drive_link"
           },
           {
@@ -5036,7 +5039,7 @@
         ],
         "documentos": [
           {
-            "titulo": "2026-B Protocolo de Lab 04_EPIT",
+            "titulo": "2026-B Protocolo de Uso Lab 04_EPIT",
             "url": "https://drive.google.com/file/d/1TLPAc_WAgfLYi2I7czynVhaaRrELYJwt/view?usp=drive_link"
           },
           {
@@ -6491,7 +6494,7 @@
         ],
         "documentos": [
           {
-            "titulo": "2026-B Protocolo de Lab 03_EPIT",
+            "titulo": "2026-B Protocolo de Uso Lab 03_EPIT",
             "url": "https://drive.google.com/file/d/17H9UdoCnets3C0yJ6W_RQ0Ea8ilmnLcW/view?usp=drive_link"
           },
           {
