@@ -629,7 +629,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
               </div>
 
               <div className="bg-theme-brand-light/40 rounded-lg p-4 border border-theme-brand-border/50 text-xs text-theme-text-secondary leading-relaxed mt-4 transition-colors duration-200">
-                <strong>Nota de Acceso Técnico:</strong> La consulta y descarga de planos de evacuación o reglamentos de SST está sujeta a credenciales del dominio institucional de la UNSA.
+                <strong>Nota de Acceso Técnico:</strong> La consulta y descarga de algunos archivos es con credenciales del dominio institucional de la UNSA.
               </div>
             </div>
           )}
