@@ -89,13 +89,13 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
 
   // Add document
   const handleAddDocument = () => {
-    const newDocs = [...data.documentos, { titulo: "Nuevo Documento", url: "https://" }];
+    const newDocs = [...(data.documentos || []), { titulo: "Nuevo Documento", url: "https://", visible: true }];
     onUpdate(["documentos"], newDocs);
   };
 
   // Delete document
   const handleDeleteDocument = (index: number) => {
-    const newDocs = data.documentos.filter((_, i) => i !== index);
+    const newDocs = (data.documentos || []).filter((_, i) => i !== index);
     onUpdate(["documentos"], newDocs);
   };
 
@@ -108,7 +108,7 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
 
   const hasDocuments = React.useMemo(() => {
     if (isEditMode) return true;
-    return Array.isArray(data.documentos) && data.documentos.length > 0;
+    return Array.isArray(data.documentos) && data.documentos.some(doc => doc.visible !== false);
   }, [data.documentos, isEditMode]);
 
   const hasVisibleLabs = React.useMemo(() => {
@@ -542,57 +542,85 @@ export default function HomeView({ data, isEditMode, onUpdate, onNavigate, onZoo
                 </div>
 
                 <div className="space-y-2">
-                  {(data.documentos || []).map((doc, idx) => (
-                    <div
-                      key={idx}
-                      title={doc.titulo || "Documento Técnico"}
-                      className="flex items-center justify-between p-3 rounded-lg hover:bg-theme-hover border border-theme-border-light transition-colors duration-200 group"
-                    >
-                      <div className="flex-1 min-w-0 pr-4">
-                        {isEditMode ? (
-                          <div className="space-y-1.5">
-                            <input
-                              type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-sm font-semibold text-theme-text-secondary focus:outline-none focus:border-theme-brand"
-                              value={doc.titulo || ""}
-                              onChange={(e) => onUpdate(["documentos", idx, "titulo"], e.target.value)}
-                              placeholder="Nombre del documento"
-                            />
-                            <input
-                              type="text"
-                              className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs text-theme-text-muted focus:outline-none focus:border-theme-brand font-mono"
-                              value={doc.url || ""}
-                              onChange={(e) => onUpdate(["documentos", idx, "url"], e.target.value)}
-                              placeholder="Enlace URL"
-                            />
+                  {(data.documentos || []).map((doc, idx) => {
+                    const isVisible = doc.visible !== false;
+                    if (!isEditMode && !isVisible) return null;
+
+                    return (
+                      <div
+                        key={idx}
+                        title={doc.titulo || "Documento Técnico"}
+                        className={`flex items-center justify-between p-3 rounded-lg hover:bg-theme-hover border transition-all duration-200 group ${
+                          isEditMode && !isVisible
+                            ? "opacity-60 ring-2 ring-theme-brand-border ring-offset-2 border-dashed bg-theme-page/40"
+                            : "border-theme-border-light"
+                        }`}
+                      >
+                        <div className="flex-1 min-w-0 pr-4">
+                          {isEditMode ? (
+                            <div className="space-y-1.5">
+                              {!isVisible && (
+                                <div className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-theme-brand bg-theme-brand-light px-2 py-0.5 rounded shadow-xs mb-1">
+                                  <EyeOff className="w-3 h-3" /> OCULTO EN MODO PÚBLICO
+                                </div>
+                              )}
+                              <input
+                                type="text"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-sm font-semibold text-theme-text-secondary focus:outline-none focus:border-theme-brand"
+                                value={doc.titulo || ""}
+                                onChange={(e) => onUpdate(["documentos", idx, "titulo"], e.target.value)}
+                                placeholder="Nombre del documento"
+                              />
+                              <input
+                                type="text"
+                                className="w-full bg-theme-card border border-theme-border-medium rounded px-2 py-0.5 text-xs text-theme-text-muted focus:outline-none focus:border-theme-brand font-mono"
+                                value={doc.url || ""}
+                                onChange={(e) => onUpdate(["documentos", idx, "url"], e.target.value)}
+                                placeholder="Enlace URL"
+                              />
+                            </div>
+                          ) : (
+                            <a
+                              href={doc.url || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-sm font-medium text-theme-text-secondary hover:text-theme-brand group transition-colors duration-200"
+                            >
+                              <BookOpen className="w-4 h-4 text-theme-text-tertiary group-hover:text-theme-brand flex-shrink-0" />
+                              <span className="truncate">{doc.titulo || ""}</span>
+                              <ExternalLink className="w-3 h-3 text-theme-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </a>
+                          )}
+                        </div>
+
+                        {isEditMode && (
+                          <div className="flex items-center gap-1.5 flex-shrink-0">
+                            <button
+                              onClick={() => onUpdate(["documentos", idx, "visible"], !isVisible)}
+                              className={`p-1.5 rounded border text-xs transition cursor-pointer ${
+                                isVisible
+                                  ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
+                                  : "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                              }`}
+                              title="Alternar Visibilidad"
+                            >
+                              {isVisible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                            </button>
+                            <button
+                              onClick={() => handleDeleteDocument(idx)}
+                              className="p-1.5 text-theme-text-tertiary hover:text-theme-brand-hover rounded transition hover:bg-theme-brand-light cursor-pointer"
+                              title="Eliminar documento"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
                           </div>
-                        ) : (
-                          <a
-                            href={doc.url || "#"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-sm font-medium text-theme-text-secondary hover:text-theme-brand group transition-colors duration-200"
-                          >
-                            <BookOpen className="w-4 h-4 text-theme-text-tertiary group-hover:text-theme-brand flex-shrink-0" />
-                            <span className="truncate">{doc.titulo || ""}</span>
-                            <ExternalLink className="w-3 h-3 text-theme-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </a>
                         )}
                       </div>
+                    );
+                  })}
 
-                      {isEditMode && (
-                        <button
-                          onClick={() => handleDeleteDocument(idx)}
-                          className="p-1 text-theme-text-tertiary hover:text-theme-brand-hover rounded transition hover:bg-theme-brand-light cursor-pointer"
-                          title="Eliminar documento"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      )}
-                    </div>
-                  ))}
-
-                  {data.documentos?.length === 0 && (
+                  {((!isEditMode && (!data.documentos || !data.documentos.some(d => d.visible !== false))) ||
+                    (!data.documentos || data.documentos.length === 0)) && (
                     <div className="text-center py-6 text-theme-text-tertiary text-sm">
                       No hay documentos técnicos registrados.
                     </div>

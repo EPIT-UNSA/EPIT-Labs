@@ -20,6 +20,7 @@ export interface DepartamentoAcademico {
 }
 
 export interface Documento {
+  visible?: boolean;
   titulo: string;
   url: string;
 }
